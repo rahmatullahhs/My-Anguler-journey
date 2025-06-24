@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="my-2 text-center">All Student</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Fee</th>
+                <th>Action</th>
+            </tr>
+
+
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let s of students | async">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.email}}</td>
+                <td>{{s.fee}}</td>
+                <td></td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

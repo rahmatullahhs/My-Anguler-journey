@@ -4,26 +4,31 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Home } from './home/home';
-import { About } from './about/about';
-import { Addemployee } from './addemployee/addemployee';
-import { Allemp } from './allemp/allemp';
+import { ViewAllStudent } from './view-all-student/view-all-student';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Addstudent } from './addstudent/addstudent';
 
 @NgModule({
   declarations: [
     App,
     Home,
-    About,
-    Addemployee,
-    Allemp
+    ViewAllStudent,
+    Addstudent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(
+      withFetch()
+    )
   ],
   bootstrap: [App]
 })
