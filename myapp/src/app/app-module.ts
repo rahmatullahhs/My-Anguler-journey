@@ -8,13 +8,15 @@ import { ViewAllStudent } from './view-all-student/view-all-student';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Addstudent } from './addstudent/addstudent';
+import { UpdateStudent } from './update-student/update-student';
 
 @NgModule({
   declarations: [
     App,
     Home,
     ViewAllStudent,
-    Addstudent
+    Addstudent,
+    UpdateStudent
   ],
   imports: [
     BrowserModule,

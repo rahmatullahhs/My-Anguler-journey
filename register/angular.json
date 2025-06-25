@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RagisterApp": {
+    "register": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "RagisterApp:build:production"
+              "buildTarget": "register:build:production"
             },
             "development": {
-              "buildTarget": "RagisterApp:build:development"
+              "buildTarget": "register:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -98,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "fbd368ff-b31a-4f71-80f1-e9ec01bcb182"
+    "analytics": "d5622c06-2374-4fcf-8eba-3a8ac2ff10b4"
   }
 }
