@@ -21,7 +21,7 @@
                 <td>{{s.fee}}</td>
                 <td>
                     
-   <button class="btn btn-warning m-1 p-1">Edit</button>
+                        <button class="btn btn-warning m-1 p-1"(click)="getStudentById(s.id)">Edit</button>
                     <button class="btn btn-danger m-1 p-1" (click)="deleteStudent(s.id)">Delete</button>
 
                 </td>

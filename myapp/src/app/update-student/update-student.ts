@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
 import { Student } from '../model/student.model';
 import { StudentService } from '../service/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,10 +32,39 @@ loadStudentByid(){
   this.id = this.route.snapshot.params['id'];
 
   this.studentService.getStudentById(this.id).subscribe({
-
+next:(res)=>{
+this.student=res;
+this.cdr.markForCheck();
+},
+error:(err)=>{
+console.error('error fetching student: ',err);
+}
 
   });
+  
 }
+
+updateStudent():void{
+this.studentService.updateStudent(this.id,this.student).subscribe({
+
+next:(res)=>this.router.navigate(['/allstu']),
+error:(err)=>console.error('update failed',err)
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

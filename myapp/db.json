@@ -1,15 +1,9 @@
 {
   "students": [
     {
-      "id": "8a08",
-      "name": "Rahmat",
-      "email": "rahmat@dfds.dd",
-      "fee": "100000"
-    },
-    {
       "id": "8177",
       "name": "atiq",
-      "email": "Raza@gmail.com",
+      "email": "atiq@gmail.com",
       "fee": "100000"
     },
     {
@@ -70,6 +64,18 @@
       "id": "a645",
       "name": "Sathi",
       "email": "Sathi@gmail.com",
+      "fee": "100000"
+    },
+    {
+      "id": "5f08",
+      "name": "Rahmat",
+      "email": "Rahmat@gmail.com",
+      "fee": "100000"
+    },
+    {
+      "id": "3114",
+      "name": "simanto ",
+      "email": "simanto @gmail.com",
       "fee": "100000"
     }
   ]
