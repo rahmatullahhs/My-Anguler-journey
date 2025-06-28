@@ -13,7 +13,10 @@ export class UpdateStudent implements OnInit{
 
 id:string='';
 student: Student = new Student();
-
+// studentService: A service that interacts with the backend API for student data.
+// router: Used to navigate between pages.
+// route: Used to access route parameters (like the student ID).
+// cdr (ChangeDetectorRef): Manually triggers change detection in case Angular doesn't detect changes automatically.
 
 constructor(
 private studentService: StudentService,
