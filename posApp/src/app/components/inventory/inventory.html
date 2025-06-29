@@ -1,6 +1,6 @@
-<h2>Inventory Status</h2>
 
-<table mat-table [dataSource]="products" class="mat-elevation-z8" style="width: 100%;">
+
+<table mat-table [dataSource]="product" class="mat-elevation-z8" style="width: 100%;">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let product">{{ product.name }}</td>

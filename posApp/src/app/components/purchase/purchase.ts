@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/model/product';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-purchase',
@@ -8,10 +12,7 @@ import { Component } from '@angular/core';
 })
 export class Purchase {
 
-  import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/models/product.model';
-import { DataService } from 'src/app/services/data.service';
+
 
 @Component({
   selector: 'app-purchase',

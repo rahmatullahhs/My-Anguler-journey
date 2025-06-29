@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Dashboard {
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
-import { DataService } from 'src/app/services/data.service';
+import { Product } from 'src/app/model/product';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,4 +52,4 @@ export class DashboardComponent implements OnInit {
   }
 }
 
-}
+
