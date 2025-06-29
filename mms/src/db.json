@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Gaming Laptop X15",
+      "type": "laptop",
+      "brand": "Dell",
+      "model": "X15 2024",
+      "processor": "Intel Core i7",
+      "ram": "16GB",
+      "storage": "1TB SSD",
+      "graphicsCard": "NVIDIA RTX 4060",
+      "screenSize": "15.6 inch",
+      "batteryLife": "6 hours",
+      "price": 1499.99,
+      "inStock": true,
+      "imageUrl": "assets/images/laptop-x15.jpg",
+      "description": "High-performance gaming laptop with a powerful GPU."
+    },
+    {
+      "id": 2,
+      "name": "Office Desktop Pro",
+      "type": "computer",
+      "brand": "HP",
+      "model": "EliteDesk 800",
+      "processor": "Intel Core i5",
+      "ram": "8GB",
+      "storage": "512GB SSD",
+      "graphicsCard": "Intel UHD Graphics",
+      "price": 899.99,
+      "inStock": true,
+      "imageUrl": "assets/images/desktop-pro.jpg",
+      "description": "Reliable desktop computer for office productivity."
+    },
+    {
+      "id": 3,
+      "name": "Ultrabook Slim 14",
+      "type": "laptop",
+      "brand": "Lenovo",
+      "model": "Yoga Slim 7",
+      "processor": "AMD Ryzen 7",
+      "ram": "16GB",
+      "storage": "512GB SSD",
+      "graphicsCard": "AMD Radeon Graphics",
+      "screenSize": "14 inch",
+      "batteryLife": "10 hours",
+      "price": 1199.00,
+      "inStock": false,
+      "imageUrl": "assets/images/yoga-slim.jpg",
+      "description": "Lightweight and long-lasting battery for travel and work."
+    }
+  ]
+}
