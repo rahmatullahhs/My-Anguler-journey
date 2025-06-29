@@ -26,7 +26,7 @@
     },
     {
       "id": "a04f",
-      "name": "Istiaq junayed chisty",
+      "name": "Istiaq junayed khissty",
       "email": "istiaq@gmail.com",
       "fee": "100000"
     },
@@ -58,12 +58,6 @@
       "id": "5fa8",
       "name": "Ibn Sadier Bin Sudir Babu",
       "email": "sadier@gmail.com",
-      "fee": "100000"
-    },
-    {
-      "id": "a645",
-      "name": "kaathi kosto kanika",
-      "email": "kaathi@gmail.com",
       "fee": "100000"
     },
     {
@@ -100,12 +94,6 @@
       "id": "0f25",
       "name": "Saqr bin Mohammed Al Qasimi",
       "email": "Qasimi@gmail.com",
-      "fee": "9000"
-    },
-    {
-      "id": "b9b5",
-      "name": "Mashkat",
-      "email": "mashkat@gmail.com",
       "fee": "9000"
     }
   ]
