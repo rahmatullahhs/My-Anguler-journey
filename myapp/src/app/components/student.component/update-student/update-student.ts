@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Student } from '../model/student.model';
-import { StudentService } from '../service/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentService } from '../../../service/student.service';
+import { Student } from '../../../model/student.model';
 
 @Component({
   selector: 'app-update-student',

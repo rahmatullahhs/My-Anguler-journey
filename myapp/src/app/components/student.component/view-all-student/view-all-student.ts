@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { StudentService } from '../service/student.service';
 import { Router } from '@angular/router';
+import { StudentService } from '../../../service/student.service';
+
 
 
 @Component({

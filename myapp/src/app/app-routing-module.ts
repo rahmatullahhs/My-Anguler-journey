@@ -1,16 +1,15 @@
-// NgModule: Registers this file as an Angular module.
-// RouterModule & Routes: Provide Angular's routing features—defining paths and registering them
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Home } from './home/home';
-import { ViewAllStudent } from './view-all-student/view-all-student';
-import { Addstudent } from './addstudent/addstudent';
-import { UpdateStudent } from './update-student/update-student';
+import { ViewAllStudent } from './components/student.component/view-all-student/view-all-student';
+import { Addstudent } from './components/student.component/addstudent/addstudent';
+import { UpdateStudent } from './components/student.component/update-student/update-student';
+
 
 const routes: Routes = [
 // Default/home page. Used when URL path is empty.
 {path:'',component:Home},
-{path:'allstu', component: ViewAllStudent},
+{path:'allstu',component: ViewAllStudent},
 {path: 'addstu', component: Addstudent},
 // Updates a specific student — the :id is a route parameter
 {path: 'updatestudent/:id', component: UpdateStudent}

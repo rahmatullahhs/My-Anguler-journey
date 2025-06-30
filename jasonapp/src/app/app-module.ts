@@ -1,33 +1,29 @@
 import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { Home } from './home/home';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
-import { Product } from './components/product.component/product/product';
+import { Dashboard } from './components/dashboard/dashboard';
+import { Report } from './components/report/report';
+import { Login } from './components/login/login';
+import { Product } from './components/product/product';
 
 @NgModule({
   declarations: [
     App,
-    Home,
+    Dashboard,
+    Report,
+    Login,
     Product
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    AppRoutingModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay()),
-    provideHttpClient(
-      withFetch()
-    )
+    provideClientHydration(withEventReplay())
   ],
   bootstrap: [App]
 })
