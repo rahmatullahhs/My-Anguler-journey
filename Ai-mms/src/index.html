@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AiMms</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="mat-typography">
+  <app-root></app-root>
+</body>
+</html>
+{
+  "email": "admin@example.com",
+  "role": "admin"
+}
+localStorage.setItem('token', res.token);
+localStorage.setItem('role', res.user.role);
+// category.service.ts
+getCategories() {
+  return this.http.get('http://localhost:3000/api/categories');
+}
+addCategory(data: any) {
+  return this.http.post('http://localhost:3000/api/categories', data);
+}
+import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing-module';
+import { App } from './app';
+import { Navbar } from './components/navbar/navbar';
+import { Home } from './pages/home/home';
+import { LaptopList } from './pages/laptop-list/laptop-list';
+import { AddLaptop } from './pages/add-laptop/add-laptop';
+import { EditLaptop } from './pages/edit-laptop/edit-laptop';
+import { Login } from './pages/login/login';
+
+@NgModule({
+  declarations: [
+    App,
+    Navbar,
+    Home,
+    LaptopList,
+    AddLaptop,
+    EditLaptop,
+    Login
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
+    provideClientHydration(withEventReplay())
+  ],
+  bootstrap: [App]
+})
+export class AppModule { }
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
+providers: [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+],
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
+@NgModule({
+  imports: [
+    // ...
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
+  ]
+})
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+
+@NgModule({
+  imports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatListModule
+  ]
+})
+import { NgChartsModule } from 'ng2-charts';
+
+@NgModule({
+  imports: [
+    NgChartsModule
+  ]
+})
+
