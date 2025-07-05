@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   protected title = 'myapp';
 }
 // selector, templateUrl, and styleUrls configure how Angular invokes and renders the component.

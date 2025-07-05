@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Smart-mms": {
+    "stock-navigator": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Smart-mms:build:production"
+              "buildTarget": "stock-navigator:build:production"
             },
             "development": {
-              "buildTarget": "Smart-mms:build:development"
+              "buildTarget": "stock-navigator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,8 +96,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "cdc077ae-23f8-4105-a6e1-488635a0832c"
   }
 }

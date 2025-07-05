@@ -16,7 +16,7 @@ import { UpdateStudent } from './update-student/update-student';
   declarations: [
     App,
     Home,
-
+Addstudent
     UpdateStudent,
     ViewAllStudent,
 
