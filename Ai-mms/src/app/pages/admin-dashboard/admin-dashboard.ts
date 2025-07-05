@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
-
+import { ChartConfiguration } from 'chart.js';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-admin-dashboard',
   standalone: false,
   templateUrl: './admin-dashboard.html',
-  styleUrl: './admin-dashboard.css'
-})
-export class AdminDashboard {
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-@Component({
-  selector: 'app-admin-dashboard',
+  styleUrl: './admin-dashboard.css',
   templateUrl: './admin-dashboard.component.html'
 })
-export class AdminDashboardComponent {
+export class AdminDashboard {
+
+
+@Component({
+
+})
+
   users: any[] = [];
 
   constructor(private http: HttpClient) {}
@@ -27,9 +28,9 @@ export class AdminDashboardComponent {
   }
 }
 
-import { ChartConfiguration } from 'chart.js';
 
-export class AdminDashboardComponent {
+
+
   // Bar chart config
   barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -39,8 +40,8 @@ export class AdminDashboardComponent {
   barChartData = [
     { data: [10, 20, 5, 3], label: 'Laptops by Category' }
   ];
-}
 
 
 
-}
+
+
