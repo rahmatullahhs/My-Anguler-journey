@@ -11,7 +11,7 @@
              "stock_qty": 10
              },
              {
-             "id": 1,
+             "id": 2,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -21,7 +21,7 @@
              "stock_qty": 10
              },
              {
-             "id": 1,
+             "id": 3,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -34,7 +34,7 @@
            
              },
              {
-             "id": 1,
+             "id": 4,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -45,7 +45,7 @@
              
              },
              {
-             "id": 1,
+             "id": 5,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -56,7 +56,7 @@
             
              },
              {
-              "id": 1,
+              "id": 6,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -67,7 +67,7 @@
               
              },
              {
-             "id": 1,
+             "id": 7,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -78,7 +78,7 @@
                
              },
              {
-             "id": 1,
+             "id": 8,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",
@@ -89,7 +89,7 @@
                 
              },
              {
-             "id": 1,
+             "id": 9,
              "name": "HP EliteBook 840 G5",
              "brand": "HP",
              "processor": "Intel Core i5",

@@ -4,11 +4,15 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Products } from './product/products/products';
+import { Catagories } from './product/catagories/catagories';
+import { Accessories } from './product/accessories/accessories';
 
 @NgModule({
   declarations: [
     App,
-    Products
+    Products,
+    Catagories,
+    Accessories
   ],
   imports: [
     BrowserModule,
