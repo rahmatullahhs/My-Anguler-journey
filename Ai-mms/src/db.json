@@ -1,0 +1,96 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "brand": "HP",
+      "categoryId": 1,
+      "price": 1100.00,
+      "stock": 20,
+      "sku": "LAP-HP-001"
+    },
+    {
+      "id": 2,
+      "name": "USB-C Charger",
+      "brand": "Anker",
+      "categoryId": 2,
+      "price": 35.99,
+      "stock": 150,
+      "sku": "CHA-ANK-002"
+    },
+    {
+      "id": 3,
+      "name": "Wireless Mouse",
+      "brand": "Logitech",
+      "categoryId": 2,
+      "price": 24.99,
+      "stock": 120,
+      "sku": "MOU-LOG-003"
+    }
+  ],
+
+  "categories": [
+    { "id": 1, "name": "Electronics" },
+    { "id": 2, "name": "Accessories" },
+    { "id": 3, "name": "Storage Devices" }
+  ],
+
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Global Tech Supply",
+      "email": "contact@globaltech.com",
+      "phone": "+1-555-101-2020"
+    },
+    {
+      "id": 2,
+      "name": "QuickParts Distributors",
+      "email": "sales@quickparts.com",
+      "phone": "+1-555-303-4040"
+    }
+  ],
+
+  "inventoryLogs": [
+    {
+      "id": 1,
+      "productId": 1,
+      "change": 10,
+      "date": "2025-07-01",
+      "reason": "Restock from supplier"
+    },
+    {
+      "id": 2,
+      "productId": 3,
+      "change": -5,
+      "date": "2025-07-03",
+      "reason": "Customer purchase"
+    }
+  ],
+
+  "purchaseOrders": [
+    {
+      "id": 1,
+      "supplierId": 1,
+      "date": "2025-06-28",
+      "items": [
+        { "productId": 1, "quantity": 10 },
+        { "productId": 2, "quantity": 50 }
+      ],
+      "status": "received"
+    }
+  ],
+
+  "sales": [
+    {
+      "id": 1,
+      "date": "2025-07-03",
+      "customer": "John Doe",
+      "items": [
+        { "productId": 3, "quantity": 2 },
+        { "productId": 2, "quantity": 1 }
+      ],
+      "total": 85.97,
+      "paymentMethod": "Credit Card"
+    }
+  ]
+}
