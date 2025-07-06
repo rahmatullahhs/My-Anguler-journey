@@ -1,0 +1,82 @@
+footer {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: #ffffff;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+footer h5 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+  width: 100%;
+}
+
+footer a:hover {
+  color: #ffd700;
+}
+
+footer .form-control-sm {
+  border-radius: 20px 0 0 20px;
+  border: none;
+  padding-left: 15px;
+}
+
+footer .btn-violet {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  border: none;
+  color: white;
+  border-radius: 0 20px 20px 0;
+  transition: background 0.3s ease;
+}
+
+footer .btn-violet:hover {
+  background: linear-gradient(to right, #4a00e0, #8e2de2);
+}
+
+footer i {
+  margin-right: 6px;
+}
+
+footer .fab {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .fab:hover {
+  color: #ffd700;
+  transform: scale(1.2);
+}
+
+footer hr {
+  opacity: 0.2;
+  border-color: #fff;
+}
+
+footer .small {
+  font-size: 0.85rem;
+}
+

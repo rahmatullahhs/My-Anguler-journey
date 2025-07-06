@@ -23,10 +23,12 @@ import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-das
     Brands,
     Accessories,
     Products,
+    
     Home,
+    AdminDashboard,
     Header,
-    Footer,
-    AdminDashboard
+    Footer
+   
 
   ],
   imports: [

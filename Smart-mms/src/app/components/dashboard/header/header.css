@@ -1,0 +1,32 @@
+.navbar {
+  background: linear-gradient(90deg, #7f00ff, #e100ff);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand h5 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.navbar-brand i {
+  margin-right: 8px;
+  color: #fff;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  color: #ffffff !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}

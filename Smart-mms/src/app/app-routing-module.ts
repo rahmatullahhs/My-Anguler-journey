@@ -7,10 +7,8 @@ import { Header } from './components/dashboard/header/header';
 
 const routes: Routes = [
 
-{path: '', component: Home},
-{path: 'admin-dashboard', component: AdminDashboard },
-{path: 'footer', component: Footer},
-{path:'header', component: Header},
+{path: '', component: Home}
+
 
 
  
