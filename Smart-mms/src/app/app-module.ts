@@ -11,8 +11,10 @@ import { Header } from './components/dashboard/header/header';
 import { Footer } from './components/dashboard/footer/footer';
 import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-dashboard';
 import { Register } from './auth/register/register';
-
 import { Userprofile } from './auth/userprofile/userprofile';
+import { Login } from './auth/login/login';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -32,14 +34,18 @@ import { Userprofile } from './auth/userprofile/userprofile';
     Header,
     Footer,
     Register,
-
-    Userprofile
+    Userprofile,
+    Login
    
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    
+    
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
