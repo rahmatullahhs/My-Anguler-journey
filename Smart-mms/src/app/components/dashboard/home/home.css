@@ -2,12 +2,12 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: #121212;
   margin: 0;
-  color: #e0e0e0;
+  color: #f5f5f5;
 }
 
 /* Gradient Background */
 .gradient-bg {
-  background: linear-gradient(270deg, #6a00f4, #5200c4, #2e008b, #6a00f4);
+  background: linear-gradient(270deg, #ff6f00, #ff8f00, #ff9800, #ff6f00);
   background-size: 800% 800%;
   animation: gradientShift 15s ease-in-out infinite;
   color: white;
@@ -29,17 +29,17 @@ body {
 
 /* Gradient Button */
 .btn-gradient {
-  background: linear-gradient(to right, #6a00f4, #5200c4);
+  background: linear-gradient(to right, #ff6f00, #ff8f00);
   color: #fff;
   border: none;
   font-weight: 600;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(106, 0, 244, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 143, 0, 0.5);
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(to right, #5200c4, #6a00f4);
-  box-shadow: 0 6px 20px rgba(82, 0, 196, 0.8);
+  background: linear-gradient(to right, #ff8f00, #ff6f00);
+  box-shadow: 0 6px 20px rgba(255, 111, 0, 0.8);
 }
 
 /* Light card section inside dark UI */
@@ -50,12 +50,12 @@ body {
 
 /* Card styles */
 .card-title {
-  color: #bb86fc;
+  color: #ffb74d;
   font-weight: 600;
 }
 
 .card-text {
-  color: #cccccc;
+  color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -67,13 +67,13 @@ body {
 /* Icon styles */
 .icon-lg {
   font-size: 2.5rem;
-  color: #bb86fc;
+  color: #ffa726;
   transition: color 0.3s ease;
 }
 
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(45deg, #bb86fc, #3700b3);
+  background: linear-gradient(45deg, #ffb74d, #f57c00);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -84,29 +84,29 @@ body {
 }
 .hover-scale:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+  box-shadow: 0 0 20px rgba(255, 167, 38, 0.3);
   cursor: pointer;
 }
 
-/* Rounded button with neon glow */
+/* Rounded button with orange glow */
 .btn-violet {
-  background: #6a00f4;
+  background: #ff6f00;
   color: #fff;
   border-radius: 50px;
   transition: background 0.3s ease;
   font-weight: 600;
   padding: 0.75rem 1.75rem;
   font-size: 1.1rem;
-  box-shadow: 0 4px 15px rgba(106, 0, 244, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 111, 0, 0.5);
 }
 .btn-violet:hover {
-  background: #3700b3;
-  box-shadow: 0 6px 20px rgba(55, 0, 179, 0.7);
+  background: #e65100;
+  box-shadow: 0 6px 20px rgba(230, 81, 0, 0.7);
 }
 
 /* Image styles */
 .rounded-circle {
-  box-shadow: 0 4px 10px rgba(106, 0, 244, 0.3);
+  box-shadow: 0 4px 10px rgba(255, 143, 0, 0.3);
 }
 
 /* Container */
