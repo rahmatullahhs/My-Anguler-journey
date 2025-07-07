@@ -10,6 +10,9 @@ import { Home } from './components/dashboard/home/home';
 import { Header } from './components/dashboard/header/header';
 import { Footer } from './components/dashboard/footer/footer';
 import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-dashboard';
+import { Register } from './auth/register/register';
+import { Login } from './auth/login/login';
+import { Userprofile } from './auth/userprofile/userprofile';
 
 
 
@@ -27,7 +30,10 @@ import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-das
     Home,
     AdminDashboard,
     Header,
-    Footer
+    Footer,
+    Register,
+    Login,
+    Userprofile
    
 
   ],
