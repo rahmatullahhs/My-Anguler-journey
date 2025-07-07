@@ -25,35 +25,50 @@
         <!-- Products Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" id="employeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-users"></i> Products
-          </a>
+            <i class="fa-solid fa-users"></i> Products </a>
           <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="employeeDropdown">
-            <li><a class="dropdown-item text-white" routerLink="allemployees"><i class="fa-solid fa-users"></i> All Products</a></li>
-            <li><a class="dropdown-item text-white" routerLink="addemployee"><i class="fa-solid fa-user-plus"></i> Add Products</a></li>
+            <li><a class="dropdown-item text-white" routerLink="allemployees"><i class="fa-solid fa-users"></i>Order</a></li>
+            <li><a class="dropdown-item text-white" routerLink="addemployee"><i class="fa-solid fa-user-plus"></i>Purchase</a></li>
           </ul>
         </li>
 
-        <!-- Location Dropdown -->
+        <!-- accounts and report -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-location-dot"></i> Location
-          </a>
-          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
-            <li><a class="dropdown-item text-white" routerLink="alllocations"><i class="fa-solid fa-location-dot"></i> All Locations</a></li>
-            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> Add Location</a></li>
+            <i class="fa-solid fa-location-dot"></i>Accounts</a>
+             <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
+            <li><a class="dropdown-item text-white" routerLink="alllocations"><i class="fa-solid fa-location-dot"></i> Accounts</a></li>
+            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i>Reports </a></li>
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="contactus"><i class="fa-solid fa-phone"></i> Contact Us</a>
+
+ <!-- stock and Product service -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-location-dot"></i> stock  </a>
+          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
+            <li><a class="dropdown-item text-white" routerLink="alllocations"><i class="fa-solid fa-location-dot"></i> stock</a></li>
+            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> Product return  </a></li>
+              <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> Product service  </a></li>
+          </ul>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="aboutus"><i class="fa-solid fa-users-gear"></i> About Us</a>
+      
+ <!-- customer and employee and supplier-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-location-dot"> C & H & S</i>  </a>
+          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
+            <li><a class="dropdown-item text-white" routerLink="alllocations"><i class="fa-solid fa-location-dot"></i> CRM</a></li>
+            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> HRM </a></li>
+             <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> supplier </a></li>
+          </ul>
         </li>
-      </ul>
+
       <a routerLink="register"><button class="btn btn-blue mx-1">Registration</button></a>
       <a routerLink="login"><button class="btn btn-blue mx-1">Login</button></a>
+      </ul>
     </div>
   </div>
 </nav>
