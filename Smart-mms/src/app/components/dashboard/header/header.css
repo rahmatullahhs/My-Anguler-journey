@@ -1,32 +1,33 @@
 .navbar {
-  background: linear-gradient(90deg, #7f00ff, #e100ff);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, #7f00ff, #9b30ff, #c471ed); /* violet gradient */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .navbar-brand h5 {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  
   letter-spacing: 1px;
+  color: #ffffff;
 }
 
 .navbar-brand i {
   margin-right: 8px;
-  color: #fff;
+  color: #ffffff;
 }
 
 .nav-link {
   position: relative;
   font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-link {
-  position: relative;
-  font-weight: 500;
-  transition: color 0.3s ease;
   color: #ffffff !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e0b3ff !important; /* softer violet hover */
+  text-decoration: underline;
 }
 
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
 }
