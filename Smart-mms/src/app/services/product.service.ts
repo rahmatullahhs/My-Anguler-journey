@@ -12,11 +12,11 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<ProductModel[]> {
+    getAll(): Observable<ProductModel[]> {
     return this.http.get<ProductModel[]>(this.apiUrl);
   }
 
-  add(productmodel: ProductModel): Observable<ProductModel> {
+    add(productmodel: ProductModel): Observable<ProductModel> {
     return this.http.post<ProductModel>(this.apiUrl, productmodel);
   }
 

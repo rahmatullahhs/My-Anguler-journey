@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductModel } from '../../models/product.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../../services/product.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProductModel } from "../../models/product.model";
+import { ProductService } from "../../services/product.service";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: 'app-addproduct',
   standalone: false,
   templateUrl: './addproduct.html',
-  styleUrl: './addproduct.css'
+  styleUrls: ['./addproduct.css']
 })
-export class Addproduct implements OnInit {
-  product: ProductModel[] = [];
+export class AddProductComponent implements OnInit {
+  products: ProductModel[] = [];
   psForm: FormGroup;
   editing: boolean = false;
 
@@ -19,22 +19,28 @@ export class Addproduct implements OnInit {
     private productservice: ProductService
   ) {
     this.psForm = this.fb.group({
-      id: [''], // JSON Server uses number
-      name: ['', Validators.required]
+      id: [null],
+      name: ['', Validators.required],
+      brand: [''],
+      processor: [''],
+      ram: [''],
+      storage: [''],
+      price: [0],
+      stock_qty: [0]
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadproduct();
   }
 
-  loadproduct() {
+  loadproduct(): void {
     this.productservice.getAll().subscribe(data => {
-      this.product = data;
+      this.products = data;
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.psForm.invalid) return;
 
     if (this.editing) {
@@ -44,8 +50,8 @@ export class Addproduct implements OnInit {
         this.cancelEdit();
       });
     } else {
-      const { name } = this.psForm.value; // ⬅️ Only send the name
-      this.productservice.add({ name }).subscribe(() => {
+      const newProduct: ProductModel = this.psForm.value;
+      this.productservice.add(newProduct).subscribe(() => {
         alert('Added successfully!');
         this.loadproduct();
         this.psForm.reset();
@@ -54,23 +60,12 @@ export class Addproduct implements OnInit {
     }
   }
 
-  
-
-  editProduct(ps: ProductService) {
+  editProduct(ps: ProductModel): void {
     this.editing = true;
-    this.psForm.patchValue({
-      id: ps.id;
-      name: ps.name;
-      brand: ps.brand;
-      processor: ps.processor;
-      ram: ps.ram;
-      storage: ps.storage;
-      price: ps.price;
-      stock_qty: ps.stock_qty;
-    });
+    this.psForm.patchValue(ps);
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: string): void {
     if (confirm('Are you sure?')) {
       this.productservice.delete(id).subscribe(() => {
         alert('Deleted!');
@@ -79,9 +74,17 @@ export class Addproduct implements OnInit {
     }
   }
 
-  cancelEdit() {
+  cancelEdit(): void {
     this.editing = false;
-    this.psForm.reset();
+    this.psForm.reset({
+      id: null,
+      name: '',
+      brand: '',
+      processor: '',
+      ram: '',
+      storage: '',
+      price: 0,
+      stock_qty: 0
+    });
   }
 }
-

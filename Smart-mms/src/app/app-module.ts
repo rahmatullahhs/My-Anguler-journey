@@ -11,13 +11,13 @@ import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-das
 import { Register } from './auth/register/register';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Login } from './auth/login/login';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
 
-import { Addproduct } from './goods/addproduct/addproduct';
+import { AddProductComponent } from './goods/addproduct/addproduct';
 
 
 
@@ -30,8 +30,8 @@ import { Addproduct } from './goods/addproduct/addproduct';
   declarations: [
     App,
 
-  
-    
+
+
     Home,
     AdminDashboard,
     Header,
@@ -43,9 +43,9 @@ import { Addproduct } from './goods/addproduct/addproduct';
     Addemp,
     Updateemp,
 
-    Addproduct,
+    AddProductComponent
 
-   
+
 
   ],
   imports: [
@@ -53,15 +53,15 @@ import { Addproduct } from './goods/addproduct/addproduct';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    
-    
+
+
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay()),
 
-provideHttpClient(withFetch())
+    provideHttpClient(withFetch())
 
 
   ],

@@ -24,7 +24,7 @@ export class Updateemp implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.employee = new Employee();
+   
     this.id = this.activeRoute.snapshot.params['id'];
 
     this.loadAllEmloyees();

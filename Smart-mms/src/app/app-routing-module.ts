@@ -9,7 +9,8 @@ import { Login } from './auth/login/login';
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
-import { Addproduct } from './goods/addproduct/addproduct';
+import { AddProductComponent } from './goods/addproduct/addproduct';
+
 
 const routes: Routes = [
 
@@ -22,7 +23,7 @@ const routes: Routes = [
 {path:'viewallemp',component:Viewallemp},
 {path:'addemp',component:Addemp},
 {path:'updateemp',component:Updateemp},
- {path: 'addproduct',component:Addproduct}
+ {path: 'addproduct',component:AddProductComponent}
 
 
 
