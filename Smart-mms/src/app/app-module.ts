@@ -15,6 +15,7 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addemp } from './hrm/addemp/addemp';
+import { Updateemp } from './hrm/updateemp/updateemp';
 
 
 
@@ -38,6 +39,7 @@ import { Addemp } from './hrm/addemp/addemp';
     Login,
     Viewallemp,
     Addemp,
+    Updateemp,
 
    
 

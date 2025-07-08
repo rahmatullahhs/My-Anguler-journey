@@ -110,6 +110,24 @@
       "gender": "Male",
       "designation": "Project Manager",
       "salary": 50000
+    },
+    {
+      "id": "53b8",
+      "name": "Rakib kabrera",
+      "email": "Parvaz@gmail.com",
+      "phone": "01229999565",
+      "gender": "Other",
+      "designation": "Intern Software Developer",
+      "salary": 200
+    },
+    {
+      "id": "8c15",
+      "name": "sadfasd",
+      "email": "rahmat@dfds.dd",
+      "phone": "01326",
+      "gender": "Male",
+      "designation": "Intern Software Developer",
+      "salary": 200
     }
   ]
 }

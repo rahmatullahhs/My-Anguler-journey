@@ -8,6 +8,7 @@ import { Register } from './auth/register/register';
 import { Login } from './auth/login/login';
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { Addemp } from './hrm/addemp/addemp';
+import { Updateemp } from './hrm/updateemp/updateemp';
 
 const routes: Routes = [
 
@@ -18,7 +19,8 @@ const routes: Routes = [
 {path:'register',component:Register},
 {path:'login',component:Login},
 {path:'viewallemp',component:Viewallemp},
-{path:'addemp',component:Addemp}
+{path:'addemp',component:Addemp},
+{path:'updateemp',component:Updateemp}
  
 
 

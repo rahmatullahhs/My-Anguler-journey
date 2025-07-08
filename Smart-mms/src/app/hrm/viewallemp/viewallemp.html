@@ -11,7 +11,7 @@
                 <th>phone</th>
                  <th>Gender</th>
                   <th>Salary</th>
-                   <!-- <th>Action</th> -->
+                   <th>Action</th>
             </tr>
 
 
@@ -26,7 +26,15 @@
                 <td>{{s.phone}}</td>
                 <td>{{s.gender}}</td>
                 <td>{{s.salary}}</td>
-                
+                 <td>
+                  <button class="btn btn-sm btn-outline-primary m-1" style="width: 100px;" (click)="updateEmp(employees.id)">
+                  <i class="fas fa-trash-alt"></i>Edit
+                </button>
+
+                <button class="btn btn-sm btn-outline-danger m-1"  style="width: 100px;" (click)="deleteEmp(employees.id)">
+                  <i class="fas fa-trash-alt"></i>Delete
+                </button>
+              </td>
 
             </tr>
 
