@@ -1,0 +1,59 @@
+/* Ashe-style theme */
+body {
+  background-color: #f9f9f9;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 8px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  font-weight: 600;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  font-family: inherit;
+}
+
+button {
+  margin-top: 30px;
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #555;
+}

@@ -17,6 +17,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
 
+import { Addproduct } from './goods/addproduct/addproduct';
+
 
 
 
@@ -40,6 +42,8 @@ import { Updateemp } from './hrm/updateemp/updateemp';
     Viewallemp,
     Addemp,
     Updateemp,
+
+    Addproduct,
 
    
 
