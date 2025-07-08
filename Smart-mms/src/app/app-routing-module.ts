@@ -6,6 +6,8 @@ import { Footer } from './components/dashboard/footer/footer';
 import { Header } from './components/dashboard/header/header';
 import { Register } from './auth/register/register';
 import { Login } from './auth/login/login';
+import { Viewallemp } from './hrm/viewallemp/viewallemp';
+import { Addemp } from './hrm/addemp/addemp';
 
 const routes: Routes = [
 
@@ -14,9 +16,9 @@ const routes: Routes = [
 {path:'footer',component:Footer},
 {path:'header', component:Header},
 {path:'register',component:Register},
-{path:'login',component:Login}
-
-
+{path:'login',component:Login},
+{path:'viewallemp',component:Viewallemp},
+{path:'addemp',component:Addemp}
  
 
 

@@ -12,6 +12,9 @@ import { Register } from './auth/register/register';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Login } from './auth/login/login';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Viewallemp } from './hrm/viewallemp/viewallemp';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { Addemp } from './hrm/addemp/addemp';
 
 
 
@@ -33,6 +36,8 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
     Register,
     Userprofile,
     Login,
+    Viewallemp,
+    Addemp,
 
    
 
@@ -48,7 +53,11 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+
+provideHttpClient(withFetch())
+
+
   ],
   bootstrap: [App]
 })

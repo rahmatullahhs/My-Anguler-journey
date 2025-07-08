@@ -1,0 +1,166 @@
+<title>EMS ✨ | Add Employee</title>
+
+<div class="container my-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header text-center">
+      <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Add Employee</h3>
+    </div>
+
+    <form class="m-5" [formGroup]="formGroup">
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">
+            <i class="fas fa-user me-1"></i>Full Name
+          </label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="fullName"
+            placeholder="Enter full name"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">
+            <i class="fas fa-envelope me-1"></i>Email Address
+          </label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="example@company.com"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="phone" class="form-label">
+            <i class="fas fa-phone me-1"></i>Phone Number
+          </label>
+          <input
+            formControlName="phone"
+            type="tel"
+            class="form-control"
+            id="phone"
+            placeholder="+1 555-0123"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label d-block">
+            <i class="fas fa-venus-mars me-1"></i>Gender
+          </label>
+          <div class="form-check form-check-inline">
+            <input
+              formControlName="gender"
+              class="form-check-input"
+              type="radio"
+              id="male"
+              value="Male"
+              required
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              formControlName="gender"
+              class="form-check-input"
+              type="radio"
+              id="female"
+              value="Female"
+              required
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              formControlName="gender"
+              class="form-check-input"
+              type="radio"
+              id="other"
+              value="Other"
+              required
+            />
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="designation" class="form-label">
+            <i class="fas fa-user-tag me-1"></i>Designation
+          </label>
+          <select
+            formControlName="designation"
+            class="form-control"
+            id="designation"
+            required
+          >
+            <option value="">Choose Your Designation</option>
+            <option value="CEO">CEO</option>
+            <option value="Project Manager">Project Manager</option>
+            <option value="Senior Software Developer">
+              Senior Software Developer
+            </option>
+            <option value="Junior Software Developer">
+              Junior Software Developer
+            </option>
+            <option value="Intern Software Developer">
+              Intern Software Developer
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="salary" class="form-label">
+            <i class="fas fa-dollar-sign me-1"></i>Salary
+          </label>
+          <input
+            formControlName="salary"
+            type="number"
+            class="form-control"
+            id="salary"
+            placeholder="e.g. 60000"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-6" formGroupName="location">
+          <label for="location" class="form-label">
+            <i class="fa-solid fa-location-dot"></i> Location
+          </label>
+          <!-- <select
+            formControlName="name"
+            class="form-control"
+            id="location"
+            required
+          >
+            <option value="">Choose Your Location</option>
+            <option *ngFor="let l of locations" [value]="l.name">
+              {{ l.name }}
+            </option>
+          </select> -->
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button
+          type="submit"
+          class="btn btn-violet me-2"
+          (click)="viewallemp()"
+        >
+          <i class="fas fa-plus-circle me-1"></i>Add Employee
+        </button>
+        <button type="reset" class="btn btn-outline-danger">
+          <i class="fas fa-undo me-1"></i>Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
