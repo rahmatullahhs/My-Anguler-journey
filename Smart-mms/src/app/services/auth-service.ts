@@ -10,7 +10,7 @@ import { AuthResponse } from '../models/auth-response';
 })
 export class AuthService {
 
-  private baseUrl: string = "http://localhost:4200/user";
+  private baseUrl: string = "http://localhost:3000/employee";
 
   private currentUserSubject: BehaviorSubject<UserModel | null>;
   public currentUser$: Observable<UserModel | null>;
@@ -33,7 +33,6 @@ export class AuthService {
   register(usermodel: UserModel): Observable<AuthResponse> {
     return this.http.post<UserModel>(this.baseUrl, usermodel).pipe(
       map((newUser: UserModel) => {
-
         // create token by username and password 
         const token = btoa(`${newUser.email}${newUser.password}`);
         return { token, usermodel: newUser } as AuthResponse;

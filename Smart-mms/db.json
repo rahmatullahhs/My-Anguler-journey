@@ -101,5 +101,15 @@
       "role": "user"
     }
   ],
-  "employee": []
+  "employee": [
+    {
+      "id": "a15b",
+      "name": "dsafsa",
+      "email": "fasfasd",
+      "phone": "01326",
+      "gender": "Male",
+      "designation": "Project Manager",
+      "salary": 50000
+    }
+  ]
 }

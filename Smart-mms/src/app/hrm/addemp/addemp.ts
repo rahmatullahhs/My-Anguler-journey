@@ -10,10 +10,7 @@ import { Employee } from '../../models/employee';
   templateUrl: './addemp.html',
   styleUrl: './addemp.css'
 })
-export class Addemp implements OnInit{
-viewallemp() {
-throw new Error('Method not implemented.');
-}
+export class Addemp implements OnInit {
 
 
 
@@ -21,28 +18,29 @@ throw new Error('Method not implemented.');
 
 
 
-
-
-formGroup !: FormGroup;
+  formGroup !: FormGroup;
 
 
   constructor(
-    private employeeservice:EmployeeService,
+    private employeeservice: EmployeeService,
     private formBuilder: FormBuilder,
     private router: Router,
-       
+
   ) { }
 
 
   ngOnInit(): void {
 
     this.formGroup = this.formBuilder.group({
-
       name: [''],
       email: [''],
-      fee: ['']
+      phone: [''],
+      gender: [''],
+      designation: [''],
+      salary: ['']
 
     });
+
 
 
   }
@@ -58,7 +56,7 @@ formGroup !: FormGroup;
 
         console.log("Student Saved ", res);
         this.formGroup.reset();
-        this.router.navigate(['/allstu']);
+        this.router.navigate(['/viewallemp']);
 
       },
 

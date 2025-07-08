@@ -8,25 +8,25 @@ import { Employee } from '../models/employee';
 })
 export class EmployeeService {
 
-baseUrl: string="http//localhost:4200/employee";
+  baseUrl: string = "http://localhost:3000/employee";
 
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-getAllEmp():Observable<any>{
+  getAllEmp(): Observable<any> {
 
-return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrl);
 
-}
+  }
 
-saveEmp(employee:Employee):Observable<any>{
+  saveEmp(employee: Employee): Observable<any> {
 
-return this.http.post(this.baseUrl,Employee);
+    return this.http.post(this.baseUrl, employee);
 
 
-}
+  }
 
 
 

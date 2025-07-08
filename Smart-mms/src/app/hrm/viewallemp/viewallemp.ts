@@ -19,9 +19,9 @@ constructor(private employeeService: EmployeeService){}
     this.loadAllEmp();
   }
 
-loadAllEmp(){
+loadAllEmp():void{
 
-this.employees=this.employeeService.getAllEmp
+this.employees=this.employeeService.getAllEmp();
 
 
 }
