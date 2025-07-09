@@ -1,1 +1,61 @@
-<p>viewallproduct works!</p>
+ <h1>All Products View</h1>
+
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Processor</th>
+        <th>RAM</th>
+        <th>Storage</th>
+        <th>Graphics Card</th>
+        <th>Monitor</th>
+        <th>Price</th>
+        <th>Stock Qty</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>P001</td>
+        <td>Dell Latitude 5430</td>
+        <td>Dell</td>
+        <td>Intel i7</td>
+        <td>16GB</td>
+        <td>512GB SSD</td>
+        <td>Intel Iris</td>
+        <td>14 inch</td>
+        <td>$1200</td>
+        <td>10</td>
+        <td class="action-buttons">
+          <button class="edit-btn" onclick="editRow(this)">Edit</button>
+          <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td>P002</td>
+        <td>HP ProDesk 600</td>
+        <td>HP</td>
+        <td>Intel i5</td>
+        <td>8GB</td>
+        <td>1TB HDD</td>
+        <td>Intel UHD</td>
+        <td>None</td>
+        <td>$700</td>
+        <td>5</td>
+        <td class="action-buttons">
+          <button class="edit-btn" onclick="editRow(this)">Edit</button>
+          <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
+        </td>
+      </tr>
+      <!-- More rows -->
+    </tbody>
+  </table>
+
+  <div class="add-form">
+   
+    <button class="add-btn" onclick="addProduct()">Add new product</button>
+  </div>
+
+  

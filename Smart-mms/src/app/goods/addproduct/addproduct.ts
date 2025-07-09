@@ -10,7 +10,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ['./addproduct.css']
 })
 export class AddProduct implements OnInit {
-  products: ProductModel[] = [];
+  products!: any;
   psForm: FormGroup;
   editing: boolean = false;
 
@@ -19,8 +19,8 @@ export class AddProduct implements OnInit {
     private productservice: ProductService
   ) {
     this.psForm = this.fb.group({
-      id: [null],
-      category:['',],
+      graphicscard: [''],
+      monitor: [''],
       name: ['', Validators.required],
       brand: [''],
       processor: [''],
@@ -36,9 +36,7 @@ export class AddProduct implements OnInit {
   }
 
   loadproduct(): void {
-    this.productservice.getAll().subscribe(data => {
-      this.products = data;
-    });
+    this.products = this.productservice.getAll();
   }
 
   onSubmit(): void {
@@ -80,6 +78,8 @@ export class AddProduct implements OnInit {
     this.psForm.reset({
       id: null,
       name: '',
+      monitor: '',
+      graphicscard: '',
       brand: '',
       processor: '',
       ram: '',
