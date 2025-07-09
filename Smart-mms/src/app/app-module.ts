@@ -17,7 +17,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
 
-import { AddProductComponent } from './goods/addproduct/addproduct';
+import { AddProduct } from './goods/addproduct/addproduct';
 import { Addcustomer } from './crm/addcustomer/addcustomer';
 import { Viewallcustomer } from './crm/viewallcustomer/viewallcustomer';
 import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
@@ -35,24 +35,25 @@ import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 @NgModule({
   declarations: [
     App,
-
-
-
     Home,
     AdminDashboard,
     Header,
     Footer,
+
     Register,
     Userprofile,
     Login,
+
     Viewallemp,
     Addemp,
     Updateemp,
 
-    AddProductComponent,
+      AddProduct,
+
       Addcustomer,
       Viewallcustomer,
       Updatecustomer,
+
       Addsupplier,
       Viewallsupplier,
       Updatesupplier
@@ -72,7 +73,6 @@ import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay()),
-
     provideHttpClient(withFetch())
 
 

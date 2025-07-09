@@ -31,7 +31,7 @@ export class EmployeeService {
   }
 
   // To Find Employee By ID
-  getById(id: string): Observable<any>{
+  getEmployeeById(id: string): Observable<any>{
     return this.http.get(this.baseUrl+"/"+id);
   }
 

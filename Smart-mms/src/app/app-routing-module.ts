@@ -9,23 +9,31 @@ import { Login } from './auth/login/login';
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
-import { AddProductComponent } from './goods/addproduct/addproduct';
+import { AddProduct } from './goods/addproduct/addproduct';
+import { Viewallcustomer } from './crm/viewallcustomer/viewallcustomer';
+import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
+import { Addcustomer } from './crm/addcustomer/addcustomer';
 
 
 const routes: Routes = [
 
 {path: '', component: Home},
+
 {path: 'admindashboard',component:AdminDashboard},
 {path:'footer',component:Footer},
 {path:'header', component:Header},
 {path:'register',component:Register},
 {path:'login',component:Login},
+
 {path:'viewallemp',component:Viewallemp},
 {path:'addemp',component:Addemp},
 {path:'updateEmp/:id',component:Updateemp},
- {path: 'addproduct',component:AddProductComponent}
 
+ {path: 'addproduct',component:AddProduct},
 
+ {path:'viewallcustomer',component:Viewallcustomer},
+ {path:'updatecustomer',component:Updatecustomer},
+ {path:'addcustomer',component:Addcustomer}
 
 ];
 

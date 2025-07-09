@@ -29,7 +29,7 @@ baseUrl: string = "http://localhost:3000/customer";
   }
 
   // To Find customer By ID
-  getById(id: string): Observable<any>{
+  getCustomerById(id: string): Observable<any>{
     return this.http.get(this.baseUrl+"/"+id);
   }
 

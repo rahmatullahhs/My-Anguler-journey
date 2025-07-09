@@ -28,7 +28,7 @@ constructor(
   }
   loadAllCustomer() {
     this.id = this.activeRoute.snapshot.params['id'];
-    this.customerservice.getById(this.id).subscribe({
+    this.customerservice.getCustomerById(this.id).subscribe({
       next: (res) => {
         this.customermodel = res;
         this.cdr.markForCheck();

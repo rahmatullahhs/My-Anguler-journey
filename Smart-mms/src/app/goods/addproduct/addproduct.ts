@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: './addproduct.html',
   styleUrls: ['./addproduct.css']
 })
-export class AddProductComponent implements OnInit {
+export class AddProduct implements OnInit {
   products: ProductModel[] = [];
   psForm: FormGroup;
   editing: boolean = false;
