@@ -1,50 +1,34 @@
-body {
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      font-family: 'Segoe UI', sans-serif;
-    }
+.bg-ashen {
+  background-color: #f8f9fa; /* soft off-white */
+}
 
-    .card {
-      border-radius: 1rem;
-    }
+.bg-muted {
+  background-color: #e9ecef; /* light ashen gray */
+}
 
-    .card-header {
-      background: linear-gradient(90deg, #7f00ff, #e100ff);
-      color: white;
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
-    }
+.text-muted {
+  color: #6c757d;
+}
 
-    label.form-label {
-      font-weight: 600;
-      color: #4b0082;
-    }
+.text-secondary {
+  color: #495057;
+}
 
-    .form-control,
-    .form-check-input {
-      border-radius: 0.5rem;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-      font-size: 1rem;
-    }
+.border-secondary {
+  border-color: #ced4da !important;
+}
 
-    .btn-violet {
-      background: linear-gradient(135deg, #7f00ff, #e100ff);
-      color: white;
-      border: none;
-      padding: 0.6rem 1.8rem;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-    }
+.btn-outline-dark {
+  color: #343a40;
+  border-color: #343a40;
+}
 
-    .btn-violet:hover {
-      background: linear-gradient(135deg, #5f00cc, #c000cc);
-      box-shadow: 0 0 10px rgba(127, 0, 255, 0.3);
-    }
+.btn-outline-dark:hover {
+  background-color: #343a40;
+  color: #fff;
+}
 
-    .btn-outline-danger {
-      border-radius: 50px;
-    }
-
-    .form-check-label {
-      margin-right: 1rem;
-    }
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}

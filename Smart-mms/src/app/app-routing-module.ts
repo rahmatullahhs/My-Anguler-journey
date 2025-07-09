@@ -22,7 +22,7 @@ const routes: Routes = [
 {path:'login',component:Login},
 {path:'viewallemp',component:Viewallemp},
 {path:'addemp',component:Addemp},
-{path:'updateemp',component:Updateemp},
+{path:'updateEmp/:id',component:Updateemp},
  {path: 'addproduct',component:AddProductComponent}
 
 

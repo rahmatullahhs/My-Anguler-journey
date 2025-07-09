@@ -12,20 +12,12 @@ import { Employee } from '../../models/employee';
 })
 export class Addemp implements OnInit {
 
-
-
-
-
-
-
-  formGroup !: FormGroup;
-
+ formGroup !: FormGroup;
 
   constructor(
     private employeeservice: EmployeeService,
     private formBuilder: FormBuilder,
     private router: Router,
-
   ) { }
 
 
@@ -41,8 +33,6 @@ export class Addemp implements OnInit {
       address: ['']
 
     });
-
-
 
   }
 

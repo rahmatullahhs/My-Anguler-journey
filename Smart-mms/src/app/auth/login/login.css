@@ -8,7 +8,7 @@ body {
     }
 
     .card-header {
-      background: linear-gradient(90deg, #7f00ff, #e100ff);
+      background: linear-gradient(90deg, #58575a);
       color: white;
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
@@ -16,7 +16,7 @@ body {
 
     label.form-label {
       font-weight: 600;
-      color: #4b0082;
+      color: #454547;
     }
 
     .form-control,
@@ -27,7 +27,7 @@ body {
     }
 
     .btn-violet {
-      background: linear-gradient(135deg, #7f00ff, #e100ff);
+      background: linear-gradient(135deg, #29282b);
       color: white;
       border: none;
       padding: 0.6rem 1.8rem;
@@ -37,7 +37,7 @@ body {
     }
 
     .btn-violet:hover {
-      background: linear-gradient(135deg, #5f00cc, #c000cc);
+      background: linear-gradient(135deg, #03551e);
       box-shadow: 0 0 10px rgba(127, 0, 255, 0.3);
     }
 

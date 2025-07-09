@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
-
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,15 +23,8 @@ constructor(private employeeService: EmployeeService,
   }
 
 loadAllEmp():void{
-
 this.employees=this.employeeService.getAllEmp();
-
-
 }
-
-
-
-
 
   viewAllEmp() {
     this.employees = this.employeeService.getAllEmp();

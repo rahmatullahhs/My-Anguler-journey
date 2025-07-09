@@ -18,6 +18,12 @@ import { Addemp } from './hrm/addemp/addemp';
 import { Updateemp } from './hrm/updateemp/updateemp';
 
 import { AddProductComponent } from './goods/addproduct/addproduct';
+import { Addcustomer } from './crm/addcustomer/addcustomer';
+import { Viewallcustomer } from './crm/viewallcustomer/viewallcustomer';
+import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
+import { Addsupplier } from './supplier/addsupplier/addsupplier';
+import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
+import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 
 
 
@@ -43,7 +49,13 @@ import { AddProductComponent } from './goods/addproduct/addproduct';
     Addemp,
     Updateemp,
 
-    AddProductComponent
+    AddProductComponent,
+      Addcustomer,
+      Viewallcustomer,
+      Updatecustomer,
+      Addsupplier,
+      Viewallsupplier,
+      Updatesupplier
 
 
 

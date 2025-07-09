@@ -103,15 +103,17 @@
   ],
   "employee": [
     {
-      "id": "fe30",
-      "name": "rahmat",
-      "email": "rahmat@gmail.com",
-      "phone": "+8801888118271",
+      "id": "4122",
+      "name": "Rahamatullah Habibullah",
+      "email": "sadiarrahman@gmail.com",
+      "phone": "018653215485",
       "gender": "Male",
       "designation": "CEO",
-      "salary": 3000,
-      "address": "dhanmondi"
+      "salary": 5000,
+      "address": "Dhaka"
     }
   ],
-  "products": []
+  "products": [],
+
+   "customer": []
 }
