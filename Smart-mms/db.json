@@ -1,5 +1,4 @@
 {
-  
   "employee": [
     {
       "id": "f6d2",
@@ -33,46 +32,15 @@
     },
     {
       "id": "b345",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "gender": "",
-      "designation": "",
-      "salary": "",
-      "address": ""
-    },
-    {
-      "id": "c5ec",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "gender": "",
-      "designation": "",
-      "salary": "",
-      "address": ""
-    },
-    {
-      "id": "39f3",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "gender": "",
-      "designation": "",
-      "salary": "",
-      "address": ""
-    },
-    {
-      "id": "425b",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "gender": "",
-      "designation": "",
-      "salary": "",
-      "address": ""
+      "name": "Rakib",
+      "email": "parvage@gmail.com",
+      "phone": "0133996577",
+      "gender": "Female",
+      "designation": "Intern Software Developer",
+      "salary": 12045204,
+      "address": "dhaka"
     }
   ],
- 
   "customer": [
     {
       "id": "832f",
@@ -97,10 +65,10 @@
     },
     {
       "id": "6702",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "address": ""
+      "name": "atik",
+      "email": "parvage@gmail.com",
+      "phone": "0136594646526",
+      "address": "mymonsing"
     },
     {
       "id": "0222",
@@ -108,21 +76,7 @@
       "email": "",
       "phone": "",
       "address": ""
-    },
-    {
-      "id": "31e1",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "address": ""
-    },
-    {
-      "id": "9c41",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "address": ""
     }
   ],
-   "products": []
+  "products": []
 }
