@@ -20,6 +20,7 @@ export class AddProduct implements OnInit {
   ) {
     this.psForm = this.fb.group({
       id: [null],
+      category:['',],
       name: ['', Validators.required],
       brand: [''],
       processor: [''],

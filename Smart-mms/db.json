@@ -1,106 +1,5 @@
 {
-  "students": [
-    {
-      "id": "9e15",
-      "name": "Parvez",
-      "email": "parvez@gmail.com",
-      "fee": "20000000",
-      "location": {
-        "id": "b0c5",
-        "name": "Dhaka",
-        "email": "",
-        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYV3EfsaWMn0aXHxhb5FuXZlJWEbIjUPwSyg&s"
-      }
-    },
-    {
-      "id": "3d1d",
-      "name": "Apple",
-      "email": "apple@gmail.com",
-      "fee": 147852,
-      "location": {
-        "id": "1",
-        "name": "Borishal",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/7/78/Barisal_Launch_Terninal.jpg"
-      }
-    },
-    {
-      "id": "730d",
-      "name": "Farhana Haque",
-      "email": "hsstanvir@gmail.com",
-      "fee": "2121212",
-      "location": {
-        "name": "Dhaka",
-        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYV3EfsaWMn0aXHxhb5FuXZlJWEbIjUPwSyg&s"
-      }
-    },
-    {
-      "id": "ad06",
-      "name": "dfdgfdg",
-      "email": "dfgfdgdfgdf",
-      "fee": "4534543543",
-      "location": {
-        "name": "vffdg",
-        "photo": "fdgfdgfdgdf"
-      }
-    }
-  ],
-  "location": [
-    {
-      "id": "1",
-      "name": "Borishal",
-      "photo": "https://upload.wikimedia.org/wikipedia/commons/7/78/Barisal_Launch_Terninal.jpg"
-    },
-    {
-      "id": "b0c5",
-      "name": "Dhaka",
-      "email": "",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXhpgeCdZS9TVcKeA8UdnSI8FX1vz8l-cufA&s"
-    },
-    {
-      "id": "4c94",
-      "name": "Khulna ",
-      "photo": "fdgfdgfdgdf"
-    },
-    {
-      "id": "7746",
-      "name": "vffdg",
-      "photo": "fdgfdgfdgdf"
-    }
-  ],
-  "user": [
-    {
-      "id": "dbf7",
-      "name": "Muhammad Emran Hossain",
-      "email": "emranhss@gmail.com",
-      "password": "123456",
-      "photo": "https://tinyurl.com/6dt7txrj",
-      "role": "admin"
-    },
-    {
-      "id": "8542",
-      "name": "Rahim Khan",
-      "email": "hsstanvir@gmail.com",
-      "password": "123456",
-      "photo": "https://tinyurl.com/6dt7txrj",
-      "role": "user"
-    },
-    {
-      "id": "e78d",
-      "name": "Parvez",
-      "email": "rahim@gmail.com",
-      "password": "123456",
-      "photo": "https://tinyurl.com/6dt7txrj",
-      "role": "user"
-    },
-    {
-      "id": "aa2e",
-      "name": "apple",
-      "email": "apple@gmail.com",
-      "password": "123456",
-      "photo": "asdf",
-      "role": "user"
-    }
-  ],
+  
   "employee": [
     {
       "id": "f6d2",
@@ -173,7 +72,7 @@
       "address": ""
     }
   ],
-  "products": [],
+ 
   "customer": [
     {
       "id": "832f",
@@ -224,5 +123,6 @@
       "phone": "",
       "address": ""
     }
-  ]
+  ],
+   "products": []
 }
