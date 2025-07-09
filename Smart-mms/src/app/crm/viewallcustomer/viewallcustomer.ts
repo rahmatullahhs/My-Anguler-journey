@@ -44,7 +44,7 @@ this.customerservice.deleteCustomer(id).subscribe({
 }
 
 updateCustomer(id:string){
-this.router.navigate(['updateCustomer',id]);
+this.router.navigate(['updatecustomer',id]);
 }
 
 }

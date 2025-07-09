@@ -24,6 +24,8 @@ import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
 import { Addsupplier } from './supplier/addsupplier/addsupplier';
 import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
+import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
+import { Updateproduct } from './goods/updateproduct/updateproduct';
 
 
 
@@ -56,7 +58,9 @@ import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 
       Addsupplier,
       Viewallsupplier,
-      Updatesupplier
+      Updatesupplier,
+      Viewallproduct,
+      Updateproduct
 
 
 

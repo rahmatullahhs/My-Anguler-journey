@@ -10,10 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './updatecustomer.css'
 })
 export class Updatecustomer implements OnInit {
- id!: string;
- customermodel:CustomerModel=new CustomerModel();
+  id!: string;
+  customermodel: CustomerModel = new CustomerModel();
 
-constructor(
+  constructor(
     private customerservice: CustomerService,
     private router: Router,
     private activeRoute: ActivatedRoute,
@@ -21,7 +21,7 @@ constructor(
   ) { }
 
   ngOnInit(): void {
-   
+
     // 
     this.loadAllCustomer();
 
@@ -32,7 +32,7 @@ constructor(
       next: (res) => {
         this.customermodel = res;
         this.cdr.markForCheck();
-        
+
       },
       error: (error) => {
         console.log(error);
@@ -40,25 +40,16 @@ constructor(
     });
   }
 
-updateCustomer():void{
-this.customerservice.updateCustomer(this.id, this.customermodel).subscribe({
+  updateCustomer(): void {
+    this.customerservice.updateCustomer(this.id, this.customermodel).subscribe({
       next: () => {
-        this.router.navigate(['/viewallemp'])
+        this.router.navigate(['/viewallcustomer'])
       },
       error: (error) => {
         console.log(error);
       }
     });
 
-
-
-
-}
-
-
-
-
-
-
+  }
 
 }

@@ -1,44 +1,50 @@
 <div class="container my-5">
-  <div class="card shadow-lg border-0 col-md-6 mx-auto">
-    <div class="card-header text-center">
-      <h3 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>User Login</h3>
+  <div class="card shadow-lg border-0 col-md-6 mx-auto bg-white">
+    <!-- Stylish Gradient Header -->
+    <div class="card-header text-center text-white" style="background: linear-gradient(135deg, #6f42c1, #d63384);">
+      <h3 class="mb-0">
+        <i class="bi bi-box-arrow-in-right me-2"></i>User Login
+      </h3>
     </div>
 
-    <form class="m-5">
+    <form class="p-5">
+      <!-- Email -->
       <div class="mb-4">
-        <label for="email" class="form-label">
-          <i class="fas fa-envelope me-1"></i>Email
+        <label for="email" class="form-label text-primary">
+          <i class="bi bi-envelope-fill me-1"></i>Email
         </label>
         <input
           type="email"
           id="email"
-          class="form-control"
+          class="form-control border-primary bg-light"
           formControlName="email"
           placeholder="you@example.com"
           required
         />
       </div>
 
+      <!-- Password -->
       <div class="mb-4">
-        <label for="password" class="form-label">
-          <i class="fas fa-lock me-1"></i>Password
+        <label for="password" class="form-label text-danger">
+          <i class="bi bi-lock-fill me-1"></i>Password
         </label>
         <input
           type="password"
           id="password"
-          class="form-control"
+          class="form-control border-danger bg-light"
           formControlName="password"
           placeholder="Enter your password"
           required
         />
       </div>
 
+      <!-- Buttons -->
       <div class="text-center">
-        <button type="submit" class="btn btn-violet me-2">
-          <i class="fas fa-sign-in-alt me-1"></i>Login
+        <button type="submit" class="btn btn-gradient text-white me-2 px-4" style="background: linear-gradient(to right, #6f42c1, #d63384); border: none;">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Login
         </button>
-        <button type="reset" class="btn btn-outline-danger">
-          <i class="fas fa-undo me-1"></i>Reset
+        <button type="reset" class="btn btn-outline-secondary px-4">
+          <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
         </button>
       </div>
     </form>

@@ -1,16 +1,17 @@
-<title>Smart-MMS ✨ | Update Customer</title>
+<title>Smart-MMS ❤️ | Update Customer</title>
 
 <div class="container my-5">
   <div class="card shadow-lg border-0">
-    <div class="card-header text-center bg-dark text-white">
-      <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Update Customer</h3>
+    <!-- Red Header -->
+    <div class="card-header text-center bg-danger text-white">
+      <h3 class="mb-0"><i class="bi bi-pencil-fill me-2"></i>Update Customer</h3>
     </div>
 
     <form class="p-5">
-      <!-- Customer ID (read-only or hidden if not editable) -->
+      <!-- Customer ID (Read-only) -->
       <div class="mb-4">
-        <label for="customerId" class="form-label">
-          <i class="fas fa-id-badge me-1"></i> Customer ID
+        <label for="customerId" class="form-label text-danger">
+          <i class="bi bi-person-badge-fill me-1"></i> Customer ID
         </label>
         <input
           [(ngModel)]="customermodel.id"
@@ -19,14 +20,14 @@
           class="form-control"
           id="customerId"
           readonly
-        /> 
+        />
       </div>
 
       <!-- Name & Email -->
       <div class="row mb-4">
         <div class="col-md-6">
-          <label for="fullName" class="form-label">
-            <i class="fas fa-user me-1"></i> Full Name
+          <label for="fullName" class="form-label text-danger">
+            <i class="bi bi-person-fill me-1"></i> Full Name
           </label>
           <input
             [(ngModel)]="customermodel.name"
@@ -39,8 +40,8 @@
           />
         </div>
         <div class="col-md-6">
-          <label for="email" class="form-label">
-            <i class="fas fa-envelope me-1"></i> Email Address
+          <label for="email" class="form-label text-danger">
+            <i class="bi bi-envelope-fill me-1"></i> Email Address
           </label>
           <input
             [(ngModel)]="customermodel.email"
@@ -57,8 +58,8 @@
       <!-- Phone & Address -->
       <div class="row mb-4">
         <div class="col-md-6">
-          <label for="phone" class="form-label">
-            <i class="fas fa-phone me-1"></i> Phone Number
+          <label for="phone" class="form-label text-danger">
+            <i class="bi bi-telephone-fill me-1"></i> Phone Number
           </label>
           <input
             [(ngModel)]="customermodel.phone"
@@ -71,8 +72,8 @@
           />
         </div>
         <div class="col-md-6">
-          <label for="address" class="form-label">
-            <i class="fas fa-map-marker-alt me-1"></i> Address
+          <label for="address" class="form-label text-danger">
+            <i class="bi bi-geo-alt-fill me-1"></i> Address
           </label>
           <input
             [(ngModel)]="customermodel.address"
@@ -88,14 +89,13 @@
 
       <!-- Submit Buttons -->
       <div class="text-center">
-        <button type="submit" class="btn btn-success px-4 me-2" (click)="updateCustomer()">
-          <i class="fas fa-save me-1"></i> Update Customer
+        <button type="submit" class="btn btn-danger px-4 me-2" (click)="updateCustomer()">
+          <i class="bi bi-save-fill me-1"></i> Update Customer
         </button>
         <button type="reset" class="btn btn-outline-secondary px-4">
-          <i class="fas fa-undo me-1"></i> Reset
+          <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
         </button>
       </div>
     </form>
   </div>
 </div>
-

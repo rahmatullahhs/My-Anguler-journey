@@ -1,13 +1,15 @@
 <div class="container mt-4">
+  <!-- Header and Add Button -->
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="text-center m-0 flex-grow-1">All Customers</h2>
+    <h2 class="text-success m-0 flex-grow-1 text-center">All Customers</h2>
     <a class="btn btn-success ms-3" href="addcustomer">
-      <i class="fas fa-user-plus me-1"></i> Add Customer
+      <i class="bi bi-person-plus-fill me-1"></i> Add Customer
     </a>
   </div>
 
-  <table class="table table-bordered table-hover table-striped shadow-sm">
-    <thead class="table-dark">
+  <!-- Table -->
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-success text-dark">
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -26,15 +28,14 @@
         <td>{{ customer.phone }}</td>
         <td>{{ customer.address }}</td>
         <td>
-          <button class="btn btn-sm btn-outline-primary me-2" (click)="updateCustomer(customer.id)">
-            <i class="fas fa-edit me-1"></i> Edit
+          <button class="btn btn-sm btn-outline-success me-2" (click)="updateCustomer(customer.id)">
+            <i class="bi bi-pencil-square me-1"></i> Edit
           </button>
           <button class="btn btn-sm btn-outline-danger" (click)="deleteCustomer(customer.id)">
-            <i class="fas fa-trash-alt me-1"></i> Delete
+            <i class="bi bi-trash-fill me-1"></i> Delete
           </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

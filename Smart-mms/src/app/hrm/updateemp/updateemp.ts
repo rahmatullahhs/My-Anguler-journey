@@ -32,7 +32,7 @@ export class Updateemp implements OnInit {
   loadAllEmp(): void {
       this.id = this.activeRoute.snapshot.params['id'];
 
-    this.employeeService.getById(this.id).subscribe({
+    this.employeeService.getEmployeeById(this.id).subscribe({
       next: (res) => {
         this.employee = res;
         this.cdr.markForCheck();
