@@ -103,41 +103,15 @@
   ],
   "employee": [
     {
-      "id": "a15b",
-      "name": "dsafsa",
-      "email": "fasfasd",
-      "phone": "01326",
+      "id": "fe30",
+      "name": "rahmat",
+      "email": "rahmat@gmail.com",
+      "phone": "+8801888118271",
       "gender": "Male",
-      "designation": "Project Manager",
-      "salary": 50000
-    },
-    {
-      "id": "53b8",
-      "name": "Rakib kabrera",
-      "email": "Parvaz@gmail.com",
-      "phone": "01229999565",
-      "gender": "Other",
-      "designation": "Intern Software Developer",
-      "salary": 200
-    },
-    {
-      "id": "8c15",
-      "name": "sadfasd",
-      "email": "rahmat@dfds.dd",
-      "phone": "01326",
-      "gender": "Male",
-      "designation": "Intern Software Developer",
-      "salary": 200
+      "designation": "CEO",
+      "salary": 3000,
+      "address": "dhanmondi"
     }
   ],
-
-
-  "products": [
-    
-      
-
-
-    
-
-  ]
+  "products": []
 }

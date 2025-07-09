@@ -1,74 +1,90 @@
-<nav class="navbar navbar-expand-lg bg-primary">
-  <div class="container">
-    <a class="navbar-brand text-white" routerLink="/">
-      <h5><i class="fa-solid fa-users-gear"></i> Smart-MMS</h5>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="fa-solid fa-users-gear me-2"></i>
+      <span>Smart-MMS</span>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/"><i class="fa-solid fa-house"></i> Home</a>
+          <a class="nav-link text-white" routerLink="/">
+            <i class="fa-solid fa-house me-1"></i> Home
+          </a>
         </li>
 
         <!-- Products Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" id="employeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-users"></i> Products </a>
-          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="employeeDropdown">
-            <li><a class="dropdown-item text-white" routerLink="allemployees"><i class="fa-solid fa-users"></i>Order</a></li>
-            <li><a class="dropdown-item text-white" routerLink="addemployee"><i class="fa-solid fa-user-plus"></i>Purchase</a></li>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-boxes-stacked me-1"></i> Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="allemployees"><i class="fa-solid fa-box me-2"></i> Order</a></li>
+            <li><a class="dropdown-item" routerLink="addemployee"><i class="fa-solid fa-cart-plus me-2"></i>
+                Purchase</a></li>
           </ul>
         </li>
 
-        <!-- accounts and report -->
+        <!-- Accounts & Reports Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-location-dot"></i>Accounts</a>
-             <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
-            <li><a class="dropdown-item text-white" routerLink="alllocations"><i class="fa-solid fa-location-dot"></i> Accounts</a></li>
-            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i>Reports </a></li>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="accountsDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-file-invoice-dollar me-1"></i> Accounts
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="alllocations"><i class="fa-solid fa-wallet me-2"></i> Accounts</a>
+            </li>
+            <li><a class="dropdown-item" routerLink="addlocation"><i class="fa-solid fa-chart-line me-2"></i>
+                Reports</a></li>
           </ul>
         </li>
 
-
- <!-- stock and Product service -->
+        <!-- Stock & Product Service Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-location-dot"></i> stock  </a>
-          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
-            <li><a class="dropdown-item text-white" href="addproduct"><i class="fa-solid fa-location-dot"></i> stock</a></li>
-            <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> Product return  </a></li>
-              <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> Product service  </a></li>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="stockDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-warehouse me-1"></i> Stock
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="addproduct"><i class="fa-solid fa-box-open me-2"></i> Stock</a></li>
+            <li><a class="dropdown-item" routerLink="addlocation"><i class="fa-solid fa-rotate-left me-2"></i> Product
+                Return</a></li>
+            <li><a class="dropdown-item" routerLink="addlocation"><i class="fa-solid fa-screwdriver-wrench me-2"></i>
+                Product Service</a></li>
           </ul>
         </li>
 
-      
- <!-- customer and employee and supplier-->
+        <!-- CRM, HRM, Supplier Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" id="locationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-location-dot"> C & H & S</i>  </a>
-          <ul class="dropdown-menu bg-violet border-violet" aria-labelledby="locationDropdown">
-            <li><a class="dropdown-item text-white" ><i class="fa-solid fa-location-dot"></i> CRM</a></li>
-            <li><a class="dropdown-item text-white" href="viewallemp"><i class="fa-solid fa-location-dot"></i> HRM </a></li>
-             <li><a class="dropdown-item text-white" routerLink="addlocation"><i class="fa-solid fa-location-dot"></i> supplier </a></li>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="crmDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-people-group me-1"></i> CRM / HRM / Supplier
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-group me-2"></i> CRM</a></li>
+            <li><a class="dropdown-item" href="viewallemp"><i class="fa-solid fa-briefcase me-2"></i> HRM</a></li>
+            <li><a class="dropdown-item" routerLink="addlocation"><i class="fa-solid fa-truck-field me-2"></i>
+                Supplier</a></li>
           </ul>
         </li>
-
-      <a routerLink="register"><button class="btn btn-blue mx-1">Registration</button></a>
-      <a routerLink="login"><button class="btn btn-blue mx-1">Login</button></a>
       </ul>
+
+      <!-- Right-aligned Buttons -->
+      <div class="d-flex">
+        <a routerLink="register" class="btn btn-outline-light me-2">
+          <i class="fa-solid fa-user-plus me-1"></i> Register
+        </a>
+        <a routerLink="login" class="btn btn-light text-primary">
+          <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+        </a>
+      </div>
     </div>
   </div>
 </nav>

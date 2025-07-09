@@ -1,16 +1,16 @@
-<title>EMS ✨ | Add Employee</title>
+<title>Smart-MMS ✨ | Add Employee</title>
 
 <div class="container my-5">
   <div class="card shadow-lg border-0">
-    <div class="card-header text-center">
+    <div class="card-header text-center bg-dark text-white">
       <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Add Employee</h3>
     </div>
 
-    <form class="m-5" [formGroup]="formGroup" method="post">
+    <form class="p-5" [formGroup]="formGroup" method="post">
       <div class="row mb-4">
         <div class="col-md-6">
           <label for="fullName" class="form-label">
-            <i class="fas fa-user me-1"></i>Full Name
+            <i class="fas fa-user me-1"></i> Full Name
           </label>
           <input
             formControlName="name"
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-6">
           <label for="email" class="form-label">
-            <i class="fas fa-envelope me-1"></i>Email Address
+            <i class="fas fa-envelope me-1"></i> Email Address
           </label>
           <input
             formControlName="email"
@@ -39,7 +39,7 @@
       <div class="row mb-4">
         <div class="col-md-6">
           <label for="phone" class="form-label">
-            <i class="fas fa-phone me-1"></i>Phone Number
+            <i class="fas fa-phone me-1"></i> Phone Number
           </label>
           <input
             formControlName="phone"
@@ -50,9 +50,26 @@
             required
           />
         </div>
+
+        <div class="col-md-6">
+          <label for="address" class="form-label">
+            <i class="fas fa-map-marker-alt me-1"></i> Address
+          </label>
+          <input
+            formControlName="address"
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Enter employee address"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row mb-4">
         <div class="col-md-6">
           <label class="form-label d-block">
-            <i class="fas fa-venus-mars me-1"></i>Gender
+            <i class="fas fa-venus-mars me-1"></i> Gender
           </label>
           <div class="form-check form-check-inline">
             <input
@@ -88,36 +105,31 @@
             <label class="form-check-label" for="other">Other</label>
           </div>
         </div>
-      </div>
 
-      <div class="row mb-4">
         <div class="col-md-6">
           <label for="designation" class="form-label">
-            <i class="fas fa-user-tag me-1"></i>Designation
+            <i class="fas fa-user-tag me-1"></i> Designation
           </label>
           <select
             formControlName="designation"
-            class="form-control"
+            class="form-select"
             id="designation"
             required
           >
             <option value="">Choose Your Designation</option>
             <option value="CEO">CEO</option>
             <option value="Project Manager">Project Manager</option>
-            <option value="Senior Software Developer">
-              Senior Software Developer
-            </option>
-            <option value="Junior Software Developer">
-              Junior Software Developer
-            </option>
-            <option value="Intern Software Developer">
-              Intern Software Developer
-            </option>
+            <option value="Senior Software Developer">Senior Software Developer</option>
+            <option value="Junior Software Developer">Junior Software Developer</option>
+            <option value="Intern Software Developer">Intern Software Developer</option>
           </select>
         </div>
+      </div>
+
+      <div class="row mb-4">
         <div class="col-md-6">
           <label for="salary" class="form-label">
-            <i class="fas fa-dollar-sign me-1"></i>Salary
+            <i class="fas fa-dollar-sign me-1"></i> Salary
           </label>
           <input
             formControlName="salary"
@@ -130,35 +142,16 @@
         </div>
       </div>
 
-      <!-- <div class="row mb-4">
-        <div class="col-md-6" formGroupName="location">
-          <label for="location" class="form-label">
-            <i class="fa-solid fa-location-dot"></i> Location
-          </label> -->
-          <!-- <select
-            formControlName="name"
-            class="form-control"
-            id="location"
-            required
-          >
-            <option value="">Choose Your Location</option>
-            <option *ngFor="let l of locations" [value]="l.name">
-              {{ l.name }}
-            </option>
-          </select> -->
-        <!-- </div>
-      </div> -->
-
       <div class="text-center">
         <button
           type="submit"
-          class="btn btn-violet me-2"
+          class="btn btn-primary px-4 me-2"
           (click)="addEmp()"
         >
-          Add Employee
+          <i class="fas fa-plus-circle me-1"></i> Add Employee
         </button>
-        <button type="reset" class="btn btn-outline-danger">
-          <i class="fas fa-undo me-1"></i>Reset
+        <button type="reset" class="btn btn-outline-secondary px-4">
+          <i class="fas fa-undo me-1"></i> Reset
         </button>
       </div>
     </form>

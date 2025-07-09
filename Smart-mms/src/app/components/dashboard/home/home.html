@@ -1,70 +1,87 @@
-<title>smart-mms | Home</title>
 <!-- Hero Section -->
 <section
-  class="full-height d-flex align-items-center text-center px-3"
-  style="background: url('assets/images/mms.png') center center / cover no-repeat;"
+  class="full-height d-flex align-items-center text-center px-3 position-relative"
+  style="background: url('assets/images/mms.png') center center / cover no-repeat; min-height: 100vh;"
 >
+  <!-- Overlay for contrast -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(58, 58, 58, 0.6); z-index: 0;"></div>
 
-
-  <div class="container">
-    <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown">
+  <div class="container position-relative text-white z-1">
+    <h1 class="display-2 fw-bold mb-3 animate__animated animate__fadeInDown">
       Merchandise Management System
     </h1>
-  
-    <p class="lead fw-medium mb-3 animate__animated animate__fadeInUp animate__delay-1s">
+
+    <p class="lead fw-normal mb-3 animate__animated animate__fadeInUp animate__delay-1s">
       Seamlessly manage your workforce with precision, innovation, and control.
     </p>
     <p class="mb-4 animate__animated animate__fadeInUp animate__delay-2s">
       Empower your enterprise with smart, scalable solutions tailored for modern teams.
     </p>
+
     <a
       href="allemployees"
-      class="btn btn-gradient btn-lg mt-4 shadow-lg animate__animated animate__zoomIn animate__delay-3s"
+      class="btn btn-warning btn-lg mt-4 px-5 shadow-lg animate__animated animate__zoomIn animate__delay-3s"
     >
       <i class="fas fa-rocket me-2"></i> Launch Your Journey
     </a>
   </div>
 </section>
 
-
 <!-- Team Section -->
-<section class="py-5 bg-gradient-light">
+<section class="py-5 bg-light">
   <div class="container">
-  <h2 class="text-center mb-5 fw-bold text-dark">
+    <h2 class="text-center mb-5 fw-bold text-dark">
       Meet Our Executive Leadership
-    </h2>    <div class="row text-center g-4">
-      <div class="col-md-4">
-        <img
-          src="assets/images/ceo.jpg"
-          class="rounded-circle mb-3 shadow-sm"
-          width="140"
-          alt="Marcus Lee"
-        />
-        <h5 class="fw-semibold">Eiasin Prodhan</h5>
-        <p class="text-muted fst-italic">Chief executive officer </p>
+    </h2>
+
+    <div class="row g-4 justify-content-center">
+      <!-- CEO -->
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <img
+              src="assets/images/ceo.jpg"
+              class="rounded-circle mb-3"
+              width="140"
+              alt="Eiasin Prodhan"
+            />
+            <h5 class="fw-semibold">Eiasin Prodhan</h5>
+            <p class="text-muted fst-italic">Chief Executive Officer</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <img
-          src="assets/images/pm.png"
-          class="rounded-circle mb-3 shadow-sm"
-          width="140"
-          alt="Emily Chen"
-        />
-        <h5 class="fw-semibold">Sadia Aymaan</h5>
-        <p class="text-muted fst-italic">Chief operating officer</p>
+
+      <!-- COO -->
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <img
+              src="assets/images/pm.png"
+              class="rounded-circle mb-3"
+              width="140"
+              alt="Sadia Aymaan"
+            />
+            <h5 class="fw-semibold">Sadia Aymaan</h5>
+            <p class="text-muted fst-italic">Chief Operating Officer</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <img
-          src="assets/images/isd.png"
-          class="rounded-circle mb-3 shadow-sm"
-          width="140"
-          alt="Sophia Patel"
-        />
-        <h5 class="fw-semibold">Rahamatullah</h5>
-        <p class="text-muted fst-italic">Chief technology officer</p>
+
+      <!-- CTO -->
+      <div class="col-md-4 col-sm-6 text-center">
+        <div class="card border-0 shadow-sm h-100">
+          <div class="card-body">
+            <img
+              src="assets/images/isd.png"
+              class="rounded-circle mb-3"
+              width="140"
+              alt="Rahamatullah"
+            />
+            <h5 class="fw-semibold">Rahamatullah</h5>
+            <p class="text-muted fst-italic">Chief Technology Officer</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-

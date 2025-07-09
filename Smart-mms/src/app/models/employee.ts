@@ -12,6 +12,7 @@ id!: number;
     gender!: string;
     designation!: string;
     salary!: number;
+    address!:string;
 
 
 

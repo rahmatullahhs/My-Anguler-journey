@@ -37,7 +37,8 @@ export class Addemp implements OnInit {
       phone: [''],
       gender: [''],
       designation: [''],
-      salary: ['']
+      salary: [''],
+      address: ['']
 
     });
 

@@ -27,11 +27,11 @@ export class Updateemp implements OnInit {
    
     this.id = this.activeRoute.snapshot.params['id'];
 
-    this.loadAllEmloyees();
+    this.loadAllEmp();
 
   }
 
-  loadAllEmloyees(): void {
+  loadAllEmp(): void {
     this.employeeService.getById(this.id).subscribe({
       next: (res) => {
         this.employee = res;
@@ -47,7 +47,7 @@ export class Updateemp implements OnInit {
   updateEmp() {
     this.employeeService.updateEmp(this.id, this.employee).subscribe({
       next: (res) => {
-        this.router.navigate(['allemployees'])
+        this.router.navigate(['viewAllEmp'])
       },
       error: (error) => {
         console.log(error);
