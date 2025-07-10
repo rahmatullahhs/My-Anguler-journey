@@ -89,3 +89,220 @@
     </form>
   </div>
 </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Save Product Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f0f2f5;
+    }
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .section {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      display: none;
+    }
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #007bff;
+      color: white;
+      border: none;
+    }
+    button.reset-btn {
+      background-color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Save Product</h2>
+  <form id="productForm">
+
+    <label for="productId">Product ID</label>
+    <input type="text" id="productId" name="productId" required>
+
+    <label for="category">Category</label>
+    <select id="category" name="category" required>
+      <option value="">-- Select Category --</option>
+      <option value="laptop">Laptop</option>
+      <option value="desktop">Desktop</option>
+      <option value="accessories">Accessories</option>
+      <option value="component">Component</option>
+    </select>
+
+    <label for="brand">Brand</label>
+    <select id="brand" name="brand" required>
+      <option value="">-- Select Brand --</option>
+      <option>HP</option>
+      <option>Dell</option>
+      <option>Acer</option>
+      <option>Lenovo</option>
+      <option>Apple</option>
+      <option>Microsoft</option>
+      <option>Asus</option>
+      <option>MSI</option>
+      <option>Razer</option>
+      <option>Samsung</option>
+      <option>Sony</option>
+      <option>LG</option>
+      <option>Other</option>
+    </select>
+
+    <!-- Laptop & Desktop Section -->
+    <!-- <div id="deviceSection" class="section">
+      <h3>Device Details (Laptop/Desktop)</h3>
+
+      <label for="deviceName">Device Name</label>
+      <input type="text" id="deviceName" name="deviceName">
+
+      <label for="processor">Processor</label>
+      <input type="text" id="processor" name="processor">
+
+      <label for="ram">RAM</label>
+      <input type="text" id="ram" name="ram">
+
+      <label for="storage">Storage</label>
+      <input type="text" id="storage" name="storage">
+
+      <label for="graphicscard">Graphics Card</label>
+      <input type="text" id="graphicscard" name="graphicscard">
+
+      <label for="monitor">Monitor</label>
+      <input type="text" id="monitor" name="monitor">
+
+      <label for="price">Price</label>
+      <input type="number" id="price" name="price">
+
+      <label for="stock_qty">Stock Quantity</label>
+      <input type="number" id="stock_qty" name="stock_qty">
+
+      <div class="btn-group">
+        <button type="button" onclick="saveDevice()">Save</button>
+        <button type="button" class="reset-btn" onclick="resetDevice()">Reset</button>
+      </div>
+    </div> -->
+
+    <!-- Accessories & Components Section -->
+    <!-- <div id="simpleSection" class="section">
+      <h3>Product Details (Accessories/Component)</h3>
+
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" name="productName">
+
+      <label for="productDescription">Product Description</label>
+      <textarea id="productDescription" name="productDescription" rows="4"></textarea>
+
+      <label for="simplePrice">Price</label>
+      <input type="number" id="simplePrice" name="simplePrice">
+
+      <div class="btn-group">
+        <button type="button" onclick="saveSimple()">Save</button>
+        <button type="button" class="reset-btn" onclick="resetSimple()">Reset</button>
+      </div>
+    </div>
+
+  </form>
+</div> -->
+
+<!-- <script>
+  const categorySelect = document.getElementById("category");
+  const deviceSection = document.getElementById("deviceSection");
+  const simpleSection = document.getElementById("simpleSection");
+
+  categorySelect.addEventListener("change", function () {
+    const selected = this.value;
+    if (selected === "laptop" || selected === "desktop") {
+      deviceSection.style.display = "block";
+      simpleSection.style.display = "none";
+    } else if (selected === "accessories" || selected === "component") {
+      simpleSection.style.display = "block";
+      deviceSection.style.display = "none";
+    } else {
+      deviceSection.style.display = "none";
+      simpleSection.style.display = "none";
+    }
+  });
+
+  function saveDevice() {
+    const data = {
+      id: document.getElementById("productId").value,
+      category: document.getElementById("category").value,
+      brand: document.getElementById("brand").value,
+      name: document.getElementById("deviceName").value,
+      processor: document.getElementById("processor").value,
+      ram: document.getElementById("ram").value,
+      storage: document.getElementById("storage").value,
+      graphicscard: document.getElementById("graphicscard").value,
+      monitor: document.getElementById("monitor").value,
+      price: document.getElementById("price").value,
+      stock_qty: document.getElementById("stock_qty").value
+    };
+    console.log("Device Saved:", data);
+    alert("Device details saved!");
+  }
+
+  function resetDevice() {
+    document.getElementById("deviceName").value = "";
+    document.getElementById("processor").value = "";
+    document.getElementById("ram").value = "";
+    document.getElementById("storage").value = "";
+    document.getElementById("graphicscard").value = "";
+    document.getElementById("monitor").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("stock_qty").value = "";
+  }
+
+  function saveSimple() {
+    const data = {
+      id: document.getElementById("productId").value,
+      category: document.getElementById("category").value,
+      brand: document.getElementById("brand").value,
+      name: document.getElementById("productName").value,
+      description: document.getElementById("productDescription").value,
+      price: document.getElementById("simplePrice").value
+    };
+    console.log("Accessory/Component Saved:", data);
+    alert("Accessory/Component details saved!");
+  }
+
+  function resetSimple() {
+    document.getElementById("productName").value = "";
+    document.getElementById("productDescription").value = "";
+    document.getElementById("simplePrice").value = "";
+  }
+</script> -->
+<!-- </body>
+</html> -->

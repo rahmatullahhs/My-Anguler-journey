@@ -89,3 +89,65 @@ export class AddProduct implements OnInit {
     });
   }
 }
+// product: any = {
+//     id: '',
+//     category: '',
+//     brand: ''
+//   };
+
+//   deviceDetails: any = {
+//     name: '',
+//     processor: '',
+//     ram: '',
+//     storage: '',
+//     graphicscard: '',
+//     monitor: '',
+//     price: '',
+//     stock_qty: ''
+//   };
+
+//   simpleDetails: any = {
+//     name: '',
+//     description: '',
+//     price: ''
+//   };
+
+//   saveDevice() {
+//     const data = {
+//       ...this.product,
+//       ...this.deviceDetails
+//     };
+//     console.log("Device Saved:", data);
+//     alert("Device details saved!");
+//   }
+
+//   resetDevice() {
+//     this.deviceDetails = {
+//       name: '',
+//       processor: '',
+//       ram: '',
+//       storage: '',
+//       graphicscard: '',
+//       monitor: '',
+//       price: '',
+//       stock_qty: ''
+//     };
+//   }
+
+//   saveSimple() {
+//     const data = {
+//       ...this.product,
+//       ...this.simpleDetails
+//     };
+//     console.log("Accessory/Component Saved:", data);
+//     alert("Accessory/Component details saved!");
+//   }
+
+//   resetSimple() {
+//     this.simpleDetails = {
+//       name: '',
+//       description: '',
+//       price: ''
+//     };
+//   }
+// }
