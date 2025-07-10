@@ -15,6 +15,8 @@ import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
 import { Addcustomer } from './crm/addcustomer/addcustomer';
 import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
 import { Updateproduct } from './goods/updateproduct/updateproduct';
+import { Addcategory } from './category/addcategory/addcategory';
+import { Addbrand } from './brand/addbrand/addbrand';
 
 
 const routes: Routes = [
@@ -34,6 +36,10 @@ const routes: Routes = [
  {path: 'addproduct',component:AddProduct},
  {path:'viewallproduct',component:Viewallproduct},
  {path:'updateproduct',component:Updateproduct},
+ {path:'addcategory',component:Addcategory},
+ {path: 'addbrand',component:Addbrand},
+ 
+
 
  {path:'viewallcustomer',component:Viewallcustomer},
  {path:'updatecustomer/:id',component:Updatecustomer},

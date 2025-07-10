@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:3000/product';
+  private apiUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   update(productmodel: ProductModel): Observable<ProductModel> {
-    return this.http.put<ProductModel>(`${this.apiUrl}/${productmodel.id}`, ProductModel);
+    return this.http.put<ProductModel>(`${this.apiUrl}/${productmodel.id}`, productmodel);
   }
 
   delete(id: string ): Observable<void> {

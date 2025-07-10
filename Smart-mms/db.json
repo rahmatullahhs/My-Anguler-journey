@@ -69,14 +69,113 @@
       "email": "parvage@gmail.com",
       "phone": "0136594646526",
       "address": "mymonsing"
-    },
-    {
-      "id": "0222",
-      "name": "",
-      "email": "",
-      "phone": "",
-      "address": ""
     }
   ],
-  "products": []
+  "categories": [
+    {
+      "id": "a2s1",
+      "name": "Laptop"
+    },
+    {
+      "id": "1931",
+      "name": "Accesories"
+    },
+    {
+      "id": "2d5a",
+      "name": "Components"
+    },
+    {
+      "id": "0cc9",
+      "name": "Accessories"
+    },
+    {
+      "id": "69a8",
+      "name": "Desktop"
+    },
+    {
+      "id": "0d67",
+      "name": "Brand PC"
+    },
+    {
+      "id": "3e35",
+      "name": "Gaming PC"
+    }
+  ],
+  "brands": [
+    {
+      "id": "dcc5",
+      "name": "hp",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "fbac",
+      "name": "Dell",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "e11d",
+      "name": "Acer",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "bd9f",
+      "name": "Lenovo",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "4e96",
+      "name": "Apple",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "ad75",
+      "name": "Microsoft",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "710f",
+      "name": "Asus",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "3be2",
+      "name": "MSI",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "597c",
+      "name": "Razer",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "4c42",
+      "name": "Samsung",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "f54b",
+      "name": "Sony",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "cc0f",
+      "name": "LG",
+      "categoryId": "a2s1"
+    }
+  ],
+  "products": [
+    
+    {
+      "id": "2608",
+      "name": "hp eliteBook",
+      "graphicscard": "12gb",
+      "monitor": "15inc",
+      "processor": "core i5 10gen",
+      "ram": "16gb",
+      "storage": "512gb",
+      "price": 500000,
+      "stock_qty": 50,
+      "brandId": "dcc5"
+    }
+  ]
 }

@@ -28,6 +28,10 @@ import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
 import { Updateproduct } from './goods/updateproduct/updateproduct';
 import { Showpurchase } from './purchase/showpurchase/showpurchase';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
+import { Addcategory } from './category/addcategory/addcategory';
+import { Addbrand } from './brand/addbrand/addbrand';
+import { Viewcategory } from './category/viewcategory/viewcategory';
+import { Viewbrand } from './brand/viewbrand/viewbrand';
 
 
 
@@ -64,7 +68,11 @@ import { Addpurchase } from './purchase/addpurchase/addpurchase';
       Viewallproduct,
       Updateproduct,
       Showpurchase,
-      Addpurchase
+      Addpurchase,
+      Addcategory,
+      Addbrand,
+      Viewcategory,
+      Viewbrand
 
 
 

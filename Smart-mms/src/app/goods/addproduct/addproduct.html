@@ -1,308 +1,94 @@
-<title>Smart-MMS ✨ | Save Device</title>
+<div class="container mt-4">
+  <h2>{{ editing ? 'Edit Product' : 'Add Product' }}</h2>
 
-<div class="container my-5">
-  <div class="card shadow-lg border-0">
-    <div class="card-header bg-dark text-white text-center py-3">
-      <h3 class="mb-0"><i class="fas fa-laptop-code me-2"></i>Save Device Details</h3>
-    </div>
-
-    <form id="deviceForm" class="p-4">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <label for="id" class="form-label">Product ID</label>
-          <input type="text" class="form-control" id="id" name="id" placeholder="e.g. DEV12345" required />
-        </div>
-
-<div class="col-md-6">
-          <label for="brand" class="form-label">categories</label>
-          <input type="text" class="form-control" id="brand" name="brand" placeholder=" Laptop / Desktop / accessorices" required />
-        </div>
-
-
-<div class="col-md-6">
-          <label for="brand" class="form-label">Brand</label>
-          <input type="text" class="form-control" id="brand" name="brand" placeholder="e.g. Dell, HP, Lenovo" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="name" class="form-label">Device Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Dell XPS 15" required />
-        </div>
-
-        
-
-        <div class="col-md-6">
-          <label for="processor" class="form-label">Processor</label>
-          <input type="text" class="form-control" id="processor" name="processor" placeholder="e.g. Intel i7" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="ram" class="form-label">RAM</label>
-          <input type="text" class="form-control" id="ram" name="ram" placeholder="e.g. 16GB DDR4" required />
-        </div>
-
-
-
-
-        <div class="col-md-6">
-          <label for="ram" class="form-label">Monitor </label>
-          <input type="text" class="form-control" id="ram" name="ram" placeholder="14 inc" required />
-        </div>
-
-<div class="col-md-6">
-          <label for="brand" class="form-label">Graphics card</label>
-          <input type="text" class="form-control" id="brand" name="brand" placeholder="2 gb" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="storage" class="form-label">Storage</label>
-          <input type="text" class="form-control" id="storage" name="storage" placeholder="e.g. 512GB SSD" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="price" class="form-label">Price ($)</label>
-          <input type="number" class="form-control" id="price" name="price" placeholder="e.g. 1200" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="stock_qty" class="form-label">Stock Quantity</label>
-          <input type="number" class="form-control" id="stock_qty" name="stock_qty" placeholder="e.g. 10" required />
-        </div>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Product Name</label>
+        <input id="name" type="text" class="form-control" formControlName="name" required>
       </div>
 
-
-
-
-
-
-
-
-
-      <div class="text-center mt-4">
-        <button type="submit" class="btn btn-primary px-4">
-          <i class="fas fa-save me-2"></i> Save Device
-        </button>
-        <button type="reset" class="btn btn-outline-secondary ms-2 px-4">
-          <i class="fas fa-undo me-2"></i> Reset
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Save Product Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background: #f0f2f5;
-    }
-    .form-container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      max-width: 700px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .section {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      display: none;
-    }
-    .btn-group {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-    }
-    button {
-      cursor: pointer;
-      font-weight: bold;
-      background-color: #007bff;
-      color: white;
-      border: none;
-    }
-    button.reset-btn {
-      background-color: #6c757d;
-    }
-  </style>
-</head>
-<body>
-
-<div class="form-container">
-  <h2>Save Product</h2>
-  <form id="productForm">
-
-    <label for="productId">Product ID</label>
-    <input type="text" id="productId" name="productId" required>
-
-    <label for="category">Category</label>
-    <select id="category" name="category" required>
-      <option value="">-- Select Category --</option>
-      <option value="laptop">Laptop</option>
-      <option value="desktop">Desktop</option>
-      <option value="accessories">Accessories</option>
-      <option value="component">Component</option>
-    </select>
-
-    <label for="brand">Brand</label>
-    <select id="brand" name="brand" required>
-      <option value="">-- Select Brand --</option>
-      <option>HP</option>
-      <option>Dell</option>
-      <option>Acer</option>
-      <option>Lenovo</option>
-      <option>Apple</option>
-      <option>Microsoft</option>
-      <option>Asus</option>
-      <option>MSI</option>
-      <option>Razer</option>
-      <option>Samsung</option>
-      <option>Sony</option>
-      <option>LG</option>
-      <option>Other</option>
-    </select>
-
-    <!-- Laptop & Desktop Section -->
-    <!-- <div id="deviceSection" class="section">
-      <h3>Device Details (Laptop/Desktop)</h3>
-
-      <label for="deviceName">Device Name</label>
-      <input type="text" id="deviceName" name="deviceName">
-
-      <label for="processor">Processor</label>
-      <input type="text" id="processor" name="processor">
-
-      <label for="ram">RAM</label>
-      <input type="text" id="ram" name="ram">
-
-      <label for="storage">Storage</label>
-      <input type="text" id="storage" name="storage">
-
-      <label for="graphicscard">Graphics Card</label>
-      <input type="text" id="graphicscard" name="graphicscard">
-
-      <label for="monitor">Monitor</label>
-      <input type="text" id="monitor" name="monitor">
-
-      <label for="price">Price</label>
-      <input type="number" id="price" name="price">
-
-      <label for="stock_qty">Stock Quantity</label>
-      <input type="number" id="stock_qty" name="stock_qty">
-
-      <div class="btn-group">
-        <button type="button" onclick="saveDevice()">Save</button>
-        <button type="button" class="reset-btn" onclick="resetDevice()">Reset</button>
-      </div>
-    </div> -->
-
-    <!-- Accessories & Components Section -->
-    <!-- <div id="simpleSection" class="section">
-      <h3>Product Details (Accessories/Component)</h3>
-
-      <label for="productName">Product Name</label>
-      <input type="text" id="productName" name="productName">
-
-      <label for="productDescription">Product Description</label>
-      <textarea id="productDescription" name="productDescription" rows="4"></textarea>
-
-      <label for="simplePrice">Price</label>
-      <input type="number" id="simplePrice" name="simplePrice">
-
-      <div class="btn-group">
-        <button type="button" onclick="saveSimple()">Save</button>
-        <button type="button" class="reset-btn" onclick="resetSimple()">Reset</button>
+      <div class="col-md-6">
+        <label for="brandId" class="form-label">Brand</label>
+        <select id="brandId" class="form-select" formControlName="brandId">
+          <option [value]="null" disabled>Select Brand</option>
+          <option *ngFor="let b of brands" [value]="b.id">{{ b.name }}</option>
+        </select>
       </div>
     </div>
 
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="processor" class="form-label">Processor</label>
+        <input id="processor" type="text" class="form-control" formControlName="processor">
+      </div>
+      <div class="col-md-4">
+        <label for="ram" class="form-label">RAM</label>
+        <input id="ram" type="text" class="form-control" formControlName="ram">
+      </div>
+      <div class="col-md-4">
+        <label for="storage" class="form-label">Storage</label>
+        <input id="storage" type="text" class="form-control" formControlName="storage">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="graphicscard" class="form-label">Graphics Card</label>
+        <input id="graphicscard" type="text" class="form-control" formControlName="graphicscard">
+      </div>
+      <div class="col-md-4">
+        <label for="monitor" class="form-label">Monitor</label>
+        <input id="monitor" type="text" class="form-control" formControlName="monitor">
+      </div>
+      <div class="col-md-2">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" type="number" class="form-control" formControlName="price">
+      </div>
+      <div class="col-md-2">
+        <label for="stock_qty" class="form-label">Stock Qty</label>
+        <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2">{{ editing ? 'Update' : 'Add' }}</button>
+    <button *ngIf="editing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
   </form>
-</div> -->
 
-<!-- <script>
-  const categorySelect = document.getElementById("category");
-  const deviceSection = document.getElementById("deviceSection");
-  const simpleSection = document.getElementById("simpleSection");
+  <hr>
 
-  categorySelect.addEventListener("change", function () {
-    const selected = this.value;
-    if (selected === "laptop" || selected === "desktop") {
-      deviceSection.style.display = "block";
-      simpleSection.style.display = "none";
-    } else if (selected === "accessories" || selected === "component") {
-      simpleSection.style.display = "block";
-      deviceSection.style.display = "none";
-    } else {
-      deviceSection.style.display = "none";
-      simpleSection.style.display = "none";
-    }
-  });
-
-  function saveDevice() {
-    const data = {
-      id: document.getElementById("productId").value,
-      category: document.getElementById("category").value,
-      brand: document.getElementById("brand").value,
-      name: document.getElementById("deviceName").value,
-      processor: document.getElementById("processor").value,
-      ram: document.getElementById("ram").value,
-      storage: document.getElementById("storage").value,
-      graphicscard: document.getElementById("graphicscard").value,
-      monitor: document.getElementById("monitor").value,
-      price: document.getElementById("price").value,
-      stock_qty: document.getElementById("stock_qty").value
-    };
-    console.log("Device Saved:", data);
-    alert("Device details saved!");
-  }
-
-  function resetDevice() {
-    document.getElementById("deviceName").value = "";
-    document.getElementById("processor").value = "";
-    document.getElementById("ram").value = "";
-    document.getElementById("storage").value = "";
-    document.getElementById("graphicscard").value = "";
-    document.getElementById("monitor").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("stock_qty").value = "";
-  }
-
-  function saveSimple() {
-    const data = {
-      id: document.getElementById("productId").value,
-      category: document.getElementById("category").value,
-      brand: document.getElementById("brand").value,
-      name: document.getElementById("productName").value,
-      description: document.getElementById("productDescription").value,
-      price: document.getElementById("simplePrice").value
-    };
-    console.log("Accessory/Component Saved:", data);
-    alert("Accessory/Component details saved!");
-  }
-
-  function resetSimple() {
-    document.getElementById("productName").value = "";
-    document.getElementById("productDescription").value = "";
-    document.getElementById("simplePrice").value = "";
-  }
-</script> -->
-<!-- </body>
-</html> -->
+  <h3 class="mt-4">Product List</h3>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Processor</th>
+        <th>RAM</th>
+        <th>Storage</th>
+        <th>Graphics Card</th>
+        <th>Monitor</th>
+        <th>Price</th>
+        <th>Stock Qty</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products | async">
+        <td>{{ p.name }}</td>
+        <td>{{ getBrandName(p.brandId) }}</td>
+        <td>{{ p.processor }}</td>
+        <td>{{ p.ram }}</td>
+        <td>{{ p.storage }}</td>
+        <td>{{ p.graphicscard }}</td>
+        <td>{{ p.monitor }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.stock_qty }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-1" (click)="editProduct(p)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
