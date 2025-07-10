@@ -1,16 +1,6 @@
 {
   "employee": [
     {
-      "id": "f6d2",
-      "name": "Rakib",
-      "email": "rakib@gmail.com",
-      "phone": "0136594646526",
-      "gender": "Male",
-      "designation": "Project Manager",
-      "salary": 50000,
-      "address": "dhaka"
-    },
-    {
       "id": "024d",
       "name": "Easin",
       "email": "easin@gmail.com",
@@ -22,20 +12,20 @@
     },
     {
       "id": "4d94",
-      "name": "parvaze",
+      "name": "parvaz",
       "email": "parvage@gmail.com",
       "phone": "0133996577",
-      "gender": "Other",
+      "gender": "Male",
       "designation": "Senior Software Developer",
       "salary": 90008,
-      "address": "Ok Dude"
+      "address": "kollanpur"
     },
     {
       "id": "b345",
       "name": "Rakib",
       "email": "parvage@gmail.com",
       "phone": "0133996577",
-      "gender": "Female",
+      "gender": "Male",
       "designation": "Intern Software Developer",
       "salary": 12045204,
       "address": "dhaka"
@@ -43,32 +33,25 @@
   ],
   "customer": [
     {
-      "id": "832f",
-      "name": "Rakib",
-      "email": "sadfsadf",
-      "phone": "sadfasdf",
-      "address": "asddsf"
-    },
-    {
       "id": "5f9d",
-      "name": "Rakib",
-      "email": "asdfsdaf",
-      "phone": "sadfsad",
+      "name": "Rakib the Rock",
+      "email": "rakub@gmail.com",
+      "phone": "01988777653",
       "address": "dhaka"
     },
     {
       "id": "a85c",
-      "name": "Rakib",
-      "email": "parvage@gmail.com",
+      "name": "Rahmat ullah",
+      "email": "rahmat@gmail.com",
       "phone": "0133996577",
-      "address": "sdagdfbgfb"
+      "address": "dhanmondi"
     },
     {
       "id": "6702",
-      "name": "atik",
+      "name": "Parvez Ala Habibi",
       "email": "parvage@gmail.com",
-      "phone": "0136594646526",
-      "address": "mymonsing"
+      "phone": "0136594646",
+      "address": "kollanpur"
     }
   ],
   "categories": [
@@ -83,10 +66,6 @@
     {
       "id": "2d5a",
       "name": "Components"
-    },
-    {
-      "id": "0cc9",
-      "name": "Accessories"
     },
     {
       "id": "69a8",
@@ -161,10 +140,19 @@
       "id": "cc0f",
       "name": "LG",
       "categoryId": "a2s1"
+    },
+    {
+      "id": "82a3",
+      "name": "logitach",
+      "categoryId": "1931"
+    },
+    {
+      "id": "8ed5",
+      "name": "",
+      "categoryId": ""
     }
   ],
   "products": [
-    
     {
       "id": "2608",
       "name": "hp eliteBook",
@@ -176,6 +164,30 @@
       "price": 500000,
       "stock_qty": 50,
       "brandId": "dcc5"
+    },
+    {
+      "id": "533b",
+      "name": "Keyboard",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "graphicscard": "",
+      "monitor": "",
+      "price": 500,
+      "stock_qty": 100,
+      "brandId": "cc0f"
+    },
+    {
+      "id": "2e23",
+      "name": "mouse",
+      "graphicscard": "",
+      "monitor": "",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "price": 300,
+      "stock_qty": 250,
+      "brandId": "82a3"
     }
   ]
 }
