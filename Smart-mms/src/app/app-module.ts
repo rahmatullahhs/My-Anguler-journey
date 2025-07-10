@@ -26,6 +26,8 @@ import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
 import { Updateproduct } from './goods/updateproduct/updateproduct';
+import { Showpurchase } from './purchase/showpurchase/showpurchase';
+import { Addpurchase } from './purchase/addpurchase/addpurchase';
 
 
 
@@ -60,7 +62,9 @@ import { Updateproduct } from './goods/updateproduct/updateproduct';
       Viewallsupplier,
       Updatesupplier,
       Viewallproduct,
-      Updateproduct
+      Updateproduct,
+      Showpurchase,
+      Addpurchase
 
 
 

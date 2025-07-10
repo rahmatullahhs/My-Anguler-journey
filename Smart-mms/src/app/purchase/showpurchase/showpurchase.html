@@ -1,0 +1,44 @@
+<!-- <p>showpurchase works!</p>
+<div class="container">
+  <h2>Purchase Activity</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Supplier Details</th>
+        <th>Product Details</th>
+        <th>Bill</th>
+        <th>Actions</th>
+        <th>Check-in</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let purchase of purchases">
+        <td>{{ purchase.id }}</td>
+        <td>
+          <strong>{{ purchase.supplier.name }}</strong><br>
+          Email: {{ purchase.supplier.email }}<br>
+          Phone: {{ purchase.supplier.phone }}
+        </td>
+        <td>
+          {{ purchase.product.name }}<br>
+          Qty: {{ purchase.product.quantity }}<br>
+          Unit Price: ${{ purchase.product.unitPrice }}
+        </td>
+        <td>${{ purchase.billTotal }}</td>
+        <td>
+          <button (click)="confirmPurchase(purchase)">Confirm</button>
+          <button class="cancel" (click)="cancelPurchase(purchase)">Cancel</button>
+        </td>
+        <td>{{ purchase.checkinDate || 'Pending' }}</td>
+        <td>
+          <span [ngClass]="{ 'received': purchase.status === 'Received', 'not-received': purchase.status !== 'Received' }">
+            {{ purchase.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
