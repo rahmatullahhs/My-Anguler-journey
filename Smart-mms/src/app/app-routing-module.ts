@@ -23,6 +23,7 @@ import { Addsupplier } from './supplier/addsupplier/addsupplier';
 import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnproduct';
 import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
 import { Addaccount } from './account/addaccount/addaccount';
+import { Addchart } from './account/addchart/addchart';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
 {path:'addsupplier',component:Addsupplier},
 {path:'addreturnproduct',component:Addreturnproduct},
 {path:'addrepairproduct',component:Addrepairproduct},
-{path:'addaccount',component:Addaccount}
+{path:'addaccount',component:Addaccount},
+{path:'addchart',component:Addchart}
 
 
 
