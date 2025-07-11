@@ -20,6 +20,9 @@ import { Addbrand } from './brand/addbrand/addbrand';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
 import { Addorder } from './order/addorder/addorder';
 import { Addsupplier } from './supplier/addsupplier/addsupplier';
+import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnproduct';
+import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
+import { Addaccount } from './account/addaccount/addaccount';
 
 
 const routes: Routes = [
@@ -48,7 +51,10 @@ const routes: Routes = [
 
 {path:'addpurchase',component:Addpurchase},
 {path:'addorder',component:Addorder},
-{path:'addsupplier',component:Addsupplier}
+{path:'addsupplier',component:Addsupplier},
+{path:'addreturnproduct',component:Addreturnproduct},
+{path:'addrepairproduct',component:Addrepairproduct},
+{path:'addaccount',component:Addaccount}
 
 
 

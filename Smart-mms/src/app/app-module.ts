@@ -33,6 +33,10 @@ import { Addbrand } from './brand/addbrand/addbrand';
 import { Viewcategory } from './category/viewcategory/viewcategory';
 import { Viewbrand } from './brand/viewbrand/viewbrand';
 import { Addorder } from './order/addorder/addorder';
+import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnproduct';
+import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
+import { Addaccount } from './account/addaccount/addaccount';
+import { Addchart } from './account/addchart/addchart';
 
 
 
@@ -74,7 +78,11 @@ import { Addorder } from './order/addorder/addorder';
       Addbrand,
       Viewcategory,
       Viewbrand,
-      Addorder
+      Addorder,
+      Addreturnproduct,
+      Addrepairproduct,
+      Addaccount,
+      Addchart
 
 
 
@@ -84,6 +92,8 @@ import { Addorder } from './order/addorder/addorder';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    
+    
 
 
   ],
