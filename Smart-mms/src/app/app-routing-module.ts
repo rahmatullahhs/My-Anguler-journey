@@ -17,6 +17,9 @@ import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
 import { Updateproduct } from './goods/updateproduct/updateproduct';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addbrand } from './brand/addbrand/addbrand';
+import { Addpurchase } from './purchase/addpurchase/addpurchase';
+import { Addorder } from './order/addorder/addorder';
+import { Addsupplier } from './supplier/addsupplier/addsupplier';
 
 
 const routes: Routes = [
@@ -39,11 +42,24 @@ const routes: Routes = [
  {path:'addcategory',component:Addcategory},
  {path: 'addbrand',component:Addbrand},
  
-
-
  {path:'viewallcustomer',component:Viewallcustomer},
  {path:'updatecustomer/:id',component:Updatecustomer},
- {path:'addcustomer',component:Addcustomer}
+ {path:'addcustomer',component:Addcustomer},
+
+{path:'addpurchase',component:Addpurchase},
+{path:'addorder',component:Addorder},
+{path:'addsupplier',component:Addsupplier}
+
+
+
+
+
+
+
+
+
+
+
 
 ];
 

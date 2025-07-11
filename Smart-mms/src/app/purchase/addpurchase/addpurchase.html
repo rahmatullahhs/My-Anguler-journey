@@ -1,1 +1,54 @@
-<p>addpurchase works!</p>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Purchase Product</h2>
+
+  <form>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="supplier" class="form-label">Supplier</label>
+        <select class="form-select" id="supplier" required>
+          <option selected disabled>Select Supplier</option>
+          <option>Supplier A</option>
+          <option>Supplier B</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label for="purchaseDate" class="form-label">Purchase Date</label>
+        <input type="date" class="form-control" id="purchaseDate" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="product" class="form-label">Product</label>
+        <select class="form-select" id="product" required>
+          <option selected disabled>Select Product</option>
+          <option>Laptop</option>
+          <option>Monitor</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantity" min="1" required>
+      </div>
+
+      <div class="col-md-3">
+        <label for="price" class="form-label">Price per Unit</label>
+        <input type="number" class="form-control" id="price" min="0" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="notes" class="form-label">Notes</label>
+      <textarea class="form-control" id="notes" rows="3" placeholder="Optional..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Purchase</button>
+    <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+  </form>
+</div>
+
+
+

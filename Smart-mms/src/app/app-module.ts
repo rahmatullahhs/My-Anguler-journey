@@ -32,6 +32,7 @@ import { Addcategory } from './category/addcategory/addcategory';
 import { Addbrand } from './brand/addbrand/addbrand';
 import { Viewcategory } from './category/viewcategory/viewcategory';
 import { Viewbrand } from './brand/viewbrand/viewbrand';
+import { Addorder } from './order/addorder/addorder';
 
 
 
@@ -72,7 +73,8 @@ import { Viewbrand } from './brand/viewbrand/viewbrand';
       Addcategory,
       Addbrand,
       Viewcategory,
-      Viewbrand
+      Viewbrand,
+      Addorder
 
 
 

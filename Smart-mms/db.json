@@ -188,6 +188,18 @@
       "price": 300,
       "stock_qty": 250,
       "brandId": "82a3"
+    },
+    {
+      "id": "8a73",
+      "name": "dell latitude 3040",
+      "processor": "core i7 13gen HX26398",
+      "ram": "12GB",
+      "storage": "512GB",
+      "graphicscard": "2GB ",
+      "monitor": "15inc",
+      "price": 1250000,
+      "stock_qty": 25,
+      "brandId": "fbac"
     }
   ]
 }
