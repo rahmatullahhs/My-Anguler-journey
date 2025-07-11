@@ -113,3 +113,134 @@
 </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Accounts Overview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 30px;
+    }
+    .card h4 {
+      font-size: 1.5rem;
+    }
+    .card-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 class="text-center mb-4">📊 Business Dashboard</h2>
+
+  <!-- Summary Cards -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary h-100">
+        <div class="card-body">
+          <h4 class="card-title">Cash Flow</h4>
+          <p class="card-value">₹1,50,000</p>
+          <small>Inflow vs Outflow</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-success h-100">
+        <div class="card-body">
+          <h4 class="card-title">Net Profit</h4>
+          <p class="card-value">₹60,000</p>
+          <small>Profit after expenses</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-danger h-100">
+        <div class="card-body">
+          <h4 class="card-title">Pending Dues</h4>
+          <p class="card-value">₹25,000</p>
+          <small>Customer payments not received</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header">📈 Cash Flow Chart</div>
+        <div class="card-body">
+          <canvas id="cashFlowChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header">💰 Net Profit Trend</div>
+        <div class="card-body">
+          <canvas id="profitChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cashFlowCtx = document.getElementById('cashFlowChart').getContext('2d');
+  new Chart(cashFlowCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [
+        {
+          label: 'Cash Inflow',
+          data: [50000, 60000, 55000, 70000, 80000],
+          backgroundColor: '#198754'
+        },
+        {
+          label: 'Cash Outflow',
+          data: [30000, 40000, 25000, 45000, 50000],
+          backgroundColor: '#dc3545'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+
+  const profitCtx = document.getElementById('profitChart').getContext('2d');
+  new Chart(profitCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [{
+        label: 'Net Profit',
+        data: [15000, 18000, 21000, 24000, 27000],
+        borderColor: '#0d6efd',
+        backgroundColor: 'rgba(13,110,253,0.1)',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
