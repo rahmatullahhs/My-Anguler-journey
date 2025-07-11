@@ -37,6 +37,7 @@ import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnprod
 import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
 import { Addaccount } from './account/addaccount/addaccount';
 import { Addchart } from './account/addchart/addchart';
+import { Showreport } from './report/showreport/showreport';
 
 
 
@@ -82,7 +83,8 @@ import { Addchart } from './account/addchart/addchart';
       Addreturnproduct,
       Addrepairproduct,
       Addaccount,
-      Addchart
+      Addchart,
+      Showreport
 
 
 

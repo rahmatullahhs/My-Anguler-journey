@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <i class="fa-solid fa-users-gear me-2"></i>
-      <span>Smart-MMS</span>
+      <img src="https://cdn-icons-png.flaticon.com/512/10869/10869552.png" alt="Smart-MMS Logo" width="32" height="32" class="me-2">
+      <span class="fw-bold fs-5">Smart-MMS</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -15,62 +15,61 @@
 
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/">
-            <i class="fa-solid fa-house me-1"></i> Home
+            <img src="https://cdn-icons-png.flaticon.com/512/1946/1946433.png" width="20" class="me-2" alt="Home Icon"> Home
           </a>
         </li>
 
         <!-- Products Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-boxes-stacked me-1"></i> Products
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="addorder"><i class="fa-solid fa-box me-2"></i> Order</a></li>
-            <li><a class="dropdown-item" routerLink="addpurchase"><i class="fa-solid fa-cart-plus me-2"></i>
-                Purchase</a></li>
-          </ul>
-        </li>
+       <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
+    <img src="https://cdn-icons-png.flaticon.com/512/3799/3799936.png" width="20" class="me-2" alt="Tech Icon"> Products
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a class="dropdown-item" routerLink="addorder">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077035.png" width="20" class="me-2" alt="Order Icon"> Order
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="addpurchase">
+        <img src="https://cdn-icons-png.flaticon.com/512/2489/2489211.png" width="20" class="me-2" alt="Purchase Icon"> Purchase
+      </a>
+    </li>
+  </ul>
+</li>
 
         <!-- Accounts & Reports Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="accountsDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-file-invoice-dollar me-1"></i> Accounts
+          <a class="nav-link dropdown-toggle text-white" href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown">
+            <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" width="20" class="me-2" alt="Accounts Icon"> Accounts
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="addaccount"><i class="fa-solid fa-wallet me-2"></i> Accounts</a>
-            </li>
-            <li><a class="dropdown-item" routerLink="addlocation"><i class="fa-solid fa-chart-line me-2"></i>
-                Reports</a></li>
+            <li><a class="dropdown-item" href="addaccount"><img src="https://cdn-icons-png.flaticon.com/512/929/929426.png" width="20" class="me-2"> Accounts</a></li>
+            <li><a class="dropdown-item" href="showreport"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" width="20" class="me-2"> Reports</a></li>
           </ul>
         </li>
 
         <!-- Stock & Product Service Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="stockDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-warehouse me-1"></i> Stock
+          <a class="nav-link dropdown-toggle text-white" href="#" id="stockDropdown" role="button" data-bs-toggle="dropdown">
+            <img src="https://cdn-icons-png.flaticon.com/512/942/942759.png" width="20" class="me-2" alt="Stock Icon"> Stock
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="addproduct"><i class="fa-solid fa-box-open me-2"></i> Stock</a></li>
-            <li><a class="dropdown-item" routerLink="addreturnproduct"><i class="fa-solid fa-rotate-left me-2"></i> Product
-                Return</a></li>
-            <li><a class="dropdown-item" routerLink="addrepairproduct"><i class="fa-solid fa-screwdriver-wrench me-2"></i>
-                Product Service</a></li>
+            <li><a class="dropdown-item" href="addproduct"><img src="https://cdn-icons-png.flaticon.com/512/686/686104.png" width="20" class="me-2"> Stock</a></li>
+            <li><a class="dropdown-item" routerLink="addreturnproduct"><img src="https://cdn-icons-png.flaticon.com/512/860/860763.png" width="20" class="me-2"> Product Return</a></li>
+            <li><a class="dropdown-item" routerLink="addrepairproduct"><img src="https://cdn-icons-png.flaticon.com/512/3580/3580371.png" width="20" class="me-2"> Product Service</a></li>
           </ul>
         </li>
 
         <!-- CRM, HRM, Supplier Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="crmDropdown" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-people-group me-1"></i> Customer / Employee / Supplier
+          <a class="nav-link dropdown-toggle text-white" href="#" id="crmDropdown" role="button" data-bs-toggle="dropdown">
+            <img src="https://cdn-icons-png.flaticon.com/512/1250/1250615.png" width="20" class="me-2" alt="CRM Icon"> Customer / Employee / Supplier
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="viewallcustomer"><i class="fa-solid fa-user-group me-2"></i> Customer</a></li>
-            <li><a class="dropdown-item" href="viewallemp"><i class="fa-solid fa-briefcase me-2"></i> Employee</a></li>
-            <li><a class="dropdown-item" routerLink="addsupplier"><i class="fa-solid fa-truck-field me-2"></i> Supplier</a></li>
+            <li><a class="dropdown-item" href="viewallcustomer"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" width="20" class="me-2"> Customer</a></li>
+            <li><a class="dropdown-item" href="viewallemp"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="20" class="me-2"> Employee</a></li>
+            <li><a class="dropdown-item" routerLink="addsupplier"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046875.png" width="20" class="me-2"> Supplier</a></li>
           </ul>
         </li>
       </ul>
@@ -78,10 +77,10 @@
       <!-- Right-aligned Buttons -->
       <div class="d-flex">
         <a routerLink="register" class="btn btn-outline-light me-2">
-          <i class="fa-solid fa-user-plus me-1"></i> Register
+          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" width="18" class="me-1"> Register
         </a>
         <a routerLink="login" class="btn btn-light text-primary">
-          <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+          <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" width="18" class="me-1"> Login
         </a>
       </div>
     </div>

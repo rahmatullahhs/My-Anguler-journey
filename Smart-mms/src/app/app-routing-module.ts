@@ -24,6 +24,7 @@ import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnprod
 import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
 import { Addaccount } from './account/addaccount/addaccount';
 import { Addchart } from './account/addchart/addchart';
+import { Showreport } from './report/showreport/showreport';
 
 
 const routes: Routes = [
@@ -56,7 +57,8 @@ const routes: Routes = [
 {path:'addreturnproduct',component:Addreturnproduct},
 {path:'addrepairproduct',component:Addrepairproduct},
 {path:'addaccount',component:Addaccount},
-{path:'addchart',component:Addchart}
+{path:'addchart',component:Addchart},
+{path:'showreport',component:Showreport}
 
 
 
