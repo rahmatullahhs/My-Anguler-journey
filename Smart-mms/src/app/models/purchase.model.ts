@@ -1,4 +1,4 @@
-export interface ProductModel {
+export interface PurchaseModel {
 
 
   id?: string;
@@ -10,7 +10,9 @@ export interface ProductModel {
   stock_qty: number;
   graphicscard: string;
   monitor: string;
-   brandId: string;
+    brandId: string;
+
+
 
 
 }

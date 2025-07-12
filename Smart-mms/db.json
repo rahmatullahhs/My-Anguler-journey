@@ -150,11 +150,6 @@
       "id": "689c",
       "name": "Rakib",
       "categoryId": "a2s1"
-    },
-    {
-      "id": "ed40",
-      "name": "",
-      "categoryId": ""
     }
   ],
   "products": [
@@ -173,11 +168,11 @@
     {
       "id": "533b",
       "name": "Keyboard",
+      "graphicscard": "aaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "monitor": "",
       "processor": "",
       "ram": "",
       "storage": "",
-      "graphicscard": "",
-      "monitor": "",
       "price": 500,
       "stock_qty": 100,
       "brandId": "cc0f"
@@ -219,5 +214,13 @@
       "brandId": "fbac"
     }
   ],
-  "supplier": []
+  "supplier": [
+    {
+      "id": "1f1a",
+      "name": "Rakib",
+      "email": "rakib@gmail.com",
+      "phone": "0133996577",
+      "address": "Dhaka"
+    }
+  ]
 }

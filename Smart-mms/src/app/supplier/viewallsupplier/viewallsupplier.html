@@ -14,11 +14,11 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-        <th>Designation</th>
+       
         <th>Phone</th>
-        <th>Gender</th>
+   
         <th>Address</th>
-        <th>Salary</th>
+
         <th>Actions</th>
       </tr>
     </thead>
@@ -28,11 +28,11 @@
         <td>{{ s.id }}</td>
         <td>{{ s.name }}</td>
         <td>{{ s.email }}</td>
-        <td>{{ s.designation }}</td>
+       
         <td>{{ s.phone }}</td>
-        <td>{{ s.gender }}</td>
+     
         <td>{{ s.address }}</td>
-        <td>{{ s.salary | currency }}</td>
+
         <td>
           <button class="btn btn-sm btn-outline-primary me-2" (click)="updateSupplier(s.id)">
             <i class="bi bi-pencil-fill me-1"></i> Edit

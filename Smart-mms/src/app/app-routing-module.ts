@@ -13,8 +13,7 @@ import { AddProduct } from './goods/addproduct/addproduct';
 import { Viewallcustomer } from './crm/viewallcustomer/viewallcustomer';
 import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
 import { Addcustomer } from './crm/addcustomer/addcustomer';
-import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
-import { Updateproduct } from './goods/updateproduct/updateproduct';
+
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addbrand } from './brand/addbrand/addbrand';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
@@ -44,8 +43,7 @@ const routes: Routes = [
 {path:'updateEmp/:id',component:Updateemp},
 
  {path: 'addproduct',component:AddProduct},
- {path:'viewallproduct',component:Viewallproduct},
- {path:'updateproduct',component:Updateproduct},
+ 
  {path:'addcategory',component:Addcategory},
  {path: 'addbrand',component:Addbrand},
  

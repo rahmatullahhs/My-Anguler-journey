@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<!-- <div class="container mt-5">
   <h2 class="mb-4">Purchase Product</h2>
 
   <form>
@@ -17,38 +17,77 @@
         <label for="purchaseDate" class="form-label">Purchase Date</label>
         <input type="date" class="form-control" id="purchaseDate" required>
       </div>
-    </div>
+    </div> -->
 
+ 
+<div class="container mt-4">
+  <h2>{{ editing ? 'Edit Product' : 'Add Product' }}</h2>
+
+  <form [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
     <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="product" class="form-label">Product</label>
-        <select class="form-select" id="product" required>
-          <option selected disabled>Select Product</option>
-          <option>Laptop</option>
-          <option>Monitor</option>
+
+     <div class="col-md-4">
+        <label for="brandId" class="form-label">Category</label>
+        <select id="brandId" class="form-select" formControlName="brandId">
+          <option [value]="null" disabled>Select Category</option>
+          <option ></option>
         </select>
       </div>
 
-      <div class="col-md-3">
-        <label for="quantity" class="form-label">Quantity</label>
-        <input type="number" class="form-control" id="quantity" min="1" required>
+      
+      <div class="col-md-4">
+        <label for="name" class="form-label">Product Name</label>
+        <input id="name" type="text" class="form-control" formControlName="name" required>
       </div>
 
-      <div class="col-md-3">
-        <label for="price" class="form-label">Price per Unit</label>
-        <input type="number" class="form-control" id="price" min="0" required>
+      <div class="col-md-4">
+        <label for="brandId" class="form-label">Brand</label>
+        <select id="brandId" class="form-select" formControlName="brandId">
+          <option [value]="null" disabled>Select Brand</option>
+          <option *ngFor="let b of brands" [value]="b.id">{{ b.name }}</option>
+        </select>
       </div>
     </div>
 
-    <div class="mb-3">
-      <label for="notes" class="form-label">Notes</label>
-      <textarea class="form-control" id="notes" rows="3" placeholder="Optional..."></textarea>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="processor" class="form-label">Processor</label>
+        <input id="processor" type="text" class="form-control" formControlName="processor">
+      </div>
+      <div class="col-md-4">
+        <label for="ram" class="form-label">RAM</label>
+        <input id="ram" type="text" class="form-control" formControlName="ram">
+      </div>
+      <div class="col-md-4">
+        <label for="storage" class="form-label">Storage</label>
+        <input id="storage" type="text" class="form-control" formControlName="storage">
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Submit Purchase</button>
-    <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="graphicscard" class="form-label">Graphics Card</label>
+        <input id="graphicscard" type="text" class="form-control" formControlName="graphicscard">
+      </div>
+      <div class="col-md-4">
+        <label for="monitor" class="form-label">Monitor</label>
+        <input id="monitor" type="text" class="form-control" formControlName="monitor">
+      </div>
+      <div class="col-md-2">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" type="number" class="form-control" formControlName="price">
+      </div>
+      <div class="col-md-2">
+        <label for="stock_qty" class="form-label">Stock Qty</label>
+        <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
+      </div>
+    </div>
+
+     <button type="submit" class="btn btn-primary me-2">{{ editing ? 'Update' : 'Add' }}</button>
+    
   </form>
+  <p></p>
+<div class="mb-3">
+  <a routerLink="/addcategory" class="btn btn-outline-info me-2">Go to Categories</a>
+  <a routerLink="/addbrand" class="btn btn-outline-secondary">Go to Brands</a>
 </div>
-
-
-

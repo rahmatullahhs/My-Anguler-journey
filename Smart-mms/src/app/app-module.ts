@@ -24,8 +24,7 @@ import { Updatecustomer } from './crm/updatecustomer/updatecustomer';
 import { Addsupplier } from './supplier/addsupplier/addsupplier';
 import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
-import { Viewallproduct } from './goods/viewallproduct/viewallproduct';
-import { Updateproduct } from './goods/updateproduct/updateproduct';
+
 import { Showpurchase } from './purchase/showpurchase/showpurchase';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
 import { Addcategory } from './category/addcategory/addcategory';
@@ -71,19 +70,25 @@ import { Showreport } from './report/showreport/showreport';
       Addsupplier,
       Viewallsupplier,
       Updatesupplier,
-      Viewallproduct,
-      Updateproduct,
+      
       Showpurchase,
       Addpurchase,
-      Addcategory,
-      Addbrand,
+
       Viewcategory,
+      Addcategory,
+
+      Addbrand,
       Viewbrand,
+
       Addorder,
+
       Addreturnproduct,
       Addrepairproduct,
+
       Addaccount,
+
       Addchart,
+
       Showreport
 
 
