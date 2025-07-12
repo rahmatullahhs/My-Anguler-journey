@@ -1,3 +1,6 @@
+/* =========================
+   Base Styles
+========================= */
 body {
   font-family: "Segoe UI", sans-serif;
   background-color: #121212;
@@ -5,7 +8,9 @@ body {
   color: #f5f5f5;
 }
 
-/* Gradient Background */
+/* =========================
+   Gradient Background
+========================= */
 .gradient-bg {
   background: linear-gradient(270deg, #ff6f00, #ff8f00, #ff9800, #ff6f00);
   background-size: 800% 800%;
@@ -27,7 +32,9 @@ body {
   }
 }
 
-/* Gradient Button */
+/* =========================
+   Gradient Button
+========================= */
 .btn-gradient {
   background: linear-gradient(to right, #ff6f00, #ff8f00);
   color: #fff;
@@ -42,53 +49,42 @@ body {
   box-shadow: 0 6px 20px rgba(255, 111, 0, 0.8);
 }
 
-/* Light card section inside dark UI */
+/* =========================
+   Cards & Layout
+========================= */
 .section-light {
-  background-color: #1e1e1e;
+  background-color: #013747;
   padding: 4rem 0;
 }
 
-/* Card styles */
 .card-title {
-  color: #ffb74d;
+  color: #c27502;
   font-weight: 600;
 }
 
 .card-text {
-  color: #e0e0e0;
+  color: #faf9f9;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.full-height {
-  height: 100vh;
-}
-
-/* Icon styles */
-.icon-lg {
-  font-size: 2.5rem;
-  color: #ffa726;
-  transition: color 0.3s ease;
-}
-
-/* Gradient text */
-.text-gradient {
-  background: linear-gradient(45deg, #ffb74d, #f57c00);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Hover scale effect for cards */
 .hover-scale {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .hover-scale:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 167, 38, 0.3);
   cursor: pointer;
 }
 
-/* Rounded button with orange glow */
+.full-height {
+  height: 100vh;
+}
+
+/* =========================
+   Buttons
+========================= */
 .btn-violet {
   background: #ff6f00;
   color: #fff;
@@ -99,20 +95,74 @@ body {
   font-size: 1.1rem;
   box-shadow: 0 4px 15px rgba(255, 111, 0, 0.5);
 }
+
 .btn-violet:hover {
   background: #e65100;
   box-shadow: 0 6px 20px rgba(230, 81, 0, 0.7);
 }
 
-/* Image styles */
+/* =========================
+   Image Styles
+========================= */
 .rounded-circle {
   box-shadow: 0 4px 10px rgba(255, 143, 0, 0.3);
 }
 
-/* Container */
-.container {
+.responsive-img {
+  width: 70%;
+}
+
+@media (min-width: 768px) {
+  .responsive-img {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Typography & Colors
+========================= */
+.text-gradient {
+  background: linear-gradient(45deg, #f39507, #f57c00);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #fa5f5f; /* Fallback */
+}
+
+.text-primary-emphasis {
+  color: #66b2ff !important;
+}
+
+.icon-lg {
+  font-size: 2.5rem;
+  color: #ffa726;
+  transition: color 0.3s ease;
+}
+
+/* =========================
+   Icons
+========================= */
+.fas.fa-check-circle {
+  transition: transform 0.3s ease;
+}
+
+.fas.fa-check-circle:hover {
+  transform: scale(1.2);
+}
+
+/* =========================
+   Container Override
+   (Renamed to avoid Bootstrap conflict)
+========================= */
+.custom-container {
   max-width: 1140px;
   margin: 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* =========================
+   Bootstrap Utility Overrides
+========================= */
+.bg-dark {
+  background-color: #fdfeff !important;
 }
