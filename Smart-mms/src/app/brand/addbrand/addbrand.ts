@@ -20,7 +20,9 @@ export class Addbrand implements OnInit {
   categories: any[] = [];
   isEditMode = false;
 
-  constructor(private brandService: BrandService, private http: HttpClient, private catService: CategoryService) { }
+  constructor(private brandService: BrandService, 
+    private http: HttpClient,
+     private catService: CategoryService) { }
 
   ngOnInit(): void {
     this.loadBrands();

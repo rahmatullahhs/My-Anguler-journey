@@ -147,7 +147,12 @@
       "categoryId": "1931"
     },
     {
-      "id": "8ed5",
+      "id": "689c",
+      "name": "Rakib",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "ed40",
       "name": "",
       "categoryId": ""
     }
@@ -200,6 +205,19 @@
       "price": 1250000,
       "stock_qty": 25,
       "brandId": "fbac"
+    },
+    {
+      "id": "ea73",
+      "name": "dell latitude",
+      "processor": "core i7 hx25648",
+      "ram": "12gb",
+      "storage": "512gb",
+      "graphicscard": "2gb Nvidia",
+      "monitor": "14 inches",
+      "price": 198000,
+      "stock_qty": 2,
+      "brandId": "fbac"
     }
-  ]
+  ],
+  "supplier": []
 }

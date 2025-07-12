@@ -45,7 +45,7 @@ export class Addemp implements OnInit {
 
       next: (res) => {
 
-        console.log("Student Saved ", res);
+        console.log("Employee Saved ", res);
         this.formGroup.reset();
         this.router.navigate(['/viewallemp']);
 

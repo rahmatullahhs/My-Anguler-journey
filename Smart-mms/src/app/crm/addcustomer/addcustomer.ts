@@ -46,10 +46,4 @@ export class Addcustomer implements OnInit {
   }
 
 
-
-
-
-
-
-
 }

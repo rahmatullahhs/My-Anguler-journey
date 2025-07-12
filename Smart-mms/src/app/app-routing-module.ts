@@ -25,6 +25,8 @@ import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairprod
 import { Addaccount } from './account/addaccount/addaccount';
 import { Addchart } from './account/addchart/addchart';
 import { Showreport } from './report/showreport/showreport';
+import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
+import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 
 
 const routes: Routes = [
@@ -54,6 +56,9 @@ const routes: Routes = [
 {path:'addpurchase',component:Addpurchase},
 {path:'addorder',component:Addorder},
 {path:'addsupplier',component:Addsupplier},
+{path:'viewallsupplier',component:Viewallsupplier},
+{path:'updatesupplier/:id',component:Updatesupplier},
+
 {path:'addreturnproduct',component:Addreturnproduct},
 {path:'addrepairproduct',component:Addrepairproduct},
 {path:'addaccount',component:Addaccount},
