@@ -82,56 +82,6 @@
   ],
   "brands": [
     {
-      "id": "dcc5",
-      "name": "hp",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "fbac",
-      "name": "Dell",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "e11d",
-      "name": "Acer",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "bd9f",
-      "name": "Lenovo",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "4e96",
-      "name": "Apple",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "ad75",
-      "name": "Microsoft",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "710f",
-      "name": "Asus",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "3be2",
-      "name": "MSI",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "597c",
-      "name": "Razer",
-      "categoryId": "a2s1"
-    },
-    {
-      "id": "4c42",
-      "name": "Samsung",
-      "categoryId": "a2s1"
-    },
-    {
       "id": "f54b",
       "name": "Sony",
       "categoryId": "a2s1"
@@ -145,73 +95,34 @@
       "id": "82a3",
       "name": "logitach",
       "categoryId": "1931"
-    },
-    {
-      "id": "689c",
-      "name": "Rakib",
-      "categoryId": "a2s1"
     }
   ],
   "products": [
     {
-      "id": "2608",
-      "name": "hp eliteBook",
+      "id": "66fb",
+      "name": "Rahmat ullah",
+      "processor": "i7",
+      "ram": "13gb",
+      "storage": "531ssd",
       "graphicscard": "12gb",
       "monitor": "15inc",
-      "processor": "core i5 10gen",
-      "ram": "16gb",
-      "storage": "512gb",
-      "price": 500000,
-      "stock_qty": 50,
-      "brandId": "dcc5"
+      "price": 89999,
+      "stock_qty": 90,
+      "brandId": "f54b",
+      "categoryId": "a2s1"
     },
     {
-      "id": "533b",
-      "name": "Keyboard",
-      "graphicscard": "aaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "monitor": "",
-      "processor": "",
-      "ram": "",
-      "storage": "",
-      "price": 500,
-      "stock_qty": 100,
-      "brandId": "cc0f"
-    },
-    {
-      "id": "2e23",
-      "name": "mouse",
-      "graphicscard": "",
-      "monitor": "",
-      "processor": "",
-      "ram": "",
-      "storage": "",
-      "price": 300,
-      "stock_qty": 250,
-      "brandId": "82a3"
-    },
-    {
-      "id": "8a73",
-      "name": "dell latitude 3040",
-      "processor": "core i7 13gen HX26398",
-      "ram": "12GB",
-      "storage": "512GB",
-      "graphicscard": "2GB ",
+      "id": "3988",
+      "name": "Rahmat ullah",
+      "processor": "i7",
+      "ram": "13gb",
+      "storage": "531ssd",
+      "graphicscard": "12gb",
       "monitor": "15inc",
-      "price": 1250000,
-      "stock_qty": 25,
-      "brandId": "fbac"
-    },
-    {
-      "id": "ea73",
-      "name": "dell latitude",
-      "processor": "core i7 hx25648",
-      "ram": "12gb",
-      "storage": "512gb",
-      "graphicscard": "2gb Nvidia",
-      "monitor": "14 inches",
-      "price": 198000,
-      "stock_qty": 2,
-      "brandId": "fbac"
+      "price": 34444,
+      "stock_qty": 4,
+      "brandId": "f54b",
+      "categoryId": "1931"
     }
   ],
   "supplier": [

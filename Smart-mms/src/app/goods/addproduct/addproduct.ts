@@ -4,6 +4,8 @@ import { ProductService } from "../../services/product.service";
 import { Component, OnInit } from "@angular/core";
 import { BrandService } from "../../services/brand.service";
 import { BrandModel } from "../../models/brand.model";
+import { CategoryModel } from "../../models/category.model";
+import { CategoryService } from "../../services/category.service";
 
 @Component({
   selector: 'app-addproduct',
@@ -15,13 +17,14 @@ export class AddProduct implements OnInit {
   products!: any;
   productForm: FormGroup;
   editing: boolean = false;
-
+categories: CategoryModel[] = [];
   brands: BrandModel[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private brandService: BrandService
+    private brandService: BrandService,
+    private categoryService: CategoryService
   ) {
     this.productForm = this.formBuilder.group({
       id: [null],  // In case you use it for edit
@@ -33,13 +36,15 @@ export class AddProduct implements OnInit {
       storage: [''],
       price: [0],
       stock_qty: [0],
-       brandId: [null, Validators.required]  // Store ID!
+       brandId: ['', Validators.required] ,
+        categoryId: ['', Validators.required] 
     });
   }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadBrands();
+     this.loadCategories();
   }
 
   loadProducts(): void {
@@ -56,6 +61,21 @@ export class AddProduct implements OnInit {
       }
     });
   }
+
+loadCategories(): void {
+  this.categoryService.getAllCategory().subscribe({
+    next: (res) => {
+      this.categories = res;
+    },
+    error: (err) => {
+      console.error('Error loading categories:', err);
+    }
+  });
+}
+
+
+
+
 
   onSubmit() {
   if (this.productForm.valid) {
@@ -79,7 +99,8 @@ export class AddProduct implements OnInit {
         monitor: product.monitor,
         price: product.price,
         stock_qty: product.stock_qty,
-        brandId: product.brandId 
+        brandId: product.brandId,
+          categoryId: product.categoryId 
       };
       this.productService.add(newProduct).subscribe(() => {
         alert('Product added successfully!');
@@ -111,6 +132,14 @@ export class AddProduct implements OnInit {
     return this.brands.find(b => b.id === brandId)?.name || 'N/A';
   }
 
+
+
+getCategoryName(categoryId: string): string {
+  return this.categories.find(c => c.id === categoryId)?.name || 'N/A';
+}
+
+
+
   cancelEdit(): void {
     this.editing = false;
     this.productForm.reset({
@@ -123,7 +152,8 @@ export class AddProduct implements OnInit {
       storage: '',
       price: 0,
       stock_qty: 0,
-      brandId: null
+      brandId: null,
+      categoryId: null
     });
   }
 }

@@ -11,6 +11,7 @@ export interface ProductModel {
   graphicscard: string;
   monitor: string;
    brandId: string;
+   categoryId: string;
 
 
 }
