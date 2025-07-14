@@ -95,6 +95,21 @@
       "id": "82a3",
       "name": "logitach",
       "categoryId": "1931"
+    },
+    {
+      "id": "e17e",
+      "name": "yjhj",
+      "categoryId": "a2s1"
+    },
+    {
+      "id": "a921",
+      "name": "",
+      "categoryId": ""
+    },
+    {
+      "id": "2c63",
+      "name": "",
+      "categoryId": ""
     }
   ],
   "products": [
@@ -149,6 +164,62 @@
       "stock_qty": 20,
       "brandId": "f54b",
       "categoryId": "1931"
+    },
+    {
+      "id": "1456",
+      "name": " mouse",
+      "graphicscard": "gggggg",
+      "monitor": "mmmmm",
+      "processor": "fgghhh",
+      "ram": "rrrrrrr",
+      "storage": "ssssss",
+      "price": 12000,
+      "stock_qty": 20,
+      "brandId": "cc0f",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
+    },
+    {
+      "id": "35c5",
+      "name": "weeeee",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "graphicscard": "",
+      "monitor": "",
+      "price": 0,
+      "stock_qty": 0,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
+    },
+    {
+      "id": "cc57",
+      "name": "wwwwwwwwwwwwwwwww",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "graphicscard": "",
+      "monitor": "",
+      "price": 0,
+      "stock_qty": 0,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
+    },
+    {
+      "id": "23ab",
+      "name": " mouse",
+      "processor": "fgghhh",
+      "ram": "rrrrrrr",
+      "storage": "ssssss",
+      "graphicscard": "gggggg",
+      "monitor": "mmmmm",
+      "price": 200,
+      "stock_qty": 50,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
     }
   ],
   "supplier": [
@@ -157,7 +228,7 @@
       "name": "Rakib",
       "email": "rakib@gmail.com",
       "phone": "0133996577",
-      "address": "Dhaka"
+      "address": "Dhaka,dhamnondy"
     }
   ]
 }

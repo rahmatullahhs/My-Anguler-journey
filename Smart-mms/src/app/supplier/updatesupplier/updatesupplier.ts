@@ -51,7 +51,7 @@ export class Updatesupplier  implements OnInit {
     });
   }
 
-  updateEmp():void {
+  updateSupplier():void {
     this.supplierService.updateSupplier(this.id, this.supplier).subscribe({
       next: () => {
         this.router.navigate(['/viewallsupplier'])

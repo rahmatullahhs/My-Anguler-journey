@@ -6,6 +6,8 @@ import { BrandService } from "../../services/brand.service";
 import { BrandModel } from "../../models/brand.model";
 import { CategoryModel } from "../../models/category.model";
 import { CategoryService } from "../../services/category.service";
+import { SupplierModel } from "../../models/supplier.model";
+import { SupplierService } from "../../services/supplier.service";
 
 @Component({
   selector: 'app-addproduct',
@@ -17,14 +19,16 @@ export class AddProduct implements OnInit {
   products!: any;
   productForm: FormGroup;
   editing: boolean = false;
-categories: CategoryModel[] = [];
+  categories: CategoryModel[] = [];
   brands: BrandModel[] = [];
+  supplier:SupplierModel[]=[];
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private brandService: BrandService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private supplierService: SupplierService
   ) {
     this.productForm = this.formBuilder.group({
       id: [null],  // In case you use it for edit
@@ -37,7 +41,9 @@ categories: CategoryModel[] = [];
       price: [0],
       stock_qty: [0],
        brandId: ['', Validators.required] ,
-        categoryId: ['', Validators.required] 
+        categoryId: ['', Validators.required] ,
+         supplierId: ['']
+        
     });
   }
 
@@ -45,6 +51,7 @@ categories: CategoryModel[] = [];
     this.loadProducts();
     this.loadBrands();
      this.loadCategories();
+     this.loadSupplier();
   }
 
   loadProducts(): void {
@@ -73,7 +80,16 @@ loadCategories(): void {
   });
 }
 
-
+loadSupplier(): void {
+  this.supplierService.getAllSupplier().subscribe({
+    next: (res) => {
+      this.supplier = res;
+    },
+    error: (err) => {
+      console.error('Error loading supplier:', err);
+    }
+  });
+}
 
 
 
@@ -97,10 +113,17 @@ loadCategories(): void {
         storage: product.storage,
         graphicscard: product.graphicscard,
         monitor: product.monitor,
+         invoice:  product.invoice,
+
+  discount: product.discount,
+  paid: product.paid,
+  due: product.due,
+  
         price: product.price,
         stock_qty: product.stock_qty,
         brandId: product.brandId,
-          categoryId: product.categoryId 
+          categoryId: product.categoryId,
+          supplierId: product.supplierId
       };
       this.productService.add(newProduct).subscribe(() => {
         alert('Product added successfully!');
@@ -138,7 +161,9 @@ getCategoryName(categoryId: string): string {
   return this.categories.find(c => c.id === categoryId)?.name || 'N/A';
 }
 
-
+ getSupplierName(supplierId: string): string {
+    return this.brands.find(s => s.id === supplierId)?.name || 'N/A';
+  }
 
   cancelEdit(): void {
     this.editing = false;
@@ -150,10 +175,17 @@ getCategoryName(categoryId: string): string {
       processor: '',
       ram: '',
       storage: '',
+      
+      invoice: '',
+      discount: 0,
+      paid: 0,
+      due: 0,
       price: 0,
       stock_qty: 0,
+
       brandId: null,
-      categoryId: null
+      categoryId: null,
+      supplierId:null
     });
   }
 }

@@ -33,8 +33,7 @@ export class Addbrand implements OnInit {
     this.brandService.getAllBrand().subscribe(res => (this.brands = res));
   }
 
-  loadCategories(): void {
-    
+  loadCategories(): void {   
     this.catService.getAllCategory().subscribe(res => (this.categories = res));
   }
 

@@ -1,7 +1,13 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div class="row mb-3">
-    <!-- Category -->
-    <div class="col-md-4">
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h4>{{ editing ? 'Edit Product' : 'Add Product' }}</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <!-- Category -->
+            <div class="col-md-4">
       <label for="categoryId" class="form-label">Category</label>
       <select id="categoryId" class="form-select" formControlName="categoryId">
         <option value="" disabled selected>Select Category</option>
@@ -9,14 +15,8 @@
       </select>
     </div>
 
-    <!-- Product Name -->
-    <div class="col-md-4">
-      <label for="name" class="form-label">Product Name</label>
-      <input id="name" type="text" class="form-control" formControlName="name" required>
-    </div>
-
-    <!-- Brand -->
-    <div class="col-md-4">
+          <!-- Brand -->
+           <div class="col-md-4">
       <label for="brandId" class="form-label">Brand</label>
       <select id="brandId" class="form-select" formControlName="brandId">
         <option value="" disabled selected>Select Brand</option>
@@ -24,88 +24,148 @@
       </select>
     </div>
   </div>
+          <!-- Product Name -->
+          <div class="col-md-4">
+            <label for="name" class="form-label">Product Name</label>
+            <input id="name" type="text" class="form-control" formControlName="name" required>
+          </div>         
+             
 
-  <div class="row mb-3">
-    <div class="col-md-4">
-      <label for="processor" class="form-label">Processor</label>
-      <input id="processor" type="text" class="form-control" formControlName="processor">
-    </div>
-    <div class="col-md-4">
-      <label for="ram" class="form-label">RAM</label>
-      <input id="ram" type="text" class="form-control" formControlName="ram">
-    </div>
-    <div class="col-md-4">
-      <label for="storage" class="form-label">Storage</label>
-      <input id="storage" type="text" class="form-control" formControlName="storage">
+            <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="processor" class="form-label">Processor</label>
+            <input id="processor" type="text" class="form-control" formControlName="processor">
+          </div>
+          <div class="col-md-4">
+            <label for="ram" class="form-label">RAM</label>
+            <input id="ram" type="text" class="form-control" formControlName="ram">
+          </div>
+          <div class="col-md-4">
+            <label for="storage" class="form-label">Storage</label>
+            <input id="storage" type="text" class="form-control" formControlName="storage">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label for="graphicscard" class="form-label">Graphics Card</label>
+            <input id="graphicscard" type="text" class="form-control" formControlName="graphicscard">
+          </div>
+        <div class="col-md-3">
+            <label for="monitor" class="form-label">Monitor</label>
+            <input id="monitor" type="text" class="form-control" formControlName="monitor">
+          </div>
+
+        </div>
+<!-- billing section -->
+            <div class="row mb-2">
+              <div class="col-md-6">
+            <label for="invoice" class="form-label">Invoice No</label>
+            <input id="invoice" type="text" class="form-control" formControlName="invoice">
+          </div>
+          <!-- Supplier -->
+          <div class="col-md-6">
+            <label for="supplierId" class="form-label">Supplier</label>
+            <select id="supplierId" class="form-select" formControlName="supplierId">
+              
+              <option *ngFor="let s of supplier" [value]="s.id">{{ s.name }}</option>
+              <option ></option>
+            </select>
+          </div>
+          </div>
+           <div class="row mb-4">
+          <div class="col-md-2">
+            <label for="price" class="form-label">unit Price</label>
+            <input id="price" type="number" class="form-control" formControlName="price">
+          </div>
+           <div class="col-md-2">
+            <label for="stock_qty" class="form-label"> Quantity</label>
+            <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
+          </div>
+          <div class="col-md-2">
+            <label for="discount" class="form-label">total Price</label>
+            <input id="discount" type="number" class="form-control" formControlName="discount">
+          </div>
+           <div class="col-md-2">
+            <label for="discount" class="form-label">Discount</label>
+            <input id="discount" type="number" class="form-control" formControlName="discount">
+          </div>
+          </div>
+<div class="row mb-3">
+       <div class="col-md-4">
+            <label for="discount" class="form-label">Final Price</label>
+            <input id="discount" type="number" class="form-control" formControlName="discount">
+          </div>
+          <div class="col-md-4">
+            <label for="paid" class="form-label">Paid</label>
+            <input id="paid" type="number" class="form-control" formControlName="paid">
+          </div>
+
+          <div class="col-md-4">
+            <label for="due" class="form-label">Due</label>
+            <input id="due" type="number" class="form-control" formControlName="due">
+          </div>
+   </div>
+  
+
+        <button type="submit" class="btn btn-primary me-2">{{ editing ? 'Update' : 'Add' }}</button>
+        <button *ngIf="editing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </form>
     </div>
   </div>
 
-  <div class="row mb-3">
-    <div class="col-md-4">
-      <label for="graphicscard" class="form-label">Graphics Card</label>
-      <input id="graphicscard" type="text" class="form-control" formControlName="graphicscard">
-    </div>
-    <div class="col-md-4">
-      <label for="monitor" class="form-label">Monitor</label>
-      <input id="monitor" type="text" class="form-control" formControlName="monitor">
-    </div>
-    <div class="col-md-2">
-      <label for="price" class="form-label">Price</label>
-      <input id="price" type="number" class="form-control" formControlName="price">
-    </div>
-    <div class="col-md-2">
-      <label for="stock_qty" class="form-label">Stock Qty</label>
-      <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
-    </div>
+  <!-- Navigation Links -->
+  <div class="mb-3 mt-3">
+    <a routerLink="/addcategory" class="btn btn-outline-info me-2">Go to Categories</a>
+    <a routerLink="/addbrand" class="btn btn-outline-secondary me-2">Go to Brands</a>
+    <a routerLink="/addsupplier" class="btn btn-outline-dark">Go to Suppliers</a>
   </div>
 
-  <button type="submit" class="btn btn-primary me-2">{{ editing ? 'Update' : 'Add' }}</button>
-  <button *ngIf="editing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
-</form>
-
-<div class="mb-3">
-  <a routerLink="/addcategory" class="btn btn-outline-info me-2">Go to Categories</a>
-  <a routerLink="/addbrand" class="btn btn-outline-secondary">Go to Brands</a>
-</div>
-
-
-
-
-<!-- ................... -->
- <h3 class="mt-4">Product List</h3>
+  <!-- Product List Table -->
+  <h3 class="mt-4">Product List</h3>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Catagory</th>
+        <th>Category</th>
         <th>Name</th>
         <th>Brand</th>
+        <th>Supplier</th>
         <th>Processor</th>
         <th>RAM</th>
         <th>Storage</th>
-        <th>Graphics Card</th>
+        <th>Graphics</th>
         <th>Monitor</th>
+        <th>Invoice</th>
         <th>Price</th>
+        <th>Discount</th>
+        <th>Paid</th>
+        <th>Due</th>
         <th>Stock Qty</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of products | async ">
+      <tr *ngFor="let p of products | async">
         <td>{{ getCategoryName(p.categoryId) }}</td>
         <td>{{ p.name }}</td>
         <td>{{ getBrandName(p.brandId) }}</td>
+        <td>{{ getSupplierName(p.supplierId) }}</td>
         <td>{{ p.processor }}</td>
         <td>{{ p.ram }}</td>
         <td>{{ p.storage }}</td>
         <td>{{ p.graphicscard }}</td>
         <td>{{ p.monitor }}</td>
+        <td>{{ p.invoice }}</td>
         <td>{{ p.price }}</td>
+        <td>{{ p.discount }}</td>
+        <td>{{ p.paid }}</td>
+        <td>{{ p.due }}</td>
         <td>{{ p.stock_qty }}</td>
         <td>
           <button class="btn btn-sm btn-primary me-1" (click)="editProduct(p)">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Delete</button>
         </td>
       </tr>
-    </tbody>
+    </tbody>  
   </table>
-
+</div>

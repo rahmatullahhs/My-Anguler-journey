@@ -12,10 +12,11 @@ export class SupplierService {
   
 
 // To Get All Supplier
-  getAllSupplier(): Observable<any> {
-    return this.http.get(this.baseUrl);
+  getAllSupplier(): Observable<SupplierModel[]> {
+    return this.http.get<SupplierModel[]>(this.baseUrl);
   }
 
+  
   // To Add New Employee
   saveSupplier(supplier: SupplierModel): Observable<any> {
     return this.http.post(this.baseUrl,supplier);
