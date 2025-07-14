@@ -10,7 +10,7 @@ export interface PurchaseModel {
   stock_qty: number;
   graphicscard: string;
   monitor: string;
-    brandId: string;
+  brandId: string;
 
 
 

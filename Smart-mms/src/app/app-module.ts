@@ -29,8 +29,8 @@ import { Showpurchase } from './purchase/showpurchase/showpurchase';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addbrand } from './brand/addbrand/addbrand';
-import { Viewcategory } from './category/viewcategory/viewcategory';
-import { Viewbrand } from './brand/viewbrand/viewbrand';
+
+
 import { Addorder } from './order/addorder/addorder';
 import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnproduct';
 import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
@@ -74,11 +74,11 @@ import { Showreport } from './report/showreport/showreport';
       Showpurchase,
       Addpurchase,
 
-      Viewcategory,
+
       Addcategory,
 
       Addbrand,
-      Viewbrand,
+
 
       Addorder,
 
