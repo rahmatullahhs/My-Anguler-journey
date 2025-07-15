@@ -37,6 +37,8 @@ import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairprod
 import { Addaccount } from './account/addaccount/addaccount';
 import { Addchart } from './account/addchart/addchart';
 import { Showreport } from './report/showreport/showreport';
+import { ViewAllstock } from './goods/view-allstock/view-allstock';
+import { Ledgerbook } from './account/ledgerbook/ledgerbook';
 
 
 
@@ -89,7 +91,9 @@ import { Showreport } from './report/showreport/showreport';
 
       Addchart,
 
-      Showreport
+      Showreport,
+        ViewAllstock,
+        Ledgerbook
 
 
 

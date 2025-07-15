@@ -1,153 +1,159 @@
 <div class="container mt-4">
-  <div class="card">
-    <div class="card-header">
-      <h4>{{ editing ? 'Edit Product' : 'Add Product' }}</h4>
+  <div class="card shadow border-primary">
+    <div class="card-header bg-primary text-white">
+      <h4><i class="fas fa-box-open me-2"></i>{{ editing ? 'Edit Product' : 'Add Product' }}</h4>
     </div>
-    <div class="card-body">
+    <div class="card-body bg-light">
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <!-- CATEGORY & BRAND -->
         <div class="row mb-3">
-          <!-- Category -->
           <div class="col-md-4">
-            <label for="categoryId" class="form-label">Category</label>
+            <label for="categoryId" class="form-label"><i class="fas fa-list me-1 text-primary"></i>Category</label>
             <select id="categoryId" class="form-select" formControlName="categoryId">
               <option value="" disabled selected>Select Category</option>
               <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
             </select>
           </div>
-
-          <!-- Brand -->
           <div class="col-md-4">
-            <label for="brandId" class="form-label">Brand</label>
+            <label for="brandId" class="form-label"><i class="fas fa-tags me-1 text-success"></i>Brand</label>
             <select id="brandId" class="form-select" formControlName="brandId">
               <option value="" disabled selected>Select Brand</option>
               <option *ngFor="let b of brands" [value]="b.id">{{ b.name }}</option>
             </select>
           </div>
         </div>
-        <!-- Product Name -->
-        <div class="col-md-4">
-          <label for="name" class="form-label">Product Name</label>
+
+        <!-- PRODUCT NAME -->
+        <div class="col-md-4 mb-3">
+          <label for="name" class="form-label"><i class="fas fa-box me-1 text-info"></i>Product Name</label>
           <input id="name" type="text" class="form-control" formControlName="name" required>
         </div>
 
-
+        <!-- TECH SPECS -->
         <div class="row mb-3">
           <div class="col-md-4">
-            <label for="processor" class="form-label">Processor</label>
+            <label for="processor" class="form-label"><i class="fas fa-microchip me-1 text-danger"></i>Processor</label>
             <input id="processor" type="text" class="form-control" formControlName="processor">
           </div>
           <div class="col-md-4">
-            <label for="ram" class="form-label">RAM</label>
+            <label for="ram" class="form-label"><i class="fas fa-memory me-1 text-warning"></i>RAM</label>
             <input id="ram" type="text" class="form-control" formControlName="ram">
           </div>
           <div class="col-md-4">
-            <label for="storage" class="form-label">Storage</label>
+            <label for="storage" class="form-label"><i class="fas fa-hdd me-1 text-secondary"></i>Storage</label>
             <input id="storage" type="text" class="form-control" formControlName="storage">
           </div>
         </div>
 
+        <!-- GRAPHICS & MONITOR -->
         <div class="row mb-3">
           <div class="col-md-3">
-            <label for="graphicscard" class="form-label">Graphics Card</label>
+            <label for="graphicscard" class="form-label"><i class="fas fa-desktop me-1 text-primary"></i>Graphics Card</label>
             <input id="graphicscard" type="text" class="form-control" formControlName="graphicscard">
           </div>
           <div class="col-md-3">
-            <label for="monitor" class="form-label">Monitor</label>
+            <label for="monitor" class="form-label"><i class="fas fa-tv me-1 text-success"></i>Monitor</label>
             <input id="monitor" type="text" class="form-control" formControlName="monitor">
           </div>
-
         </div>
-        <!-- billing section -->
-        <div class="row mb-2">
+
+        <!-- INVOICE & SUPPLIER -->
+        <div class="row mb-3">
           <div class="col-md-6">
-            <label for="invoice" class="form-label">Invoice No</label>
+            <label for="invoice" class="form-label"><i class="fas fa-file-invoice me-1 text-danger"></i>Invoice No</label>
             <input id="invoice" type="text" class="form-control" formControlName="invoice">
           </div>
-          <!-- Supplier -->
           <div class="col-md-6">
-            <label for="supplierId" class="form-label">Supplier</label>
+            <label for="supplierId" class="form-label"><i class="fas fa-truck me-1 text-info"></i>Supplier</label>
             <select id="supplierId" class="form-select" formControlName="supplierId">
-
               <option *ngFor="let s of supplier" [value]="s.id">{{ s.name }}</option>
-              <option></option>
             </select>
           </div>
         </div>
-        <div class="row mb-4">
+
+        <!-- PRICING -->
+        <div class="row mb-3">
           <div class="col-md-2">
-            <label for="price" class="form-label">unit Price</label>
+            <label for="price" class="form-label"><i class="fas fa-dollar-sign me-1 text-success"></i>Unit Price</label>
             <input id="price" type="number" class="form-control" formControlName="price">
           </div>
           <div class="col-md-2">
-            <label for="stock_qty" class="form-label"> Quantity</label>
+            <label for="stock_qty" class="form-label"><i class="fas fa-cubes me-1 text-primary"></i>Quantity</label>
             <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
           </div>
           <div class="col-md-2">
-            <label for="discount" class="form-label">total Price</label>
+            <label for="total" class="form-label"><i class="fas fa-calculator me-1 text-warning"></i>Total Price</label>
+            <input id="total" type="number" class="form-control" formControlName="total">
+          </div>
+          <div class="col-md-2">
+            <label for="discount" class="form-label"><i class="fas fa-percentage me-1 text-danger"></i>Discount</label>
             <input id="discount" type="number" class="form-control" formControlName="discount">
           </div>
           <div class="col-md-2">
-            <label for="discount" class="form-label">Discount</label>
-            <input id="discount" type="number" class="form-control" formControlName="discount">
+            <label for="final" class="form-label"><i class="fas fa-money-bill-wave me-1 text-success"></i>Final Price</label>
+            <input id="final" type="number" class="form-control" formControlName="final">
           </div>
         </div>
-        <div class="row mb-3">
+
+        <!-- PAID & DUE -->
+        <div class="row mb-4">
           <div class="col-md-4">
-            <label for="discount" class="form-label">Final Price</label>
-            <input id="discount" type="number" class="form-control" formControlName="discount">
-          </div>
-          <div class="col-md-4">
-            <label for="paid" class="form-label">Paid</label>
+            <label for="paid" class="form-label"><i class="fas fa-hand-holding-usd me-1 text-success"></i>Paid</label>
             <input id="paid" type="number" class="form-control" formControlName="paid">
           </div>
-
           <div class="col-md-4">
-            <label for="due" class="form-label">Due</label>
+            <label for="due" class="form-label"><i class="fas fa-wallet me-1 text-danger"></i>Due</label>
             <input id="due" type="number" class="form-control" formControlName="due">
           </div>
         </div>
 
-
-        <button type="submit" class="btn btn-primary me-2">{{ editing ? 'Update' : 'Add' }}</button>
-        <button *ngIf="editing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+        <!-- SUBMIT BUTTONS -->
+        <button type="submit" class="btn btn-success me-2">
+          <i class="fas fa-check-circle me-1"></i>{{ editing ? 'Update' : 'Add' }}
+        </button>
+        <button *ngIf="editing" type="button" class="btn btn-secondary" (click)="cancelEdit()">
+          <i class="fas fa-times-circle me-1"></i>Cancel
+        </button>
       </form>
     </div>
   </div>
 
-  <!-- Navigation Links -->
-  <div class="mb-3 mt-3">
-    <a routerLink="/addcategory" class="btn btn-outline-info me-2">Go to Categories</a>
-    <a routerLink="/addbrand" class="btn btn-outline-secondary me-2">Go to Brands</a>
-    <a routerLink="/addsupplier" class="btn btn-outline-dark">Go to Suppliers</a>
+  <!-- NAVIGATION -->
+  <div class="mt-4 mb-3">
+    <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
+    <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
+    <a routerLink="/addsupplier" class="btn btn-outline-dark"><i class="fas fa-truck"></i> Suppliers</a>
   </div>
+</div>
 
-  <!-- Product List Table -->
-  <h3 class="mt-4">Product List</h3>
-  <table class="table table-striped table-bordered">
-    <thead>
+<!-- Product List Table -->
+<h3 class="mt-5 mb-3 text-primary"><i class="fas fa-table me-2"></i>Product List</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover align-middle shadow-sm">
+    <thead class="table-primary text-center">
       <tr>
-        <th>Category</th>
-        <th>Name</th>
-        <th>Brand</th>
-        <th>Supplier</th>
-        <th>Processor</th>
-        <th>RAM</th>
-        <th>Storage</th>
-        <th>Graphics</th>
-        <th>Monitor</th>
-        <th>Invoice</th>
-        <th>Price</th>
-        <th>Discount</th>
-        <th>Paid</th>
-        <th>Due</th>
-        <th>Stock Qty</th>
-        <th>Actions</th>
+        <th><i class="fas fa-list"></i> Category</th>
+        <th><i class="fas fa-box"></i> Name</th>
+        <th><i class="fas fa-tags"></i> Brand</th>
+        <th><i class="fas fa-truck"></i> Supplier</th>
+        <th><i class="fas fa-microchip"></i> Processor</th>
+        <th><i class="fas fa-memory"></i> RAM</th>
+        <th><i class="fas fa-hdd"></i> Storage</th>
+        <th><i class="fas fa-desktop"></i> Graphics</th>
+        <th><i class="fas fa-tv"></i> Monitor</th>
+        <th><i class="fas fa-file-invoice"></i> Invoice</th>
+        <th><i class="fas fa-dollar-sign"></i> Price</th>
+        <th><i class="fas fa-percent"></i> Discount</th>
+        <th><i class="fas fa-hand-holding-usd"></i> Paid</th>
+        <th><i class="fas fa-wallet"></i> Due</th>
+        <th><i class="fas fa-cubes"></i> Stock</th>
+        <th><i class="fas fa-tools"></i> Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of products | async">
+      <tr *ngFor="let p of products | async" class="text-center">
         <td>{{ getCategoryName(p.categoryId) }}</td>
-        <td>{{ p.name }}</td>
+        <td class="fw-semibold text-dark">{{ p.name }}</td>
         <td>{{ getBrandName(p.brandId) }}</td>
         <td>{{ getSupplierName(p.supplierId) }}</td>
         <td>{{ p.processor }}</td>
@@ -156,14 +162,26 @@
         <td>{{ p.graphicscard }}</td>
         <td>{{ p.monitor }}</td>
         <td>{{ p.invoice }}</td>
-        <td>{{ p.price }}</td>
-        <td>{{ p.discount }}</td>
-        <td>{{ p.paid }}</td>
-        <td>{{ p.due }}</td>
-        <td>{{ p.stock_qty }}</td>
+        <td class="text-success fw-bold">{{ p.price | currency }}</td>
+        <td class="text-danger">{{ p.discount }}%</td>
+        <td class="text-primary">{{ p.paid | currency }}</td>
+        <td class="text-danger">{{ p.due | currency }}</td>
         <td>
-          <button class="btn btn-sm btn-primary me-1" (click)="editProduct(p)">Edit</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Delete</button>
+          <span [ngClass]="{
+            'badge bg-success': p.stock_qty > 10,
+            'badge bg-warning text-dark': p.stock_qty > 0 && p.stock_qty <= 10,
+            'badge bg-danger': p.stock_qty === 0
+          }">
+            {{ p.stock_qty }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-primary me-1" (click)="editProduct(p)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </td>
       </tr>
     </tbody>

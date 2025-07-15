@@ -6,19 +6,21 @@ export interface ProductModel {
   processor: string;
   ram: string;
   storage: string;
-
-  invoice:  string;
-  discount:number;
-  paid:number;
-  due:number;
-  price: number;
-  stock_qty: number;
-
   graphicscard: string;
   monitor: string;
 
+
+  discount:number;
+  paid:number;
+  due:number;
+  invoice:  string;
+  supplierId: string;
+
+  price: number;
+  stock_qty: number;
+
    brandId: string;
    categoryId: string;
-   supplierId: string;
+   
 
 }

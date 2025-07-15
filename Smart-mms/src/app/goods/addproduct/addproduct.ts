@@ -21,7 +21,7 @@ export class AddProduct implements OnInit {
   editing: boolean = false;
   categories: CategoryModel[] = [];
   brands: BrandModel[] = [];
-  supplier:SupplierModel[]=[];
+  supplier:SupplierModel[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +38,12 @@ export class AddProduct implements OnInit {
       processor: [''],
       ram: [''],
       storage: [''],
+
+       invoice: [''],
+      discount: [0],
+      paid: [0],
+      due: [0],
+
       price: [0],
       stock_qty: [0],
        brandId: ['', Validators.required] ,
@@ -113,11 +119,11 @@ loadSupplier(): void {
         storage: product.storage,
         graphicscard: product.graphicscard,
         monitor: product.monitor,
-         invoice:  product.invoice,
 
-  discount: product.discount,
-  paid: product.paid,
-  due: product.due,
+         invoice:  product.invoice,
+         discount: product.discount,
+         paid: product.paid,
+          due: product.due,
   
         price: product.price,
         stock_qty: product.stock_qty,
@@ -162,7 +168,7 @@ getCategoryName(categoryId: string): string {
 }
 
  getSupplierName(supplierId: string): string {
-    return this.brands.find(s => s.id === supplierId)?.name || 'N/A';
+    return this.supplier.find(s => s.id === supplierId)?.name || 'N/A';
   }
 
   cancelEdit(): void {
