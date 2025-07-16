@@ -59,53 +59,58 @@
 
         <!-- INVOICE & SUPPLIER -->
         <div class="row mb-3">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label for="invoice" class="form-label"><i class="fas fa-file-invoice me-1 text-danger"></i>Invoice No</label>
             <input id="invoice" type="text" class="form-control" formControlName="invoice">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label for="supplierId" class="form-label"><i class="fas fa-truck me-1 text-info"></i>Supplier</label>
             <select id="supplierId" class="form-select" formControlName="supplierId">
               <option *ngFor="let s of supplier" [value]="s.id">{{ s.name }}</option>
             </select>
           </div>
+           <div class="col-md-4">
+                  <label for="date" class="form-label"><i class="fas fa-file-date me-1 text-primary"></i>Purchase Date</label>
+            <input type="date" class="form-control" id="date" required>
+          </div>
         </div>
 
         <!-- PRICING -->
-        <div class="row mb-3">
-          <div class="col-md-2">
+        <div class="row mb-4">
+          <div class="col-md-3">
             <label for="price" class="form-label"><i class="fas fa-dollar-sign me-1 text-success"></i>Unit Price</label>
-            <input id="price" type="number" class="form-control" formControlName="price">
+          <input type="number" formControlName="price">
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <label for="stock_qty" class="form-label"><i class="fas fa-cubes me-1 text-primary"></i>Quantity</label>
             <input id="stock_qty" type="number" class="form-control" formControlName="stock_qty">
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <label for="total" class="form-label"><i class="fas fa-calculator me-1 text-warning"></i>Total Price</label>
-            <input id="total" type="number" class="form-control" formControlName="total">
+  <input type="number" [value]="totalprice" readonly>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <label for="discount" class="form-label"><i class="fas fa-percentage me-1 text-danger"></i>Discount</label>
-            <input id="discount" type="number" class="form-control" formControlName="discount">
+<input type="number" formControlName="discount">
           </div>
           <div class="col-md-2">
             <label for="final" class="form-label"><i class="fas fa-money-bill-wave me-1 text-success"></i>Final Price</label>
-            <input id="final" type="number" class="form-control" formControlName="final">
+  <input type="number" [value]="finalprice" readonly>
           </div>
         </div>
 
         <!-- PAID & DUE -->
         <div class="row mb-4">
           <div class="col-md-4">
-            <label for="paid" class="form-label"><i class="fas fa-hand-holding-usd me-1 text-success"></i>Paid</label>
-            <input id="paid" type="number" class="form-control" formControlName="paid">
+            <label for="paid" class="form-label"><i class="fas fa-hand-holding-usd me-1 text-success"></i>  Paid  </label>  
+     <input type="number" formControlName="paid">
           </div>
           <div class="col-md-4">
-            <label for="due" class="form-label"><i class="fas fa-wallet me-1 text-danger"></i>Due</label>
-            <input id="due" type="number" class="form-control" formControlName="due">
-          </div>
+            <label for="due" class="form-label"><i class="fas fa-wallet me-1 text-danger"></i>  Due  </label>  
+        <input type="number" [value]="due" readonly>
+          </div> 
         </div>
+
 
         <!-- SUBMIT BUTTONS -->
         <button type="submit" class="btn btn-success me-2">
@@ -123,6 +128,7 @@
     <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
     <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
     <a routerLink="/addsupplier" class="btn btn-outline-dark"><i class="fas fa-truck"></i> Suppliers</a>
+     <a routerLink="/viewallstock" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> stock</a>
   </div>
 </div>
 
@@ -181,6 +187,9 @@
           </button>
           <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
             <i class="fas fa-trash-alt"></i>
+          </button>
+           <button class="btn btn-sm btn-primary me-1" >
+            <i class="fas fa-edit" >allproduct</i>
           </button>
         </td>
       </tr>

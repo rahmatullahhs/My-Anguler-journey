@@ -26,6 +26,7 @@ import { Addchart } from './account/addchart/addchart';
 import { Showreport } from './report/showreport/showreport';
 import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
+import { ViewAllstock } from './goods/view-allstock/view-allstock';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
 {path:'updateEmp/:id',component:Updateemp},
 
  {path: 'addproduct',component:AddProduct},
+ {path:'viewallstock',component:ViewAllstock},
  
  {path:'addcategory',component:Addcategory},
  {path: 'addbrand',component:Addbrand},

@@ -39,7 +39,10 @@ import { Addchart } from './account/addchart/addchart';
 import { Showreport } from './report/showreport/showreport';
 import { ViewAllstock } from './goods/view-allstock/view-allstock';
 import { Ledgerbook } from './account/ledgerbook/ledgerbook';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -103,7 +106,10 @@ import { Ledgerbook } from './account/ledgerbook/ledgerbook';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    
+      MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule
     
 
 

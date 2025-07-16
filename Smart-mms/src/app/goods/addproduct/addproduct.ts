@@ -53,12 +53,17 @@ export class AddProduct implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.loadProducts();
-    this.loadBrands();
-     this.loadCategories();
-     this.loadSupplier();
-  }
+ ngOnInit(): void {
+  this.loadProducts();
+  this.loadBrands();
+  this.loadCategories();
+  this.loadSupplier();
+  
+  // Auto calculate on any relevant input change
+  this.productForm.valueChanges.subscribe(() => {
+    this.PriceCalculation();
+  });
+}
 
   loadProducts(): void {
     this.products = this.productService.getAll();
@@ -194,5 +199,47 @@ getCategoryName(categoryId: string): string {
       supplierId:null
     });
   }
+price!:number;
+ stock_qty!: number;
+  totalprice!: number;
+   discount!: number;
+    finalprice!: number;
+     paid!: number;
+      due!: number;
+PriceCalculation() {
+  const price = Number(this.productForm.value.price) || 0;
+  const stock_qty = Number(this.productForm.value.stock_qty) || 0;
+  const discount = Number(this.productForm.value.discount) || 0;
+  const paid = Number(this.productForm.value.paid) || 0;
+
+  this.totalprice = price * stock_qty;
+  this.finalprice = this.totalprice - (this.totalprice * (discount / 100));
+  this.due = this.finalprice - paid;
+
+  // Optional: Update the form with calculated values if needed
+  this.productForm.patchValue({
+    due: this.due
+  }, { emitEvent: false }); // prevent infinite loop
 }
+
+onFocusLost(){
+    this.PriceCalculation();
+  }
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
 

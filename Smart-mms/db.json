@@ -180,6 +180,42 @@
       "brandId": "f54b",
       "categoryId": "a2s1",
       "supplierId": "4c4d"
+    },
+    {
+      "id": "8ea8",
+      "name": "Rahmat ullah",
+      "processor": "i7",
+      "ram": "13gb",
+      "storage": "531ssd",
+      "graphicscard": "12gb",
+      "monitor": "15inc",
+      "invoice": "13313131",
+      "discount": 20,
+      "paid": 22222222,
+      "due": 222,
+      "price": 560000,
+      "stock_qty": 20,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "4c4d"
+    },
+    {
+      "id": "32dd",
+      "name": "mouse",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "graphicscard": "",
+      "monitor": "",
+      "invoice": "q1200",
+      "discount": 10,
+      "paid": 500,
+      "due": 580,
+      "price": 300,
+      "stock_qty": 4,
+      "brandId": "82a3",
+      "categoryId": "1931",
+      "supplierId": "4c4d"
     }
   ],
   "supplier": [
