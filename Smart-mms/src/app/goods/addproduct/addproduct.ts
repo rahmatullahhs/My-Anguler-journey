@@ -8,6 +8,7 @@ import { CategoryModel } from "../../models/category.model";
 import { CategoryService } from "../../services/category.service";
 import { SupplierModel } from "../../models/supplier.model";
 import { SupplierService } from "../../services/supplier.service";
+import { LedgerbookModel } from "../../models/ledgerbook.model";
 
 @Component({
   selector: 'app-addproduct',
@@ -116,7 +117,7 @@ loadSupplier(): void {
         this.cancelEdit();
       });
     } else {
-      // CREATE
+      // CREATE product
       const newProduct: ProductModel = {
         name: product.name,
         processor: product.processor,
@@ -140,7 +141,54 @@ loadSupplier(): void {
         alert('Product added successfully!');
         this.loadProducts();
         this.productForm.reset();
+
+// ✅ ADD LEDGER ENTRY
+        const ledgerEntry: LedgerbookModel = {
+          productId: createdProduct.id,  // use ID returned from backend
+       
+        
+
+
+    date:new Date(),
+
+  paid:product.paid,
+  due: product.due,
+
+  debit:0,
+
+  credit: 0
+ 
+       
+         
+        };
+
+
+        this.ledgerService.add(ledgerEntry).subscribe(() => {
+          console.log('Ledger entry created.');
+        });
+
+
+
       });
+
+
+      // Determine accounting behavior
+if (product.paid && product.paid > 0 && product.due === 0) {
+  // Fully paid purchase
+  ledgerEntry.debit = product.paid;      // Expense (purchase)
+  ledgerEntry.credit = product.paid;     // Cash reduced
+  ledgerEntry.account = 'Cash Purchase';
+} else if (product.due && product.due > 0 && product.paid === 0) {
+  // Fully due (credit purchase)
+  ledgerEntry.debit = product.due;       // Purchase account
+  ledgerEntry.credit = 0;
+  ledgerEntry.account = 'Accounts Payable';
+} else if (product.paid > 0 && product.due > 0) {
+  // Partially paid
+  ledgerEntry.debit = product.paid + product.due; // Total purchase cost
+  ledgerEntry.credit = product.paid;              // Paid cash portion
+  ledgerEntry.account = 'Partially Paid';
+}
     }
   } else {
     alert('Please fill in required fields.');
