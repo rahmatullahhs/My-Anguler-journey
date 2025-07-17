@@ -2,17 +2,20 @@ export class LedgerbookModel {
 
 
 
+  id?: string;            // Optional for new entries
+  productId!: string;      // Related product ID
+  date!: Date;             // Date of the transaction
 
-    id!:string;
-    date!:string;
+  paid!: number;           // Amount paid
+  due!: number;            // Remaining due
 
-  paid!: number;
-  due!: number;
+  debit!: number;          // Debit amount (e.g. expense)
+  credit!: number;         // Credit amount (e.g. cash out)
 
-  debit!: number;
-  credit!: number;
+  account?: string;       // e.g., "Cash Purchase", "Accounts Payable", etc.
+}
+
   
 
 
 
-}

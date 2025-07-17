@@ -216,6 +216,60 @@
       "brandId": "82a3",
       "categoryId": "1931",
       "supplierId": "4c4d"
+    },
+    {
+      "id": null,
+      "name": "rgfghfh",
+      "graphicscard": "tryhrty",
+      "monitor": "fghbh",
+      "processor": "hgfhf",
+      "ram": "fhgfgh",
+      "storage": "hgfhfhrfh",
+      "invoice": "hghhhhh",
+      "discount": 10,
+      "paid": 4000,
+      "due": 5000,
+      "price": 500,
+      "stock_qty": 20,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
+    },
+    {
+      "id": null,
+      "name": "rgfghfh",
+      "graphicscard": "tryhrty",
+      "monitor": "fghbh",
+      "processor": "hgfhf",
+      "ram": "fhgfgh",
+      "storage": "hgfhfhrfh",
+      "invoice": "hghhhhh",
+      "discount": 0,
+      "paid": 500,
+      "due": 500,
+      "price": 500,
+      "stock_qty": 2,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "4c4d"
+    },
+    {
+      "id": null,
+      "name": "csdcccccccc",
+      "graphicscard": "ccccc",
+      "monitor": "ccccccc",
+      "processor": "ccccccccc",
+      "ram": "cccccccccccccc",
+      "storage": "ccccccccccc",
+      "invoice": "cccccccc",
+      "discount": 10,
+      "paid": 50000,
+      "due": 400000,
+      "price": 50000,
+      "stock_qty": 10,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "1f1a"
     }
   ],
   "supplier": [
@@ -232,6 +286,28 @@
       "email": "rakib@gmail.com",
       "phone": "0133996577",
       "address": "hhhhhh"
+    }
+  ],
+  "ledgerbook": [
+    {
+      "id": "df01",
+      "productId": null,
+      "date": "2025-07-17T11:57:49.964Z",
+      "paid": 500,
+      "due": 0,
+      "debit": 500,
+      "credit": 500,
+      "account": "Cash Purchase"
+    },
+    {
+      "id": "d3e3",
+      "productId": null,
+      "date": "2025-07-17T12:14:12.808Z",
+      "paid": 50000,
+      "due": 0,
+      "debit": 50000,
+      "credit": 50000,
+      "account": "Cash Purchase"
     }
   ]
 }

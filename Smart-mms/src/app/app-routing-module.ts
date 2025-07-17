@@ -27,6 +27,7 @@ import { Showreport } from './report/showreport/showreport';
 import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 import { ViewAllstock } from './goods/view-allstock/view-allstock';
+import { Ledgerbook } from './account/ledgerbook/ledgerbook';
 
 
 const routes: Routes = [
@@ -45,6 +46,7 @@ const routes: Routes = [
 
  {path: 'addproduct',component:AddProduct},
  {path:'viewallstock',component:ViewAllstock},
+ {path:'ledgerbook',component:Ledgerbook},
  
  {path:'addcategory',component:Addcategory},
  {path: 'addbrand',component:Addbrand},
