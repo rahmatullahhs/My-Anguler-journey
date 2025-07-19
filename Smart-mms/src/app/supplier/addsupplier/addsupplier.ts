@@ -53,6 +53,20 @@ export class Addsupplier implements OnInit {
     });
   }
 
+// In your component.ts
+countries = [
+  { code: 'IN', name: 'India' },
+  { code: 'US', name: 'United States' },
+  { code: 'CA', name: 'Canada' },
+  { code: 'DE', name: 'Germany' },
+  { code: 'AU', name: 'Australia' },
+  // Add more as needed
+];
+
+getFlagEmoji(code: string): string {
+  return code.toUpperCase().replace(/./g, c => 
+    String.fromCodePoint(c.charCodeAt(0) + 127397));
+}
 
 
 

@@ -1,12 +1,16 @@
-.profile-img {
-  height: 250px;
-  object-fit: cover;
+.hover-shadow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card {
-  border-radius: 12px;
+.hover-shadow:hover {
+  transform: scale(1.015);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glow-button {
+  box-shadow: 0 0 10px rgba(0, 255, 180, 0.6), 0 0 20px rgba(0, 255, 180, 0.3);
   transition: all 0.3s ease;
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.glow-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.8), 0 0 40px rgba(0, 255, 180, 0.4);
 }
