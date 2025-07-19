@@ -13,8 +13,12 @@ id!: number;
     designation!: string;
     salary!: number;
     address!:string;
+     photoUrl?: string;
+
+     
+};
 
 
 
-}
+
 

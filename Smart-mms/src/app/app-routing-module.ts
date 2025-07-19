@@ -30,6 +30,7 @@ import { ViewAllstock } from './goods/view-allstock/view-allstock';
 import { Ledgerbook } from './account/ledgerbook/ledgerbook';
 
 
+
 const routes: Routes = [
 
 {path: '', component: Home},
@@ -43,6 +44,7 @@ const routes: Routes = [
 {path:'viewallemp',component:Viewallemp},
 {path:'addemp',component:Addemp},
 {path:'updateEmp/:id',component:Updateemp},
+
 
  {path: 'addproduct',component:AddProduct},
  {path:'viewallstock',component:ViewAllstock},

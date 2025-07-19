@@ -9,6 +9,7 @@ import { LedgerbookModel } from "../../models/ledgerbook.model";
 import { BrandModel } from "../../models/brand.model";
 import { CategoryModel } from "../../models/category.model";
 import { SupplierModel } from "../../models/supplier.model";
+import { Router } from '@angular/router';
 
 import { LedgerbookService } from "../../services/ledgerbook.service";
 
@@ -31,6 +32,7 @@ export class AddProduct implements OnInit {
   due: number = 0;
 
   constructor(
+     private router: Router,
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private brandService: BrandService,
@@ -121,6 +123,7 @@ export class AddProduct implements OnInit {
         alert('Product added successfully!');
         this.loadProducts();
         this.productForm.reset();
+         this.router.navigate(['/viewallstock']);
 
         // Create ledger entry after product is saved
         const ledgerEntry: LedgerbookModel = {

@@ -1,87 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/employee';
 
 @Component({
   selector: 'app-addemp',
   standalone: false,
   templateUrl: './addemp.html',
-  styleUrl: './addemp.css'
+  styleUrl: './addemp.css',
 })
 export class Addemp implements OnInit {
-
- formGroup !: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(
-    private employeeservice: EmployeeService,
     private formBuilder: FormBuilder,
-    private router: Router,
-  ) { }
-
+    private employeeservice: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-
     this.formGroup = this.formBuilder.group({
       name: [''],
       email: [''],
       phone: [''],
+      address: [''],
       gender: [''],
       designation: [''],
       salary: [''],
-      address: ['']
-
+      photoUrl: [''] // must match the input name
     });
-
   }
 
-
   addEmp(): void {
+    if (this.formGroup.invalid) return;
 
     const employee: Employee = { ...this.formGroup.value };
 
     this.employeeservice.saveEmp(employee).subscribe({
-
       next: (res) => {
-
-        console.log("Employee Saved ", res);
+        console.log('Employee Saved:', res);
         this.formGroup.reset();
         this.router.navigate(['/viewallemp']);
-
       },
-
       error: (error) => {
-
-        console.log(error);
-
+        console.error('Error:', error);
       }
-
-
-
-    })
-
-
+    });
   }
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

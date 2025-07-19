@@ -50,6 +50,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 
+
 @NgModule({
   declarations: [
     App,
@@ -62,9 +63,10 @@ import { MatSelectModule } from '@angular/material/select';
     Userprofile,
     Login,
 
-    Viewallemp,
+    
     Addemp,
     Updateemp,
+     Viewallemp,
 
       AddProduct,
 
@@ -96,7 +98,8 @@ import { MatSelectModule } from '@angular/material/select';
 
       Showreport,
         ViewAllstock,
-        Ledgerbook
+        Ledgerbook,
+        
 
 
 
@@ -109,6 +112,7 @@ import { MatSelectModule } from '@angular/material/select';
       MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    
     MatSelectModule
     
 

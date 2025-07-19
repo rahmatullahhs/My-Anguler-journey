@@ -10,43 +10,36 @@ import { Router } from '@angular/router';
 })
 export class Viewallemp implements OnInit{
 
-employees:any;
+employees: any[] = [];
 
-constructor(private employeeService: EmployeeService,
-  private router: Router,
-    private cdr: ChangeDetectorRef
-){}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadAllEmp();
   }
 
-loadAllEmp():void{
-this.employees=this.employeeService.getAllEmp();
-}
-
-  viewAllEmp() {
-    this.employees = this.employeeService.getAllEmp();
-  }
-
-  deleteEmp(id: string): void {
-    this.employeeService.deleteEmp(id).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.cdr.reattach();
-        this.viewAllEmp();
+  loadAllEmp() {
+    this.employeeService.getAllEmp().subscribe({
+      next: res => {
+        this.employees = Array.isArray(res) ? res : res.data || [];
       },
-      error: (error) => {
-        console.log(error);
-      },
+      error: err => {
+        console.error(err);
+        this.employees = [];
+      }
     });
   }
 
-  updateEmp(id: string){
+  updateEmp(id: string) {
     this.router.navigate(['updateEmp', id]);
   }
+
+  deleteEmp(id: string) {
+    if (confirm('Are you sure?')) {
+      this.employeeService.deleteEmp(id).subscribe(() => this.loadAllEmp());
+    }
+  }
 }
-
-
-
