@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  getById(productId: string) {
+    throw new Error("Method not implemented.");
+  }
 
   private apiUrl = 'http://localhost:3000/products';
 

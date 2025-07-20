@@ -9,7 +9,7 @@ import { LedgerbookModel } from "../../models/ledgerbook.model";
 import { BrandModel } from "../../models/brand.model";
 import { CategoryModel } from "../../models/category.model";
 import { SupplierModel } from "../../models/supplier.model";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { LedgerbookService } from "../../services/ledgerbook.service";
 
@@ -31,7 +31,8 @@ export class AddProduct implements OnInit {
   finalprice: number = 0;
   due: number = 0;
 
-  constructor(
+  constructor
+    (private route: ActivatedRoute,
      private router: Router,
     private formBuilder: FormBuilder,
     private productService: ProductService,
@@ -61,6 +62,9 @@ export class AddProduct implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    
     this.loadProducts();
     this.loadBrands();
     this.loadCategories();

@@ -46,7 +46,7 @@ const routes: Routes = [
 {path:'updateEmp/:id',component:Updateemp},
 
 
- {path: 'addproduct',component:AddProduct},
+ {path: 'addproduct/:id',component:AddProduct},
  {path:'viewallstock',component:ViewAllstock},
  {path:'ledgerbook',component:Ledgerbook},
  
