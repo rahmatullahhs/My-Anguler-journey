@@ -9,3 +9,23 @@
   .table th, .table td {
     vertical-align: middle;
   }
+div {
+  font-family: Arial, sans-serif;
+}
+h2 {
+  text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.text-right {
+  text-align: right;
+}
+.text-green-600 {
+  color: green;
+}
+.text-red-600 {
+  color: crimson;
+}

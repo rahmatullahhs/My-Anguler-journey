@@ -1,112 +1,7 @@
 
   
 
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .page-title {
-      background-color: #6f42c1;
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .table th, .table td {
-      text-align: center;
-      vertical-align: middle;
-    }
-  </style>
-
-<body>
-  <div class="container mt-5">
-    <div class="page-title mb-4">
-      <h3>📋 Accounts Payable – Vendor Bills & Due Tracking</h3>
-    </div>
-
-    <!-- Summary Cards -->
-    <div class="row g-4 mb-4">
-      <div class="col-md-4">
-        <div class="card border-info shadow-sm">
-          <div class="card-header bg-info text-white">Total Payables</div>
-          <div class="card-body text-center">
-            <h4>₹48,000</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card border-warning shadow-sm">
-          <div class="card-header bg-warning text-dark">Due This Month</div>
-          <div class="card-body text-center">
-            <h4>₹20,000</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card border-success shadow-sm">
-          <div class="card-header bg-success text-white">Paid This Month</div>
-          <div class="card-body text-center">
-            <h4>₹30,000</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Vendor Bills Table -->
-    <div class="card shadow-sm mb-5">
-      <div class="card-header bg-secondary text-white">
-        Vendor Bills & Payments
-      </div>
-      <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover mb-0">
-            <thead class="table-light">
-              <tr>
-                <th>Date</th>
-                <th>Vendor</th>
-                <th>Bill No</th>
-                <th>Amount (₹)</th>
-                <th>Status</th>
-                <th>Due Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>2025-07-01</td>
-                <td>ABC Supplies</td>
-                <td>INV-1023</td>
-                <td>₹12,000</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>2025-07-15</td>
-                <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
-              </tr>
-              <tr>
-                <td>2025-06-28</td>
-                <td>XYZ Traders</td>
-                <td>INV-1018</td>
-                <td>₹18,000</td>
-                <td><span class="badge bg-success">Paid</span></td>
-                <td>2025-07-05</td>
-                <td><button class="btn btn-sm btn-secondary" disabled>Paid</button></td>
-              </tr>
-              <tr>
-                <td>2025-07-05</td>
-                <td>Global Tech</td>
-                <td>INV-1031</td>
-                <td>₹18,000</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>2025-07-20</td>
-                <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
-              </tr>
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</body>
+  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -181,10 +76,7 @@
 
 
 
-<div class="container mt-5">
-  <div class="page-title bg-dark text-white p-3 rounded mb-4">
-    <h4>🧾 Product Sales – Paid & Due Tracking</h4>
-  </div>
+
 
   <!-- Add Sale Form -->
   <div class="card mb-4 shadow-sm">
@@ -220,44 +112,31 @@
     </div>
   </div>
 
-  <!-- Sales Table -->
-  <div class="card shadow-sm">
-    <div class="card-header bg-secondary text-white">Sales Records</div>
-    <div class="card-body table-responsive">
-      <table class="table table-bordered table-hover text-center mb-0">
-        <thead class="table-light">
-          <tr>
-            <th>Date</th>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Amount (₹)</th>
-            <th>Status</th>
-            <th>Due Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="salesTableBody">
-          <tr>
-            <td>2025-07-10</td>
-            <td>John Doe</td>
-            <td>Wireless Mouse</td>
-            <td>₹1,200</td>
-            <td><span class="badge bg-success">Paid</span></td>
-            <td>–</td>
-            <td><button class="btn btn-sm btn-secondary" disabled>Paid</button></td>
-          </tr>
-          <tr>
-            <td>2025-07-13</td>
-            <td>Asha Enterprises</td>
-            <td>Office Chair</td>
-            <td>₹4,500</td>
-            <td><span class="badge bg-warning text-dark">Due</span></td>
-            <td>2025-07-20</td>
-            <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
-          </tr>
-          <!-- More dynamic rows -->
-        </tbody>
-      </table>
+  
+<div class="p-4 bg-white rounded shadow-md w-full max-w-2xl mx-auto">
+  <h2 class="text-2xl font-bold mb-4 text-center">Profit & Loss Report</h2>
+
+  <div class="grid grid-cols-2 gap-4 text-lg">
+    <div>Total Sales:</div>
+    <div class="text-right font-semibold text-green-600">₹{{ totalSales }}</div>
+
+    <div>Total Purchases (COGS):</div>
+    <div class="text-right text-red-600">₹{{ totalPurchases }}</div>
+
+    <div>Total Expenses:</div>
+    <div class="text-right text-red-600">₹{{ totalExpenses }}</div>
+
+    <hr class="col-span-2 my-2">
+
+    <div class="font-bold">Net Profit / Loss:</div>
+    <div 
+      class="text-right font-bold" 
+      [ngClass]="{
+        'text-green-700': netProfit >= 0,
+        'text-red-700': netProfit < 0
+      }"
+    >
+      ₹{{ netProfit }}
     </div>
   </div>
 </div>

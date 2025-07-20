@@ -28,6 +28,11 @@ import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 import { ViewAllstock } from './goods/view-allstock/view-allstock';
 import { Ledgerbook } from './account/ledgerbook/ledgerbook';
+import { Billstracking } from './account/billstracking/billstracking';
+import { Salestracking } from './account/salestracking/salestracking';
+import { Cogs } from './account/cogs/cogs';
+import { Accountpayentry } from './account/accountpayentry/accountpayentry';
+import { Empsalary } from './account/empsalary/empsalary';
 
 
 
@@ -46,7 +51,7 @@ const routes: Routes = [
 {path:'updateEmp/:id',component:Updateemp},
 
 
- {path: 'addproduct/:id',component:AddProduct},
+ {path: 'addproduct',component:AddProduct},
  {path:'viewallstock',component:ViewAllstock},
  {path:'ledgerbook',component:Ledgerbook},
  
@@ -67,11 +72,15 @@ const routes: Routes = [
 {path:'addrepairproduct',component:Addrepairproduct},
 {path:'addaccount',component:Addaccount},
 {path:'addchart',component:Addchart},
-{path:'showreport',component:Showreport}
+{path:'showreport',component:Showreport},
 
 
 
-
+ { path: 'billstracking', component: Billstracking },
+  { path: 'salestracking', component: Salestracking },
+  { path: 'cogs', component: Cogs },
+  { path: 'accountpayentry', component: Accountpayentry },
+  { path: 'empsalary', component: Empsalary },
 
 
 

@@ -43,6 +43,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { Billstracking } from './account/billstracking/billstracking';
+import { Salestracking } from './account/salestracking/salestracking';
+import { Cogs } from './account/cogs/cogs';
+import { Accountpayentry } from './account/accountpayentry/accountpayentry';
+import { Empsalary } from './account/empsalary/empsalary';
 
 
 
@@ -93,12 +98,15 @@ import { MatSelectModule } from '@angular/material/select';
       Addrepairproduct,
 
       Addaccount,
-
       Addchart,
-
       Showreport,
         ViewAllstock,
         Ledgerbook,
+        Billstracking,
+        Salestracking,
+        Cogs,
+        Accountpayentry,
+        Empsalary,
         
 
 

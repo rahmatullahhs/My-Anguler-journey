@@ -1,0 +1,45 @@
+<p>salestracking works!</p>
+<!-- Sales Table -->
+ <div class="container mt-5">
+  <div class="page-title bg-dark text-white p-3 rounded mb-4">
+    <h4>🧾 Product Sales – Paid & Due Tracking</h4>
+  </div>
+  <div class="card shadow-sm">
+    <div class="card-header bg-secondary text-white">Sales Records</div>
+    <div class="card-body table-responsive">
+      <table class="table table-bordered table-hover text-center mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Amount (₹)</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="salesTableBody">
+          <tr>
+            <td>2025-07-10</td>
+            <td>John Doe</td>
+            <td>Wireless Mouse</td>
+            <td>₹1,200</td>
+            <td><span class="badge bg-success">Paid</span></td>
+            <td>–</td>
+            <td><button class="btn btn-sm btn-secondary" disabled>Paid</button></td>
+          </tr>
+          <tr>
+            <td>2025-07-13</td>
+            <td>Asha Enterprises</td>
+            <td>Office Chair</td>
+            <td>₹4,500</td>
+            <td><span class="badge bg-warning text-dark">Due</span></td>
+            <td>2025-07-20</td>
+            <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
+          </tr>
+          <!-- More dynamic rows -->
+        </tbody>
+      </table>
+    </div>
+    </div>

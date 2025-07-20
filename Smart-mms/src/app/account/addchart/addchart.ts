@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Addchart {
 
+  totalSales = 100000;     // You fetch this from your sales data
+  totalPurchases = 60000;  // From purchase records
+  totalExpenses = 15000;   // From expense records
+
+  get netProfit(): number {
+    return this.totalSales - this.totalPurchases - this.totalExpenses;
+  }
 }
+

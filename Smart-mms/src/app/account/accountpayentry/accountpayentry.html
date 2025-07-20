@@ -1,0 +1,147 @@
+<p>accountpayentry works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bills Adding & Tracking</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="container mt-5" style="max-width: 800px;">
+    <div class="card shadow-sm">
+      <div class="card-header bg-info text-white">
+        <h5 class="mb-0"><i class="fas fa-file-invoice-dollar me-2"></i> Add Bills</h5>
+      </div>
+      <div class="card-body">
+        <form id="billForm" class="row g-3">
+          <div class="col-md-4">
+            <label for="billType" class="form-label">Bill Type</label>
+            <select class="form-select" id="billType" required>
+              <option value="" selected disabled>Select Bill Type</option>
+              <option value="Utility">Utility</option>
+              <option value="Office">Office</option>
+              <option value="Shop Rent">Shop Rent</option>
+              <option value="Inventory Rent">Inventory Rent</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Office Supplies">Office Supplies</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="amount" class="form-label">Amount (৳)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="amount"
+              placeholder="Enter amount"
+              min="0"
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="billDate" class="form-label">Date</label>
+            <input type="date" class="form-control" id="billDate" required />
+          </div>
+          <div class="col-md-8">
+            <label for="note" class="form-label">Note</label>
+            <input
+              type="text"
+              class="form-control"
+              id="note"
+              placeholder="Optional note"
+              maxlength="100"
+            />
+          </div>
+          <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">
+              Add Bill
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card shadow-sm mt-4">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0"><i class="fas fa-list me-2"></i> Bills List</h5>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-bordered mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Bill Type</th>
+                <th>Date</th>
+                <th>Note</th>
+                <th class="text-end">Amount (৳)</th>
+              </tr>
+            </thead>
+            <tbody id="billsTableBody"></tbody>
+            <tfoot>
+              <tr class="table-secondary fw-bold">
+                <td colspan="4" class="text-end">Total</td>
+                <td id="totalAmount" class="text-end">৳0</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://kit.fontawesome.com/a076d05399.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    const billForm = document.getElementById('billForm');
+    const billsTableBody = document.getElementById('billsTableBody');
+    const totalAmountEl = document.getElementById('totalAmount');
+    let bills = [];
+
+    billForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const billType = document.getElementById('billType').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      const billDate = document.getElementById('billDate').value;
+      const note = document.getElementById('note').value.trim();
+
+      if (!billType || isNaN(amount) || amount < 0 || !billDate) {
+        alert('Please enter valid bill type, amount, and date.');
+        return;
+      }
+
+      bills.push({ billType, amount, billDate, note });
+
+      renderBills();
+
+      billForm.reset();
+      document.getElementById('billType').focus();
+    });
+
+    function renderBills() {
+      billsTableBody.innerHTML = '';
+      let total = 0;
+      bills.forEach((bill, index) => {
+        total += bill.amount;
+        billsTableBody.innerHTML += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${bill.billType}</td>
+            <td>${bill.billDate}</td>
+            <td>${bill.note || '-'}</td>
+            <td class="text-end">৳${bill.amount.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+      totalAmountEl.textContent = '৳' + total.toLocaleString();
+    }
+  </script>
+</body>
+</html>
