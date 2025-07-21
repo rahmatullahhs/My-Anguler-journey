@@ -31,8 +31,10 @@ import { Ledgerbook } from './account/ledgerbook/ledgerbook';
 import { Billstracking } from './account/billstracking/billstracking';
 import { Salestracking } from './account/salestracking/salestracking';
 import { Cogs } from './account/cogs/cogs';
-import { Accountpayentry } from './account/accountpayentry/accountpayentry';
 import { Empsalary } from './account/empsalary/empsalary';
+import { Addentry } from './account/accountpayentry/addentry/addentry';
+import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
+import { Tax } from './account/tax/tax';
 
 
 
@@ -79,12 +81,12 @@ const routes: Routes = [
  { path: 'billstracking', component: Billstracking },
   { path: 'salestracking', component: Salestracking },
   { path: 'cogs', component: Cogs },
-  { path: 'accountpayentry', component: Accountpayentry },
+  { path: 'accountpayentry', component: AccountPayEntryComponent },
   { path: 'empsalary', component: Empsalary },
 
+{path:'addentry',component:Addentry},
 
-
-
+{path:'tax',component:Tax}
 
 
 

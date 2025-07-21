@@ -46,8 +46,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { Billstracking } from './account/billstracking/billstracking';
 import { Salestracking } from './account/salestracking/salestracking';
 import { Cogs } from './account/cogs/cogs';
-import { Accountpayentry } from './account/accountpayentry/accountpayentry';
+
 import { Empsalary } from './account/empsalary/empsalary';
+import { Addentry } from './account/accountpayentry/addentry/addentry';
+
+
+import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
+import { Tax } from './account/tax/tax';
+
+
 
 
 
@@ -105,9 +112,12 @@ import { Empsalary } from './account/empsalary/empsalary';
         Billstracking,
         Salestracking,
         Cogs,
-        Accountpayentry,
+      
         Empsalary,
-        
+       
+        Addentry,
+         AccountPayEntryComponent,
+         Tax
 
 
 

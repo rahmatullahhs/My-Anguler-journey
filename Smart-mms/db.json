@@ -209,6 +209,10 @@
     {
       "id": "3e35",
       "name": "Gaming PC"
+    },
+    {
+      "id": "d3e6",
+      "name": "aaaaa"
     }
   ],
   "brands": [
@@ -448,5 +452,46 @@
       "credit": 450000,
       "account": "Cash Purchase"
     }
-  ]
+  ],
+  "addentry": [
+    {
+      "id": "9c98",
+      "name": "Office Rent"
+    },
+    {
+      "id": "ac32",
+      "name": "Utility Bills"
+    },
+    {
+      "id": "e407",
+      "name": "Inventory Rent"
+    },
+    {
+      "id": "ccc7",
+      "name": "Marketing/Promotion Bills"
+    },
+    {
+      "id": "9dda",
+      "name": "Office Maintenance"
+    }
+  ],
+  "accountpayentry": [
+    {
+      "id": "125e",
+      "addentryID": "9c98",
+      "amount": 5000,
+      "billDate": "2025-07-21",
+      "note": "paid"
+    },
+    {
+      "id": "4fc6",
+      "addentryID": "ac32",
+      "amount": 50000,
+      "billDate": "2025-07-21",
+      "note": "paid"
+    }
+  ],
+
+"Cogs":[]
+
 }

@@ -61,10 +61,7 @@ export class AddProduct implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-
-    
+  ngOnInit(): void { 
     this.loadProducts();
     this.loadBrands();
     this.loadCategories();
