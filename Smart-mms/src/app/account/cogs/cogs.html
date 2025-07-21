@@ -12,7 +12,7 @@
       <tbody>
         <tr *ngFor="let cogs of cogsList">
           <td><i class="fas fa-box-open me-2"></i>Product Price</td>
-          <td class="text-end">{{ cogs.productprice | number: '1.0-0' }}</td>
+          <td class="text-end">{{ cogs.productprice}}</td>
           <td class="text-center">
             <button (click)="editCogs(cogs)" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit
@@ -24,7 +24,7 @@
         </tr>
         <tr *ngFor="let cogs of cogsList">
           <td><i class="fas fa-truck me-2"></i>Transport Fee</td>
-          <td class="text-end">{{ cogs.transportfee | number: '1.0-0' }}</td>
+          <td class="text-end">{{ cogs.transportfee}}</td>
           <td class="text-center">
             <button (click)="editCogs(cogs)" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit
@@ -36,7 +36,7 @@
         </tr>
         <tr *ngFor="let cogs of cogsList">
           <td><i class="fas fa-hard-hat me-2"></i>Labour Cost</td>
-          <td class="text-end">{{ cogs.labourcost | number: '1.0-0' }}</td>
+          <td class="text-end">{{cogs.labourcost}}</td>
           <td class="text-center">
             <button (click)="editCogs(cogs)" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit
@@ -48,7 +48,7 @@
         </tr>
         <tr *ngFor="let cogs of cogsList">
           <td><i class="fas fa-box me-2"></i>Packing Cost</td>
-          <td class="text-end">{{ cogs.packingcost | number: '1.0-0' }}</td>
+          <td class="text-end">{{ cogs.packingcost}}</td>
           <td class="text-center">
             <button (click)="editCogs(cogs)" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit
@@ -60,7 +60,7 @@
         </tr>
         <tr *ngFor="let cogs of cogsList">
           <td><i class="fas fa-receipt me-2"></i>Tax</td>
-          <td class="text-end">{{ cogs.tax | number: '1.0-0' }}</td>
+          <td class="text-end">{{ cogs.tax}}</td>
           <td class="text-center">
             <button (click)="editCogs(cogs)" class="btn btn-warning btn-sm">
               <i class="fas fa-edit"></i> Edit
@@ -74,7 +74,8 @@
         <tr class="table-secondary fw-bold">
           <td>Total COGS</td>
           <td class="text-end">
-            {{ (cogsList.reduce((sum, cogs) => sum + cogs.productprice + cogs.transportfee + cogs.labourcost + cogs.packingcost + cogs.tax, 0)) | number: '1.0-0' }}
+            <!-- {{ (cogsList.reduce((sum, cogs) => sum + cogs.productprice + cogs.transportfee + cogs.labourcost +
+            cogs.packingcost + cogs.tax, 0))}} -->
           </td>
           <td></td>
         </tr>
