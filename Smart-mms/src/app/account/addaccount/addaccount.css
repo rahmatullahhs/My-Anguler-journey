@@ -1,5 +1,11 @@
 .button-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI';
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 .btn {
@@ -11,9 +17,9 @@
   border-radius: 10px;
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: white; /* white text */
   cursor: pointer;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 8px rgba(26, 25, 25, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
   text-align: left;
@@ -23,56 +29,69 @@
   font-size: 22px;
 }
 
-/* Individual button colors */
+/* Updated solid colors without gradients */
 .btn-ledger {
-  background: linear-gradient(45deg, #4caf50);
+  background-color: #07a80d;
 }
 .btn-ledger:hover {
-  background: linear-gradient(45deg, #1b5e20);
+  background-color: #89f190;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(46 125 50 / 0.6);
+  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.6);
 }
 
 .btn-bill {
-  background: linear-gradient(45deg,  #1565c0);
+  background-color: #2079df;
 }
 .btn-bill:hover {
-  background: linear-gradient(45deg,#2196f3);
+  background-color: #86ccf5ef;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(21 101 192 / 0.6);
+  box-shadow: 0 6px 12px rgba(21, 101, 192, 0.6);
 }
 
 .btn-sales {
-  background: linear-gradient(45deg,  #ef6c00);
+  background-color: #c55b04;
 }
 .btn-sales:hover {
-  background: linear-gradient(45deg, #e65100);
+  background-color: #f79661;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(239 108 0 / 0.6);
+  box-shadow: 0 6px 12px rgba(239, 108, 0, 0.6);
 }
 
 .btn-cogs {
-  background: linear-gradient(45deg, #9c27b0, #6a1b9a);
+  background-color: #8209ce;
 }
 .btn-cogs:hover {
-  background: linear-gradient(45deg, #8e24aa, #4a148c);
+  background-color: #b57afd;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(106 27 154 / 0.6);
+  box-shadow: 0 6px 12px rgba(106, 27, 154, 0.6);
 }
 
 .btn-price {
-  background: linear-gradient(45deg, #f44336, #b71c1c);
+  background-color: #b10b0b;
 }
 .btn-price:hover {
-  background: linear-gradient(45deg, #e53935, #7f0000);
+  background-color: #f04e4e;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(183 28 28 / 0.6);
+  box-shadow: 0 6px 12px rgba(183, 28, 28, 0.6);
 }
-.button-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* Adjust gap as you want */
-  max-width: 1000px; /* similar to max-w-md */
-  margin: 0 auto;
-  padding: 16px;
+/* Remove underline and link color from all anchor buttons */
+.btn {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+.btn-outline-secondary {
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #6c757d;
+  text-decoration: none;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
 }

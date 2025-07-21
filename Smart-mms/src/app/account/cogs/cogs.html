@@ -63,8 +63,6 @@
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,65 +73,109 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .calculator-card {
+      max-width: 900px;
+      margin: auto;
+    }
+    .input-group-text {
+      background-color: #f0f0f0;
+    }
+    .result-box {
+      background-color: #e9f7ef;
+      border-left: 5px solid #28a745;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .form-section {
+      border-right: 1px solid #dee2e6;
+    }
+  </style>
 </head>
 <body>
-  <div class="container mt-5" style="max-width: 480px;">
-    <div class="card shadow-sm">
-      <div class="card-header bg-primary text-white">
-        <h5 class="mb-0"><i class="fas fa-calculator me-2"></i>Price Calculator</h5>
-      </div>
-      <div class="card-body">
+
+<div class="container mt-5">
+  <div class="card shadow-sm calculator-card">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">
+        <i class="fas fa-calculator me-2"></i>Price Deciding Calculator
+      </h5>
+    </div>
+    <div class="card-body row g-0">
+      <!-- Left Form Section -->
+      <div class="col-md-6 p-4 form-section">
         <form id="priceForm">
           <div class="mb-3">
             <label for="cogs" class="form-label">Cost of Goods Sold (৳)</label>
-            <input
-              type="number"
-              class="form-control"
-              id="cogs"
-              placeholder="Enter COGS amount"
-              min="0"
-              required
-            />
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-boxes"></i></span>
+              <input
+                type="number"
+                class="form-control"
+                id="cogs"
+                placeholder="Enter COGS"
+                min="0"
+                required
+              />
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="profitPercent" class="form-label">Desired Profit Percentage (%)</label>
-            <input
-              type="number"
-              class="form-control"
-              id="profitPercent"
-              placeholder="Enter profit %"
-              min="0"
-              max="100"
-              required
-            />
+          <div class="mb-4">
+            <label for="profitPercent" class="form-label">Desired Profit (%)</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-percentage"></i></span>
+              <input
+                type="number"
+                class="form-control"
+                id="profitPercent"
+                placeholder="Enter Profit %"
+                min="0"
+                max="100"
+                required
+              />
+            </div>
           </div>
           <button type="submit" class="btn btn-success w-100">
-            Calculate Selling Price
+            <i class="fas fa-calculator me-2"></i>Calculate Selling Price
           </button>
         </form>
-        <div class="mt-4">
-          <h6>Selling Price: <span id="result" class="fw-bold">৳0</span></h6>
+      </div>
+
+      <!-- Right Result Section -->
+      <div class="col-md-6 p-4 d-flex align-items-center">
+        <div class="w-100">
+          <div class="result-box">
+            <h6 class="text-muted"><i class="fas fa-money-bill-wave me-2"></i>Estimated Selling Price</h6>
+            <h2 class="fw-bold text-success mb-0" id="result">৳0</h2>
+            <p class="text-muted mt-2">Based on your input COGS and profit margin.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <script
-    src="https://kit.fontawesome.com/a076d05399.js"
-    crossorigin="anonymous"
-  ></script>
-  <script>
-    document.getElementById('priceForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const cogs = parseFloat(document.getElementById('cogs').value);
-      const profitPercent = parseFloat(document.getElementById('profitPercent').value);
-      if (isNaN(cogs) || isNaN(profitPercent)) {
-        alert('Please enter valid numbers!');
-        return;
-      }
-      const sellingPrice = Math.round(cogs + (cogs * profitPercent / 100));
-      document.getElementById('result').textContent = '৳' + sellingPrice.toLocaleString();
-    });
-  </script>
+<script>
+  document.getElementById('priceForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const cogs = parseFloat(document.getElementById('cogs').value);
+    const profitPercent = parseFloat(document.getElementById('profitPercent').value);
+
+    if (isNaN(cogs) || isNaN(profitPercent)) {
+      alert('Please enter valid numbers!');
+      return;
+    }
+
+    const sellingPrice = Math.round(cogs + (cogs * profitPercent / 100));
+    document.getElementById('result').textContent = '৳' + sellingPrice.toLocaleString();
+  });
+</script>
+
 </body>
 </html>
