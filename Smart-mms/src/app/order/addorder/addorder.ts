@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { OrderModel } from '../../models/order.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-addorder',
@@ -11,65 +12,71 @@ import { OrderModel } from '../../models/order.model';
   styleUrl: './addorder.css'
 })
 export class Addorder implements OnInit{
- formGroup !: FormGroup;
-
+ orderForm!: FormGroup;
+  totalprice: number = 0;
+  finalprice: number = 0;
+  due: number = 0;
 
   constructor(
     private orderService: OrderService,
     private formBuilder: FormBuilder,
     private router: Router,
-  
     private cdr: ChangeDetectorRef
-
-  ) { }
-
+  ) {}
 
   ngOnInit(): void {
-
-    this.formGroup = this.formBuilder.group({
-
-      
-     id:[''],
-    invoice:[''],
-    date:Date,
-    customername:[''],
-    customerphone:[''],
-    customeremail:[''],
-    productdetail:[''],
-    productqty:[''],
-    price:[''],
-    paid:[''],
-    due:['']
-
-    
+    this.orderForm = this.formBuilder.group({
+      invoice: [''],
+      date: [''],
+      customername: [''],
+      customerphone: [''],
+      customeremail: [''],
+      productdetail: [''],
+      productqty: [''],
+      price: [''],
+      discount: [''],
+      paid: [''],
+      due: ['']
     });
-
-
   }
 
-
-
   addOrder(): void {
-    if (this.formGroup.invalid) {
-      return; // Don't submit invalid form
+    if (this.orderForm.invalid) {
+      return;
     }
 
-    const order: OrderModel = { ...this.formGroup.value };
+    const order: OrderModel = { ...this.orderForm.value };
 
     this.orderService.saveOrder(order).subscribe({
       next: (res) => {
-        console.log("order Saved", res);
-    
-        this.formGroup.reset();
-       // this.cdr.reattach(); // or reattach() if that's correct for you
+        console.log("Order saved", res);
+        this.orderForm.reset();
         this.router.navigate(['/viewallorder']);
       },
       error: (error) => {
         console.error("Error saving order", error);
-        // Optionally show an error message to the user
       }
     });
   }
 
+  PriceCalculation(): void {
+    const price = Number(this.orderForm.value.price) || 0;
+    const productqty = Number(this.orderForm.value.productqty) || 0;
+    const discount = Number(this.orderForm.value.discount) || 0;
+    const paid = Number(this.orderForm.value.paid) || 0;
 
+    this.totalprice = price * productqty;
+    this.finalprice = this.totalprice - (this.totalprice * discount / 100);
+    this.due = this.finalprice - paid;
+
+    this.orderForm.patchValue({
+      due: this.due
+    }, { emitEvent: false });
+  }
+
+  onFocusLost(): void {
+    this.PriceCalculation();
+  }
 }
+
+

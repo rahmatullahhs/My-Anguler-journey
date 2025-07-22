@@ -11,5 +11,5 @@ export class OrderModel {
     price!:number;
     paid!:number;
     due!:number;
-
+  
 }

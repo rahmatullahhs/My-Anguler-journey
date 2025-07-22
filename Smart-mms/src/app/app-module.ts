@@ -44,24 +44,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Billstracking } from './account/billstracking/billstracking';
-import { Salestracking } from './account/salestracking/salestracking';
 import { AddCogsComponent } from './account/cogs/cogs';
-
-import { Empsalary } from './account/empsalary/empsalary';
 import { Addentry } from './account/accountpayentry/addentry/addentry';
-
-
 import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
 import { Tax } from './account/tax/tax';
-
 import { Viewallorder } from './order/viewallorder/viewallorder';
-import { FormsModule } from '@angular/forms';
-
-
-
-
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Addinventory } from './inventory/addinventory/addinventory';
+import { Viewinventory } from './inventory/viewinventory/viewinventory';
+import { Salestracking } from './account/salestracking/salestracking';
 
 
 
@@ -73,36 +64,36 @@ import { FormsModule } from '@angular/forms';
     AdminDashboard,
     Header,
     Footer,
-
     Register,
     Userprofile,
-    Login,
-
+    Login, 
+    
     
     Addemp,
     Updateemp,
      Viewallemp,
 
-      AddProduct,
-
       Addcustomer,
       Viewallcustomer,
       Updatecustomer,
 
+
+      Addcategory,
+      Addbrand,
+      AddProduct,
+     ViewAllstock,
+    Addinventory,
+    Viewinventory,
+
       Addsupplier,
       Viewallsupplier,
       Updatesupplier,
-      
+
       Showpurchase,
       Addpurchase,
 
-
-      Addcategory,
-
-      Addbrand,
-
-
       Addorder,
+      Viewallorder,
 
       Addreturnproduct,
       Addrepairproduct,
@@ -110,18 +101,18 @@ import { FormsModule } from '@angular/forms';
       Addaccount,
       Addchart,
       Showreport,
-        ViewAllstock,
+       Billstracking, 
+       Salestracking,
         Ledgerbook,
-        Billstracking,
-        Salestracking,
-        AddCogsComponent,
-      
-        Empsalary,
-       
+        AddCogsComponent,      
         Addentry,
          AccountPayEntryComponent,
-         Tax,
-         Viewallorder
+         Tax
+
+   
+
+         
+     
 
 
 
@@ -130,6 +121,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     
       MatFormFieldModule,
     MatInputModule,

@@ -17,7 +17,6 @@ import { Addcustomer } from './crm/addcustomer/addcustomer';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addbrand } from './brand/addbrand/addbrand';
 import { Addpurchase } from './purchase/addpurchase/addpurchase';
-import { Addorder } from './order/addorder/addorder';
 import { Addsupplier } from './supplier/addsupplier/addsupplier';
 import { Addreturnproduct } from './returnproduct/addreturnproduct/addreturnproduct';
 import { Addrepairproduct } from './returnproduct/addrepairproduct/addrepairproduct';
@@ -31,67 +30,65 @@ import { Ledgerbook } from './account/ledgerbook/ledgerbook';
 import { Billstracking } from './account/billstracking/billstracking';
 import { Salestracking } from './account/salestracking/salestracking';
 
-import { Empsalary } from './account/empsalary/empsalary';
+
 import { Addentry } from './account/accountpayentry/addentry/addentry';
 import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
 import { Tax } from './account/tax/tax';
 import { AddCogsComponent } from './account/cogs/cogs';
+import { Addinventory } from './inventory/addinventory/addinventory';
+import { Addorder } from './order/addorder/addorder';
+import { Viewallorder } from './order/viewallorder/viewallorder';
 
 
 
 const routes: Routes = [
 
-{path: '', component: Home},
+  { path: '', component: Home },
 
-{path: 'admindashboard',component:AdminDashboard},
-{path:'footer',component:Footer},
-{path:'header', component:Header},
-{path:'register',component:Register},
-{path:'login',component:Login},
+  { path: 'admindashboard', component: AdminDashboard },
+  { path: 'footer', component: Footer },
+  { path: 'header', component: Header },
+  { path: 'register', component: Register },
+  { path: 'login', component: Login },
 
-{path:'viewallemp',component:Viewallemp},
-{path:'addemp',component:Addemp},
-{path:'updateEmp/:id',component:Updateemp},
-
-
- {path: 'addproduct',component:AddProduct},
- {path:'viewallstock',component:ViewAllstock},
- {path:'ledgerbook',component:Ledgerbook},
- 
- {path:'addcategory',component:Addcategory},
- {path: 'addbrand',component:Addbrand},
- 
- {path:'viewallcustomer',component:Viewallcustomer},
- {path:'updatecustomer/:id',component:Updatecustomer},
- {path:'addcustomer',component:Addcustomer},
-
-{path:'addpurchase',component:Addpurchase},
-{path:'addorder',component:Addorder},
-{path:'addsupplier',component:Addsupplier},
-{path:'viewallsupplier',component:Viewallsupplier},
-{path:'updatesupplier/:id',component:Updatesupplier},
-
-{path:'addreturnproduct',component:Addreturnproduct},
-{path:'addrepairproduct',component:Addrepairproduct},
-{path:'addaccount',component:Addaccount},
-{path:'addchart',component:Addchart},
-{path:'showreport',component:Showreport},
+  { path: 'viewallemp', component: Viewallemp },
+  { path: 'addemp', component: Addemp },
+  { path: 'updateEmp/:id', component: Updateemp },
 
 
+  { path: 'addproduct', component: AddProduct },
+  { path: 'viewallstock', component: ViewAllstock },
+  { path: 'ledgerbook', component: Ledgerbook },
 
- { path: 'billstracking', component: Billstracking },
+  { path: 'addcategory', component: Addcategory },
+  { path: 'addbrand', component: Addbrand },
+
+  { path: 'viewallcustomer', component: Viewallcustomer },
+  { path: 'updatecustomer/:id', component: Updatecustomer },
+  { path: 'addcustomer', component: Addcustomer },
+
+  { path: 'addpurchase', component: Addpurchase },
+  { path: 'addorder', component: Addorder },
+  { path: 'addsupplier', component: Addsupplier },
+  { path: 'viewallsupplier', component: Viewallsupplier },
+  { path: 'updatesupplier/:id', component: Updatesupplier },
+
+  { path: 'addreturnproduct', component: Addreturnproduct },
+  { path: 'addrepairproduct', component: Addrepairproduct },
+  { path: 'addaccount', component: Addaccount },
+  { path: 'addchart', component: Addchart },
+  { path: 'showreport', component: Showreport },
+
+
+  { path: 'billstracking', component: Billstracking },
   { path: 'salestracking', component: Salestracking },
   { path: 'cogs', component: AddCogsComponent },
   { path: 'accountpayentry', component: AccountPayEntryComponent },
-  { path: 'empsalary', component: Empsalary },
-
-{path:'addentry',component:Addentry},
-
-{path:'tax',component:Tax}
-
-
-
-
+ { path: 'viewAllorder', component: Viewallorder },
+  { path: 'addentry', component: Addentry },
+  { path: 'tax', component: Tax },
+  { path: 'addinventory', component: Addinventory },
+  { path: 'saletracking', component: Salestracking }
 ];
 
 @NgModule({

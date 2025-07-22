@@ -373,6 +373,24 @@
       "brandId": "f54b",
       "categoryId": "a2s1",
       "supplierId": "04ab"
+    },
+    {
+      "id": null,
+      "name": "bbbbbb",
+      "graphicscard": "bbbbbb",
+      "monitor": "bbbbbbbbb",
+      "processor": "bbbbbbbbb",
+      "ram": "bbbbbb",
+      "storage": "bbbbbbbb",
+      "invoice": "bbbbbbbb",
+      "discount": 10,
+      "paid": 500,
+      "due": 4000,
+      "price": 500,
+      "stock_qty": 10,
+      "brandId": "cc0f",
+      "categoryId": "0d67",
+      "supplierId": "04ab"
     }
   ],
   "supplier": [
@@ -451,6 +469,16 @@
       "debit": 450000,
       "credit": 450000,
       "account": "Cash Purchase"
+    },
+    {
+      "id": "407e",
+      "productId": null,
+      "date": "2025-07-22T09:46:29.241Z",
+      "paid": 500,
+      "due": 0,
+      "debit": 500,
+      "credit": 500,
+      "account": "Cash Purchase"
     }
   ],
   "addentry": [
@@ -473,6 +501,10 @@
     {
       "id": "9dda",
       "name": "Office Maintenance"
+    },
+    {
+      "id": "18dc",
+      "name": "dfgdgg"
     }
   ],
   "accountpayentry": [
@@ -489,10 +521,64 @@
       "amount": 50000,
       "billDate": "2025-07-21",
       "note": "paid"
+    },
+    {
+      "id": "d38f",
+      "addentryID": "9c98",
+      "amount": 5000,
+      "billDate": "2025-07-22",
+      "note": "paid"
     }
   ],
-
-"Cogs":[],
-"order":[]
-
+  "Cogs": [
+    {
+      "id": null,
+      "productprice": 10000,
+      "transportfee": 2000,
+      "labourcost": 200,
+      "packingcost": 600,
+      "tax": 20,
+      "totalCogs": 12820
+    }
+  ],
+  "order": [
+    {
+      "id": "9f32",
+      "invoice": "bbbbbbbb",
+      "date": "2025-07-22",
+      "customername": "asdfasd",
+      "customerphone": "sdafasd",
+      "customeremail": "sadfsda@asdfasdf",
+      "productdetail": "asdfasdf",
+      "productqty": 1010,
+      "price": 100,
+      "discount": 10,
+      "paid": 100,
+      "due": 90800
+    },
+    {
+      "id": "da2a",
+      "invoice": "bbbbbbbb",
+      "date": "2025-07-22",
+      "customername": "asdfasd",
+      "customerphone": "sdafasd",
+      "customeremail": "sadfsda@asdfasdf",
+      "productdetail": "asdfasdf",
+      "productqty": 20,
+      "price": 50200,
+      "discount": 1,
+      "paid": 5555,
+      "due": 988405
+    }
+  ],
+  "inventory": [
+    {
+      "id": null,
+      "productname": "apple",
+      "productDetails": "big apple",
+      "price": 5000,
+      "qty": 150
+    }
+  ],
+  "sellsTracing":[]
 }

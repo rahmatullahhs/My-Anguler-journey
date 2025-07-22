@@ -26,7 +26,8 @@ export class AddCogsComponent implements OnInit {
       transportfee: [null],  // Transport fee
       labourcost: [null],  // Labour cost
       packingcost: [null],  // Packing cost
-      tax: [null]  // Tax
+      tax: [null],  // Tax
+        totalCogs: []
     });
   }
 

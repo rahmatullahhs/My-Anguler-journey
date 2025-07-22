@@ -1,71 +1,75 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Add New Order</h2>
+  <form [formGroup]="orderForm" (ngSubmit)="addOrder()">
+<a routerLink="/viewAllorder" class="btn btn-outline-primary">
+      <i class="fas fa-list me-1"></i> View Order List
+    </a>
+    <div class="mb-3">
+      <label for="invoice" class="form-label">Invoice</label>
+      <input type="text" class="form-control" id="invoice" formControlName="invoice">
+    </div>
 
-  <div class="container mt-5">
-    <h2 class="mb-4">Invoice Form</h2>
-    <form>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="invoice" class="form-label">Invoice Number</label>
-          <input type="text" class="form-control" id="invoice" name="invoice">
-        </div>
-        <div class="col-md-6">
-          <label for="date" class="form-label">Date</label>
-          <input type="date" class="form-control" id="date" name="date">
-        </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" formControlName="date">
+    </div>
+
+    <div class="mb-3">
+      <label for="customername" class="form-label">Customer Name</label>
+      <input type="text" class="form-control" id="customername" formControlName="customername">
+    </div>
+
+    <div class="mb-3">
+      <label for="customerphone" class="form-label">Customer Phone</label>
+      <input type="tel" class="form-control" id="customerphone" formControlName="customerphone">
+    </div>
+
+    <div class="mb-3">
+      <label for="customeremail" class="form-label">Customer Email</label>
+      <input type="email" class="form-control" id="customeremail" formControlName="customeremail">
+    </div>
+
+    <div class="mb-3">
+      <label for="productdetail" class="form-label">Product Detail</label>
+      <input type="text" class="form-control" id="productdetail" formControlName="productdetail">
+    </div>
+
+    <!-- PRICING -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <label for="price" class="form-label"><i class="fas fa-dollar-sign me-1 text-success"></i>Unit Price</label>
+        <input type="number" id="price" class="form-control" formControlName="price" (blur)="onFocusLost()">
       </div>
-
-      <h5>Customer Details</h5>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <label for="customername" class="form-label">Name</label>
-          <input type="text" class="form-control" id="customername" name="customername">
-        </div>
-        <div class="col-md-4">
-          <label for="customerphone" class="form-label">Phone</label>
-          <input type="tel" class="form-control" id="customerphone" name="customerphone">
-        </div>
-        <div class="col-md-4">
-          <label for="customeremail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="customeremail" name="customeremail">
-        </div>
+      <div class="col-md-3">
+        <label for="productqty" class="form-label"><i class="fas fa-cubes me-1 text-primary"></i>Quantity</label>
+        <input id="productqty" type="number" class="form-control" formControlName="productqty" (blur)="onFocusLost()">
       </div>
-
-      <h5>Product Details</h5>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="productdetail" class="form-label">Product Detail</label>
-          <input type="text" class="form-control" id="productdetail" name="productdetail">
-        </div>
-        <div class="col-md-3">
-          <label for="productqty" class="form-label">Quantity</label>
-          <input type="number" class="form-control" id="productqty" name="productqty" min="1">
-        </div>
-        <div class="col-md-3">
-          <label for="price" class="form-label">Price</label>
-          <input type="number" class="form-control" id="price" name="price" min="0" step="0.01">
-        </div>
+      <div class="col-md-3">
+        <label for="total" class="form-label"><i class="fas fa-calculator me-1 text-warning"></i>Total Price</label>
+        <input type="number" class="form-control" [value]="totalprice" [readonly]="true">
       </div>
-
-      <h5>Payment Details</h5>
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="paid" class="form-label">Paid</label>
-          <input type="number" class="form-control" id="paid" name="paid" min="0" step="0.01">
-        </div>
-        <div class="col-md-6">
-          <label for="due" class="form-label">Due</label>
-          <input type="number" class="form-control" id="due" name="due" min="0" step="0.01">
-        </div>
+      <div class="col-md-3">
+        <label for="discount" class="form-label"><i class="fas fa-percentage me-1 text-danger"></i>Discount</label>
+        <input type="number" id="discount" class="form-control" formControlName="discount" (blur)="onFocusLost()">
       </div>
+      <div class="col-md-3 mt-3">
+        <label for="final" class="form-label"><i class="fas fa-money-bill-wave me-1 text-success"></i>Final Price</label>
+        <input type="number" class="form-control" [value]="finalprice" [readonly]="true">
+      </div>
+    </div>
 
+    <!-- PAID & DUE -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <label for="paid" class="form-label"><i class="fas fa-hand-holding-usd me-1 text-success"></i>Paid</label>  
+        <input type="number" class="form-control" formControlName="paid" (blur)="onFocusLost()">
+      </div>
+      <div class="col-md-4">
+        <label for="due" class="form-label"><i class="fas fa-wallet me-1 text-danger"></i>Due</label>  
+        <input type="number" class="form-control" [value]="due" [readonly]="true">
+      </div> 
+    </div>
 
-    
-
-
-
-    <!-- Buttons -->
-    <button type="submit" class="btn btn-primary">Submit Order</button>
-    <button type="reset" class="btn btn-secondary ms-2">Reset</button>
+    <button type="submit" class="btn btn-primary">Save Order</button>
   </form>
 </div>
-
-

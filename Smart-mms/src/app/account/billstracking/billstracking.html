@@ -1,21 +1,4 @@
-<p>billstracking works!</p>
-<style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .page-title {
-      background-color: #6f42c1;
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .table th, .table td {
-      text-align: center;
-      vertical-align: middle;
-    }
-  </style>
 
-<body>
   <div class="container mt-5">
     <div class="page-title mb-4">
       <h3>📋 Accounts Payable – Vendor Bills & Due Tracking</h3>
@@ -27,7 +10,7 @@
         <div class="card border-info shadow-sm">
           <div class="card-header bg-info text-white">Total Payables</div>
           <div class="card-body text-center">
-            <h4>₹48,000</h4>
+            <h4>48,000</h4>
           </div>
         </div>
       </div>
@@ -35,7 +18,7 @@
         <div class="card border-warning shadow-sm">
           <div class="card-header bg-warning text-dark">Due This Month</div>
           <div class="card-body text-center">
-            <h4>₹20,000</h4>
+            <h4>20,000</h4>
           </div>
         </div>
       </div>
@@ -43,7 +26,7 @@
         <div class="card border-success shadow-sm">
           <div class="card-header bg-success text-white">Paid This Month</div>
           <div class="card-body text-center">
-            <h4>₹30,000</h4>
+            <h4>30,000</h4>
           </div>
         </div>
       </div>
@@ -60,11 +43,10 @@
             <thead class="table-light">
               <tr>
                 <th>Date</th>
-                <th>Vendor</th>
+                <th>Decription</th>
                 <th>Bill No</th>
-                <th>Amount (₹)</th>
+                <th>Amount </th>
                 <th>Status</th>
-                <th>Due Date</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -73,30 +55,12 @@
                 <td>2025-07-01</td>
                 <td>ABC Supplies</td>
                 <td>INV-1023</td>
-                <td>₹12,000</td>
+                <td>12,000</td>
                 <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>2025-07-15</td>
-                <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
+                <td><button class="btn btn-sm btn-primary">Edit</button></td>
               </tr>
-              <tr>
-                <td>2025-06-28</td>
-                <td>XYZ Traders</td>
-                <td>INV-1018</td>
-                <td>₹18,000</td>
-                <td><span class="badge bg-success">Paid</span></td>
-                <td>2025-07-05</td>
-                <td><button class="btn btn-sm btn-secondary" disabled>Paid</button></td>
-              </tr>
-              <tr>
-                <td>2025-07-05</td>
-                <td>Global Tech</td>
-                <td>INV-1031</td>
-                <td>₹18,000</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-                <td>2025-07-20</td>
-                <td><button class="btn btn-sm btn-primary">Mark as Paid</button></td>
-              </tr>
-              <!-- Add more rows as needed -->
+     
+    
             </tbody>
           </table>
         </div>
@@ -104,4 +68,3 @@
     </div>
 
   </div>
-</body>

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tax Calculation</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+
 
 <div class="container mt-5" style="max-width: 600px;">
   <div class="card shadow">
@@ -21,7 +13,8 @@
           <label for="amount" class="form-label">Amount (৳)</label>
           <input type="number" class="form-control" id="amount" placeholder="Enter total amount">
         </div>
-
+৪৬ লাখের বেশি	৩০%
+যদি কোম্পানি প্রফিট করে না, তাও মিনিমাম টার্নওভারের উপর ভিত্তি করে টার্নওভার ট্যাক্স দিতে হতে পারে (যেমন: ০.৬% থেকে ১%)।
         <div class="mb-3">
           <label for="taxRate" class="form-label">Tax Rate (%)</label>
           <input type="number" class="form-control" id="taxRate" placeholder="Enter tax rate">
@@ -42,20 +35,5 @@
   </div>
 </div>
 
-<script>
-  function calculateTax() {
-    const amount = parseFloat(document.getElementById('amount').value) || 0;
-    const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
 
-    const tax = (amount * taxRate) / 100;
-    const total = amount + tax;
-
-    document.getElementById('taxAmount').textContent = `৳${tax.toFixed(2)}`;
-    document.getElementById('totalWithTax').textContent = `৳${total.toFixed(2)}`;
-    document.getElementById('resultBox').classList.remove('d-none');
-  }
-</script>
-
-</body>
-</html>
 

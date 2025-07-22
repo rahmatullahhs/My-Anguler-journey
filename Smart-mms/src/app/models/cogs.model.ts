@@ -5,5 +5,6 @@ transportfee:number;
 labourcost:number;
 packingcost:number;
 tax:number;
+totalCogs :number;
 
 }

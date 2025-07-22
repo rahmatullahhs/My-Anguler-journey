@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CogsService {
-private apiUrl = 'http://localhost:3000/cogs';
+private apiUrl = 'http://localhost:3000/Cogs';
 
   constructor(private http: HttpClient) {}
  
