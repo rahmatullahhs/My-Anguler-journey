@@ -22,11 +22,11 @@ export class AddCogsComponent implements OnInit {
     // Initialize form with the appropriate fields
     this.cogsForm = this.fb.group({
       id: [null],  // ID for editing COGS
-      productprice: [null, [Validators.required, Validators.min(0)]],  // Product price
-      transportfee: [null, [Validators.required, Validators.min(0)]],  // Transport fee
-      labourcost: [null, [Validators.required, Validators.min(0)]],  // Labour cost
-      packingcost: [null, [Validators.required, Validators.min(0)]],  // Packing cost
-      tax: [null, [Validators.required, Validators.min(0)]]  // Tax
+      productprice: [null],  // Product price
+      transportfee: [null],  // Transport fee
+      labourcost: [null],  // Labour cost
+      packingcost: [null],  // Packing cost
+      tax: [null]  // Tax
     });
   }
 

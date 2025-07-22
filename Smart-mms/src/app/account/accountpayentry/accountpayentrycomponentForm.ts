@@ -7,11 +7,13 @@ import { AddentryService } from '../../services/addentry.service';
 import { AccountpayentryService } from '../../services/accountpayentry.service';
 
 
+
 @Component({
   selector: 'app-accountpayentry',
   standalone: false,
   templateUrl: './accountpayentry.html',
-  styleUrls: ['./accountpayentry.css']
+  styleUrls: ['./accountpayentry.css'],
+   
 })
 export class AccountPayEntryComponent implements OnInit {
   accountpayentrycomponentForm: FormGroup;

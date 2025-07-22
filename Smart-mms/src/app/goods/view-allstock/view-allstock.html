@@ -22,17 +22,12 @@
           <li class="list-group-item"><i class="fas fa-desktop me-2"></i>Graphics: {{ p.graphicscard }}</li>
           <li class="list-group-item"><i class="fas fa-tv me-2"></i>Monitor: {{ p.monitor }}</li>
           <li class="list-group-item"><i class="fas fa-file-invoice me-2"></i>Invoice: {{ p.invoice }}</li>
-          <li class="list-group-item"><i class="fas fa-dollar-sign me-2"></i>Price: {{ p.price | currency }}</li>
+          <li class="list-group-item"><i class="fas fa-dollar-sign me-2"></i>Price: {{ p.price }}</li>
           <li class="list-group-item"><i class="fas fa-percent me-2"></i>Discount: {{ p.discount }}%</li>
-          <li class="list-group-item"><i class="fas fa-hand-holding-usd me-2"></i>Paid: {{ p.paid | currency }}</li>
-          <li class="list-group-item"><i class="fas fa-wallet me-2"></i>Due: {{ p.due | currency }}</li>
+          <li class="list-group-item"><i class="fas fa-hand-holding-usd me-2"></i>Paid: {{ p.paid  }}</li>
+          <li class="list-group-item"><i class="fas fa-wallet me-2"></i>Due: {{ p.due }}</li>
           <li class="list-group-item">
             <i class="fas fa-cubes me-2"></i>Stock:
-            <span [ngClass]="{
-              'badge bg-success': p.stock_qty > 10,
-              'badge bg-warning text-dark': p.stock_qty > 0 && p.stock_qty <= 10,
-              'badge bg-danger': p.stock_qty === 0
-            }">{{ p.stock_qty }}</span>
           </li>
         </ul>
       </div>

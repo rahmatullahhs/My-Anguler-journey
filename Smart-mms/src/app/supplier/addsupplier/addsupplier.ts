@@ -4,70 +4,46 @@ import { SupplierService } from '../../services/supplier.service';
 import { Router } from '@angular/router';
 import { SupplierModel } from '../../models/supplier.model';
 
+
+
 @Component({
+
   selector: 'app-addsupplier',
-  standalone: false,
+   standalone: false,
   templateUrl: './addsupplier.html',
-  styleUrl: './addsupplier.css'
+  styleUrls: ['./addsupplier.css'] // ✅ Fixed typo: "styleUrl" ➝ "styleUrls"
 })
 export class Addsupplier implements OnInit {
-  supplier: SupplierModel[] = [];
   supplierForm: FormGroup;
   isEditMode = false;
 
   constructor(
     private supplierservice: SupplierService,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {
+    // ✅ Build form with validation (optional)
     this.supplierForm = this.formBuilder.group({
-      id: [null],
-      name: ['', Validators.required]
-
-
-    });
-  }
-
-
-
-  ngOnInit(): void {
-    this.supplierForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: [''],
       address: ['']
-
     });
   }
 
+  ngOnInit(): void {
+    // ✅ No need to rebuild the form here again — already built in constructor
+  }
 
   addsupplier(): void {
-    const supplier: SupplierModel = { ...this.supplierForm.value };
+    const supplier: SupplierModel = this.supplierForm.value;
     this.supplierservice.saveSupplier(supplier).subscribe({
-      next: (res) => {
-        this.router.navigate(['viewallsupplier'])
+      next: () => {
+        this.router.navigate(['viewallsupplier']);
       },
       error: (error) => {
-        console.log(error);
+        console.error('Error saving supplier:', error);
       }
     });
   }
-
-// In your component.ts
-countries = [
-  { code: 'IN', name: 'India' },
-  { code: 'US', name: 'United States' },
-  { code: 'CA', name: 'Canada' },
-  { code: 'DE', name: 'Germany' },
-  { code: 'AU', name: 'Australia' },
-  // Add more as needed
-];
-
-getFlagEmoji(code: string): string {
-  return code.toUpperCase().replace(/./g, c => 
-    String.fromCodePoint(c.charCodeAt(0) + 127397));
-}
-
-
-
 }

@@ -1,114 +1,66 @@
 
-
-<div class="container mt-5">
-  <h2 class="mb-4">Sell Product / Create Order</h2>
-
-  <form>
-    <!-- Customer Information -->
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <label for="customerName" class="form-label">Customer ID</label>
-        <input type="text" class="form-control" id="customerName" placeholder="Enter customer name" required>
-      </div>
-      <div class="col-md-4">
-        <label for="customerName" class="form-label">Customer Name</label>
-        <input type="text" class="form-control" id="customerName" placeholder="Enter customer name" required>
-      </div>
-      <div class="col-md-4">
-        <label for="orderDate" class="form-label">Order Date</label>
-        <input type="date" class="form-control" id="orderDate" required>
-      </div>
-    </div>
-
-    <!-- Product Selection -->
-         <div class="row mb-3">
-     <div class="col-md-4">
-
-        <label for="brandId" class="form-label">Category</label>
-        <select id="brandId" class="form-select" formControlName="brandId">
-          <option [value]="null" disabled>Select Category</option>
-          
-          <option>Laptop</option>
-          <option>Desktop</option>
-          <option>Components</option>
-          <option>Accessories</option>
-        </select>
-
+  <div class="container mt-5">
+    <h2 class="mb-4">Invoice Form</h2>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="invoice" class="form-label">Invoice Number</label>
+          <input type="text" class="form-control" id="invoice" name="invoice">
+        </div>
+        <div class="col-md-6">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date">
+        </div>
       </div>
 
-      
-      <div class="col-md-4">
-        <label for="product" class="form-label">Product</label>
-        <select class="form-select" id="product" required>
-          <option selected disabled>Select Product</option>
-          <option>Laptop</option>
-          <option>Monitor</option>
-          <option>Keyboard</option>
-          <option>Mouse</option>
-        </select>
+      <h5>Customer Details</h5>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="customername" class="form-label">Name</label>
+          <input type="text" class="form-control" id="customername" name="customername">
+        </div>
+        <div class="col-md-4">
+          <label for="customerphone" class="form-label">Phone</label>
+          <input type="tel" class="form-control" id="customerphone" name="customerphone">
+        </div>
+        <div class="col-md-4">
+          <label for="customeremail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="customeremail" name="customeremail">
+        </div>
       </div>
 
-      <div class="col-md-4">
-        <label for="brandId" class="form-label">Brand</label>
-        <select id="brandId" class="form-select" formControlName="brandId">
-          <option [value]="null" disabled>Select Brand</option>
-          
-          <option>Hp</option>
-          <option>DEll</option>
-          <option>apple</option>
-          <option>Acer</option>
-        </select>
+      <h5>Product Details</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="productdetail" class="form-label">Product Detail</label>
+          <input type="text" class="form-control" id="productdetail" name="productdetail">
+        </div>
+        <div class="col-md-3">
+          <label for="productqty" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="productqty" name="productqty" min="1">
+        </div>
+        <div class="col-md-3">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" name="price" min="0" step="0.01">
+        </div>
       </div>
+
+      <h5>Payment Details</h5>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="paid" class="form-label">Paid</label>
+          <input type="number" class="form-control" id="paid" name="paid" min="0" step="0.01">
+        </div>
+        <div class="col-md-6">
+          <label for="due" class="form-label">Due</label>
+          <input type="number" class="form-control" id="due" name="due" min="0" step="0.01">
+        </div>
       </div>
+
+
     
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="product" class="form-label">Product details</label>
-        <textarea class="form-control" id="notes" rows="3" placeholder="Optional..."></textarea>
-      </div>
-      <div class="col-md-3">
-        <label for="quantity" class="form-label">Quantity</label>
-        <input type="number" class="form-control" id="quantity" min="1" required>
-      </div>
-      <div class="col-md-3">
-        <label for="price" class="form-label">Unit Price</label>
-        <input type="number" class="form-control" id="price" min="0" required>
-      </div>
-    </div>
 
-    <!-- Total Calculation (Optional) -->
-<div class="row mb-3">
-  <div class="col-md-6 mb-3">
-    <label for="invoice" class="form-label">Invoice</label>
-    <input type="text" class="form-control" id="invoice" readonly>
-  </div>
 
-  <div class="col-md-6 mb-3">
-    <label for="price" class="form-label">Price</label>
-    <input type="number" class="form-control" id="price" readonly>
-  </div>
-
-  <div class="col-md-6 mb-3">
-    <label for="discount" class="form-label">Discount (%)</label>
-    <input type="number" class="form-control" id="discount" readonly>
-  </div>
-
-  <div class="col-md-6 mb-3">
-    <label for="total" class="form-label">Total</label>
-    <input type="number" class="form-control" id="total" readonly>
-  </div>
-
-  <div class="col-md-6 mb-3">
-    <label for="totalPrice" class="form-label">Total Price (After Discount)</label>
-    <input type="number" class="form-control" id="totalPrice" readonly>
-  </div>
-</div>
-
-    <!-- Notes -->
-    <div class="mb-3">
-      <label for="notes" class="form-label">Notes</label>
-      <textarea class="form-control" id="notes" rows="3" placeholder="Optional..."></textarea>
-    </div>
 
     <!-- Buttons -->
     <button type="submit" class="btn btn-primary">Submit Order</button>

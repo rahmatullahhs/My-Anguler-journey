@@ -11,7 +11,7 @@ import { AdminDashboard } from './components/dashboard/admin-dashboard/admin-das
 import { Register } from './auth/register/register';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Login } from './auth/login/login';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { Viewallemp } from './hrm/viewallemp/viewallemp';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addemp } from './hrm/addemp/addemp';
@@ -45,7 +45,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Billstracking } from './account/billstracking/billstracking';
 import { Salestracking } from './account/salestracking/salestracking';
-import { Cogs } from './account/cogs/cogs';
+import { AddCogsComponent } from './account/cogs/cogs';
 
 import { Empsalary } from './account/empsalary/empsalary';
 import { Addentry } from './account/accountpayentry/addentry/addentry';
@@ -53,6 +53,9 @@ import { Addentry } from './account/accountpayentry/addentry/addentry';
 
 import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
 import { Tax } from './account/tax/tax';
+
+import { Viewallorder } from './order/viewallorder/viewallorder';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -111,13 +114,14 @@ import { Tax } from './account/tax/tax';
         Ledgerbook,
         Billstracking,
         Salestracking,
-        Cogs,
+        AddCogsComponent,
       
         Empsalary,
        
         Addentry,
          AccountPayEntryComponent,
-         Tax
+         Tax,
+         Viewallorder
 
 
 
@@ -126,7 +130,7 @@ import { Tax } from './account/tax/tax';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    
       MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
