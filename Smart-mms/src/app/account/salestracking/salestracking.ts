@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SalestrackingModel } from '../../models/saletracking.model';
 import { OrderModel } from '../../models/order.model';
 import { SaletrackingService } from '../../services/saletracking.service';
@@ -19,7 +19,8 @@ export class Salestracking implements OnInit {
   constructor(
     private salesTrackingService: SaletrackingService,
     private orderService: OrderService,
-    private router: Router
+    private router: Router,
+    private cdr:ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class Salestracking implements OnInit {
     this.salesTrackingService.getAllSales().subscribe({
       next: (sales) => {
         this.sellsTracing = sales;
+        this.cdr.markForCheck();
         console.log('Sales loaded:', sales);
       },
       error: (err) => {
@@ -43,6 +45,7 @@ export class Salestracking implements OnInit {
     this.orderService.getAllOrder().subscribe({
       next: (orders) => {
         this.orders = orders;
+        this.cdr.markForCheck();
         console.log('Orders loaded:', orders);
       },
       error: (err) => {

@@ -183,6 +183,13 @@
       "email": "Mashkatt@gmail.com",
       "phone": "+8801888118271",
       "address": "nwnhnwjjw"
+    },
+    {
+      "id": "b140",
+      "name": "Parvez Ala Habibi",
+      "email": "parvage@gmail.com",
+      "phone": "0133996577",
+      "address": "ddddd"
     }
   ],
   "categories": [
@@ -407,6 +414,13 @@
       "email": "rahmat@gmail.com",
       "phone": "0133996577",
       "address": "bbbbbbbbbbb"
+    },
+    {
+      "id": "f4e9",
+      "name": "nnnnn",
+      "email": "rahmat@gmail.com",
+      "phone": "+8801888118271",
+      "address": "kkjhkjhkjhkj"
     }
   ],
   "ledgerbook": [
@@ -539,6 +553,15 @@
       "packingcost": 600,
       "tax": 20,
       "totalCogs": 12820
+    },
+    {
+      "id": null,
+      "productprice": 89999,
+      "transportfee": 9000,
+      "labourcost": 90,
+      "packingcost": 90,
+      "tax": 1,
+      "totalCogs": 99180
     }
   ],
   "order": [
@@ -609,5 +632,16 @@
       "photo": "https://avatars.githubusercontent.com/u/108518708?v=4",
       "role": "user"
     }
-  ]
+  ],
+  "empsalary": [
+    {
+      "id": null,
+      "name": "Rahmat ullah",
+      "basicsalary": 9000,
+      "bonus": 90,
+      "allowance": 9,
+      "totalpayable": 9099
+    }
+  ],
+  "billtrack":[]
 }

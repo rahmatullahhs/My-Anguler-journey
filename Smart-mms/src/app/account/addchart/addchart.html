@@ -1,142 +1,41 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Financial Summary</h2>
 
-  
-
-  
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inventory & Costing</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-      padding: 40px 0;
-    }
-    .table th, .table td {
-      vertical-align: middle;
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <h2 class="text-center mb-4">📦 Inventory & Costing</h2>
-
-  <!-- Purchase Form -->
-  <div class="card mb-4">
-    <div class="card-header bg-primary text-white">Add Product Purchase</div>
-    <div class="card-body">
-      <form id="purchaseForm" class="row g-3">
-        <div class="col-md-3">
-          <input type="text" class="form-control" id="productName" placeholder="Product Name" required>
+  <div class="row text-center">
+    <div class="col-md-3 mb-3">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h5 class="card-title">Total Sales</h5>
+          <p class="card-text fs-4">₹{{ totalSales | number:'1.0-0' }}</p>
         </div>
-        <div class="col-md-2">
-          <input type="number" class="form-control" id="quantityPurchased" placeholder="Qty Purchased" required>
-        </div>
-        <div class="col-md-2">
-          <input type="number" class="form-control" id="unitCost" placeholder="Unit Cost ₹" required>
-        </div>
-        <div class="col-md-2">
-          <input type="number" class="form-control" id="quantitySold" placeholder="Qty Sold">
-        </div>
-        <div class="col-md-3 text-end">
-          <button type="submit" class="btn btn-success w-100">Add to Inventory</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Inventory Table -->
-  <div class="card">
-    <div class="card-header bg-secondary text-white">Inventory & Costing Table</div>
-    <div class="card-body table-responsive">
-      <table class="table table-bordered" id="inventoryTable">
-        <thead class="table-light">
-          <tr>
-            <th>Product</th>
-            <th>Qty Purchased</th>
-            <th>Unit Cost (₹)</th>
-            <th>Total Cost (₹)</th>
-            <th>Qty Sold</th>
-            <th>COGS (₹)</th>
-            <th>Current Stock</th>
-            <th>Stock Value (₹)</th>
-          </tr>
-        </thead>
-        <tbody id="inventoryBody">
-          <!-- Rows inserted dynamically -->
-        </tbody>
-      </table>
+    <div class="col-md-3 mb-3">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title">Total Purchases</h5>
+          <p class="card-text fs-4">₹{{ totalPurchases | number:'1.0-0' }}</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-
-
-
-  <!-- Add Sale Form -->
-  <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-primary text-white">Add Product Sale</div>
-    <div class="card-body">
-      <form id="salesForm" class="row g-3">
-        <div class="col-md-3">
-          <input type="date" class="form-control" id="saleDate" placeholder="Date" required>
+    <div class="col-md-3 mb-3">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h5 class="card-title">Total Expenses</h5>
+          <p class="card-text fs-4">₹{{ totalExpenses | number:'1.0-0' }}</p>
         </div>
-        <div class="col-md-3">
-          <input type="text" class="form-control" id="customerName" placeholder="Customer Name" required>
-        </div>
-        <div class="col-md-3">
-          <input type="text" class="form-control" id="productName" placeholder="Product Name" required>
-        </div>
-        <div class="col-md-3">
-          <input type="number" class="form-control" id="amount" placeholder="Amount ₹" required>
-        </div>
-        <div class="col-md-3">
-          <select class="form-select" id="status" required>
-            <option value="">Payment Status</option>
-            <option value="Paid">Paid</option>
-            <option value="Due">Due</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <input type="date" class="form-control" id="dueDate" placeholder="Due Date (if due)">
-        </div>
-        <div class="col-md-3">
-          <button type="submit" class="btn btn-success w-100">Add Sale</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
 
-  
-<div class="p-4 bg-white rounded shadow-md w-full max-w-2xl mx-auto">
-  <h2 class="text-2xl font-bold mb-4 text-center">Profit & Loss Report</h2>
-
-  <div class="grid grid-cols-2 gap-4 text-lg">
-    <div>Total Sales:</div>
-    <div class="text-right font-semibold text-green-600">₹{{ totalSales }}</div>
-
-    <div>Total Purchases (COGS):</div>
-    <div class="text-right text-red-600">₹{{ totalPurchases }}</div>
-
-    <div>Total Expenses:</div>
-    <div class="text-right text-red-600">₹{{ totalExpenses }}</div>
-
-    <hr class="col-span-2 my-2">
-
-    <div class="font-bold">Net Profit / Loss:</div>
-    <div 
-      class="text-right font-bold" 
-      [ngClass]="{
-        'text-green-700': netProfit >= 0,
-        'text-red-700': netProfit < 0
-      }"
-    >
-      ₹{{ netProfit }}
+    <div class="col-md-3 mb-3">
+      <div [ngClass]="{'bg-success text-white': netProfit >= 0, 'bg-danger text-white': netProfit < 0}" class="card">
+        <div class="card-body">
+          <h5 class="card-title">Net Profit</h5>
+          <p class="card-text fs-4">₹{{ netProfit | number:'1.0-0' }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,28 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { BrandModel } from '../../models/brand.model';
-
-import { BrandService } from '../../services/brand.service';
 import { CategoryModel } from '../../models/category.model';
-import { HttpClient } from '@angular/common/http';
+import { BrandService } from '../../services/brand.service';
 import { CategoryService } from '../../services/category.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
+  standalone:false,
   selector: 'app-addbrand',
-  standalone: false,
   templateUrl: './addbrand.html',
-  styleUrl: './addbrand.css'
+  styleUrls: ['./addbrand.css'] // ✅ styleUrls must be an array
 })
 export class Addbrand implements OnInit {
-
-
   brand: BrandModel = { name: '', categoryId: '' };
   brands: BrandModel[] = [];
-  categories: any[] = [];
+  categories: CategoryModel[] = [];
   isEditMode = false;
 
-  constructor(private brandService: BrandService, 
+  constructor(
+    private brandService: BrandService,
     private http: HttpClient,
-     private catService: CategoryService) { }
+    private catService: CategoryService,
+    private cdr: ChangeDetectorRef // ✅ Moved to constructor
+  ) {}
 
   ngOnInit(): void {
     this.loadBrands();
@@ -30,11 +30,17 @@ export class Addbrand implements OnInit {
   }
 
   loadBrands(): void {
-    this.brandService.getAllBrand().subscribe(res => (this.brands = res));
+    this.brandService.getAllBrand().subscribe(res => {
+      this.brands = res;
+      this.cdr.markForCheck(); // Optional, only if using OnPush
+    });
   }
 
-  loadCategories(): void {   
-    this.catService.getAllCategory().subscribe(res => (this.categories = res));
+  loadCategories(): void {
+    this.catService.getAllCategory().subscribe(res => {
+      this.categories = res;
+      this.cdr.markForCheck(); // Optional
+    });
   }
 
   getCategoryName(id: string | number): string {
@@ -59,11 +65,9 @@ export class Addbrand implements OnInit {
   editBrand(b: BrandModel): void {
     this.brand = { ...b };
     this.isEditMode = true;
-    this.resetForm();
-    this.loadBrands();
   }
 
-  deleteBrand(id: string ): void {
+  deleteBrand(id: string): void {
     this.brandService.deleteBrand(id).subscribe(() => {
       this.loadBrands();
     });
@@ -74,6 +78,3 @@ export class Addbrand implements OnInit {
     this.isEditMode = false;
   }
 }
-
-
-

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CogsService } from '../../services/cogs.service';  // Update this to your COGS service
 import { CogsModel } from '../../models/cogs.model';  // Updated COGS model import
@@ -17,7 +17,8 @@ export class AddCogsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private cogsService: CogsService  // Service to interact with COGS API
+    private cogsService: CogsService , // Service to interact with COGS API
+    private cdr:ChangeDetectorRef
   ) {
     // Initialize form with the appropriate fields
     this.cogsForm = this.fb.group({
@@ -39,6 +40,7 @@ export class AddCogsComponent implements OnInit {
   getAllCogs() {
     this.cogsService.getAllCogs().subscribe(data => {
       this.cogsList = data;  // Store fetched COGS data
+      this.cdr.markForCheck();
     });
   }
 

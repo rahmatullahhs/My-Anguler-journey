@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CategoryModel } from '../../models/category.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../services/category.service';
@@ -18,7 +18,8 @@ export class Addcategory implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private cdr:ChangeDetectorRef
   ) {
     this.categoryForm = this.fb.group({
       id: [null],
@@ -33,6 +34,7 @@ export class Addcategory implements OnInit {
   getAllCategories() {
     this.categoryService.getAllCategory().subscribe(data => {
       this.categories = data;
+      this.cdr.markForCheck();
     });
   }
 

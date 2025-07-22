@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InventoryModel } from '../../models/inventory.model';
 import { InventoryService } from '../../services/inventory.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
+  standalone:false,
   selector: 'app-addinventory',
-  standalone: false,
   templateUrl: './addinventory.html',
-  styleUrls: ['./addinventory.css'] // 
+  styleUrls: ['./addinventory.css']
 })
 export class Addinventory implements OnInit {
-
   inventoryForm: FormGroup;
   editing: boolean = false;
   inventory: InventoryModel[] = [];
@@ -20,10 +19,11 @@ export class Addinventory implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private inventoryService: InventoryService
+    private inventoryService: InventoryService,
+    private cdr: ChangeDetectorRef // ✅ injected correctly
   ) {
     this.inventoryForm = this.formBuilder.group({
-      id: [null],  // Optional
+      id: [null],
       productname: ['', Validators.required],
       productDetails: [''],
       price: [0, [Validators.required, Validators.min(0)]],
@@ -38,6 +38,7 @@ export class Addinventory implements OnInit {
   loadInventory(): void {
     this.inventoryService.getAllInventory().subscribe(res => {
       this.inventory = res;
+      this.cdr.markForCheck(); // Optional unless using OnPush
     });
   }
 
@@ -50,27 +51,26 @@ export class Addinventory implements OnInit {
     const formValue = this.inventoryForm.value;
 
     if (this.editing && formValue.id) {
-      // UPDATE PRODUCT
       this.inventoryService.updateInventory(formValue).subscribe(() => {
         alert('Product updated successfully!');
         this.loadInventory();
         this.cancelEdit();
       });
     } else {
-      // CREATE PRODUCT
       const newInventory: InventoryModel = { ...formValue };
       this.inventoryService.addInventory(newInventory).subscribe(() => {
         alert('Product added successfully!');
         this.loadInventory();
         this.inventoryForm.reset();
         this.router.navigate(['/viewinventory']);
+        this.cdr.markForCheck();
       });
     }
   }
 
   editInventory(inventory: InventoryModel): void {
     this.editing = true;
-    this.inventoryForm.patchValue(inventory);  
+    this.inventoryForm.patchValue(inventory);
   }
 
   deleteInventory(id: string): void {
