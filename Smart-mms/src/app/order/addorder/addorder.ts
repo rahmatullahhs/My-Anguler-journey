@@ -4,6 +4,8 @@ import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { OrderModel } from '../../models/order.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SalestrackingModel } from '../../models/saletracking.model';
+import { SaletrackingService } from '../../services/saletracking.service';
 
 @Component({
   selector: 'app-addorder',
@@ -11,8 +13,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './addorder.html',
   styleUrl: './addorder.css'
 })
-export class Addorder implements OnInit{
- orderForm!: FormGroup;
+export class Addorder implements OnInit {
+  orderForm!: FormGroup;
   totalprice: number = 0;
   finalprice: number = 0;
   due: number = 0;
@@ -21,8 +23,9 @@ export class Addorder implements OnInit{
     private orderService: OrderService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private sts: SaletrackingService
+  ) { }
 
   ngOnInit(): void {
     this.orderForm = this.formBuilder.group({
@@ -46,6 +49,7 @@ export class Addorder implements OnInit{
     }
 
     const order: OrderModel = { ...this.orderForm.value };
+    const salesTracking: SalestrackingModel = new SalestrackingModel(this.orderForm.value.id, this.orderForm.value.saleDate, this.orderForm.value.due);
 
     this.orderService.saveOrder(order).subscribe({
       next: (res) => {
@@ -57,6 +61,10 @@ export class Addorder implements OnInit{
         console.error("Error saving order", error);
       }
     });
+
+    this.sts.saveST(salesTracking).subscribe(data => {
+      console.log(data);
+    })
   }
 
   PriceCalculation(): void {

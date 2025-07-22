@@ -1,32 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Userservice } from '../../services/userservice';
 import { Subscription } from 'rxjs';
 import { UserModel } from '../../models/user.model';
-import { AuthService } from '../../services/auth-service';
-import { Router } from '@angular/router';
-import { Userservice } from '../../services/userservice';
 
 @Component({
-  selector: 'app-userprofile',
+  selector: 'app-admin-profile',
   standalone: false,
-  templateUrl: './userprofile.html',
-  styleUrl: './userprofile.css'
+  templateUrl: './admin-profile.html',
+  styleUrl: './admin-profile.css'
 })
-export class Userprofile {
-
+export class AdminProfile implements OnInit {
  user: UserModel | null = null;
   private subscription: Subscription = new Subscription();
 
   constructor(
-    private authService: AuthService, 
-    private router: Router,
     private userSer: Userservice
   ) { }
-
   ngOnInit(): void {
     this.loadUser();
   }
 
-  loadUser(): void{
+  loadUser(): void {
     this.userSer.getUserProfile().subscribe({
       next: (data) => {
         this.user = data;
@@ -38,5 +32,3 @@ export class Userprofile {
   }
 
 }
-
-

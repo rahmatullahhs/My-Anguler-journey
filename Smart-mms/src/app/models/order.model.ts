@@ -2,14 +2,17 @@ export class OrderModel {
 
     id!:string;
     invoice!:string;
-    date!:Date;
+   orderDate!: string;
     customername!:string;
     customerphone!:string;
     customeremail!:string;
     productdetail!:string;
     productqty!:number;
-    price!:number;
+     totalAmount!: number;
     paid!:number;
     due!:number;
-  
+
+
 }
+
+

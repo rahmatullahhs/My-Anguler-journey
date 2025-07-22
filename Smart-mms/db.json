@@ -543,32 +543,46 @@
   ],
   "order": [
     {
-      "id": "9f32",
-      "invoice": "bbbbbbbb",
+      "id": "2ddc",
+      "invoice": "DX-12462",
       "date": "2025-07-22",
-      "customername": "asdfasd",
-      "customerphone": "sdafasd",
-      "customeremail": "sadfsda@asdfasdf",
-      "productdetail": "asdfasdf",
-      "productqty": 1010,
-      "price": 100,
-      "discount": 10,
-      "paid": 100,
-      "due": 90800
+      "customername": "aaaaaaaaa",
+      "customerphone": "aaaaaaaa",
+      "customeremail": "aaaaaaaaaaaa",
+      "productdetail": "aaaaaaaaaa",
+      "productqty": 12,
+      "price": 776655,
+      "discount": 1,
+      "paid": 33333333,
+      "due": -24106671.6
     },
     {
-      "id": "da2a",
-      "invoice": "bbbbbbbb",
+      "id": "f2f9",
+      "invoice": "DX-12462",
       "date": "2025-07-22",
-      "customername": "asdfasd",
-      "customerphone": "sdafasd",
-      "customeremail": "sadfsda@asdfasdf",
-      "productdetail": "asdfasdf",
-      "productqty": 20,
-      "price": 50200,
-      "discount": 1,
-      "paid": 5555,
-      "due": 988405
+      "customername": "qqqqqqqqqqqq",
+      "customerphone": "qqqqqqqqqqq",
+      "customeremail": "qqqqqqqqqqqq",
+      "productdetail": "qqqqqqqqqqq11",
+      "productqty": 1111,
+      "price": 1111,
+      "discount": 1111,
+      "paid": 1111,
+      "due": -12480096.31
+    },
+    {
+      "id": "12e4",
+      "invoice": "DX-12462",
+      "date": "2025-07-22",
+      "customername": "aaaaaaa",
+      "customerphone": "aaaaaaaaaaa",
+      "customeremail": "aaaaaaaaa",
+      "productdetail": "aaaaaaaaaa",
+      "productqty": 33,
+      "price": 33333,
+      "discount": 2,
+      "paid": 23333,
+      "due": 1054656.22
     }
   ],
   "inventory": [
@@ -580,5 +594,20 @@
       "qty": 150
     }
   ],
-  "sellsTracing":[]
+  "salesTracing": [
+    {
+      "id": "d1b5",
+      "amount": 1054656.22
+    }
+  ],
+  "user": [
+    {
+      "id": "6f38",
+      "name": "Rahmat ullah",
+      "email": "rahmat@gmail.com",
+      "password": "1234",
+      "photo": "https://avatars.githubusercontent.com/u/108518708?v=4",
+      "role": "user"
+    }
+  ]
 }

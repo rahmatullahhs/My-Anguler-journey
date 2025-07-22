@@ -53,6 +53,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Addinventory } from './inventory/addinventory/addinventory';
 import { Viewinventory } from './inventory/viewinventory/viewinventory';
 import { Salestracking } from './account/salestracking/salestracking';
+import { EmpSalaryComponent } from './account/empsalary/empsalary';
+import { AdminProfile } from './auth/admin-profile/admin-profile';
+import { ManagerProfile } from './auth/manager-profile/manager-profile';
+import { CasierProfile } from './auth/casier-profile/casier-profile';
 
 
 
@@ -68,7 +72,6 @@ import { Salestracking } from './account/salestracking/salestracking';
     Userprofile,
     Login, 
     
-    
     Addemp,
     Updateemp,
      Viewallemp,
@@ -81,9 +84,9 @@ import { Salestracking } from './account/salestracking/salestracking';
       Addcategory,
       Addbrand,
       AddProduct,
-     ViewAllstock,
-    Addinventory,
-    Viewinventory,
+      ViewAllstock,
+      Addinventory,
+      Viewinventory,
 
       Addsupplier,
       Viewallsupplier,
@@ -107,15 +110,12 @@ import { Salestracking } from './account/salestracking/salestracking';
         AddCogsComponent,      
         Addentry,
          AccountPayEntryComponent,
-         Tax
-
+         Tax,
+  EmpSalaryComponent,
+  AdminProfile,
+  ManagerProfile,
+  CasierProfile
    
-
-         
-     
-
-
-
   ],
   imports: [
     BrowserModule,

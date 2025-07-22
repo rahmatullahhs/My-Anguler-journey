@@ -10,7 +10,7 @@ import { UserModel } from '../models/user.model';
 })
 export class Userservice {
 
-    private baseUrl: string = "http://localhost:4200/user";
+ private baseUrl: string = "http://localhost:3000/user";
 
   constructor(
     private http: HttpClient,
@@ -23,14 +23,27 @@ export class Userservice {
   }
 
 
-    updateUserProfile(usermodel: UserModel): Observable<UserModel> {
-    localStorage.setItem('userProfile', JSON.stringify(usermodel));
-    return this.http.put<UserModel>(`${this.baseUrl}/${usermodel.id}`, usermodel);
+ updateUserProfile(user: UserModel): Observable<UserModel> {
+    localStorage.setItem('userProfile', JSON.stringify(user));
+    return this.http.put<UserModel>(`${this.baseUrl}/${user.id}`, user);
   }
+
+  getAllUser(): Observable<any>{
+      
+          return this.http.get(this.baseUrl);
+      
+        }
+     viewUserProfile(id: string): Observable<any> {
+      return this.http.get(this.baseUrl+'/'+id);
+    }
+   getUserById(id: string): Observable<any> {
   
-
-
-
-
-
+      return this.http.get(this.baseUrl+'/'+id);
+    }
+    updateUser(id: string, user: UserModel): Observable<any> {
+  
+     return this.http.put(this.baseUrl+'/'+id,user);
+    }
+  
+  
 }

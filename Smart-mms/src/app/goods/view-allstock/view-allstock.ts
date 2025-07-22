@@ -4,7 +4,7 @@ import { ProductModel } from '../../models/product.model';
 import { BrandService } from '../../services/brand.service';
 import { CategoryService } from '../../services/category.service';
 import { SupplierService } from '../../services/supplier.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,18 +18,20 @@ export class ViewAllstock implements OnInit {
   brands: any[] = [];
   categories: any[] = [];
   suppliers: any[] = [];
-editing: boolean = false;
+  editing: boolean = false;
   productForm: FormGroup;
+
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
     private categoryService: CategoryService,
     private supplierService: SupplierService,
-     private router: Router,
+    private router: Router,
     private formBuilder: FormBuilder
-  ) {this.productForm = this.formBuilder.group({
+  ) {
+    this.productForm = this.formBuilder.group({
       id: [null],
-      name: ['', ],
+      name: ['', Validators.required],
       graphicscard: [''],
       monitor: [''],
       processor: [''],
@@ -39,11 +41,11 @@ editing: boolean = false;
       discount: [0],
       paid: [0],
       due: [0],
-      price: [0],
-      stock_qty: [0],
-      brandId: ['', ],
-      categoryId: ['',],
-      supplierId: ['']
+      price: [0, Validators.min(0)],
+      stock_qty: [0, Validators.min(0)],
+      brandId: ['', Validators.required],
+      categoryId: ['', Validators.required],
+      supplierId: ['', Validators.required]
     });
   }
 
@@ -51,45 +53,34 @@ editing: boolean = false;
     this.loadAllData();
   }
 
-  loadProducts(): void {
-    this.productService.getAll().subscribe(res => {
-      this.products = res;
-    });
-  }
-
-
   loadAllData(): void {
-    this.productService.getAll().subscribe(res => {
+    this.productService.getAll().subscribe((res: ProductModel[]) => {
       this.products = res;
     });
 
-    this.brandService.getAllBrand().subscribe(res => {
+    this.brandService.getAllBrand().subscribe((res: any[]) => {
       this.brands = res;
     });
 
-    this.categoryService.getAllCategory().subscribe(res => {
+    this.categoryService.getAllCategory().subscribe((res: any[]) => {
       this.categories = res;
     });
 
-    this.supplierService.getAllSupplier().subscribe(res => {
+    this.supplierService.getAllSupplier().subscribe((res: any[]) => {
       this.suppliers = res;
     });
   }
 
-
-
- editProduct(product: ProductModel): void {
+  editProduct(product: ProductModel): void {
     this.editing = true;
-    this.productForm.patchValue(product
-      
-    );
+    this.productForm.patchValue(product);
   }
 
   deleteProduct(id: string): void {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productService.delete(id).subscribe(() => {
         alert('Product deleted!');
-        this.loadProducts();
+        this.loadAllData(); // refresh all
       });
     }
   }
@@ -116,37 +107,31 @@ editing: boolean = false;
     });
   }
 
-updateProduct(): void {
-  
-  const updatedProduct = this.productForm.value;
+  updateProduct(): void {
+    const updatedProduct = this.productForm.value;
 
-  if (!updatedProduct.id) {
-    alert('Invalid product ID.');
-    return;
+    if (!updatedProduct.id) {
+      alert('Invalid product ID.');
+      return;
+    }
+
+    this.productService.update(updatedProduct).subscribe({
+      next: () => {
+        alert('Product updated successfully!');
+        this.loadAllData();
+        this.cancelEdit();
+      },
+      error: (err) => {
+        console.error('Update failed:', err);
+        alert('Failed to update product. Please try again.');
+      }
+    });
   }
 
-  this.productService.update(updatedProduct.id).subscribe({
-    next: () => {
-      alert('Product updated successfully!');
-      this.loadProducts();
-      this.cancelEdit(); // Reset form and exit edit mode
-    },
-    error: (err) => {
-      console.error('Update failed:', err);
-      alert('Failed to update product. Please try again.');
-    }
-  });
-}
+  goToEditProduct(id: string): void {
+    this.router.navigate(['/addproduct', id]);
+  }
 
-goToEditProduct(id: string): void {
-  this.router.navigate(['/addproduct', id]);
-}
-
-
-
-
-
-  
   getBrandName(brandId: string): string {
     return this.brands.find(b => b.id === brandId)?.name || 'N/A';
   }

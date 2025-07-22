@@ -38,6 +38,11 @@ import { AddCogsComponent } from './account/cogs/cogs';
 import { Addinventory } from './inventory/addinventory/addinventory';
 import { Addorder } from './order/addorder/addorder';
 import { Viewallorder } from './order/viewallorder/viewallorder';
+import { EmpSalaryComponent } from './account/empsalary/empsalary';
+import { AdminProfile } from './auth/admin-profile/admin-profile';
+import { CasierProfile } from './auth/casier-profile/casier-profile';
+import { ManagerProfile } from './auth/manager-profile/manager-profile';
+import { Userprofile } from './auth/userprofile/userprofile';
 
 
 
@@ -48,8 +53,7 @@ const routes: Routes = [
   { path: 'admindashboard', component: AdminDashboard },
   { path: 'footer', component: Footer },
   { path: 'header', component: Header },
-  { path: 'register', component: Register },
-  { path: 'login', component: Login },
+
 
   { path: 'viewallemp', component: Viewallemp },
   { path: 'addemp', component: Addemp },
@@ -88,7 +92,16 @@ const routes: Routes = [
   { path: 'addentry', component: Addentry },
   { path: 'tax', component: Tax },
   { path: 'addinventory', component: Addinventory },
-  { path: 'saletracking', component: Salestracking }
+  { path: 'saletracking', component: Salestracking },
+
+ { path: 'empsalary', component: EmpSalaryComponent },
+  { path: 'admin', component: AdminProfile },
+   { path: 'casier', component: CasierProfile },
+    { path: 'manager', component: ManagerProfile },
+  { path: 'register', component: Register },
+  { path: 'login', component: Login },
+  { path: 'user', component: Userprofile }
+
 ];
 
 @NgModule({

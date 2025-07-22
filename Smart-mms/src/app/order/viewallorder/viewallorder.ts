@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { OrderModel } from '../../models/order.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OrderService } from '../../services/order.service';
@@ -17,8 +17,8 @@ orderform:FormGroup;
 constructor(
 private orderService:OrderService,
 private router:Router,
-private formbuilder:FormBuilder
-
+private formbuilder:FormBuilder,
+private cdr:ChangeDetectorRef
 ){
 
 this.orderform=this.formbuilder.group({
@@ -51,6 +51,7 @@ this.orders=res;
 loadAllData(): void {
     this.orderService.getAllOrder().subscribe(res => {
       this.orders = res;
+      this.cdr.markForCheck();
     });
   }
 

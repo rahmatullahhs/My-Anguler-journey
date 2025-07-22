@@ -13,6 +13,7 @@ import { UserModel } from '../../models/user.model';
 })
 export class Register {
 
+
   regForm!: FormGroup;
 
   constructor(
@@ -36,16 +37,16 @@ export class Register {
   onSubmit(): void {
     if (this.regForm.valid) {
       
-      const usermodel: UserModel = {
+      const user: UserModel = {
         ...this.regForm.value,
         role: 'user'
       };
 
-      this.authService.register(usermodel).subscribe({
+      this.authService.registration(user).subscribe({
         next: (res) => {
           console.log('User registered successfully:', res);
           this.authService.storeToken(res.token);
-          this.router.navigate(['/login']); // Navigate to a protected route after registration
+          this.router.navigate(['/']); // Navigate to a protected route after registration
         },
         error: (err) => {
           console.error('Error registering user:', err);
@@ -56,9 +57,5 @@ export class Register {
       alert("Complte mandatory Field");
     }
   }
-
-
-
-
 
 }

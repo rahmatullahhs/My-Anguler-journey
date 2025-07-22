@@ -5,13 +5,14 @@ import { Employee } from '../../models/employee'; // Make sure this model contai
 import { Empsalary } from '../../models/empsalary.model';
 
 @Component({
+  standalone: false,
   selector: 'app-empsalary',
   templateUrl: './empsalary.html',
   styleUrls: ['./empsalary.css']
-  
+
 })
 export class EmpSalaryComponent implements OnInit {
-empsalaries: Empsalary[] = [];
+  empsalaries: Empsalary[] = [];
 
   salaryForm: FormGroup;
   isEditMode = false;
@@ -50,38 +51,45 @@ empsalaries: Empsalary[] = [];
   }
 
   onSubmit() {
-  if (this.salaryForm.valid) {
-    const formValue = this.salaryForm.getRawValue();
-    const empsalary: Employee = {
-      id: formValue.id,
-      name: formValue.name,
-      basicsalary: formValue.basicsalary,
-      bonus: formValue.bonus,
-      allowance: formValue.allowance,
-      totalpayable: formValue.totalpayable
-    };
+    if (this.salaryForm.valid) {
+      const formValue = this.salaryForm.getRawValue();
+      const empsalary: Empsalary = {
+        id: formValue.id,
+        name: formValue.name,
+        basicsalary: formValue.basicsalary,
+        bonus: formValue.bonus,
+        allowance: formValue.allowance,
+        totalpayable: formValue.totalpayable
+      };
 
-    if (this.isEditMode && empsalary.id) {
-      // ✅ Pass both `id` and `empsalary` as separate arguments
-      this.empsalaryService.updateEmpSalary(empsalary.id, empsalary).subscribe(() => {
-        this.getAllEmpSalary();
-        this.resetForm();
-      });
-    } else {
-      this.empsalaryService.add(empsalary).subscribe(() => {
-        this.getAllEmpSalary();
-        this.resetForm();
-      });
+      if (this.isEditMode && empsalary.id) {
+        // ✅ Pass both `id` and `empsalary` as separate arguments
+        this.empsalaryService.updateEmpSalary(empsalary.id, empsalary).subscribe(() => {
+          this.getAllEmpSalary();
+          this.resetForm();
+        });
+      } else {
+        this.empsalaryService.saveEmpSalary(empsalary).subscribe(() => {
+          this.getAllEmpSalary();
+          this.resetForm();
+        });
+      }
     }
   }
-}
 
 
-  editEmpSalary(empsalary: Employee) {
+ editEmpSalary(id: string | undefined) {
+  if (!id) return;
+
+  const empsalary = this.empsalaries.find(e => e.id === id);
+  if (empsalary) {
     this.salaryForm.patchValue(empsalary);
     this.isEditMode = true;
     this.updateTotalPayable();
   }
+}
+
+
 
   deleteEmpSalary(id?: string) {
     if (id) {

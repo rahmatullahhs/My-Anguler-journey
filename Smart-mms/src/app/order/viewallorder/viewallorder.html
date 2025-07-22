@@ -11,23 +11,28 @@
         <th>Email</th>
         <th>Product Detail</th>
         <th>Quantity</th>
-        <th> Price</th>
+        <th>Price</th>
         <th>Paid</th>
         <th>Due</th>
+        <th>Actions</th> <!-- New column -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
         <td>{{ order.invoice }}</td>
-        <td>{{ order.date | date:'yyyy-MM-dd' }}</td>
+        <td>{{ order.orderDate | date:'yyyy-MM-dd' }}</td>
         <td>{{ order.customername }}</td>
         <td>{{ order.customerphone }}</td>
         <td>{{ order.customeremail }}</td>
         <td>{{ order.productdetail }}</td>
         <td>{{ order.productqty }}</td>
-        <td>{{ order.price | number:'1.2-2' }}</td>
+        <td>{{ order.totalAmount | number:'1.2-2' }}</td>
         <td>{{ order.paid | number:'1.2-2' }}</td>
         <td>{{ order.due | number:'1.2-2' }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary me-1" (click)="editOrder(order)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteOrder(order.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

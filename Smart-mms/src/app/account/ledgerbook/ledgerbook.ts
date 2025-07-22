@@ -12,9 +12,6 @@ import { ProductService } from '../../services/product.service';
 })
 export class Ledgerbook implements OnInit{
 
-
-
-
   ledgerEntries: LedgerbookModel[] = [];
   products: ProductModel[] = [];
 

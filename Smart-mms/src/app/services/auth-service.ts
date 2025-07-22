@@ -10,12 +10,12 @@ import { AuthResponse } from '../models/auth-response';
 })
 export class AuthService {
 
-  private baseUrl: string = "http://localhost:3000/employee";
+  private baseUrl: string = "http://localhost:3000/user";
 
   private currentUserSubject: BehaviorSubject<UserModel | null>;
   public currentUser$: Observable<UserModel | null>;
 
-  constructor(
+    constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -26,16 +26,17 @@ export class AuthService {
 
   }
 
-  private isBrowser(): boolean {
+   private isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
   }
 
-  register(usermodel: UserModel): Observable<AuthResponse> {
-    return this.http.post<UserModel>(this.baseUrl, usermodel).pipe(
+  registration(user: UserModel): Observable<AuthResponse> {
+    return this.http.post<UserModel>(this.baseUrl, user).pipe(
       map((newUser: UserModel) => {
+
         // create token by username and password 
         const token = btoa(`${newUser.email}${newUser.password}`);
-        return { token, usermodel: newUser } as AuthResponse;
+        return {token ,user:newUser } as AuthResponse;
       }),
       catchError(error => {
         console.error('Registration error:', error);
@@ -44,18 +45,20 @@ export class AuthService {
     );
   }
 
+
+
   login(credentials: { email: string; password: string }): Observable<AuthResponse> {
     let params = new HttpParams().append('email', credentials.email);
 
     return this.http.get<UserModel[]>(`${this.baseUrl}`, { params }).pipe(
       map(users => {
         if (users.length > 0) {
-          const usermodel = users[0];
-          if (usermodel.password === credentials.password) {
-            const token = btoa(`${usermodel.email}:${usermodel.password}`);
+          const user = users[0];
+          if (user.password === credentials.password) {
+            const token = btoa(`${user.email}:${user.password}`);
             this.storeToken(token);
-            this.setCurrentUser(usermodel);
-            return { token, usermodel } as AuthResponse;
+            this.setCurrentUser(user);
+            return { token, user } as AuthResponse;
           } else {
             throw new Error('Invalid password');
           }
@@ -71,20 +74,22 @@ export class AuthService {
   }
 
 
-  storeToken(token: string): void {
+storeToken(token: string): void {
     if (this.isBrowser()) {
       localStorage.setItem('token', token);
     }
   }
 
 
-  private setCurrentUser(usermodel: UserModel): void {
+  private setCurrentUser(user: UserModel): void {
     if (this.isBrowser()) {
-      localStorage.setItem('currentUser', JSON.stringify(usermodel));
+      localStorage.setItem('currentUser', JSON.stringify(user));
     }
-    this.currentUserSubject.next(usermodel);
+    this.currentUserSubject.next(user);
   }
-// start logout
+
+
+  // start logout
   logout(): void {
     this.clearCurrentUser();
     if (this.isBrowser()) {
@@ -125,9 +130,9 @@ export class AuthService {
   }
 
 
-   storeUserProfile(usermodel: UserModel): void {
+   storeUserProfile(user: UserModel): void {
     if (this.isBrowser()) {
-      localStorage.setItem('currentUser', JSON.stringify(usermodel));
+      localStorage.setItem('currentUser', JSON.stringify(user));
     }
   }
 
@@ -139,7 +144,23 @@ export class AuthService {
     }
     return null;
   }
-
+  
+  isSuperAdmin(): boolean {
+  const role = this.getUserRole();
+  return role === 'superadmin';
+}
+   isAdmin(): boolean {
+    return this.getUserRole() === 'admin';
+  }
+  
+  isCasiar(): boolean {
+    const role = this.getUserRole();
+    return role === 'user';
+  }
+isManager(): boolean {
+  const role = this.getUserRole();
+  return role === 'purchasemanager';
+}
 
 
 }
