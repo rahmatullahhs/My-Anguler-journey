@@ -566,34 +566,6 @@
   ],
   "order": [
     {
-      "id": "2ddc",
-      "invoice": "DX-12462",
-      "date": "2025-07-22",
-      "customername": "aaaaaaaaa",
-      "customerphone": "aaaaaaaa",
-      "customeremail": "aaaaaaaaaaaa",
-      "productdetail": "aaaaaaaaaa",
-      "productqty": 12,
-      "price": 776655,
-      "discount": 1,
-      "paid": 33333333,
-      "due": -24106671.6
-    },
-    {
-      "id": "f2f9",
-      "invoice": "DX-12462",
-      "date": "2025-07-22",
-      "customername": "qqqqqqqqqqqq",
-      "customerphone": "qqqqqqqqqqq",
-      "customeremail": "qqqqqqqqqqqq",
-      "productdetail": "qqqqqqqqqqq11",
-      "productqty": 1111,
-      "price": 1111,
-      "discount": 1111,
-      "paid": 1111,
-      "due": -12480096.31
-    },
-    {
       "id": "12e4",
       "invoice": "DX-12462",
       "date": "2025-07-22",
@@ -636,18 +608,18 @@
       "due": 1022101.4
     },
     {
-      "id": "0827",
+      "id": "bb5d",
       "invoice": "DX-12462",
       "date": "2025-07-23",
-      "customername": "rahnnkn",
+      "customername": "aaaaaaaaa",
       "customerphone": "sffefefewfwr",
       "customeremail": "rrrrrrrrrrrrrrrrrrrr",
-      "productdetail": "ssssssssssssssssss",
-      "productqty": 111,
-      "price": 12222,
-      "discount": 1,
-      "paid": 8888888,
-      "due": -7545812.42
+      "productdetail": "aaaaaaaaaa",
+      "productqty": 13,
+      "price": 56666,
+      "discount": 3,
+      "paid": 3,
+      "due": 714555.26
     }
   ],
   "inventory": [
@@ -683,6 +655,13 @@
       "orderId": "",
       "invoice": "DX-12462",
       "orderDue": -7545812.42,
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "invoice": "DX-12462",
+      "orderDue": 714555.26,
       "status": "Pending"
     }
   ],
