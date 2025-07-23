@@ -21,11 +21,16 @@ export class InventoryService {
   }
 
   updateInventory(inventoryModel: InventoryModel): Observable<InventoryModel> {
-    return this.http.put<InventoryModel>(`${this.apiUrl}/${inventoryModel.id}`, InventoryModel);
-  }
+  return this.http.put<InventoryModel>(`${this.apiUrl}/${inventoryModel.id}`, inventoryModel);
+}
+
 
   deleteInventory(id: string ): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+
+
+  
   
 }

@@ -1,147 +1,135 @@
 <div class="container mt-5">
   <h2 class="mb-4">Add New Order</h2>
   <form [formGroup]="orderForm" (ngSubmit)="addOrder()">
-<a routerLink="/viewAllorder" class="btn btn-outline-primary">
+    <a routerLink="/viewAllorder" class="btn btn-outline-primary mb-3">
       <i class="fas fa-list me-1"></i> View Order List
     </a>
-    <div class="mb-3">
-      <label for="invoice" class="form-label">Invoice</label>
-      <input type="text" class="form-control" id="invoice" formControlName="invoice">
+
+    <!-- Invoice / Date -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Invoice</label>
+        <input formControlName="invoice" class="form-control" type="text">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Date</label>
+        <input formControlName="date" class="form-control" type="date">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="date" class="form-label">Date</label>
-      <input type="date" class="form-control" id="date" formControlName="date">
+    <!-- Customer Info -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label>Customer Name</label>
+        <input formControlName="customername" class="form-control" type="text">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Phone</label>
+        <input formControlName="customerphone" class="form-control" type="tel">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Email</label>
+        <input formControlName="customeremail" class="form-control" type="email">
+      </div>
     </div>
 
+    <!-- Product & Stock -->
     <div class="mb-3">
-      <label for="customername" class="form-label">Customer Name</label>
-      <input type="text" class="form-control" id="customername" formControlName="customername">
+      <label>Product Detail</label>
+      <select formControlName="productdetail" class="form-control">
+        <option value="" disabled>Select product</option>
+        <option *ngFor="let i of inventories" [value]="i.id">{{ i.productname }}</option>
+      </select>
+    </div>
+    <div class="mb-3 text-muted" *ngIf="availableQty !== null">
+      <i class="fas fa-warehouse me-1"></i>
+      Available Stock: <strong>{{ availableQty }}</strong>
     </div>
 
-    <div class="mb-3">
-      <label for="customerphone" class="form-label">Customer Phone</label>
-      <input type="tel" class="form-control" id="customerphone" formControlName="customerphone">
-    </div>
-
-    <div class="mb-3">
-      <label for="customeremail" class="form-label">Customer Email</label>
-      <input type="email" class="form-control" id="customeremail" formControlName="customeremail">
-    </div>
-
-    <div class="mb-3">
-      <label for="productdetail" class="form-label">Product Detail</label>
-      <input type="text" class="form-control" id="productdetail" formControlName="productdetail">
-    </div>
-
-    <!-- PRICING -->
+    <!-- Pricing -->
     <div class="row mb-4">
       <div class="col-md-3">
-        <label for="price" class="form-label"><i class="fas fa-dollar-sign me-1 text-success"></i>Unit Price</label>
-        <input type="number" id="price" class="form-control" formControlName="price" (blur)="onFocusLost()">
+        <label>Unit Price</label>
+        <input formControlName="price" class="form-control" type="number" (blur)="onFocusLost()">
       </div>
       <div class="col-md-3">
-        <label for="productqty" class="form-label"><i class="fas fa-cubes me-1 text-primary"></i>Quantity</label>
-        <input id="productqty" type="number" class="form-control" formControlName="productqty" (blur)="onFocusLost()">
+        <label>Quantity</label>
+        <input formControlName="productqty" class="form-control" type="number" (blur)="onFocusLost()">
       </div>
       <div class="col-md-3">
-        <label for="total" class="form-label"><i class="fas fa-calculator me-1 text-warning"></i>Total Price</label>
-        <input type="number" class="form-control" [value]="totalprice" [readonly]="true">
+        <label>Total Price</label>
+        <input class="form-control" [value]="totalprice" readonly>
       </div>
       <div class="col-md-3">
-        <label for="discount" class="form-label"><i class="fas fa-percentage me-1 text-danger"></i>Discount</label>
-        <input type="number" id="discount" class="form-control" formControlName="discount" (blur)="onFocusLost()">
+        <label>Discount (%)</label>
+        <input formControlName="discount" class="form-control" type="number" (blur)="onFocusLost()">
       </div>
       <div class="col-md-3 mt-3">
-        <label for="final" class="form-label"><i class="fas fa-money-bill-wave me-1 text-success"></i>Final Price</label>
-        <input type="number" class="form-control" [value]="finalprice" [readonly]="true">
+        <label>Final Price</label>
+        <input class="form-control" [value]="finalprice" readonly>
       </div>
     </div>
 
-    <!-- PAID & DUE -->
+    <!-- Payment -->
     <div class="row mb-4">
       <div class="col-md-4">
-        <label for="paid" class="form-label"><i class="fas fa-hand-holding-usd me-1 text-success"></i>Paid</label>  
-        <input type="number" class="form-control" formControlName="paid" (blur)="onFocusLost()">
+        <label>Paid</label>
+        <input formControlName="paid" class="form-control" type="number" (blur)="onFocusLost()">
       </div>
       <div class="col-md-4">
-        <label for="due" class="form-label"><i class="fas fa-wallet me-1 text-danger"></i>Due</label>  
-        <input type="number" class="form-control" [value]="due" [readonly]="true">
-      </div> 
+        <label>Due</label>
+        <input class="form-control" [value]="due" readonly>
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save Order</button>
+    <button class="btn btn-primary">Save Order</button>
     <button type="button" class="btn btn-secondary ms-2" (click)="printInvoice()">
-  <i class="fas fa-print me-1"></i> Print Invoice
-</button>
-
+      <i class="fas fa-print me-1"></i> Print Invoice
+    </button>
   </form>
 </div>
 
-<!-- INVOICE PREVIEW TO PRINT -->
-<div id="invoiceToPrint" style="
-  display: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  max-width: 800px;
-  margin: auto;
-  padding: 30px;
-  background-color: #ffffff; /* Changed to pure white */
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-">
-  <!-- Header -->
-  <div style="text-align: center; margin-bottom: 25px;">
-    <h2 style="color: #007b5e; margin-bottom: 0;">Vertex Tech World</h2>
-    <p style="font-size: 16px; color: #555;">Order Invoice</p>
-    <hr style="border-top: 2px solid #007b5e; width: 100px; margin: 10px auto;">
+<!-- Invoice Preview -->
+<div id="invoiceToPrint" style="display:none; background:#fff; padding:30px; max-width:800px; margin:auto; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.1);">
+  <div style="text-align:center; margin-bottom:25px;">
+    <h2 style="color:#007b5e; margin:0;">Vertex Tech World</h2>
+    <p>Order Invoice</p>
+    <hr style="border:2px solid #007b5e; width:100px; margin:10px auto;">
   </div>
-
-  <!-- Customer Info -->
-  <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
+  <div style="display:flex; justify-content:space-between; margin-bottom:25px;">
     <div>
-      <p><i class="fas fa-user text-primary"></i> <strong>Customer:</strong> {{ orderForm.value.customername }}</p>
-      <p><i class="fas fa-phone text-success"></i> <strong>Phone:</strong> {{ orderForm.value.customerphone }}</p>
-      <p><i class="fas fa-envelope text-danger"></i> <strong>Email:</strong> {{ orderForm.value.customeremail }}</p>
+      <p><i class="fas fa-user text-primary"></i> <strong>{{ orderForm.value.customername }}</strong></p>
+      <p><i class="fas fa-phone text-success"></i> {{ orderForm.value.customerphone }}</p>
+      <p><i class="fas fa-envelope text-danger"></i> {{ orderForm.value.customeremail }}</p>
     </div>
-    <div style="text-align: right;">
-      <p><i class="fas fa-calendar-alt text-info"></i> <strong>Date:</strong> {{ orderForm.value.date | date:'mediumDate' }}</p>
-      <p><i class="fas fa-file-invoice text-warning"></i> <strong>Invoice #:</strong> {{ orderForm.value.invoice }}</p>
+    <div style="text-align:right;">
+      <p><i class="fas fa-calendar-alt text-info"></i> {{ orderForm.value.date | date:'mediumDate' }}</p>
+      <p><i class="fas fa-file-invoice text-warning"></i> #{{ orderForm.value.invoice }}</p>
     </div>
   </div>
-
-  <!-- Product Table -->
-  <table width="100%" cellspacing="0" cellpadding="10" style="border-collapse: collapse; font-size: 15px;">
-    <thead style="background-color: #ffffff; color: #333;"> <!-- changed from #f8f9fa to #ffffff -->
+  <table width="100%" cellpadding="10" style="border-collapse:collapse;font-size:15px;">
+    <thead style="background:#fff;color:#333;border:1px solid #ddd;">
       <tr>
-        <th style="border: 1px solid #ddd; text-align: left;">🖥️ Product</th>
-        <th style="border: 1px solid #ddd; text-align: right;">💰 Unit Price</th>
-        <th style="border: 1px solid #ddd; text-align: right;">🔢 Quantity</th>
-        <th style="border: 1px solid #ddd; text-align: right;">📊 Total</th>
+        <th>Product</th><th style="text-align:right;">Unit Price</th><th style="text-align:right;">Qty</th><th style="text-align:right;">Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="border: 1px solid #ddd;">{{ orderForm.value.productdetail }}</td>
-        <td style="border: 1px solid #ddd; text-align: right;">৳{{ orderForm.value.price }}</td>
-        <td style="border: 1px solid #ddd; text-align: right;">{{ orderForm.value.productqty }}</td>
-        <td style="border: 1px solid #ddd; text-align: right;">৳{{ totalprice }}</td>
+        <td>{{ orderForm.value.productdetail }}</td>
+        <td style="text-align:right;">৳{{ orderForm.value.price }}</td>
+        <td style="text-align:right;">{{ orderForm.value.productqty }}</td>
+        <td style="text-align:right;">৳{{ totalprice }}</td>
       </tr>
     </tbody>
   </table>
-
-  <!-- Summary -->
-  <div style="margin-top: 25px; text-align: right; font-size: 16px;">
-    <p><i class="fas fa-layer-group text-secondary"></i> <strong>Subtotal:</strong> ৳{{ totalprice }}</p>
-    <p><i class="fas fa-percent text-warning"></i> <strong>Discount:</strong> {{ orderForm.value.discount }}%</p>
-    <p><i class="fas fa-money-check-alt text-success"></i> <strong>Final Price:</strong> ৳{{ finalprice }}</p>
-    <p><i class="fas fa-coins text-primary"></i> <strong>Paid:</strong> ৳{{ orderForm.value.paid }}</p>
-    <p><i class="fas fa-wallet text-danger"></i> <strong>Due:</strong> ৳{{ due }}</p>
+  <div style="margin-top:25px; text-align:right;">
+    <p><strong>Subtotal:</strong> ৳{{ totalprice }}</p>
+    <p><strong>Discount:</strong> {{ orderForm.value.discount }}%</p>
+    <p><strong>Final Price:</strong> ৳{{ finalprice }}</p>
+    <p><strong>Paid:</strong> ৳{{ orderForm.value.paid }}</p>
+    <p><strong>Due:</strong> ৳{{ due }}</p>
   </div>
-
-  <!-- Footer -->
-  <div style="margin-top: 40px; text-align: right; font-size: 14px; color: #555;">
-    <p><i class="fas fa-user-cog text-info"></i> <strong>Prepared By:</strong> Rahmat</p>
+  <div style="margin-top:40px; text-align:right; font-size:14px; color:#555;">
+    <strong>Prepared By:</strong> Rahmat
   </div>
 </div>

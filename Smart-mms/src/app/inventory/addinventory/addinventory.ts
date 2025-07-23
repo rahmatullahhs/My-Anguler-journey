@@ -14,7 +14,7 @@ export class Addinventory implements OnInit {
   inventoryForm: FormGroup;
   editing: boolean = false;
   inventory: InventoryModel[] = [];
-
+   
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -23,7 +23,6 @@ export class Addinventory implements OnInit {
     private cdr: ChangeDetectorRef // ✅ injected correctly
   ) {
     this.inventoryForm = this.formBuilder.group({
-      id: [null],
       productname: ['', Validators.required],
       productDetails: [''],
       price: [0, [Validators.required, Validators.min(0)]],
@@ -85,11 +84,14 @@ export class Addinventory implements OnInit {
   cancelEdit(): void {
     this.editing = false;
     this.inventoryForm.reset({
-      id: null,
       productname: '',
       productDetails: '',
       price: 0,
       qty: 1
     });
   }
+
+
+
+  
 }

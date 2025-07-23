@@ -7,6 +7,9 @@ import { SalestrackingModel } from '../../models/saletracking.model';
 import { SaletrackingService } from '../../services/saletracking.service';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import { ProductService } from '../../services/product.service';
+import { InventoryService } from '../../services/inventory.service';
+import { InventoryModel } from '../../models/inventory.model';
 
 @Component({
   standalone:false,
@@ -16,17 +19,19 @@ import html2canvas from 'html2canvas';
 })
 export class Addorder implements OnInit {
   orderForm!: FormGroup;
-  totalprice: number = 0;
-  finalprice: number = 0;
-  due: number = 0;
-  orders: OrderModel[] = [];
+  inventories: InventoryModel[] = [];
+  availableQty: number = 0;
+  totalprice = 0;
+  finalprice = 0;
+  due = 0;
 
   constructor(
     private orderService: OrderService,
+    private inventoryService: InventoryService,
+    private sts: SaletrackingService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private cdr: ChangeDetectorRef,
-    private sts: SaletrackingService
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -36,120 +41,132 @@ export class Addorder implements OnInit {
       customername: ['', Validators.required],
       customerphone: [''],
       customeremail: [''],
-      productdetail: [''],
-      productqty: [1, Validators.required],
-      price: [0, Validators.required],
-      discount: [0],
-      paid: [0],
-      due: [0]
+      productdetail: ['', Validators.required],
+      productqty: [null, Validators.required],
+      price: ['', Validators.required],
+      discount: ['0'],
+      paid: ['0'],
+      due: ['0']
     });
 
-    this.loadOrders();
+    this.loadAllInventory();
+
+    this.orderForm.get('productdetail')?.valueChanges.subscribe(pid => {
+      const inv = this.inventories.find(i => i.id === pid);
+      if (inv) {
+        this.orderForm.patchValue({ price: inv.price, productqty: 1 });
+        this.availableQty = inv.qty;
+        this.PriceCalculation();
+      } else {
+        this.availableQty = 0;
+        this.orderForm.patchValue({ price: '', productqty: null });
+      }
+    });
   }
 
-  loadOrders(): void {
-    this.orderService.getAllOrder().subscribe(res => {
-      this.orders = res;
+  loadAllInventory(): void {
+    this.inventoryService.getAllInventory().subscribe(data => {
+      this.inventories = data;
       this.cdr.markForCheck();
     });
   }
 
   PriceCalculation(): void {
-    const price = Number(this.orderForm.value.price) || 0;
-    const qty = Number(this.orderForm.value.productqty) || 0;
-    const discount = Number(this.orderForm.value.discount) || 0;
-    const paid = Number(this.orderForm.value.paid) || 0;
+    const { price, productqty, discount, paid } = this.orderForm.value;
+    const p = Number(price) || 0;
+    const q = Number(productqty) || 0;
+    const d = Number(discount) || 0;
+    const pa = Number(paid) || 0;
 
-    this.totalprice = price * qty;
-    this.finalprice = this.totalprice - (this.totalprice * discount / 100);
-    console.log(this.finalprice);
-    this.due = this.finalprice - paid;
+    this.totalprice = p * q;
+    this.finalprice = this.totalprice - (this.totalprice * d / 100);
+    this.due = this.finalprice - pa;
 
     this.orderForm.patchValue({ due: this.due }, { emitEvent: false });
+  }
+
+  updateInventoryQty(productId: string, soldQty: number): void {
+    const inv = this.inventories.find(i => i.id === productId);
+    if (!inv) return;
+
+    const newQty = inv.qty - soldQty;
+    if (newQty < 0) {
+      alert('❌ Not enough stock available.');
+      return;
+    }
+
+    const updated: InventoryModel = { ...inv, qty: newQty };
+    this.inventoryService.updateInventory(updated).subscribe({
+      next: () => {
+        console.log(`✅ Stock updated. New qty: ${newQty}`);
+        this.loadAllInventory();
+      },
+      error: err => console.error('❌ Inventory update failed', err)
+    });
+  }
+
+  addOrder(): void {
+    if (this.orderForm.invalid) {
+      alert('❌ Please fill required fields.');
+      return;
+    }
+
+    this.PriceCalculation();
+
+    const f = this.orderForm.value;
+    if (f.productqty > this.availableQty) {
+      alert('❌ Cannot order more than available stock.');
+      return;
+    }
+
+    const order: OrderModel = {
+      id: '',
+      invoice: f.invoice,
+      orderDate: f.date,
+      customername: f.customername,
+      customerphone: f.customerphone,
+      customeremail: f.customeremail,
+      productdetail: f.productdetail,
+      productqty: Number(f.productqty),
+      totalAmount: this.finalprice,
+      paid: Number(f.paid),
+      due: this.due
+    };
+
+    this.orderService.saveOrder(order).subscribe({
+      next: _res => {
+        alert('✅ Order saved');
+        this.updateInventoryQty(f.productdetail, Number(f.productqty));
+        this.orderForm.reset();
+        this.availableQty = 0;
+        this.router.navigate(['/viewallorder']);
+        this.sts.saveST({ id: '', orderId: '', status: 'Pending' }).subscribe();
+
+      },
+      error: err => console.error('❌ Order save failed', err)
+    });
   }
 
   onFocusLost(): void {
     this.PriceCalculation();
   }
 
-  addOrder(): void {
-  if (this.orderForm.invalid) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
-  // Calculate values
-  const price = Number(this.orderForm.value.price) || 0;
-  const qty = Number(this.orderForm.value.productqty) || 0;
-  const discount = Number(this.orderForm.value.discount) || 0;
-  const paid = Number(this.orderForm.value.paid) || 0;
-
-  const totalPrice = price * qty;
-  const finalPrice = totalPrice - (totalPrice * discount / 100);
-  const due = finalPrice - paid;
-
-  // Build OrderModel
-  const order: OrderModel = {
-    id: '', // json-server auto-generates ID
-    invoice: this.orderForm.value.invoice,
-    orderDate: this.orderForm.value.date,
-    customername: this.orderForm.value.customername,
-    customerphone: this.orderForm.value.customerphone,
-    customeremail: this.orderForm.value.customeremail,
-    productdetail: this.orderForm.value.productdetail,
-    productqty: qty,
-    totalAmount: finalPrice,
-    paid: paid,
-    due: due
-  };
-
-  // Save Order
-  this.orderService.saveOrder(order).subscribe({
-    next: (res) => {
-      alert("✅ Order saved successfully.");
-      this.orderForm.reset();
-      this.router.navigate(['/viewallorder']);
-      this.loadOrders();
-    },
-    error: (error) => {
-      console.error("❌ Error saving order", error);
-    }
-  });
-
-  // Save Sales Tracking (optional)
-  const salesTracking: SalestrackingModel = {
-    id: '',
-    orderId: '', // optionally link to saved order ID
-    status: 'Pending'
-  };
-
-  this.sts.saveST(salesTracking).subscribe({
-    next: (res) => console.log("✅ Sales tracking saved:", res),
-    error: (err) => console.error("❌ Error saving sales tracking", err)
-  });
-}
-
-  printInvoice() {
-    const element = document.getElementById('invoiceToPrint');
-    if (!element) {
-      console.error("Invoice element not found.");
-      return;
-    }
-
-    element.style.display = 'block'; // Show element before printing
-
+  printInvoice(): void {
+    const el = document.getElementById('invoiceToPrint');
+    if (!el) return;
+    el.style.display = 'block';
     setTimeout(() => {
-      html2canvas(element).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
+      html2canvas(el).then(canvas => {
+        const img = canvas.toDataURL('image/png');
         const pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        const w = pdf.internal.pageSize.getWidth();
+        const h = (canvas.height * w) / canvas.width;
+        pdf.addImage(img, 'PNG', 0, 0, w, h);
         pdf.save(`${this.orderForm.value.customername || 'invoice'}.pdf`);
-
-        element.style.display = 'none';
+        el.style.display = 'none';
       });
     }, 300);
   }
+
+
 }

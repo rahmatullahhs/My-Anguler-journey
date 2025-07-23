@@ -13,31 +13,26 @@ export class OrderService {
 
 
   getAllOrder(): Observable<any> {
-
     return this.http.get(this.baseUrl);
 
   }
 
   saveOrder(orderModel: OrderModel): Observable<any> {
-
     return this.http.post(this.baseUrl, orderModel);
 
   }
 
   deleteOrder(id: string): Observable<any> {
-
     return this.http.delete(this.baseUrl + "/" + id);
 
   }
 
   getOrderById(id: string): Observable<any> {
-
     return this.http.get(this.baseUrl+'/'+id);
 
   }
 
   updateOrder(id: string, orderModel: OrderModel): Observable<any>{
-
     return this.http.put(this.baseUrl+'/'+id, orderModel);
 
   }
@@ -56,6 +51,10 @@ export class OrderService {
     })
   );
 }
+
+// sellProduct(productId: string, quantity: number) {
+//   return this.http.post('/api/sell', { productId, quantity });
+// }
 
 
 }

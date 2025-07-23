@@ -257,78 +257,6 @@
   "products": [
     {
       "id": null,
-      "name": "rgfghfh",
-      "graphicscard": "tryhrty",
-      "monitor": "fghbh",
-      "processor": "hgfhf",
-      "ram": "fhgfgh",
-      "storage": "hgfhfhrfh",
-      "invoice": "hghhhhh",
-      "discount": 10,
-      "paid": 4000,
-      "due": 5000,
-      "price": 500,
-      "stock_qty": 20,
-      "brandId": "f54b",
-      "categoryId": "a2s1",
-      "supplierId": null
-    },
-    {
-      "id": null,
-      "name": "rgfghfh",
-      "graphicscard": "tryhrty",
-      "monitor": "fghbh",
-      "processor": "hgfhf",
-      "ram": "fhgfgh",
-      "storage": "hgfhfhrfh",
-      "invoice": "hghhhhh",
-      "discount": 0,
-      "paid": 500,
-      "due": 500,
-      "price": 500,
-      "stock_qty": 2,
-      "brandId": "f54b",
-      "categoryId": "a2s1",
-      "supplierId": null
-    },
-    {
-      "id": null,
-      "name": "csdcccccccc",
-      "graphicscard": "ccccc",
-      "monitor": "ccccccc",
-      "processor": "ccccccccc",
-      "ram": "cccccccccccccc",
-      "storage": "ccccccccccc",
-      "invoice": "cccccccc",
-      "discount": 10,
-      "paid": 50000,
-      "due": 400000,
-      "price": 50000,
-      "stock_qty": 10,
-      "brandId": "f54b",
-      "categoryId": "a2s1",
-      "supplierId": null
-    },
-    {
-      "id": null,
-      "name": "Rahmat ullah",
-      "graphicscard": "12gb",
-      "monitor": "15inc",
-      "processor": "core i7 13gen HX26398",
-      "ram": "13gb",
-      "storage": "512GB",
-      "invoice": "13313131",
-      "discount": 10,
-      "paid": 6000,
-      "due": 50700,
-      "price": 7000,
-      "stock_qty": 9,
-      "brandId": "f54b",
-      "categoryId": "a2s1",
-      "supplierId": null
-    },
-    {
-      "id": null,
       "name": "Rahmat ullah",
       "graphicscard": "12gb",
       "monitor": "15inc",
@@ -344,24 +272,6 @@
       "brandId": "f54b",
       "categoryId": "a2s1",
       "supplierId": null
-    },
-    {
-      "id": null,
-      "name": "nnnnn",
-      "graphicscard": "",
-      "monitor": "",
-      "processor": "",
-      "ram": "",
-      "storage": "",
-      "invoice": "",
-      "discount": 0,
-      "paid": 0,
-      "due": 0,
-      "price": 0,
-      "stock_qty": 0,
-      "brandId": "f54b",
-      "categoryId": "1931",
-      "supplierId": ""
     },
     {
       "id": null,
@@ -383,20 +293,38 @@
     },
     {
       "id": null,
-      "name": "bbbbbb",
-      "graphicscard": "bbbbbb",
-      "monitor": "bbbbbbbbb",
-      "processor": "bbbbbbbbb",
-      "ram": "bbbbbb",
-      "storage": "bbbbbbbb",
-      "invoice": "bbbbbbbb",
+      "name": "eliteBook",
+      "graphicscard": "4gb",
+      "monitor": "15inc",
+      "processor": "core i7 HX",
+      "ram": "16gb",
+      "storage": "512gb",
+      "invoice": "HO-1254",
       "discount": 10,
-      "paid": 500,
-      "due": 4000,
+      "paid": 1000,
+      "due": 8000,
       "price": 500,
-      "stock_qty": 10,
+      "stock_qty": 20,
+      "brandId": "f54b",
+      "categoryId": "a2s1",
+      "supplierId": "f4e9"
+    },
+    {
+      "id": null,
+      "name": "Rahmat ullah",
+      "graphicscard": "4gb",
+      "monitor": "15inc",
+      "processor": "core i7 HX",
+      "ram": "16gb",
+      "storage": "512gb",
+      "invoice": "bbbbbbbb",
+      "discount": 5,
+      "paid": 237500,
+      "due": 0,
+      "price": 50000,
+      "stock_qty": 5,
       "brandId": "cc0f",
-      "categoryId": "0d67",
+      "categoryId": "a2s1",
       "supplierId": "04ab"
     }
   ],
@@ -405,27 +333,24 @@
       "id": "04ab",
       "name": "Parvez Ala Habibi",
       "email": "parvage@gmail.com",
-      "phone": "0133996577",
+      "phone": "01339965770000",
       "address": "Italy"
     },
     {
       "id": "fcc9",
       "name": "Rahmat ullah",
       "email": "rahmat@gmail.com",
-      "phone": "0133996577",
-      "address": "bbbbbbbbbbb"
+      "phone": "01339960000",
+      "address": "Pakisthan"
     },
     {
       "id": "f4e9",
-      "name": "nnnnn",
-      "email": "rahmat@gmail.com",
-      "phone": "+8801888118271",
-      "address": "kkjhkjhkjhkj"
+      "name": "Istiak",
+      "email": "Istiak@gmail.com",
+      "phone": "+88018881",
+      "address": "Australia"
     }
   ],
-  
-    
-
   "addentry": [
     {
       "id": "9c98",
@@ -507,42 +432,31 @@
   "order": [
     {
       "id": "",
-      "invoice": "HO-1254",
+      "invoice": "HPEB-420",
       "orderDate": "2025-07-23",
-      "customername": "asdfasd",
-      "customerphone": "01389398814",
-      "customeremail": "rahmat@gmail.com",
-      "productdetail": "laptop core i7",
-      "productqty": 2,
-      "totalAmount": 900,
-      "paid": 400,
-      "due": 500
-    },
-    {
-      "id": "",
-      "invoice": "HO-1254",
-      "orderDate": "2025-07-23",
-      "customername": "RAHMAT",
-      "customerphone": "01389398814",
-      "customeremail": "rahmat@gmail.com",
-      "productdetail": "laptop core i7",
-      "productqty": 2,
-      "totalAmount": 1000,
-      "paid": 200,
-      "due": 800
+      "customername": "Rakib Islam",
+      "customerphone": "01854521548",
+      "customeremail": "rakibislam@gmail.com",
+      "productdetail": "4df5",
+      "productqty": 50,
+      "totalAmount": 5462500,
+      "paid": 5000000,
+      "due": 462500
     }
   ],
   "inventory": [
     {
-      "id": null,
-      "productname": "apple",
-      "productDetails": "big apple",
-      "price": 5000,
-      "qty": 150
+      "id": "4df5",
+      "productname": " HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook",
+      "productDetails": "Specification\nBasic Information\nProcessor\nIntel® Core™ i5-8250U (1.6 GHz base frequency, up to 3.4 GHz with Intel® Turbo Boost Technology, 6 MB cache, 4 cores)\nDisplay\n14.1\" diagonal FHD IPS anti-glare LED-backlit, 220 cd/m², 67% sRGB (1920 x 1080)\nMemory\n8 GB DDR4-2400 SDRAM\nStorage\n256 GB M.2 SATA SSD\nGraphics\nAMD RADEON RX540 2GB DDR4 GRAPHICS CARD\nOperating System\nFree DOS\nBattery\nHP Long Life 3-cell, 50 Wh Li-ion\nAdapter\nHP Smart 45 W External AC power adapter\nAudio\nBang & Olufsen, dual stereo speakers, 3 multi array microphone\nInput Devices\nKeyboard\nHP Premium Collaboration Keyboard spill resistant with drain\nWebCam\nHD camera\nCard Reader\n1 smart card reader\nNetwork & Wireless Connectivity\nLAN\nHP Module with NXP NFC Controller NPC300 I2C NCI\nIntel® I219-LM GbE, vPro™\nIntel® I219-V GbE, non-vPro™ 10\nWi-Fi\nIntel® Dual Band Wireless-AC 8265 802.11a/b/g/n/ac (2x2) Wi-Fi\nBluetooth\nBluetooth® 4.2 Combo, non-vPro\nPorts, Connectors & Slots\nUSB (s)\n1 Thunderbolt™ (USB Type-C™ connector)\n2 USB 3.1 Gen 1 (1 charging)\nHDMI\n1 HDMI 1.4b\nAudio Jack Combo\n1 headphone/microphone combo\nExtra RAM Slot\nYes\nPhysical Specification\nDimensions (W x D x H)\n31 x 22.93 x 1.77 cm\nWeight\nStarting at 1.33 kg\nColor(s)\nSilver\nWarranty\nManufacturing Warranty\n02 years International Limited Warranty (Terms & condition Apply As Per HP)\nDescription\nHP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook\n\nIntel® Core™ i5-8250U (1.6 GHz base frequency, up to 3.4 GHz with Intel® Turbo Boost Technology, 6 MB cache, 4 cores)\nIntel® UHD Graphics 620\nAMD RADEON RX540 2GB DDR4 GRAPHICS CARD\n8 GB DDR4-2400 SDRAM\n256 GB M.2 SATA SSD\n14.1\" diagonal FHD IPS anti-glare LED-backlit, 220 cd/m², 67% sRGB (1920 x 1080)\nHD camera\nHP Premium Collaboration Keyboard spill resistant with drain\n1 Thunderbolt™ (USB Type-C™ connector), 2 USB 3.1 Gen 1 (1 charging), 1 HDMI 1.4b, 1 RJ-45\nIntel® Dual Band Wireless-AC 8265 802.11a/b/g/n/ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo, non-vPro\nHP Long Life 3-cell, 50 Wh Li-ion Battery\nDimensions (W x D x H)- 31 x 22.93 x 1.77 cm\nWeight-  1.33 kg (Approx)\n02 years International Limited Warranty (Terms & condition Apply As Per HP)",
+      "price": 115000,
+      "qty": 50
     }
   ],
   "salesTracing": [
-    {},
+    {
+      "id": "ef4e"
+    },
     {
       "id": "",
       "orderId": "",
@@ -585,6 +499,31 @@
       "id": "",
       "orderId": "",
       "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
     }
   ],
   "user": [
@@ -608,7 +547,6 @@
     }
   ],
   "billtrack": [],
-
-  "sellHis":[],
-  "Purchasehis":[]
+  "sellHis": [],
+  "Purchasehis": []
 }
