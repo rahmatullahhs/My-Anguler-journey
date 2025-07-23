@@ -71,5 +71,78 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Save Order</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="printInvoice()">
+  <i class="fas fa-print me-1"></i> Print Invoice
+</button>
+
   </form>
 </div>
+
+<!-- INVOICE PREVIEW TO PRINT -->
+<div id="invoiceToPrint" style="
+  display: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+">
+  <!-- Header -->
+  <div style="text-align: center; margin-bottom: 25px;">
+    <h2 style="color: #007b5e; margin-bottom: 0;">Vertex Tech World</h2>
+    <p style="font-size: 16px; color: #555;">Order Invoice</p>
+    <hr style="border-top: 2px solid #007b5e; width: 100px; margin: 10px auto;">
+  </div>
+
+  <!-- Customer Info -->
+  <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
+    <div>
+      <p><i class="fas fa-user text-primary"></i> <strong>Customer:</strong> {{ orderForm.value.customername }}</p>
+      <p><i class="fas fa-phone text-success"></i> <strong>Phone:</strong> {{ orderForm.value.customerphone }}</p>
+      <p><i class="fas fa-envelope text-danger"></i> <strong>Email:</strong> {{ orderForm.value.customeremail }}</p>
+    </div>
+    <div style="text-align: right;">
+      <p><i class="fas fa-calendar-alt text-info"></i> <strong>Date:</strong> {{ orderForm.value.date | date:'mediumDate' }}</p>
+      <p><i class="fas fa-file-invoice text-warning"></i> <strong>Invoice #:</strong> {{ orderForm.value.invoice }}</p>
+    </div>
+  </div>
+
+  <!-- Product Table -->
+  <table width="100%" cellspacing="0" cellpadding="10" style="border-collapse: collapse; font-size: 15px;">
+    <thead style="background-color: #f8f9fa; color: #333;">
+      <tr>
+        <th style="border: 1px solid #ddd; text-align: left;">🖥️ Product</th>
+        <th style="border: 1px solid #ddd; text-align: right;">💰 Unit Price</th>
+        <th style="border: 1px solid #ddd; text-align: right;">🔢 Quantity</th>
+        <th style="border: 1px solid #ddd; text-align: right;">📊 Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ddd;">{{ orderForm.value.productdetail }}</td>
+        <td style="border: 1px solid #ddd; text-align: right;">৳{{ orderForm.value.price }}</td>
+        <td style="border: 1px solid #ddd; text-align: right;">{{ orderForm.value.productqty }}</td>
+        <td style="border: 1px solid #ddd; text-align: right;">৳{{ totalprice }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Summary -->
+  <div style="margin-top: 25px; text-align: right; font-size: 16px;">
+    <p><i class="fas fa-layer-group text-secondary"></i> <strong>Subtotal:</strong> ৳{{ totalprice }}</p>
+    <p><i class="fas fa-percent text-warning"></i> <strong>Discount:</strong> {{ orderForm.value.discount }}%</p>
+    <p><i class="fas fa-money-check-alt text-success"></i> <strong>Final Price:</strong> ৳{{ finalprice }}</p>
+    <p><i class="fas fa-coins text-primary"></i> <strong>Paid:</strong> ৳{{ orderForm.value.paid }}</p>
+    <p><i class="fas fa-wallet text-danger"></i> <strong>Due:</strong> ৳{{ due }}</p>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top: 40px; text-align: right; font-size: 14px; color: #555;">
+    <p><i class="fas fa-user-cog text-info"></i> <strong>Prepared By:</strong> Rahmat</p>
+  </div>
+</div>
+

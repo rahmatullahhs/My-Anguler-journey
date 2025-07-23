@@ -606,6 +606,48 @@
       "discount": 2,
       "paid": 23333,
       "due": 1054656.22
+    },
+    {
+      "id": "e9f9",
+      "invoice": "DX-12462",
+      "date": "2025-07-23",
+      "customername": "aaaaaaaaa",
+      "customerphone": "aaaaaaaa",
+      "customeremail": "aaaaaaaaa",
+      "productdetail": "aaaaaaaaaa",
+      "productqty": 15,
+      "price": 500,
+      "discount": 12,
+      "paid": 600,
+      "due": 6000
+    },
+    {
+      "id": "70b7",
+      "invoice": "DX-12462",
+      "date": "2025-07-23",
+      "customername": "aaaaaaaaa",
+      "customerphone": "aaaaaaaa",
+      "customeremail": "qqqqqqqqqqqq",
+      "productdetail": "aaaaaaaaaa",
+      "productqty": 15,
+      "price": 88888,
+      "discount": 23,
+      "paid": 4555,
+      "due": 1022101.4
+    },
+    {
+      "id": "0827",
+      "invoice": "DX-12462",
+      "date": "2025-07-23",
+      "customername": "rahnnkn",
+      "customerphone": "sffefefewfwr",
+      "customeremail": "rrrrrrrrrrrrrrrrrrrr",
+      "productdetail": "ssssssssssssssssss",
+      "productqty": 111,
+      "price": 12222,
+      "discount": 1,
+      "paid": 8888888,
+      "due": -7545812.42
     }
   ],
   "inventory": [
@@ -621,6 +663,27 @@
     {
       "id": "d1b5",
       "amount": 1054656.22
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "invoice": "DX-12462",
+      "orderDue": 6000,
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "invoice": "DX-12462",
+      "orderDue": 1022101.4,
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "invoice": "DX-12462",
+      "orderDue": -7545812.42,
+      "status": "Pending"
     }
   ],
   "user": [
@@ -643,5 +706,5 @@
       "totalpayable": 9099
     }
   ],
-  "billtrack":[]
+  "billtrack": []
 }

@@ -40,8 +40,8 @@
     <table class="table table-bordered table-hover table-striped align-middle">
       <thead class="table-dark">
         <tr>
-          <th>Sale ID</th>
-          <th>Order ID</th>
+          <th>Date</th>
+          <th>Invoice</th>
           <!-- <th>Order Details</th> -->
           <th>Sale Date</th>
           <th>Amount</th>
@@ -51,10 +51,10 @@
       <tbody>
         <tr *ngFor="let sale of sellsTracing">
           <td>{{ sale.id }}</td>
-          <td>{{ sale.orderId }}</td>
+          <td>{{ sale.orderModel.invoice}}</td>
           <!-- <td>{{ sale.details }}</td> Make sure your object has a 'details' key -->
-          <td>{{ sale.saleDate | date: 'mediumDate' }}</td>
-          <td>{{ sale.amount | currency: 'BDT':'symbol' }}</td>
+          <td>{{ sale.orderDate | date: 'mediumDate' }}</td>
+          <td>{{ sale.orderDue | currency: 'BDT':'symbol' }}</td>
           <td>
             <span class="badge" [ngClass]="{
                 'bg-success': sale.status === 'Completed',
