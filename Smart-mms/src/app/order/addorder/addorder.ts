@@ -81,9 +81,6 @@ export class Addorder implements OnInit {
     const salesTracking: SalestrackingModel = {
   id: '', // or generate a UUID if needed
   orderId: '', // optionally, link this to your saved order's ID
-  invoice: order.invoice,
-  orderDate: order.orderDate,
-  orderDue: this.due,
    status: 'Pending'
   
 };

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AddentryModel } from '../../../models/addentry.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AddentryService } from '../../../services/addentry.service';
@@ -16,7 +16,8 @@ export class Addentry implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private addentryService: AddentryService
+    private addentryService: AddentryService,
+       private cdr:ChangeDetectorRef
   ) {
     this.entryForm = this.fb.group({
       id: [null],
@@ -31,6 +32,7 @@ export class Addentry implements OnInit{
   getAllEntry() {
     this.addentryService.getAllEntry().subscribe(data => {
       this.entries = data;
+            this.cdr.markForCheck();
     });
   }
 

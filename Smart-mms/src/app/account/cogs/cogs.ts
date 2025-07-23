@@ -45,14 +45,16 @@ export class AddCogsComponent implements OnInit {
   }
 
   // Method to calculate the total COGS
-  calculateTotalCogs(): number {
-    const formValues = this.cogsForm.value;
-    return formValues.productprice +
-           formValues.transportfee +
-           formValues.labourcost +
-           formValues.packingcost +
-           formValues.tax;
-  }
+calculateTotalCogs(): number {
+  const formValues = this.cogsForm.value;
+  const tax = formValues.productprice * 0.205; // 20.5% of product price
+
+  return formValues.productprice +
+         formValues.transportfee +
+         formValues.labourcost +
+         formValues.packingcost +
+         tax;
+}
 
   // Handle form submission
   onSubmit() {

@@ -32,7 +32,7 @@
   </div>
 
   <!-- Sales Table -->
- <h3 class="mt-4 mb-3 text-primary">
+ <!-- <h3 class="mt-4 mb-3 text-primary">
   <i class="fas fa-chart-line me-2"></i> Sales Tracking
 </h3>
 
@@ -64,5 +64,38 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+  <!-- total-summary.component.html -->
+<div style="
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+  text-align: center;
+">
+  <h2 style="color: #007b5e; margin-bottom: 30px;">💼 Sales Summary</h2>
+
+  <div style="font-size: 20px; margin-bottom: 20px;">
+    <strong>💰 Total Sales:</strong>
+    <!-- <span style="color: green;">৳{{ totalSales }}</span> -->
+  </div>
+  <div style="font-size: 20px; margin-bottom: 20px;">
+    <strong>💰 Total Amount Received:</strong>
+    <!-- <span style="color: green;">৳{{ totalSales }}</span> -->
+  </div>
+
+  <div style="font-size: 20px;">
+    <strong>📉 Total Amount Receivables:</strong>
+    <!-- <span style="color: red;">৳{{ totalDue }}</span> -->
+  </div>
+
+  <hr style="margin: 30px 0; border-top: 1px dashed #ccc;">
+
+  <!-- <p style="font-size: 14px; color: #777;">Updated on: {{ lastUpdated | date:'medium' }}</p> -->
+</div>
+
 </div>

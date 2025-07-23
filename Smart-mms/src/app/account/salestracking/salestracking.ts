@@ -20,7 +20,7 @@ export class Salestracking implements OnInit {
     private salesTrackingService: SaletrackingService,
     private orderService: OrderService,
     private router: Router,
-    private cdr:ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {

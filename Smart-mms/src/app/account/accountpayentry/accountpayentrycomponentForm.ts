@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountspayentryModel } from '../../models/accountspayentry.model';
@@ -26,7 +26,8 @@ export class AccountPayEntryComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private accountpayentry: AccountpayentryService,
-    private addentryservice: AddentryService
+    private addentryservice: AddentryService,
+    private cdr:ChangeDetectorRef
   ) {
     // Initialize the form group here
     this.accountpayentrycomponentForm = this.formBuilder.group({
@@ -47,6 +48,7 @@ export class AccountPayEntryComponent implements OnInit {
   loadAccountPayEntry(): void {
     this.accountpayentry.getAllAccountPayEntry().subscribe(res => {
       this.accountpayentrys = res;
+            this.cdr.markForCheck();
     });
   }
 
@@ -81,6 +83,7 @@ export class AccountPayEntryComponent implements OnInit {
         this.accountpayentry.addAccountPayEntry(newEntry).subscribe(() => {
           this.loadAccountPayEntry(); // Reload account pay entries
           this.resetForm(); // Reset form after submit
+                this.cdr.markForCheck();
         });
       }
     }

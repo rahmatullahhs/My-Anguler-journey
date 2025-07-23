@@ -562,6 +562,15 @@
       "packingcost": 90,
       "tax": 1,
       "totalCogs": 99180
+    },
+    {
+      "id": null,
+      "productprice": 5000,
+      "transportfee": 50,
+      "labourcost": 20,
+      "packingcost": 10,
+      "tax": 20,
+      "totalCogs": 5100
     }
   ],
   "order": [
@@ -620,6 +629,20 @@
       "discount": 3,
       "paid": 3,
       "due": 714555.26
+    },
+    {
+      "id": "dba1",
+      "invoice": "HO-1254",
+      "date": "2025-07-23",
+      "customername": "RAHMAT",
+      "customerphone": "01389398814",
+      "customeremail": "rahmat@gmail.com",
+      "productdetail": "laptop core i7",
+      "productqty": 2,
+      "price": 35000,
+      "discount": 10,
+      "paid": 3000,
+      "due": 60000
     }
   ],
   "inventory": [
@@ -662,6 +685,11 @@
       "orderId": "",
       "invoice": "DX-12462",
       "orderDue": 714555.26,
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
       "status": "Pending"
     }
   ],
