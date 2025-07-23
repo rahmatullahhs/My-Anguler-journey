@@ -62,6 +62,7 @@ export class Addorder implements OnInit {
 
     this.totalprice = price * qty;
     this.finalprice = this.totalprice - (this.totalprice * discount / 100);
+    console.log(this.finalprice);
     this.due = this.finalprice - paid;
 
     this.orderForm.patchValue({ due: this.due }, { emitEvent: false });
@@ -72,36 +73,61 @@ export class Addorder implements OnInit {
   }
 
   addOrder(): void {
-    if (this.orderForm.invalid) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
-    const order: OrderModel = { ...this.orderForm.value };
-    const salesTracking: SalestrackingModel = {
-  id: '', // or generate a UUID if needed
-  orderId: '', // optionally, link this to your saved order's ID
-   status: 'Pending'
-  
-};
-
-    this.orderService.saveOrder(order).subscribe({
-      next: (res) => {
-        alert("Order saved successfully.");
-        this.orderForm.reset();
-        this.router.navigate(['/viewallorder']);
-        this.loadOrders();
-      },
-      error: (error) => {
-        console.error("Error saving order", error);
-      }
-    });
-
-    this.sts.saveST(salesTracking).subscribe({
-      next: (res) => console.log("Sales tracking saved:", res),
-      error: (err) => console.error("Error saving sales tracking", err)
-    });
+  if (this.orderForm.invalid) {
+    alert('Please fill in all required fields.');
+    return;
   }
+
+  // Calculate values
+  const price = Number(this.orderForm.value.price) || 0;
+  const qty = Number(this.orderForm.value.productqty) || 0;
+  const discount = Number(this.orderForm.value.discount) || 0;
+  const paid = Number(this.orderForm.value.paid) || 0;
+
+  const totalPrice = price * qty;
+  const finalPrice = totalPrice - (totalPrice * discount / 100);
+  const due = finalPrice - paid;
+
+  // Build OrderModel
+  const order: OrderModel = {
+    id: '', // json-server auto-generates ID
+    invoice: this.orderForm.value.invoice,
+    orderDate: this.orderForm.value.date,
+    customername: this.orderForm.value.customername,
+    customerphone: this.orderForm.value.customerphone,
+    customeremail: this.orderForm.value.customeremail,
+    productdetail: this.orderForm.value.productdetail,
+    productqty: qty,
+    totalAmount: finalPrice,
+    paid: paid,
+    due: due
+  };
+
+  // Save Order
+  this.orderService.saveOrder(order).subscribe({
+    next: (res) => {
+      alert("✅ Order saved successfully.");
+      this.orderForm.reset();
+      this.router.navigate(['/viewallorder']);
+      this.loadOrders();
+    },
+    error: (error) => {
+      console.error("❌ Error saving order", error);
+    }
+  });
+
+  // Save Sales Tracking (optional)
+  const salesTracking: SalestrackingModel = {
+    id: '',
+    orderId: '', // optionally link to saved order ID
+    status: 'Pending'
+  };
+
+  this.sts.saveST(salesTracking).subscribe({
+    next: (res) => console.log("✅ Sales tracking saved:", res),
+    error: (err) => console.error("❌ Error saving sales tracking", err)
+  });
+}
 
   printInvoice() {
     const element = document.getElementById('invoiceToPrint');

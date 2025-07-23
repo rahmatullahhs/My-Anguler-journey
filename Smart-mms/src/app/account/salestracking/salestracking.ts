@@ -13,48 +13,28 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./salestracking.css'] // <-- note the plural 'styleUrls'
 })
 export class Salestracking implements OnInit {
-  sellsTracing: SalestrackingModel[] = [];
-  orders: OrderModel[] = [];
+  
 
-  constructor(
-    private salesTrackingService: SaletrackingService,
-    private orderService: OrderService,
-    private router: Router,
-    private cdr: ChangeDetectorRef
-  ) { }
+  totalPaid: number = 0;
+  totalAmount: number = 0;
+  totalDue: number = 0;
+
+  constructor(private orderService: OrderService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.loadSales();
-    this.loadOrders();
+    this.cd.detectChanges();
+    this.loadTotals();
   }
 
-  loadSales(): void {
-    this.salesTrackingService.getAllSales().subscribe({
-      next: (sales) => {
-        this.sellsTracing = sales;
-        this.cdr.markForCheck();
-        console.log('Sales loaded:', sales);
-      },
-      error: (err) => {
-        console.error('Error loading sales:', err);
-      }
+  loadTotals(): void {
+    this.orderService.getAllOrder().subscribe((orders: OrderModel[]) => {
+      this.totalPaid = orders.reduce((sum, order) => sum + order.paid, 0);
+      console.log(this.totalPaid)
+      this.totalAmount = orders.reduce((sum, order) => sum + order.totalAmount, 0);
+      console.log(this.totalAmount)
+      this.totalDue = orders.reduce((sum, order) => sum + order.due, 0);
+      console.log(this.totalDue)
     });
   }
 
-  loadOrders(): void {
-    this.orderService.getAllOrder().subscribe({
-      next: (orders) => {
-        this.orders = orders;
-        this.cdr.markForCheck();
-        console.log('Orders loaded:', orders);
-      },
-      error: (err) => {
-        console.error('Error loading orders:', err);
-      }
-    });
-  }
-
-  getOrderById(orderId: string): OrderModel | undefined {
-    return this.orders.find(order => order.id === orderId);
-  }
 }

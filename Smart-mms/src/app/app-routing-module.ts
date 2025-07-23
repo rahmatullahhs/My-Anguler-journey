@@ -26,14 +26,14 @@ import { Showreport } from './report/showreport/showreport';
 import { Viewallsupplier } from './supplier/viewallsupplier/viewallsupplier';
 import { Updatesupplier } from './supplier/updatesupplier/updatesupplier';
 import { ViewAllstock } from './goods/view-allstock/view-allstock';
-import { Ledgerbook } from './account/ledgerbook/ledgerbook';
+
 import { Billstracking } from './account/billstracking/billstracking';
 import { Salestracking } from './account/salestracking/salestracking';
 
 
 import { Addentry } from './account/accountpayentry/addentry/addentry';
 import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
-import { Tax } from './account/tax/tax';
+
 import { AddCogsComponent } from './account/cogs/cogs';
 import { Addinventory } from './inventory/addinventory/addinventory';
 import { Addorder } from './order/addorder/addorder';
@@ -43,6 +43,8 @@ import { AdminProfile } from './auth/admin-profile/admin-profile';
 import { CasierProfile } from './auth/casier-profile/casier-profile';
 import { ManagerProfile } from './auth/manager-profile/manager-profile';
 import { Userprofile } from './auth/userprofile/userprofile';
+import { Sellhistory } from './history/sellhistory/sellhistory';
+import { Purchasehistory } from './history/purchasehistory/purchasehistory';
 
 
 
@@ -62,7 +64,7 @@ const routes: Routes = [
 
   { path: 'addproduct', component: AddProduct },
   { path: 'viewallstock', component: ViewAllstock },
-  { path: 'ledgerbook', component: Ledgerbook },
+  
 
   { path: 'addcategory', component: Addcategory },
   { path: 'addbrand', component: Addbrand },
@@ -90,7 +92,7 @@ const routes: Routes = [
   { path: 'accountpayentry', component: AccountPayEntryComponent },
  { path: 'viewAllorder', component: Viewallorder },
   { path: 'addentry', component: Addentry },
-  { path: 'tax', component: Tax },
+
   { path: 'addinventory', component: Addinventory },
   { path: 'saletracking', component: Salestracking },
 
@@ -100,7 +102,18 @@ const routes: Routes = [
     { path: 'manager', component: ManagerProfile },
   { path: 'register', component: Register },
   { path: 'login', component: Login },
-  { path: 'user', component: Userprofile }
+  { path: 'user', component: Userprofile },
+    { path: 'sellhis', component: Sellhistory },
+    { path: 'purchasehis', component: Purchasehistory }
+
+
+
+
+
+
+
+
+
 
 ];
 

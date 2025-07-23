@@ -423,78 +423,9 @@
       "address": "kkjhkjhkjhkj"
     }
   ],
-  "ledgerbook": [
-    {
-      "id": "df01",
-      "productId": null,
-      "date": "2025-07-17T11:57:49.964Z",
-      "paid": 500,
-      "due": 0,
-      "debit": 500,
-      "credit": 500,
-      "account": "Cash Purchase"
-    },
-    {
-      "id": "d3e3",
-      "productId": null,
-      "date": "2025-07-17T12:14:12.808Z",
-      "paid": 50000,
-      "due": 0,
-      "debit": 50000,
-      "credit": 50000,
-      "account": "Cash Purchase"
-    },
-    {
-      "id": "a4e6",
-      "productId": null,
-      "date": "2025-07-18T05:16:31.294Z",
-      "paid": 6000,
-      "due": 0,
-      "debit": 6000,
-      "credit": 6000,
-      "account": "Cash Purchase"
-    },
-    {
-      "id": "3e5a",
-      "productId": null,
-      "date": "2025-07-18T13:54:28.716Z",
-      "paid": 0,
-      "due": 0,
-      "debit": 0,
-      "credit": 0,
-      "account": ""
-    },
-    {
-      "id": "5136",
-      "productId": null,
-      "date": "2025-07-18T13:56:07.031Z",
-      "paid": 0,
-      "due": 0,
-      "debit": 0,
-      "credit": 0,
-      "account": ""
-    },
-    {
-      "id": "b881",
-      "productId": null,
-      "date": "2025-07-20T17:07:22.199Z",
-      "paid": 450000,
-      "due": 0,
-      "debit": 450000,
-      "credit": 450000,
-      "account": "Cash Purchase"
-    },
-    {
-      "id": "407e",
-      "productId": null,
-      "date": "2025-07-22T09:46:29.241Z",
-      "paid": 500,
-      "due": 0,
-      "debit": 500,
-      "credit": 500,
-      "account": "Cash Purchase"
-    }
-  ],
+  
+    
+
   "addentry": [
     {
       "id": "9c98",
@@ -575,74 +506,30 @@
   ],
   "order": [
     {
-      "id": "12e4",
-      "invoice": "DX-12462",
-      "date": "2025-07-22",
-      "customername": "aaaaaaa",
-      "customerphone": "aaaaaaaaaaa",
-      "customeremail": "aaaaaaaaa",
-      "productdetail": "aaaaaaaaaa",
-      "productqty": 33,
-      "price": 33333,
-      "discount": 2,
-      "paid": 23333,
-      "due": 1054656.22
-    },
-    {
-      "id": "e9f9",
-      "invoice": "DX-12462",
-      "date": "2025-07-23",
-      "customername": "aaaaaaaaa",
-      "customerphone": "aaaaaaaa",
-      "customeremail": "aaaaaaaaa",
-      "productdetail": "aaaaaaaaaa",
-      "productqty": 15,
-      "price": 500,
-      "discount": 12,
-      "paid": 600,
-      "due": 6000
-    },
-    {
-      "id": "70b7",
-      "invoice": "DX-12462",
-      "date": "2025-07-23",
-      "customername": "aaaaaaaaa",
-      "customerphone": "aaaaaaaa",
-      "customeremail": "qqqqqqqqqqqq",
-      "productdetail": "aaaaaaaaaa",
-      "productqty": 15,
-      "price": 88888,
-      "discount": 23,
-      "paid": 4555,
-      "due": 1022101.4
-    },
-    {
-      "id": "bb5d",
-      "invoice": "DX-12462",
-      "date": "2025-07-23",
-      "customername": "aaaaaaaaa",
-      "customerphone": "sffefefewfwr",
-      "customeremail": "rrrrrrrrrrrrrrrrrrrr",
-      "productdetail": "aaaaaaaaaa",
-      "productqty": 13,
-      "price": 56666,
-      "discount": 3,
-      "paid": 3,
-      "due": 714555.26
-    },
-    {
-      "id": "dba1",
+      "id": "",
       "invoice": "HO-1254",
-      "date": "2025-07-23",
+      "orderDate": "2025-07-23",
+      "customername": "asdfasd",
+      "customerphone": "01389398814",
+      "customeremail": "rahmat@gmail.com",
+      "productdetail": "laptop core i7",
+      "productqty": 2,
+      "totalAmount": 900,
+      "paid": 400,
+      "due": 500
+    },
+    {
+      "id": "",
+      "invoice": "HO-1254",
+      "orderDate": "2025-07-23",
       "customername": "RAHMAT",
       "customerphone": "01389398814",
       "customeremail": "rahmat@gmail.com",
       "productdetail": "laptop core i7",
       "productqty": 2,
-      "price": 35000,
-      "discount": 10,
-      "paid": 3000,
-      "due": 60000
+      "totalAmount": 1000,
+      "paid": 200,
+      "due": 800
     }
   ],
   "inventory": [
@@ -655,10 +542,7 @@
     }
   ],
   "salesTracing": [
-    {
-      "id": "d1b5",
-      "amount": 1054656.22
-    },
+    {},
     {
       "id": "",
       "orderId": "",
@@ -691,6 +575,16 @@
       "id": "",
       "orderId": "",
       "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
     }
   ],
   "user": [
@@ -713,5 +607,8 @@
       "totalpayable": 9099
     }
   ],
-  "billtrack": []
+  "billtrack": [],
+
+  "sellHis":[],
+  "Purchasehis":[]
 }

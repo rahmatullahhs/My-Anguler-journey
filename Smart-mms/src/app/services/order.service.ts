@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { OrderModel } from '../models/order.model';
 
 @Injectable({
@@ -41,6 +41,21 @@ export class OrderService {
     return this.http.put(this.baseUrl+'/'+id, orderModel);
 
   }
+
+
+  getOrderTotals(): Observable<{ totalPaid: number; totalAmount: number; totalDue: number }> {
+  return this.http.get<OrderModel[]>(this.baseUrl).pipe(
+    map((orders: OrderModel[]) => {
+      let totalPaid = 0, totalAmount = 0, totalDue = 0;
+      orders.forEach(order => {
+        totalPaid += order.paid;
+        totalAmount += order.totalAmount;
+        totalDue += order.due;
+      });
+      return { totalPaid, totalAmount, totalDue };
+    })
+  );
+}
 
 
 }

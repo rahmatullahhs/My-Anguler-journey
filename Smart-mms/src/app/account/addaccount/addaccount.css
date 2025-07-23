@@ -1,5 +1,5 @@
 .button-container {
-  font-family: 'Segoe UI';
+  font-family: 'Segoe UI', sans-serif;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -17,81 +17,69 @@
   border-radius: 10px;
   font-size: 18px;
   font-weight: 600;
-  color: white; /* white text */
+  color: white !important;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(26, 25, 25, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
+  box-shadow: none;
+  background-color: #555; /* fallback */
   text-align: left;
+  width: 100%;
+  text-decoration: none !important;
 }
 
 .btn i {
   font-size: 22px;
 }
 
-/* Updated solid colors without gradients */
+/* Theme colors (no animation or transform) */
 .btn-ledger {
-  background-color: #07a80d;
+  background-color: #28a745;
 }
 .btn-ledger:hover {
-  background-color: #89f190;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.6);
+  background-color: #218838;
 }
 
 .btn-bill {
-  background-color: #2079df;
+  background-color: #007bff;
 }
 .btn-bill:hover {
-  background-color: #86ccf5ef;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(21, 101, 192, 0.6);
+  background-color: #0069d9;
 }
 
 .btn-sales {
-  background-color: #c55b04;
+  background-color: #fd7e14;
 }
 .btn-sales:hover {
-  background-color: #f79661;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(239, 108, 0, 0.6);
+  background-color: #e96b0d;
 }
 
 .btn-cogs {
-  background-color: #8209ce;
+  background-color: #6f42c1;
 }
 .btn-cogs:hover {
-  background-color: #b57afd;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(106, 27, 154, 0.6);
+  background-color: #5a32a3;
 }
 
 .btn-price {
-  background-color: #b10b0b;
+  background-color: #dc3545;
 }
 .btn-price:hover {
-  background-color: #f04e4e;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(183, 28, 28, 0.6);
-}
-/* Remove underline and link color from all anchor buttons */
-.btn {
-  text-decoration: none !important;
-  color: white !important;
+  background-color: #bd2130;
 }
 
-.btn:hover {
-  text-decoration: none;
+.btn-salary {
+  background-color: #ffc107;
+  color: #212529 !important;
 }
+.btn-salary:hover {
+  background-color: #e0a800;
+}
+
 .btn-outline-secondary {
-  color: #6c757d;
+  color: #6c757d !important;
   background-color: #fff;
-  border-color: #6c757d;
-  text-decoration: none;
+  border: 2px solid #6c757d;
 }
-
 .btn-outline-secondary:hover {
-  color: #fff;
   background-color: #6c757d;
-  border-color: #6c757d;
+  color: #fff !important;
 }

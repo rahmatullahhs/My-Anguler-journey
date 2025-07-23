@@ -38,7 +38,7 @@ import { Addaccount } from './account/addaccount/addaccount';
 import { Addchart } from './account/addchart/addchart';
 import { Showreport } from './report/showreport/showreport';
 import { ViewAllstock } from './goods/view-allstock/view-allstock';
-import { Ledgerbook } from './account/ledgerbook/ledgerbook';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,7 +47,7 @@ import { Billstracking } from './account/billstracking/billstracking';
 import { AddCogsComponent } from './account/cogs/cogs';
 import { Addentry } from './account/accountpayentry/addentry/addentry';
 import { AccountPayEntryComponent } from './account/accountpayentry/accountpayentrycomponentForm';
-import { Tax } from './account/tax/tax';
+
 import { Viewallorder } from './order/viewallorder/viewallorder';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Addinventory } from './inventory/addinventory/addinventory';
@@ -57,6 +57,8 @@ import { EmpSalaryComponent } from './account/empsalary/empsalary';
 import { AdminProfile } from './auth/admin-profile/admin-profile';
 import { ManagerProfile } from './auth/manager-profile/manager-profile';
 import { CasierProfile } from './auth/casier-profile/casier-profile';
+import { Purchasehistory } from './history/purchasehistory/purchasehistory';
+import { Sellhistory } from './history/sellhistory/sellhistory';
 
 
 
@@ -106,15 +108,17 @@ import { CasierProfile } from './auth/casier-profile/casier-profile';
       Showreport,
        Billstracking, 
        Salestracking,
-        Ledgerbook,
+
         AddCogsComponent,      
         Addentry,
          AccountPayEntryComponent,
-         Tax,
+         
   EmpSalaryComponent,
   AdminProfile,
   ManagerProfile,
-  CasierProfile
+  CasierProfile,
+  Purchasehistory,
+  Sellhistory
    
   ],
   imports: [

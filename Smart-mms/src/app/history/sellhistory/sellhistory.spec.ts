@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Tax } from './tax';
+import { Sellhistory } from './sellhistory';
 
-describe('Tax', () => {
-  let component: Tax;
-  let fixture: ComponentFixture<Tax>;
+describe('Sellhistory', () => {
+  let component: Sellhistory;
+  let fixture: ComponentFixture<Sellhistory>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Tax]
+      declarations: [Sellhistory]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Tax);
+    fixture = TestBed.createComponent(Sellhistory);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

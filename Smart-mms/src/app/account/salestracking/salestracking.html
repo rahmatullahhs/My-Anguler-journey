@@ -9,7 +9,7 @@
       <div class="card border-success shadow-sm">
         <div class="card-header bg-success text-white">Total Sales</div>
         <div class="card-body text-center">
-          <h4>৳1,25,000</h4>
+          <h4>৳{{ totalAmount }}</h4>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
       <div class="card border-info shadow-sm">
         <div class="card-header bg-info text-white">Sales This Month</div>
         <div class="card-body text-center">
-          <h4>৳55,000</h4>
+          <h4>৳{{ totalPaid }}</h4>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
       <div class="card border-warning shadow-sm">
         <div class="card-header bg-warning text-dark">Receivables</div>
         <div class="card-body text-center">
-          <h4>৳30,000</h4>
+          <h4>৳{{ totalDue }}</h4>
         </div>
       </div>
     </div>
@@ -81,16 +81,16 @@
 
   <div style="font-size: 20px; margin-bottom: 20px;">
     <strong>💰 Total Sales:</strong>
-    <!-- <span style="color: green;">৳{{ totalSales }}</span> -->
+    <span style="color: green;">৳{{ totalAmount }}</span>
   </div>
   <div style="font-size: 20px; margin-bottom: 20px;">
     <strong>💰 Total Amount Received:</strong>
-    <!-- <span style="color: green;">৳{{ totalSales }}</span> -->
+    <span style="color: green;">৳{{ totalPaid }}</span>
   </div>
 
   <div style="font-size: 20px;">
     <strong>📉 Total Amount Receivables:</strong>
-    <!-- <span style="color: red;">৳{{ totalDue }}</span> -->
+   <span style="color: red;">৳{{ totalDue }}</span> 
   </div>
 
   <hr style="margin: 30px 0; border-top: 1px dashed #ccc;">
