@@ -289,7 +289,7 @@
       "stock_qty": 20,
       "brandId": "f54b",
       "categoryId": "a2s1",
-      "supplierId": "04ab"
+      "supplierId": null
     },
     {
       "id": null,
@@ -325,17 +325,10 @@
       "stock_qty": 5,
       "brandId": "cc0f",
       "categoryId": "a2s1",
-      "supplierId": "04ab"
+      "supplierId": null
     }
   ],
   "supplier": [
-    {
-      "id": "04ab",
-      "name": "Parvez Ala Habibi",
-      "email": "parvage@gmail.com",
-      "phone": "01339965770000",
-      "address": "Italy"
-    },
     {
       "id": "fcc9",
       "name": "Rahmat ullah",
