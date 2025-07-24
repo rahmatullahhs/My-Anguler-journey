@@ -435,6 +435,32 @@
       "totalAmount": 5462500,
       "paid": 5000000,
       "due": 462500
+    },
+    {
+      "id": "",
+      "invoice": "HX-34290",
+      "orderDate": "2025-07-24",
+      "customername": "Samim Istiak Junayed Mia",
+      "customerphone": "0987898765",
+      "customeremail": "mia@gmail.com",
+      "productdetail": "4df5",
+      "productqty": 1,
+      "totalAmount": 115000,
+      "paid": 5000,
+      "due": 110000
+    },
+    {
+      "id": "",
+      "invoice": "HX-66768768",
+      "orderDate": "2025-07-24",
+      "customername": "Abdullah al Masud",
+      "customerphone": "0998877643",
+      "customeremail": "masud@gmail.com",
+      "productdetail": "4df5",
+      "productqty": 1,
+      "totalAmount": 103500,
+      "paid": 100000,
+      "due": 3500
     }
   ],
   "inventory": [
@@ -443,7 +469,7 @@
       "productname": " HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook HP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook",
       "productDetails": "Specification\nBasic Information\nProcessor\nIntel® Core™ i5-8250U (1.6 GHz base frequency, up to 3.4 GHz with Intel® Turbo Boost Technology, 6 MB cache, 4 cores)\nDisplay\n14.1\" diagonal FHD IPS anti-glare LED-backlit, 220 cd/m², 67% sRGB (1920 x 1080)\nMemory\n8 GB DDR4-2400 SDRAM\nStorage\n256 GB M.2 SATA SSD\nGraphics\nAMD RADEON RX540 2GB DDR4 GRAPHICS CARD\nOperating System\nFree DOS\nBattery\nHP Long Life 3-cell, 50 Wh Li-ion\nAdapter\nHP Smart 45 W External AC power adapter\nAudio\nBang & Olufsen, dual stereo speakers, 3 multi array microphone\nInput Devices\nKeyboard\nHP Premium Collaboration Keyboard spill resistant with drain\nWebCam\nHD camera\nCard Reader\n1 smart card reader\nNetwork & Wireless Connectivity\nLAN\nHP Module with NXP NFC Controller NPC300 I2C NCI\nIntel® I219-LM GbE, vPro™\nIntel® I219-V GbE, non-vPro™ 10\nWi-Fi\nIntel® Dual Band Wireless-AC 8265 802.11a/b/g/n/ac (2x2) Wi-Fi\nBluetooth\nBluetooth® 4.2 Combo, non-vPro\nPorts, Connectors & Slots\nUSB (s)\n1 Thunderbolt™ (USB Type-C™ connector)\n2 USB 3.1 Gen 1 (1 charging)\nHDMI\n1 HDMI 1.4b\nAudio Jack Combo\n1 headphone/microphone combo\nExtra RAM Slot\nYes\nPhysical Specification\nDimensions (W x D x H)\n31 x 22.93 x 1.77 cm\nWeight\nStarting at 1.33 kg\nColor(s)\nSilver\nWarranty\nManufacturing Warranty\n02 years International Limited Warranty (Terms & condition Apply As Per HP)\nDescription\nHP EliteBook 840 G5 AMD RADEON RX540 2GB DDR4 GRAPHICS Core i5 8th Gen Ultrabook\n\nIntel® Core™ i5-8250U (1.6 GHz base frequency, up to 3.4 GHz with Intel® Turbo Boost Technology, 6 MB cache, 4 cores)\nIntel® UHD Graphics 620\nAMD RADEON RX540 2GB DDR4 GRAPHICS CARD\n8 GB DDR4-2400 SDRAM\n256 GB M.2 SATA SSD\n14.1\" diagonal FHD IPS anti-glare LED-backlit, 220 cd/m², 67% sRGB (1920 x 1080)\nHD camera\nHP Premium Collaboration Keyboard spill resistant with drain\n1 Thunderbolt™ (USB Type-C™ connector), 2 USB 3.1 Gen 1 (1 charging), 1 HDMI 1.4b, 1 RJ-45\nIntel® Dual Band Wireless-AC 8265 802.11a/b/g/n/ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo, non-vPro\nHP Long Life 3-cell, 50 Wh Li-ion Battery\nDimensions (W x D x H)- 31 x 22.93 x 1.77 cm\nWeight-  1.33 kg (Approx)\n02 years International Limited Warranty (Terms & condition Apply As Per HP)",
       "price": 115000,
-      "qty": 50
+      "qty": 48
     }
   ],
   "salesTracing": [
@@ -476,6 +502,16 @@
       "orderId": "",
       "invoice": "DX-12462",
       "orderDue": 714555.26,
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
+      "status": "Pending"
+    },
+    {
+      "id": "",
+      "orderId": "",
       "status": "Pending"
     },
     {
