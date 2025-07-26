@@ -1,0 +1,61 @@
+<title>Smart-MMS ✨ | Update Employee</title>
+
+<div class="container my-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header text-center bg-dark text-white">
+      <h3 class="mb-0"><i class="fas fa-user-edit me-2"></i>Update Supplier</h3>
+    </div>
+
+    <form class="p-5">
+      <!-- Name & Email -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">
+            <i class="fas fa-user me-1"></i> Full Name
+          </label>
+          <input [(ngModel)]="supplier.name" name="name" type="text" class="form-control" id="fullName"
+            placeholder="Enter full name" required />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">
+            <i class="fas fa-envelope me-1"></i> Email Address
+          </label>
+          <input [(ngModel)]="supplier.email" name="email" type="email" class="form-control" id="email"
+            placeholder="example@company.com" required />
+        </div>
+      </div>
+
+      <!-- Phone & Address -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="phone" class="form-label">
+            <i class="fas fa-phone me-1"></i> Phone Number
+          </label>
+          <input [(ngModel)]="supplier.phone" name="phone" type="tel" class="form-control" id="phone"
+            placeholder="+1 555-0123" required />
+        </div>
+        <div class="col-md-6">
+          <label for="address" class="form-label">
+            <i class="fas fa-map-marker-alt me-1"></i> Address
+          </label>
+          <input [(ngModel)]="supplier.address" name="address" type="text" class="form-control" id="address"
+            placeholder="Enter current address" required />
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Submit Buttons -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-success px-4 me-2" (click)="updateSupplier()">
+          <i class="fas fa-save me-1"></i> Update Employee
+        </button>
+        <button type="reset" class="btn btn-outline-secondary px-4">
+          <i class="fas fa-undo me-1"></i> Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

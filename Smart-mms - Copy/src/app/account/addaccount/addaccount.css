@@ -1,0 +1,85 @@
+.button-container {
+  font-family: 'Segoe UI', sans-serif;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white !important;
+  cursor: pointer;
+  box-shadow: none;
+  background-color: #555; /* fallback */
+  text-align: left;
+  width: 100%;
+  text-decoration: none !important;
+}
+
+.btn i {
+  font-size: 22px;
+}
+
+/* Theme colors (no animation or transform) */
+.btn-ledger {
+  background-color: #28a745;
+}
+.btn-ledger:hover {
+  background-color: #218838;
+}
+
+.btn-bill {
+  background-color: #007bff;
+}
+.btn-bill:hover {
+  background-color: #0069d9;
+}
+
+.btn-sales {
+  background-color: #fd7e14;
+}
+.btn-sales:hover {
+  background-color: #e96b0d;
+}
+
+.btn-cogs {
+  background-color: #6f42c1;
+}
+.btn-cogs:hover {
+  background-color: #5a32a3;
+}
+
+.btn-price {
+  background-color: #dc3545;
+}
+.btn-price:hover {
+  background-color: #bd2130;
+}
+
+.btn-salary {
+  background-color: #ffc107;
+  color: #212529 !important;
+}
+.btn-salary:hover {
+  background-color: #e0a800;
+}
+
+.btn-outline-secondary {
+  color: #6c757d !important;
+  background-color: #fff;
+  border: 2px solid #6c757d;
+}
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff !important;
+}

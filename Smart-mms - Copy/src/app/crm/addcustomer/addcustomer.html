@@ -1,0 +1,78 @@
+<div class="container my-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white text-center">
+      <h4><i class="bi bi-person-lines-fill me-2"></i>Customer Details</h4>
+    </div>
+
+    <form [formGroup]="formGroup" method="post" class="p-4">
+      <div class="row g-4">
+        <!-- Name -->
+        <div class="col-md-6">
+          <label for="name" class="form-label text-primary">
+            <i class="bi bi-person-fill me-1"></i> Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            placeholder="Enter customer name"
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6">
+          <label for="email" class="form-label text-success">
+            <i class="bi bi-envelope-fill me-1"></i> Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+          <label for="phone" class="form-label text-info">
+            <i class="bi bi-telephone-fill me-1"></i> Phone
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            class="form-control"
+            formControlName="phone"
+            placeholder="+088 "
+            required
+          />
+        </div>
+
+        <!-- Address -->
+        <div class="col-md-6">
+          <label for="address" class="form-label text-warning">
+            <i class="bi bi-geo-alt-fill me-1"></i> Address
+          </label>
+          <textarea
+            id="address"
+            class="form-control"
+            formControlName="address"
+            rows="3"
+            placeholder="Enter full address"
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4" (click)="addCustomer()">
+          <i class="bi bi-save2-fill me-1"></i> Save Customer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

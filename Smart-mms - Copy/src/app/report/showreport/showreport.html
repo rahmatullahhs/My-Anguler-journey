@@ -1,0 +1,136 @@
+
+ 
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4 text-center">📑 Reports Dashboard</h1>
+
+    <!-- Quick Summary Reports -->
+    <div class="section-title"><span class="emoji">🧩</span> Quick Summary Reports</div>
+    <div class="row">
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">📦 Dead Stock Report</h5>
+            <p class="card-text">Laptops not sold for 3+ months.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">🔁 Return Rate Report</h5>
+            <p class="card-text">High-returned products or brands.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">📊 Sales Trend Report</h5>
+            <p class="card-text">Weekly/monthly growth analysis.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">📈 Top Customers/Products</h5>
+            <p class="card-text">Based on revenue.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">🕒 Time-to-Sell Report</h5>
+            <p class="card-text">Avg. time from purchase to sale per model.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 report-card">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">🔧 Warranty/Service Report</h5>
+            <p class="card-text">Warranty claims or repairs (if applicable).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+
+ <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 40px;
+    }
+    .report-card {
+      min-height: 150px;
+    }
+    .section-title {
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #343a40;
+    }
+    .print-btn {
+      margin-top: 10px;
+    }
+  </style>
+
+<body>
+
+<div class="container">
+ 
+
+  <!-- Example Report Section -->
+  <h5 class="section-title">📦 Inventory Reports</h5>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card report-card shadow-sm" id="report1">
+        <div class="card-body">
+          <h5 class="card-title">1. Stock Summary</h5>
+          <p>Current stock quantity & value by product</p>
+          <button class="btn btn-outline-primary btn-sm print-btn" onclick="printReport('report1')">🖨️ Generate & Print</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card report-card shadow-sm" id="report2">
+        <div class="card-body">
+          <h5 class="card-title">2. Stock Movement</h5>
+          <p>All ins and outs (purchases, sales, returns)</p>
+          <button class="btn btn-outline-primary btn-sm print-btn" onclick="printReport('report2')">🖨️ Generate & Print</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card report-card shadow-sm" id="report3">
+        <div class="card-body">
+          <h5 class="card-title">3. Reorder/Low Stock</h5>
+          <p>Products below minimum stock level</p>
+          <button class="btn btn-outline-primary btn-sm print-btn" onclick="printReport('report3')">🖨️ Generate & Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add other sections below like Sales, Purchase, Profitability, etc., each card with a unique ID and print button -->
+
+  <!-- Sales Reports Example -->
+  <h5 class="section-title mt-5">💰 Sales Reports</h5>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card report-card shadow-sm" id="report8">
+        <div class="card-body">
+          <h5 class="card-title">8. Sales Summary</h5>
+          <p>Sales by day/month/product</p>
+          <button class="btn btn-outline-primary btn-sm print-btn" onclick="printReport('report8')">🖨️ Generate & Print</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

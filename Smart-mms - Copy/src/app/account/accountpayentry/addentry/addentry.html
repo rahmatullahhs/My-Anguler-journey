@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Payable Entries Management</h2>
+
+  <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Entry Name</label>
+      <input type="text" formControlName="name" class="form-control" placeholder="Entry A Name have to pay">
+      <div class="text-danger" *ngIf="entryForm.get('name')?.invalid && entryForm.get('name')?.touched">
+        Name is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2">
+      {{ isEditMode ? 'Update' : 'Add' }} Enrty
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Clear</button>
+  </form>
+
+  <hr class="my-4">
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entries of entries">
+        <td>{{ entries.id }}</td>
+        <td>{{ entries.name }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-2" (click)="editEntry(entries)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteEnty(entries.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

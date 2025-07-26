@@ -1,0 +1,87 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+  <div class="col" *ngFor="let p of products">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body">
+        <ng-container *ngIf="productForm.value.id === p.id && editing; else productView">
+          <!-- Editable form -->
+          <form [formGroup]="productForm">
+            <div class="mb-2">
+              <input formControlName="name" class="form-control mb-2" placeholder="Product Name" />
+              <input formControlName="processor" class="form-control mb-2" placeholder="Processor" />
+              <input formControlName="ram" class="form-control mb-2" placeholder="RAM" />
+              <input formControlName="storage" class="form-control mb-2" placeholder="Storage" />
+              <input formControlName="graphicscard" class="form-control mb-2" placeholder="Graphics Card" />
+              <input formControlName="monitor" class="form-control mb-2" placeholder="Monitor" />
+              <input formControlName="invoice" class="form-control mb-2" placeholder="Invoice" />
+              <input formControlName="price" type="number" class="form-control mb-2" placeholder="Price" />
+              <input formControlName="discount" type="number" class="form-control mb-2" placeholder="Discount" />
+              <input formControlName="paid" type="number" class="form-control mb-2" placeholder="Paid" />
+              <input formControlName="due" type="number" class="form-control mb-2" placeholder="Due" />
+              <input formControlName="stock_qty" type="number" class="form-control mb-2" placeholder="Stock Quantity" />
+
+              <select formControlName="brandId" class="form-control mb-2">
+                <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+              </select>
+              <select formControlName="categoryId" class="form-control mb-2">
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+              </select>
+              <select formControlName="supplierId" class="form-control mb-2">
+                <option *ngFor="let supplier of suppliers" [value]="supplier.id">{{ supplier.name }}</option>
+              </select>
+            </div>
+          </form>
+        </ng-container>
+
+        <!-- Normal view mode -->
+        <ng-template #productView>
+          <h5 class="card-title text-dark fw-semibold">
+            <i class="fas fa-box-open me-2"></i>{{ p.name }}
+          </h5>
+
+          <div class="mb-2">
+            <span class="badge bg-primary me-1">{{ getCategoryName(p.categoryId) }}</span>
+            <span class="badge bg-info text-dark me-1">{{ getBrandName(p.brandId) }}</span>
+            <span class="badge bg-secondary">{{ getSupplierName(p.supplierId) }}</span>
+          </div>
+
+          <ul class="list-group list-group-flush small">
+            <li class="list-group-item"><i class="fas fa-microchip me-2"></i>Processor: {{ p.processor }}</li>
+            <li class="list-group-item"><i class="fas fa-memory me-2"></i>RAM: {{ p.ram }}</li>
+            <li class="list-group-item"><i class="fas fa-hdd me-2"></i>Storage: {{ p.storage }}</li>
+            <li class="list-group-item"><i class="fas fa-desktop me-2"></i>Graphics: {{ p.graphicscard }}</li>
+            <li class="list-group-item"><i class="fas fa-tv me-2"></i>Monitor: {{ p.monitor }}</li>
+            <li class="list-group-item"><i class="fas fa-file-invoice me-2"></i>Invoice: {{ p.invoice }}</li>
+            <li class="list-group-item"><i class="fas fa-dollar-sign me-2"></i>Price: {{ p.price }}</li>
+            <li class="list-group-item"><i class="fas fa-percent me-2"></i>Discount: {{ p.discount }}%</li>
+            <li class="list-group-item"><i class="fas fa-hand-holding-usd me-2"></i>Paid: {{ p.paid }}</li>
+            <li class="list-group-item"><i class="fas fa-wallet me-2"></i>Due: {{ p.due }}</li>
+            <li class="list-group-item"><i class="fas fa-cubes me-2"></i>Stock: {{ p.stock_qty }}</li>
+          </ul>
+        </ng-template>
+      </div>
+
+      <p class="text-muted px-3 pt-2">ID: {{ p.id }}</p>
+
+      <div class="card-footer bg-transparent d-flex justify-content-between">
+        <ng-container *ngIf="productForm.value.id === p.id && editing; else actions">
+          <button class="btn btn-sm btn-success" (click)="updateProduct()" [disabled]="productForm.invalid">
+            <i class="fas fa-check me-1"></i>Update
+          </button>
+          <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">
+            <i class="fas fa-times me-1"></i>Cancel
+          </button>
+        </ng-container>
+
+        <ng-template #actions>
+          <button class="btn btn-sm btn-primary me-1" (click)="editProduct(p)">
+            <i class="fas fa-edit me-1"></i> Edit
+          </button>
+
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id!)">
+            <i class="fas fa-trash-alt me-1"></i> Delete
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-sm">
+    <a routerLink="/addentry" class="btn btn-outline-info me-2">
+      <i class="fas fa-list"></i>Add Entry
+    </a>
+    <div class="card-header bg-info text-white">
+      <h5 class="mb-0">
+        <i class="fas fa-file-invoice-dollar me-2"></i> Add Payable Bills
+      </h5>
+    </div>
+    <div class="card-body">
+      <!-- Form for adding or editing bills -->
+     <form [formGroup]="accountpayentrycomponentForm" (ngSubmit)="onSubmit()" class="row g-3">
+  <div class="col-md-4">
+    <label for="addentryID" class="form-label">Bill Type</label>
+    <select class="form-select" formControlName="addentryID" required>
+      <option value="" selected disabled>Select Bill Type</option>
+      <option *ngFor="let entry of entries" [value]="entry.id">{{ entry.name }}</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <label for="amount" class="form-label">Amount (৳)</label>
+    <input type="number" class="form-control" formControlName="amount" placeholder="Enter amount" min="0" required />
+  </div>
+
+  <div class="col-md-3">
+    <label for="billDate" class="form-label">Date</label>
+    <input type="date" class="form-control" formControlName="billDate" required />
+  </div>
+
+  <div class="col-md-8">
+    <label for="note" class="form-label">Note</label>
+    <input type="text" class="form-control" formControlName="note" placeholder="Optional note" maxlength="100" />
+  </div>
+
+  <div class="col-md-4 d-flex align-items-end">
+    <button type="submit" class="btn btn-primary w-100">
+      {{ editing ? 'Update Bill' : 'Add Bill' }}
+    </button>
+  </div>
+</form>
+
+    </div>
+  </div>
+
+  <!-- Table displaying existing payable bills -->
+  <div class="card mt-4 shadow-sm">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0"><i class="fas fa-list-alt me-2"></i> Existing Payable Bills</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Bill Type</th>
+            <th>Amount (৳)</th>
+            <th>Date</th>
+            <th>Note</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of accountpayentrys">
+<td>{{ getEntryNameById(entry.addentryID) }}</td> 
+
+            <td>{{ entry.amount }}</td>
+            <td>{{ entry.billDate | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ entry.note || 'N/A' }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-warning me-2" (click)="editEntry(entry)">
+                Edit
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEntry(entry.id!)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

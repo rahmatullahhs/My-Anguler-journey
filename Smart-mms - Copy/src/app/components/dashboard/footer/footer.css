@@ -1,0 +1,12 @@
+.small-footer a:hover {
+  color: #00bcd4;
+}
+
+.small-footer img {
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.small-footer img:hover {
+  transform: scale(1.1);
+}

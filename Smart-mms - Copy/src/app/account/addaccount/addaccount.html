@@ -1,0 +1,93 @@
+<div class="container py-4">
+
+  <h2 class="text-center mb-5">📊 Business Dashboard</h2>
+
+  <div class="container mt-4">
+  <h2 class="mb-4 text-center">Financial Summary</h2>
+
+  <div class="row text-center">
+    <div class="col-md-3 mb-3">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h5 class="card-title">Total Sales</h5>
+          <p class="card-text fs-4"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h5 class="card-title">Total Purchases</h5>
+          <p class="card-text fs-4"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h5 class="card-title">Total Expenses</h5>
+          <p class="card-text fs-4"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <div class="card bg-secondary text-dark">
+        
+      <!-- <div [ngClass]="{'bg-success text-white': netProfit >= 0, 'bg-danger text-white': netProfit < 0}" class="card"> -->
+        <div class="card-body">
+          <h5 class="card-title">Net Profit</h5>
+          <p class="card-text fs-4"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Action Buttons -->
+ <div class="container">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <a routerLink="/sellhis" class="btn btn-ledger w-100">
+        <i class="fas fa-book"></i> Sales History
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/billstracking" class="btn btn-bill w-100">
+        <i class="fas fa-file-invoice-dollar"></i> Bills Tracking
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/salestracking" class="btn btn-sales w-100">
+        <i class="fas fa-chart-line"></i> Sales Tracking
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/cogs" class="btn btn-cogs w-100">
+        <i class="fas fa-cogs"></i> Cost of Goods Sold
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/purchasehis" class="btn btn-price w-100">
+        <i class="fas fa-calculator"></i> Purchase History
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/accountpayentry" class="btn btn-price w-100">
+        <i class="fas fa-money-bill-wave"></i> Accounts Payable Entries
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a routerLink="/empsalary" class="btn btn-price w-100">
+        <i class="fas fa-user"></i> Employee Salary
+      </a>
+    </div>
+    <div class="col-md-4 offset-md-4 mt-3">
+      <a routerLink="/addchart" class="btn btn-outline-secondary w-100">
+        <i class="fas fa-chart-pie"></i> Financial Reports
+      </a>
+    </div>
+  </div>
+</div>
