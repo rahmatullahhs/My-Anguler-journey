@@ -1,0 +1,20 @@
+<h2 class="mb-4">📊 Dashboard Overview</h2>
+
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <h5>Pie Chart</h5>
+    <canvas baseChart
+      
+      [labels]="pieChartLabels">
+    </canvas>
+  </div>
+
+  <div class="col-md-6 mb-4">
+    <h5>Bar Chart</h5>
+    <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      >
+    </canvas>
+  </div>
+</div>

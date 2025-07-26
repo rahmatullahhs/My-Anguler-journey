@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+}
+
+.nav-link {
+  color: #333;
+  transition: 0.3s ease;
+  &:hover {
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+}
+canvas {
+  max-width: 100% !important;
+}
