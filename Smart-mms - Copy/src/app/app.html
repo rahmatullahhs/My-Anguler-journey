@@ -1,14 +1,54 @@
+<style>
+  /* Sidebar Link Styling */
+  #sidebarMenu .nav-link {
+    color: #343a40;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+
+  #sidebarMenu .nav-link:hover,
+  #sidebarMenu .nav-link:focus {
+    background-color: #717171;
+    color: #921b1b;
+  }
+
+  /* Highlight active route if needed */
+  #sidebarMenu .nav-link.active {
+    background-color: #e9ecef;
+    color: #921b1b;
+    font-weight: bold;
+  }
+
+  /* Button fixes for visibility on white background */
+  .btn-outline-light {
+    border-color: #000;
+    color: #000;
+  }
+
+  .btn-outline-light:hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .btn-light.text-primary {
+    border: 1px solid #00000010;
+    
+  }
+</style>
+
 <div class="d-flex flex-column vh-100">
 
   <!-- Top Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center bg-white text-dark px-2 py-1 rounded shadow-sm" routerLink="/">
         <img src="https://cdn-icons-png.flaticon.com/512/10869/10869552.png" alt="Smart-MMS Logo" width="40" height="40" class="me-2">
         <span class="fw-bold fs-5">Smart-MMS</span>
       </a>
 
-      <!-- Toggle button toggles sidebar instead of navbar menu -->
+      <!-- Toggle button toggles sidebar -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
         aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle sidebar">
         <span class="navbar-toggler-icon"></span>
@@ -28,52 +68,52 @@
   <div class="d-flex flex-grow-1">
 
     <!-- Sidebar: collapse on small, visible on lg and up -->
-    <div class="collapse d-lg-block bg-primary text-white p-3" id="sidebarMenu" style="width: 250px; min-height: 100vh;">
+    <div class="collapse d-lg-block bg-white text-dark p-3 shadow-sm" id="sidebarMenu" style="width: 250px;">
       <ul class="nav flex-column">
         <li class="nav-item mb-2">
-          <a class="nav-link text-white fw-bold d-flex align-items-center" routerLink="/">
+          <a class="nav-link d-flex align-items-center" routerLink="/">
             <img src="https://cdn-icons-png.flaticon.com/512/1946/1946433.png" width="20" class="me-2" alt="Home Icon"> Home
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/addorder">
+          <a class="nav-link d-flex align-items-center" routerLink="/addorder">
             <img src="https://cdn-icons-png.flaticon.com/128/1796/1796043.png" width="20" class="me-2" alt="Order Icon"> Order/Sell
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/addinventory">
+          <a class="nav-link d-flex align-items-center" routerLink="/addinventory">
             <img src="https://cdn-icons-png.flaticon.com/128/9284/9284340.png" width="20" class="me-2" alt="Inventory Icon"> Add Inventory
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/addaccount">
+          <a class="nav-link d-flex align-items-center" routerLink="/addaccount">
             <img src="https://cdn-icons-png.flaticon.com/128/1570/1570998.png" width="20" class="me-2" alt="Accounts Icon"> Accounts
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/addproduct">
+          <a class="nav-link d-flex align-items-center" routerLink="/addproduct">
             <img src="https://cdn-icons-png.flaticon.com/128/10951/10951869.png" width="20" class="me-2" alt="Stock Icon"> Stock
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/viewallcustomer">
+          <a class="nav-link d-flex align-items-center" routerLink="/viewallcustomer">
             <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" width="20" class="me-2" alt="Customer Icon"> Customers
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/viewallemp">
+          <a class="nav-link d-flex align-items-center" routerLink="/viewallemp">
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="20" class="me-2" alt="Employee Icon"> Employees
           </a>
         </li>
         <li class="nav-item mb-2">
-          <a class="nav-link text-white d-flex align-items-center" routerLink="/viewallsupplier">
+          <a class="nav-link d-flex align-items-center" routerLink="/viewallsupplier">
             <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" width="20" class="me-2" alt="Supplier Icon"> Suppliers
           </a>
         </li>
       </ul>
     </div>
 
-    <!-- Main Content: full width on small screens, leaves space for sidebar on large -->
+    <!-- Main Content -->
     <main class="flex-grow-1 p-4">
       <router-outlet></router-outlet>
       <app-footer></app-footer>
