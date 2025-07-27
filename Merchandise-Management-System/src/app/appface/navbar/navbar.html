@@ -1,0 +1,41 @@
+<!-- NAVBAR HTML -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3 py-0" style="height: 64px;">
+  <!-- Brand Logo + Name -->
+  <a class="navbar-brand fw-bold d-flex align-items-center text-dark" href="#">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT69nwmIORgxHry2aoLVDeoqRKdPTXp6cpUXg&s"
+      alt="Business Icon"
+      width="50"
+      height="50"
+      class="me-2"
+      style="object-fit: contain;"
+    />
+    <span style="font-size: 1rem;">Global Tech</span>
+  </a>
+
+  <!-- Search Bar -->
+  <form class="d-flex ms-auto me-2" role="search">
+    <input
+      class="form-control form-control-sm me-2"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search"
+      style="height: 32px;"
+    />
+    <button class="btn btn-sm btn-outline-secondary" type="submit">🔍</button>
+  </form>
+
+  <!-- Admin Info + Auth Buttons -->
+  <div class="d-flex align-items-center">
+    <img
+      src="https://i.pravatar.cc/40?img=3"
+      alt="Admin"
+      class="rounded-circle me-2"
+      width="32"
+      height="32"
+      style="object-fit: cover;"
+    />
+    <a routerLink="/register" class="btn btn-sm btn-outline-dark me-1">Register</a>
+    <a routerLink="/login" class="btn btn-sm btn-danger">Login</a>
+  </div>
+</nav>

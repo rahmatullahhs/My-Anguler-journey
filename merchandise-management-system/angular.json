@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "merchandise-management-system": {
+    "Merchandise-Management-System": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "merchandise-management-system:build:production"
+              "buildTarget": "Merchandise-Management-System:build:production"
             },
             "development": {
-              "buildTarget": "merchandise-management-system:build:development"
+              "buildTarget": "Merchandise-Management-System:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8adf3d82-c2ba-457a-84d6-8665f3a2851c"
   }
 }
