@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Dashboard } from './appface/dashboard/dashboard';
 
 const routes: Routes = [
-{ path: '', component:  Dashboard}
+{ path:'', component: Dashboard}
 
 ];
 

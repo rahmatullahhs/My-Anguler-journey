@@ -3,10 +3,10 @@
     
     <!-- Dashboard -->
     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="/">🏠 Dashboard</a>
+      <a class="nav-link text-dark" routerLink="/">🏠 Home</a>
     </li>
 
-    <!-- Sales Dropdown -->
+    <!-- people Dropdown -->
     <li class="nav-item dropdown">
       <a 
         class="nav-link dropdown-toggle text-dark" 
@@ -15,28 +15,18 @@
         role="button" 
         data-bs-toggle="dropdown" 
         aria-expanded="false">
-        💼 Sales
+        👥 People
       </a>
-      <ul class="dropdown-menu" aria-labelledby="salesDropdown">
-        <li><a class="dropdown-item" routerLink="/sales/cart">🛒 Cart</a></li>
-        <li><a class="dropdown-item" routerLink="/sales/invoice">🧾 Invoice</a></li>
-        <li><a class="dropdown-item" routerLink="/sales/product">📦 Product</a></li>
-      </ul>
-    </li>
-
-    <!-- Reports -->
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="/reports">📊 Reports</a>
-    </li>
-
-    <!-- Customers -->
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="/customers">👥 Customers</a>
-    </li>
+     <ul class="dropdown-menu" aria-labelledby="salesDropdown">
+  <li><a class="dropdown-item" routerLink="/sales/cart">🏬 Suppliers</a></li>
+  <li><a class="dropdown-item" routerLink="/sales/invoice">👥 Customers</a></li>
+  <li><a class="dropdown-item" routerLink="/sales/product">👨‍💼 Employees</a></li>
+     </ul>
+       </li>
 
     <!-- Products -->
     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="/products">📦 Products</a>
+      <a class="nav-link text-dark" routerLink="/products">📦 Purchase Products</a>
     </li>
 
     <!-- Invoices -->
