@@ -28,6 +28,12 @@ import { ViewsupplierComponent } from './people/supplier/viewsupplier.component/
 import { ViewemployeeComponent } from './people/employee/viewemployee.component/viewemployee.component';
 import { UpdateemployeeComponent } from './people/employee/updateemployee.component/updateemployee.component';
 import { AddemployeeComponent } from './people/employee/addemployee.component/addemployee.component';
+import { LoginComponent } from './authentication/login.component/login.component';
+import { LogoutComponent } from './authentication/logout.component/logout.component';
+import { RegisterComponent } from './authentication/register.component/register.component';
+import { UserprofileComponent } from './authentication/profiles/userprofile.component/userprofile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -55,11 +61,16 @@ import { AddemployeeComponent } from './people/employee/addemployee.component/ad
     ViewsupplierComponent,
     ViewemployeeComponent,
     UpdateemployeeComponent,
-    AddemployeeComponent
+    AddemployeeComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
+    ,ReactiveFormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
