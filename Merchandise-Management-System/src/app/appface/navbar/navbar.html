@@ -3,7 +3,7 @@
   <!-- Brand Logo + Name -->
   <a class="navbar-brand fw-bold d-flex align-items-center text-dark" href="#">
     <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT69nwmIORgxHry2aoLVDeoqRKdPTXp6cpUXg&s"
+      src="assets/gt-logo.png"
       alt="Business Icon"
       width="50"
       height="50"
@@ -25,17 +25,54 @@
     <button class="btn btn-sm btn-outline-secondary" type="submit">🔍</button>
   </form>
 
-  <!-- Admin Info + Auth Buttons -->
-  <div class="d-flex align-items-center">
+  <!-- Admin Avatar with Dropdown -->
+  <div class="dropdown ms-3">
     <img
-      src="https://i.pravatar.cc/40?img=3"
+      src="https://avatars.githubusercontent.com/u/108518708?v=4"
       alt="Admin"
-      class="rounded-circle me-2"
-      width="32"
-      height="32"
-      style="object-fit: cover;"
+      class="rounded-circle dropdown-toggle"
+      width="40"
+      height="40"
+      style="object-fit: cover; cursor: pointer;"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
     />
-    <a routerLink="/register" class="btn btn-sm btn-outline-dark me-1">Register</a>
-    <a routerLink="/login" class="btn btn-sm btn-danger">Login</a>
+
+    <!-- Dropdown Menu -->
+    <ul class="dropdown-menu dropdown-menu-end stylish-dropdown mt-2 animate-dropdown">
+      <!-- Profile Header -->
+      <li class="dropdown-header text-center py-2 border-bottom">
+        <img
+          src="https://avatars.githubusercontent.com/u/108518708?v=4"
+          alt="User Avatar"
+          class="rounded-circle mb-2"
+          width="50"
+          height="50"
+          style="object-fit: cover;"
+        />
+        <div class="fw-semibold">Rahmat</div>
+        <small class="text-muted">rahmatogamil.com</small>
+      </li>
+
+      <!-- Action Links -->
+      <li>
+        <a class="dropdown-item d-flex align-items-center" routerLink="/register">
+          <img src="assets/register.png" alt="Register" class="me-2 icon-img" />
+          Register
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item d-flex align-items-center" routerLink="/login">
+          <img src="assets\login.png" alt="Login" class="me-2 icon-img" />
+          Login
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item logout-item d-flex align-items-center" href="#">
+          <img src="assets\logout.png" alt="Logout" class="me-2 icon-img" />
+          Logout
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
