@@ -1,21 +1,22 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProductModel } from "../../models/product.model";
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { ProductService } from "../../services/product.service";
 import { BrandService } from "../../services/brand.service";
 import { CategoryService } from "../../services/category.service";
 import { SupplierService } from "../../services/supplier.service";
+import { LedgerbookService } from "../../services/ledgerbook.service";
+
+import { ProductModel } from "../../models/product.model";
 import { LedgerbookModel } from "../../models/ledgerbook.model";
 import { BrandModel } from "../../models/brand.model";
 import { CategoryModel } from "../../models/category.model";
 import { SupplierModel } from "../../models/supplier.model";
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { LedgerbookService } from "../../services/ledgerbook.service";
 
 @Component({
+  standalone:false,
   selector: 'app-addproduct',
-  standalone: false,
   templateUrl: './addproduct.html',
   styleUrls: ['./addproduct.css']
 })
@@ -31,15 +32,15 @@ export class AddProduct implements OnInit {
   finalprice: number = 0;
   due: number = 0;
 
-  constructor
-    (private route: ActivatedRoute,
-     private router: Router,
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private brandService: BrandService,
     private categoryService: CategoryService,
     private supplierService: SupplierService,
-    private ledgerbookService: LedgerbookService 
+    private ledgerbookService: LedgerbookService
   ) {
     this.productForm = this.formBuilder.group({
       id: [null],
@@ -61,11 +62,19 @@ export class AddProduct implements OnInit {
     });
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.loadProducts();
     this.loadBrands();
     this.loadCategories();
     this.loadSupplier();
+
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.editing = true;
+      this.productService.getById(id).subscribe()
+        this.productForm.patchValue(this.products);
+      
+    }
 
     this.productForm.valueChanges.subscribe(() => {
       this.PriceCalculation();
@@ -108,75 +117,56 @@ export class AddProduct implements OnInit {
     const formValue = this.productForm.value;
 
     if (this.editing && formValue.id) {
-      // UPDATE PRODUCT
       this.productService.update(formValue).subscribe(() => {
         alert('Product updated successfully!');
-        this.loadProducts();
-        this.cancelEdit();
+        this.router.navigate(['/viewallstock']);
       });
     } else {
-      // CREATE PRODUCT
-      const newProduct: ProductModel = {
-        ...formValue
-      };
-
+      const newProduct: ProductModel = { ...formValue };
       this.productService.add(newProduct).subscribe((createdProduct: ProductModel) => {
         alert('Product added successfully!');
-        this.loadProducts();
-        this.productForm.reset();
-         this.router.navigate(['/viewallstock']);
-
-        // Create ledger entry after product is saved
-        const ledgerEntry: LedgerbookModel = {
-          productId: createdProduct.id!,
-          date: new Date(),
-          paid: formValue.paid,
-          due: this.due,
-          debit: 0,
-          credit: 0,
-          account: ''
-        };
-
-        // Determine accounting behavior
-        if (formValue.paid > 0 && this.due === 0) {
-          ledgerEntry.debit = formValue.paid;
-          ledgerEntry.credit = formValue.paid;
-          ledgerEntry.account = 'Cash Purchase';
-        } else if (this.due > 0 && formValue.paid === 0) {
-          ledgerEntry.debit = this.due;
-          ledgerEntry.credit = 0;
-          ledgerEntry.account = 'Accounts Payable';
-        } else if (formValue.paid > 0 && this.due > 0) {
-          ledgerEntry.debit = formValue.paid + this.due;
-          ledgerEntry.credit = formValue.paid;
-          ledgerEntry.account = 'Partially Paid';
-        }
-
-        this.ledgerbookService.add(ledgerEntry).subscribe(() => {
-          console.log('Ledger entry created.');
-        });
+        this.createLedgerEntry(createdProduct);
+        this.router.navigate(['/viewallstock']);
       });
     }
   }
 
-  editProduct(product: ProductModel): void {
-    this.editing = true;
-    this.productForm.patchValue(product);
-  }
+  createLedgerEntry(createdProduct: ProductModel): void {
+    const formValue = this.productForm.value;
 
-  deleteProduct(id: string): void {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.delete(id).subscribe(() => {
-        alert('Product deleted!');
-        this.loadProducts();
-      });
+    const ledgerEntry: LedgerbookModel = {
+      productId: createdProduct.id!,
+      date: new Date(),
+      paid: formValue.paid,
+      due: this.due,
+      debit: 0,
+      credit: 0,
+      account: ''
+    };
+
+    if (formValue.paid > 0 && this.due === 0) {
+      ledgerEntry.debit = formValue.paid;
+      ledgerEntry.credit = formValue.paid;
+      ledgerEntry.account = 'Cash Purchase';
+    } else if (this.due > 0 && formValue.paid === 0) {
+      ledgerEntry.debit = this.due;
+      ledgerEntry.credit = 0;
+      ledgerEntry.account = 'Accounts Payable';
+    } else if (formValue.paid > 0 && this.due > 0) {
+      ledgerEntry.debit = formValue.paid + this.due;
+      ledgerEntry.credit = formValue.paid;
+      ledgerEntry.account = 'Partially Paid';
     }
+
+    this.ledgerbookService.add(ledgerEntry).subscribe(() => {
+      console.log('Ledger entry created.');
+    });
   }
 
   cancelEdit(): void {
     this.editing = false;
     this.productForm.reset({
-      
+      id: null,
       name: '',
       graphicscard: '',
       monitor: '',
@@ -217,9 +207,7 @@ export class AddProduct implements OnInit {
     this.finalprice = this.totalprice - (this.totalprice * (discount / 100));
     this.due = this.finalprice - paid;
 
-    this.productForm.patchValue({
-      due: this.due
-    }, { emitEvent: false });
+    this.productForm.patchValue({ due: this.due }, { emitEvent: false });
   }
 
   onFocusLost(): void {

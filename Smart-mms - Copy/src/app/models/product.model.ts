@@ -1,7 +1,7 @@
 export interface ProductModel {
 
 
-  id?: string;
+  id: string;
   name: string;
   processor: string;
   ram: string;

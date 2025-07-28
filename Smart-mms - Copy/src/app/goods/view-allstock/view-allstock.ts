@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { ProductModel } from '../../models/product.model';
-import { BrandService } from '../../services/brand.service';
-import { CategoryService } from '../../services/category.service';
-import { SupplierService } from '../../services/supplier.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { ProductService } from '../../services/product.service';
+import { BrandService } from '../../services/brand.service';
+import { CategoryService } from '../../services/category.service';
+import { SupplierService } from '../../services/supplier.service';
+
+import { ProductModel } from '../../models/product.model';
+import { BrandModel } from '../../models/brand.model';
+import { CategoryModel } from '../../models/category.model';
+import { SupplierModel } from '../../models/supplier.model';
+
 @Component({
+  standalone:false,
   selector: 'app-view-allstock',
-  standalone: false,
   templateUrl: './view-allstock.html',
-  styleUrl: './view-allstock.css'
+  styleUrls: ['./view-allstock.css']
 })
 export class ViewAllstock implements OnInit {
   products: ProductModel[] = [];
-  brands: any[] = [];
-  categories: any[] = [];
-  suppliers: any[] = [];
+  brands: BrandModel[] = [];
+  categories: CategoryModel[] = [];
+  suppliers: SupplierModel[] = [];
+
   editing: boolean = false;
   productForm: FormGroup;
 
@@ -30,7 +36,7 @@ export class ViewAllstock implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.productForm = this.formBuilder.group({
-   
+      id: [null],
       name: ['', Validators.required],
       graphicscard: [''],
       monitor: [''],
@@ -54,19 +60,19 @@ export class ViewAllstock implements OnInit {
   }
 
   loadAllData(): void {
-    this.productService.getAll().subscribe((res: ProductModel[]) => {
+    this.productService.getAll().subscribe((res) => {
       this.products = res;
     });
 
-    this.brandService.getAllBrand().subscribe((res: any[]) => {
+    this.brandService.getAllBrand().subscribe((res) => {
       this.brands = res;
     });
 
-    this.categoryService.getAllCategory().subscribe((res: any[]) => {
+    this.categoryService.getAllCategory().subscribe((res) => {
       this.categories = res;
     });
 
-    this.supplierService.getAllSupplier().subscribe((res: any[]) => {
+    this.supplierService.getAllSupplier().subscribe((res) => {
       this.suppliers = res;
     });
   }
@@ -80,7 +86,7 @@ export class ViewAllstock implements OnInit {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productService.delete(id).subscribe(() => {
         alert('Product deleted!');
-        this.loadAllData(); // refresh all
+        this.loadAllData();
       });
     }
   }

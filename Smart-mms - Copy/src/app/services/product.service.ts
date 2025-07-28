@@ -7,9 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  getById(productId: string) {
-    throw new Error("Method not implemented.");
-  }
+  
 
   private apiUrl = 'http://localhost:3000/products';
 
@@ -31,4 +29,8 @@ export class ProductService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
   
+  getById(id: string): Observable<ProductModel> {
+  return this.http.get<ProductModel>(`/api/products/${id}`);
+}
+
 }

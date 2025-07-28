@@ -255,7 +255,6 @@
     }
   ],
   "products": [
-    
     {
       "id": null,
       "name": "EliteBook",
@@ -272,6 +271,24 @@
       "stock_qty": 10,
       "brandId": "cc0f",
       "categoryId": "a2s1",
+      "supplierId": "f4e9"
+    },
+    {
+      "id": null,
+      "name": "Mouse",
+      "graphicscard": "",
+      "monitor": "",
+      "processor": "",
+      "ram": "",
+      "storage": "",
+      "invoice": "HO-1254",
+      "discount": 10,
+      "paid": 20000,
+      "due": 7000,
+      "price": 300,
+      "stock_qty": 100,
+      "brandId": "82a3",
+      "categoryId": "1931",
       "supplierId": "f4e9"
     }
   ],
