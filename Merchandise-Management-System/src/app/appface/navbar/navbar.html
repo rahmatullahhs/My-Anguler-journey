@@ -42,28 +42,30 @@
     <!-- Dropdown Menu -->
     <ul class="dropdown-menu dropdown-menu-end stylish-dropdown mt-2 animate-dropdown">
       <!-- Profile Header -->
-      <li class="dropdown-header text-center py-2 border-bottom">
-        <img
-          src="https://avatars.githubusercontent.com/u/108518708?v=4"
-          alt="User Avatar"
-          class="rounded-circle mb-2"
-          width="50"
-          height="50"
-          style="object-fit: cover;"
-        />
-        <div class="fw-semibold">Rahmat</div>
-        <small class="text-muted">rahmatogamil.com</small>
-      </li>
+        <li class="dropdown-header text-center py-2 border-bottom">
+    <a routerLink="userprofile" >
+      <img
+        src="https://avatars.githubusercontent.com/u/108518708?v=4"
+        alt="User Avatar"
+        class="rounded-circle mb-2"
+        width="50"
+        height="50"
+        style="object-fit: cover;"
+      />
+    </a>
+    <div class="fw-semibold">Rahmat</div>
+    <small class="text-muted">rahmatogamil.com</small>
+  </li>
 
       <!-- Action Links -->
       <li>
-  <a  class="dropdown-item d-flex align-items-center" routerLink="viewcustomer" >
+  <a  class="dropdown-item d-flex align-items-center" routerLink="register" >
     <img src="assets/register.png" alt="Register" class="me-2 icon-img"/>
     Register
   </a>
 </li>
 <li>
-  <a class="dropdown-item d-flex align-items-center"  routerLink="viewsupplier" >
+  <a class="dropdown-item d-flex align-items-center"  routerLink="login" >
     <img src="assets/login.png" alt="Login" class="me-2 icon-img" />
     Login
   </a>
