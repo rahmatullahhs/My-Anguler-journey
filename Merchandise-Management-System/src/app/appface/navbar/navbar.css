@@ -8,6 +8,7 @@
   overflow: hidden;
 }
 
+
 /* Dropdown animation */
 .animate-dropdown {
   animation: fadeInDropdown 0.3s ease-in-out;
@@ -26,11 +27,11 @@
 
 /* Profile header */
 .dropdown-header {
-  background-color: #f8f9fa;
+  background-color: #e0e6ee;
   padding-bottom: 0.5rem;
 }
 .dropdown-header img {
-  border: 2px solid #dee2e6;
+  border: 2px solid #4c657e;
 }
 
 /* Image icon for items */
@@ -50,16 +51,16 @@
 
 /* Hover effect */
 .dropdown-item:hover {
-  background-color: #f1f3f5;
+  background-color: #c1c5c9;
   color: #212529;
 }
 
 /* Logout special */
 .logout-item {
-  color: #dc3545;
+  color: #d6051a;
   font-weight: 500;
 }
 .logout-item:hover {
-  background-color: #f8d7da;
+  background-color: #f1adb3;
   color: #a94442;
 }
