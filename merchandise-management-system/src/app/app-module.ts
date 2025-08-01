@@ -29,12 +29,18 @@ import { ViewemployeeComponent } from './people/employee/viewemployee.component/
 import { UpdateemployeeComponent } from './people/employee/updateemployee.component/updateemployee.component';
 import { AddemployeeComponent } from './people/employee/addemployee.component/addemployee.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { UserprofileComponent } from './authentication/profiles/userprofile.component/userprofile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -71,7 +77,12 @@ import { RegisterComponent } from './authentication/register.component/register.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule,
+      MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
