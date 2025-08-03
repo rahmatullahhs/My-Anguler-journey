@@ -3,7 +3,7 @@
   min-width: 220px;
   padding: 0.5rem 0;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(205, 16, 16, 0.1);
   border: none;
   overflow: hidden;
 }
@@ -27,11 +27,11 @@
 
 /* Profile header */
 .dropdown-header {
-  background-color: #e0e6ee;
+  background-color: #d1e2f7;
   padding-bottom: 0.5rem;
 }
 .dropdown-header img {
-  border: 2px solid #4c657e;
+  border: 2px solid #607589;
 }
 
 /* Image icon for items */
@@ -51,7 +51,7 @@
 
 /* Hover effect */
 .dropdown-item:hover {
-  background-color: #c1c5c9;
+  background-color: #e4e6e9;
   color: #212529;
 }
 
