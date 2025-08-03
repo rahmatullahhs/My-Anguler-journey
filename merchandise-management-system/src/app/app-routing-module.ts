@@ -15,7 +15,7 @@ import { RegisterComponent } from './authentication/register.component/register.
 
 const routes: Routes = [
 
-  { path: ' ', component: Dashboard },
+  { path: '', component: Dashboard },
   { path: 'viewcustomer', component: ViewcustomerComponent },
   {path:'viewsupplier', component:ViewsupplierComponent},
   {path:'viewEmp',component:ViewemployeeComponent},
