@@ -8,7 +8,7 @@ import { EmployeeModel } from '../../models/human/employee.model';
 })
 export class EmployeeService {
   
-baseUrl:string="http://localhost:3001/employee"
+baseUrl:string="http://localhost:3000/employee"
 constructor(private http: HttpClient){}
 
 getAllEmp():Observable<any>{
