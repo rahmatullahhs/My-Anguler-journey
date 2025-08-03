@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', component: Dashboard },
   { path: 'viewcustomer', component: ViewcustomerComponent },
   {path:'viewsupplier', component:ViewsupplierComponent},
-  {path:'viewemployee',component:ViewemployeeComponent},
+  {path:'viewEmp',component:ViewemployeeComponent},
   
   {path:'userprofile',component:UserprofileComponent},
   {path:'register',component:RegisterComponent},
