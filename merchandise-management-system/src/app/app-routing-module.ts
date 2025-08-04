@@ -11,6 +11,9 @@ import { AddemployeeComponent } from './people/employee/addemployee.component/ad
 import { UserprofileComponent } from './authentication/profiles/userprofile.component/userprofile.component';
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
+import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
+import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.component';
+import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
 
 
 const routes: Routes = [
@@ -23,8 +26,11 @@ const routes: Routes = [
   
   {path:'userprofile',component:UserprofileComponent},
   {path:'register',component:RegisterComponent}, 
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
 
+  {path:'addbrand',component:AddbrandComponent},
+  {path:'addcat',component:AddcatComponent},
+  {path:'addgood',component:AddgoodComponent}
 ];
 
 @NgModule({

@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 
 import { Navbar } from './appface/navbar/navbar';
@@ -81,7 +81,8 @@ import { RegisterComponent } from './authentication/register.component/register.
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
