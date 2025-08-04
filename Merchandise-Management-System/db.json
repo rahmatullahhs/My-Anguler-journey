@@ -1,7 +1,40 @@
 {
   "goods": [],
-  "category": [],
-  "brand": [],
+  "category": [
+    {
+      "id": "542a",
+      "name": "Laptop"
+    },
+    {
+      "id": "6d93",
+      "name": "Desktop"
+    },
+    {
+      "id": "f4bd",
+      "name": "BrandPC"
+    },
+    {
+      "id": "d73f",
+      "name": "Accessories"
+    }
+  ],
+  "brand": [
+    {
+      "id": "c6c1",
+      "name": "DELL",
+      "categoryId": "542a"
+    },
+    {
+      "id": "",
+      "name": "HP",
+      "categoryId": ""
+    },
+    {
+      "id": "",
+      "name": "HP",
+      "categoryId": "542a"
+    }
+  ],
   "supplier": [],
   "customer": [],
   "employee": [
