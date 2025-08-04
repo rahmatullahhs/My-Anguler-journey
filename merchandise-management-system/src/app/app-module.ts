@@ -38,6 +38,7 @@ import { AddemployeeComponent } from './people/employee/addemployee.component/ad
 import { UserprofileComponent } from './authentication/profiles/userprofile.component/userprofile.component';
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 
 
@@ -82,12 +83,14 @@ import { RegisterComponent } from './authentication/register.component/register.
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })

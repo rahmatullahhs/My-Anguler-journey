@@ -1,12 +1,21 @@
 {
-"goods":[],
-"category":[],
-"brand":[],
-"supplier":[],
-"customer":[],
-"employee":[],
-"user":[]
-
-
-
+  "goods": [],
+  "category": [],
+  "brand": [],
+  "supplier": [],
+  "customer": [],
+  "employee": [
+    {
+      "id": "68a8",
+      "name": "Babu",
+      "email": "babu@gmail.com",
+      "phone": "01776488833",
+      "nid": "",
+      "address": "Dhaka",
+      "gender": "Male",
+      "designation": "Store Manager",
+      "salary": 50000
+    }
+  ],
+  "user": []
 }
