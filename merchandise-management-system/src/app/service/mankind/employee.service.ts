@@ -20,7 +20,7 @@ export class EmployeeService {
   }
 
   addEmp(employee: EmployeeModel): Observable<any> {
-    return this.http.post(this.baseUrl, employee);
+    return this.http.post(this.baseUrl+"add", employee);
   }
 
   updateEmp(id: string, employee: EmployeeModel): Observable<any> {
