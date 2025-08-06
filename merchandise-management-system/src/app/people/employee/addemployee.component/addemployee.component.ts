@@ -12,20 +12,20 @@ import { EmployeeModel } from '../../../models/human/employee.model';
 })
 export class AddemployeeComponent implements OnInit {
 
-formGroup!: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private employeeservice: EmployeeService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       name: [''],
       email: [''],
       phone: [''],
-      nid:[''],
+      nid: [''],
       address: [''],
       gender: [''],
       designation: [''],

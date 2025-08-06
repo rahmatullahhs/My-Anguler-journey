@@ -32,8 +32,8 @@ const routes: Routes = [
 
   {path:'addbrand',component:AddbrandComponent},
   {path:'viewbrand',component:ViewbrandComponent},
-  {path:'addcat',component:AddcatComponent},
-  {path:'viewcat',component:ViewcatComponent},
+  {path:'addcategory',component:AddcatComponent},
+  {path:'viewcategory',component:ViewcatComponent},
   {path:'addgood',component:AddgoodComponent}
 
   

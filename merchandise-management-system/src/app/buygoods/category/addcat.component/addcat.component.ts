@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../models/goods/category.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../../service/buygood/category.service';
+import { Router } from '@angular/router';
+import { CategoryModel } from '../../../models/goods/category.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-addcat.component',
@@ -9,70 +11,41 @@ import { CategoryService } from '../../../service/buygood/category.service';
   templateUrl: './addcat.component.html',
   styleUrl: './addcat.component.css'
 })
-export class AddcatComponent implements OnInit{
-  categories: CategoryModel[] = [];
-  categoryForm: FormGroup;
-  isEditMode = false;
+export class AddcatComponent implements OnInit {
+
+  categoryForm!: FormGroup;
+
 
   constructor(
-    private fb: FormBuilder,
+    private formbuilder: FormBuilder,
     private categoryService: CategoryService,
-    private cdr:ChangeDetectorRef
-  ) {
-    this.categoryForm = this.fb.group({
-      id: [null],
-      name: ['', Validators.required]
-    });
-  }
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) { }
+
 
   ngOnInit(): void {
-    this.getAllCategories();
-  }
-
-  getAllCategories() {
-    this.categoryService.getAllCategory().subscribe(data => {
-      this.categories = data;
-      this.cdr.markForCheck();
+    this.categoryForm = this.formbuilder.group({
+      name: ['']
     });
   }
 
-  onSubmit() {
-    if (this.categoryForm.valid) {
-      const category: CategoryModel = this.categoryForm.value;
+  addCategory(): void {
+    if (this.categoryForm.invalid) return;
+    const category: CategoryModel = { ...this.categoryForm.value };
+    this.categoryService.addCategory(category).subscribe({
+      next: (res) => {
+        console.log('Category saved:', res);
+        this.categoryForm.reset();
+        this.router.navigate(['/viewcategory']);
 
-      if (this.isEditMode && category.id) {
-        // UPDATE
-        this.categoryService.updateCategory(category).subscribe(() => {
-          this.getAllCategories();
-          this.resetForm();
-        });
-      } else {
-        // CREATE
-        const Newcategory: CategoryModel = { name: category.name}; // no ID
-        this.categoryService.addCategory(Newcategory).subscribe(() => {
-          this.getAllCategories();
-          this.categoryForm.reset();
-        });
+      },
+      error: (error) => {
+        console.error('Error:', error);
       }
-    }
+    });
+
   }
 
 
-  editCategory(category: CategoryModel) {
-    this.categoryForm.patchValue(category);
-    this.isEditMode = true;
-  }
-
-  deleteCategory(id?: string) {
-    if (id) {
-      this.categoryService.deleteCategory(id).subscribe(() => {
-        this.getAllCategories();
-      });
-    }
-  }
-
-  resetForm() {
-    this.categoryForm.reset();
-    this.isEditMode = false;
-  }
 }

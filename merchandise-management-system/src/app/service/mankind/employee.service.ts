@@ -31,7 +31,10 @@ export class EmployeeService {
     return this.http.delete(this.baseUrl + "/" + id);
   }
 
-
+  // To Find Employee By ID
+  getEmployeeById(id: string): Observable<any>{
+    return this.http.get(this.baseUrl+"/"+id);
+  }
 
 
 
