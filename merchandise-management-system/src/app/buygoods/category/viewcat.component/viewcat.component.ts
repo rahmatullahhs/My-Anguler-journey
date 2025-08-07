@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './viewcat.component.css'
 })
 export class ViewcatComponent {
-employees: any[] = [];
+category: any[] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -24,25 +24,26 @@ employees: any[] = [];
     this.categoryService.getAllCategory().subscribe({
       next: res => {
         // Defensive check and fallback if API structure is dynamic
-        this.employees = Array.isArray(res) ? res : res?.data || [];
+        this.category = Array.isArray(res) ? res : [];
       },
       error: err => {
         console.error('Failed to load employees:', err);
-        this.employees = [];
+        this.category = [];
       }
     });
   }
 
-  updateEmp(id: string): void {
+  updateCategory(id: string): void {
     this.router.navigate(['updateEmp', id]);
   }
 
-  deleteEmp(id: string): void {
-    if (confirm('Are you sure you want to delete this employee?')) {
-      this.categoryService.deleteCategory(id).subscribe({
-        next: () => {
-          this.loadAllEmp();
-        },
+   deleteCategory(id?: string) {
+    if (id) {
+      this.categoryService.deleteCategory(id).subscribe(() => {
+        this.getAllCategory();
+      });
+    }
+  }
         error: err => {
           console.error('Error deleting employee:', err);
         }

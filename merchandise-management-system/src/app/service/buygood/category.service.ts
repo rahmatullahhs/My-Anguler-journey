@@ -8,16 +8,19 @@ import { environment } from '../../../environment/environment';
   providedIn: 'root'
 })
 export class CategoryService {
+
  private baseUrl = environment.apiBaseUrl + '/category/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    
+  ) {}
  
   getAllCategory(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(this.baseUrl);
   }
 
   addCategory(categoryModel: CategoryModel): Observable<CategoryModel> {
-    return this.http.post<CategoryModel>(this.baseUrl, categoryModel);
+    return this.http.post<CategoryModel>(this.baseUrl+'add', categoryModel);
   }
 
   updateCategory(category: CategoryModel): Observable<CategoryModel> {
