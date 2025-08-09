@@ -16,27 +16,33 @@ import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
 import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbrand.component';
 import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
+import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
+import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/updatebrand.component';
 
 
 const routes: Routes = [
 
   { path: '', component: Dashboard },
   { path: 'viewcustomer', component: ViewcustomerComponent },
-  {path:'viewsupplier', component:ViewsupplierComponent},
-  {path:'viewEmp',component:ViewemployeeComponent},
-  {path:'addEmp',component:AddemployeeComponent},
-  
-  {path:'userprofile',component:UserprofileComponent},
-  {path:'register',component:RegisterComponent}, 
-  {path:'login',component:LoginComponent},
+  { path: 'viewsupplier', component: ViewsupplierComponent },
+  { path: 'viewEmp', component: ViewemployeeComponent },
+  { path: 'addEmp', component: AddemployeeComponent },
 
-  {path:'addbrand',component:AddbrandComponent},
-  {path:'viewbrand',component:ViewbrandComponent},
-  {path:'addcategory',component:AddcatComponent},
-  {path:'viewcategory',component:ViewcatComponent},
-  {path:'addgood',component:AddgoodComponent}
+  { path: 'userprofile', component: UserprofileComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
-  
+  { path: 'addbrand', component: AddbrandComponent },
+  { path: 'viewbrand', component: ViewbrandComponent },
+  { path: 'updatebrand/:id', component: UpdatebrandComponent },
+
+  { path: 'addcategory', component: AddcatComponent },
+  { path: 'viewcategory', component: ViewcatComponent },
+  { path: 'updatecatagory/:id', component: UpdatecatComponent },
+
+  { path: 'addgood', component: AddgoodComponent }
+
+
 ];
 
 @NgModule({

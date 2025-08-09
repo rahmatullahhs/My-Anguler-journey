@@ -28,7 +28,7 @@ export class CategoryService {
   }
 
   deleteCategory(id: string ): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}${id}`);
   }
   
   // To Find Employee By ID

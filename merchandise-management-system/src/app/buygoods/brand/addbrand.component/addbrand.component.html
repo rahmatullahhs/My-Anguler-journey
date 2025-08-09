@@ -1,21 +1,18 @@
-<p>addbrand.component works!</p>
 <div class="container py-4">
   <div class="card shadow-sm">
     <div class="card-header bg-primary text-white">
       <h4 class="mb-0">Brand Management</h4>
     </div>
     <div class="card-body">
-      <form (ngSubmit)="onSubmit()" class="row g-3">
+      <form [formGroup]="brandForm" (ngSubmit)="onSubmit()" class="row g-3">
         <div class="col-md-6">
           <label for="brandName" class="form-label">Brand Name</label>
           <input
             type="text"
             id="brandName"
             class="form-control"
+            formControlName="name"
             placeholder="Enter brand name"
-            [(ngModel)]="brand.name"
-            name="name"
-            required
           />
         </div>
 
@@ -24,20 +21,18 @@
           <select
             id="category"
             class="form-select"
-            [(ngModel)]="brand.categoryId"
-            name="categoryId"
-            required
+            formControlName="categoryId"
           >
             <option [ngValue]="null">-- Select Category --</option>
-            <option *ngFor="let cat of categories" [ngValue]="cat.id">
+            <option *ngFor="let cat of categories" [value]="cat.id">
               {{ cat.name }}
             </option>
           </select>
         </div>
 
         <div class="col-12 d-flex justify-content-end">
-          <button type="submit" class="btn btn-success me-2">
-            {{ isEditMode ? 'Update' : 'Add' }}
+          <button type="submit" class="btn btn-success me-2" [disabled]="brandForm.invalid">
+            Add
           </button>
           <button type="button" class="btn btn-secondary" (click)="resetForm()">
             Clear

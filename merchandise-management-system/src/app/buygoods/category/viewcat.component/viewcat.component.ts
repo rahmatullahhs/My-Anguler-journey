@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../service/buygood/category.service';
 import { Router } from '@angular/router';
 
 @Component({
+  standalone:false,
   selector: 'app-viewcat.component',
-  standalone: false,
   templateUrl: './viewcat.component.html',
-  styleUrl: './viewcat.component.css'
+  styleUrls: ['./viewcat.component.css']
 })
-export class ViewcatComponent {
-category: any[] = [];
+export class ViewcatComponent implements OnInit {
+  category: any[] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -17,39 +17,35 @@ category: any[] = [];
   ) {}
 
   ngOnInit(): void {
-    this.loadAllEmp();
+    this.loadAllCategory();
   }
 
-  loadAllEmp(): void {
+  loadAllCategory(): void {
     this.categoryService.getAllCategory().subscribe({
       next: res => {
-        // Defensive check and fallback if API structure is dynamic
         this.category = Array.isArray(res) ? res : [];
       },
       error: err => {
-        console.error('Failed to load employees:', err);
+        console.error('Failed to load categories:', err);
         this.category = [];
       }
     });
   }
 
   updateCategory(id: string): void {
-    this.router.navigate(['updateEmp', id]);
+    this.router.navigate(['updateCategory']); // ✅ this path must match the routing config
   }
 
-   deleteCategory(id?: string) {
+  deleteCategory(id?: string): void {
     if (id) {
-      this.categoryService.deleteCategory(id).subscribe(() => {
-        this.getAllCategory();
-      });
-    }
-  }
+      this.categoryService.deleteCategory(id).subscribe({
+        next: () => {
+          this.loadAllCategory(); // Refresh list
+        },
         error: err => {
-          console.error('Error deleting employee:', err);
+          console.error('Error deleting category:', err);
         }
       });
     }
   }
 }
-
-
