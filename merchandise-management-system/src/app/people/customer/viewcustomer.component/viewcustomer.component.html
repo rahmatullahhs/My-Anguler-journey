@@ -1,1 +1,37 @@
-<p>viewcustomer.component works!</p>
+<h2>Customer List</h2>
+
+<div *ngIf="isLoading">Loading customers...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="!isLoading && customers.length > 0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Initials</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ getInitials(customer.name) }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.address }}</td>
+      <td>
+        <button (click)="viewCustomer(customer.id)">View</button>
+        <button (click)="editCustomer(customer.id)">Edit</button>
+        <button (click)="deleteCustomer(customer.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!isLoading && customers.length === 0">
+  No customers found.
+</div>

@@ -20,6 +20,8 @@ import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/upd
 import { ViewgoodsComponent } from './buygoods/goods/viewgoods.component/viewgoods.component';
 import { AddgoodsComponent } from './buygoods/goods/addgoods.component/addgoods.component';
 import { UpdategoodsComponent } from './buygoods/goods/updategoods.component/updategoods.component';
+import { UpdatecustomerComponent } from './people/customer/updatecustomer.component/updatecustomer.component';
+import { AddcustomerComponent } from './people/customer/addcustomer.component/addcustomer.component';
 
 
 const routes: Routes = [
@@ -45,6 +47,11 @@ const routes: Routes = [
   { path: 'addgoods', component: AddgoodsComponent },
   { path: 'viewgoods', component: ViewgoodsComponent },
   { path: 'updategoods/:id', component: UpdategoodsComponent },
+
+
+{ path: 'addcustomer', component: AddcustomerComponent },
+{ path: 'updatecustomer/:id', component: UpdatecustomerComponent },
+{ path: 'viewcustomer', component: ViewcustomerComponent }
 
 ];
 

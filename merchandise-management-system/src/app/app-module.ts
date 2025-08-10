@@ -51,8 +51,6 @@ import { UpdategoodsComponent } from './buygoods/goods/updategoods.component/upd
     Sidebar,
     Footer,
 
-    
- 
     AddcatComponent,
     ViewcatComponent,
     UpdatecatComponent,
@@ -88,6 +86,7 @@ import { UpdategoodsComponent } from './buygoods/goods/updategoods.component/upd
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
+    
     
   ],
   providers: [

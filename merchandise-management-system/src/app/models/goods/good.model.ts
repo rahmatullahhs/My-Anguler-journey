@@ -3,7 +3,7 @@ export interface GoodModel {
     id?: string;
     brandId: string;
     categoryId: string;
-    name: string;
+    goodsName: string;
     details: string;
 
     invoice: string;

@@ -1,1 +1,22 @@
 <p>updatecustomer.component works!</p>
+<h2>Edit Customer</h2>
+
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <label>Name:</label>
+  <input formControlName="name" required />
+  <br />
+
+  <label>Email:</label>
+  <input formControlName="email" type="email" required />
+  <br />
+
+  <label>Phone:</label>
+  <input formControlName="phone" required />
+  <br />
+
+  <label>Address:</label>
+  <input formControlName="address" />
+  <br />
+
+  <button type="submit">Update</button>
+</form>
