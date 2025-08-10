@@ -22,36 +22,47 @@ import { AddgoodsComponent } from './buygoods/goods/addgoods.component/addgoods.
 import { UpdategoodsComponent } from './buygoods/goods/updategoods.component/updategoods.component';
 import { UpdatecustomerComponent } from './people/customer/updatecustomer.component/updatecustomer.component';
 import { AddcustomerComponent } from './people/customer/addcustomer.component/addcustomer.component';
+import { UpdateemployeeComponent } from './people/employee/updateemployee.component/updateemployee.component';
+import { AddsupplierComponent } from './people/supplier/addsupplier.component/addsupplier.component';
+import { UpdatesupplierComponent } from './people/supplier/updatesupplier.component/updatesupplier.component';
 
 
 const routes: Routes = [
 
   { path: '', component: Dashboard },
-  { path: 'viewcustomer', component: ViewcustomerComponent },
-  { path: 'viewsupplier', component: ViewsupplierComponent },
-  { path: 'viewEmp', component: ViewemployeeComponent },
-  { path: 'addEmp', component: AddemployeeComponent },
 
+
+ //  user
   { path: 'userprofile', component: UserprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-
+  //  employee
+  { path: 'viewEmp', component: ViewemployeeComponent },
+  { path: 'addEmp', component: AddemployeeComponent },
+  { path: 'updateEmp', component: UpdateemployeeComponent },
+  //  Brand
   { path: 'addbrand', component: AddbrandComponent },
   { path: 'viewbrand', component: ViewbrandComponent },
   { path: 'updatebrand/:id', component: UpdatebrandComponent },
-
+  //  Category
   { path: 'addcategory', component: AddcatComponent },
   { path: 'viewcategory', component: ViewcatComponent },
   { path: 'updatecatagory/:id', component: UpdatecatComponent },
-
+  //  Goods
   { path: 'addgoods', component: AddgoodsComponent },
   { path: 'viewgoods', component: ViewgoodsComponent },
   { path: 'updategoods/:id', component: UpdategoodsComponent },
+  //  Cuatomer
+  { path: 'addcustomer', component: AddcustomerComponent },
+  { path: 'updatecustomer/:id', component: UpdatecustomerComponent },
+  { path: 'viewcustomer', component: ViewcustomerComponent },
+  //  Supplier
+  { path: 'addsupplier', component: AddsupplierComponent },
+  { path: 'viewsupplier', component: ViewsupplierComponent },
+  { path: 'updatesupplier', component: UpdatesupplierComponent }
 
 
-{ path: 'addcustomer', component: AddcustomerComponent },
-{ path: 'updatecustomer/:id', component: UpdatecustomerComponent },
-{ path: 'viewcustomer', component: ViewcustomerComponent }
+
 
 ];
 
