@@ -15,9 +15,6 @@ import { Dashboard } from './appface/dashboard/dashboard';
 import { Sidebar } from './appface/sidebar/sidebar';
 import { Footer } from './appface/footer/footer';
 
-import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
-import { ViewgoodComponent } from './buygoods/goods/viewgood.component/viewgood.component';
-import { UpdategoodComponent } from './buygoods/goods/updategood.component/updategood.component';
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
 import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
 import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
@@ -42,6 +39,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
     App,
@@ -50,9 +48,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     Sidebar,
     Footer,
 
-    AddgoodComponent,
-    ViewgoodComponent,
-    UpdategoodComponent,
+    
+ 
     AddcatComponent,
     ViewcatComponent,
     UpdatecatComponent,
@@ -72,7 +69,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
     UserprofileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+  
   ],
   imports: [
     BrowserModule,

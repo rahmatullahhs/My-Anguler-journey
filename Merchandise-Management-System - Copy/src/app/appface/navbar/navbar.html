@@ -1,7 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm px-3">
+  <div class="container-fluid">
+    <!-- Sidebar Toggle Button (only on small screens) -->
+    <button
+      class="btn btn-outline-secondary d-md-none me-2"
+      (click)="toggleSidebar.emit()"
+    >
+      ☰
+    </button>
+
+    <a class="navbar-brand fw-bold" routerLink="/">🛍️ Merchandise System</a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">🔔 Notifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">👤 Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <!-- NAVBAR HTML -->
-<nav   class="navbar navbar-expand-lg bg-gray-100  shadow-sm px-3 py-0" style="height: 64px; background-color: #f2f2f2; ">
+<nav   class="navbar navbar-expand-lg bg-gray  shadow-sm px-3 py-0" style="height: 64px; background-color: #293f5f; ">
   <!-- Brand Logo + Name -->
-  <a class="navbar-brand fw-bold d-flex align-items-center text-dark" href="#">
+  <a class="navbar-brand fw-bold d-flex align-items-center text-light" href="#">
     <img
       src="assets/gt-logo.jpg"
       alt="Business Icon"

@@ -11,7 +11,6 @@ import { AddemployeeComponent } from './people/employee/addemployee.component/ad
 import { UserprofileComponent } from './authentication/profiles/userprofile.component/userprofile.component';
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
-import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
 import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.component';
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
 import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbrand.component';
@@ -40,7 +39,6 @@ const routes: Routes = [
   { path: 'viewcategory', component: ViewcatComponent },
   { path: 'updatecatagory/:id', component: UpdatecatComponent },
 
-  { path: 'addgood', component: AddgoodComponent }
 
 
 ];

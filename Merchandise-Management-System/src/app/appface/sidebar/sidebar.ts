@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.css'
 })
 export class Sidebar {
+toggleSidebar() {
+throw new Error('Method not implemented.');
+}
+@Input() collapsed = false;
+isMobile(): boolean {
+  return window.innerWidth < 768;
+}
 
 }

@@ -1,18 +1,17 @@
-<div class="d-flex flex-column vh-100">
-  <!-- Navbar -->
-  <app-navbar></app-navbar>
+<!-- Navbar -->
+<app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
 
-  <!-- Main content row -->
-  <div class="d-flex flex-grow-1">
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
+<!-- Responsive Layout: Sidebar + Main -->
+<div class="d-flex flex-grow-1 min-vh-100">
 
-    <!-- Main router outlet area -->
-    <main class="flex-grow-1 p-5 bg-light">
-      <router-outlet />
-    </main>
-  </div>
+  <!-- Sidebar -->
+  <app-sidebar [collapsed]="isSidebarCollapsed"></app-sidebar>
 
-  <!-- Footer (outside the flex-row) -->
-  <app-footer></app-footer>
+  <!-- Main Content -->
+  <main class="flex-grow-1 p-4 bg-light">
+    <router-outlet></router-outlet>
+  </main>
 </div>
+
+<!-- Footer -->
+<app-footer></app-footer>

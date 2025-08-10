@@ -8,7 +8,18 @@ import { Component, signal } from '@angular/core';
 })
 export class App {
   protected readonly title = signal('Merchandise-Management-System');
-  
+
+  isSidebarCollapsed = true;
+
+
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 }
+
+
+
+
 
 
