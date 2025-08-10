@@ -10,6 +10,7 @@ export class App {
   protected readonly title = signal('Merchandise-Management-System');
 
   isSidebarCollapsed = true;
+collapsed: any;
 
 
 
