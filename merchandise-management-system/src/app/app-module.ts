@@ -36,6 +36,9 @@ import { UserprofileComponent } from './authentication/profiles/userprofile.comp
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { AddgoodsComponent } from './buygoods/goods/addgoods.component/addgoods.component';
+import { ViewgoodsComponent } from './buygoods/goods/viewgoods.component/viewgoods.component';
+import { UpdategoodsComponent } from './buygoods/goods/updategoods.component/updategoods.component';
 
 
 
@@ -70,6 +73,9 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
+    AddgoodsComponent,
+    ViewgoodsComponent,
+    UpdategoodsComponent,
   
   ],
   imports: [

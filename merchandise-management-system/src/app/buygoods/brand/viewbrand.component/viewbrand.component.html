@@ -1,1 +1,53 @@
 <p>viewbrand.component works!</p>
+<div class="container mt-4">
+  <h3 class="mb-4">📊 Brand List</h3>
+
+  <!-- Action Buttons -->
+  <div class="d-flex flex-wrap gap-2 mb-3">
+    <button class="btn btn-success" routerLink="/addbrand">➕ Add Brand</button>
+    <button class="btn btn-outline-primary" (click)="loadAllBrand()">🔄 Refresh</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>#</th>
+          <th>Brand Name</th>
+          <th>Brand Code</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+     <tbody *ngIf="brand!.length > 0; else noData">
+
+        <tr *ngFor="let item of brand; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.brandCode }}</td>
+          <td>
+            <button
+              class="btn btn-sm btn-warning me-2"
+              (click)="updateEmp(item._id)"
+            >
+              ✏️ Edit
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteBrand(item._id)"
+            >
+              🗑️ Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No data fallback -->
+  <ng-template #noData>
+    <div class="alert alert-warning text-center mt-4">
+      😕 No brands found. Try adding one!
+    </div>
+  </ng-template>
+</div>
