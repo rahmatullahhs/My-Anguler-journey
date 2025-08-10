@@ -14,3 +14,43 @@
   </button>
 </div>
 
+<h2>Product List</h2>
+
+<div *ngIf="isLoading">Loading products...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<table *ngIf="!isLoading && goods.length > 0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Invoice</th>
+      <th>Name</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Paid</th>
+      <th>Due</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of goods; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ product.invoice }}</td>
+      <td>{{ product.goodsName }}</td>
+      <td>{{ product.qty }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.discount }}%</td>
+      <td>{{ product.paid }}</td>
+      <td>{{ product.due }}</td>
+      <td>
+        <button *ngIf="product.id" (click)="deleteProduct(product.id)" class="btn btn-danger"> 🗑️ Delete </button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!isLoading && goods.length === 0">
+  No products found.
+</div>
