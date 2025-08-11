@@ -38,7 +38,7 @@ export class ViewcustomerComponent implements OnInit {
     });
   }
 
-  deleteCustomer(id: string): void {
+  deleteCustomer(id: number): void {
     if (confirm('Are you sure you want to delete this customer?')) {
       this.customerService.deleteCustomer(id).subscribe({
         next: () => {
@@ -53,19 +53,11 @@ export class ViewcustomerComponent implements OnInit {
     }
   }
 
-  editCustomer(id: string): void {
+  editCustomer(id: number): void {
     this.router.navigate(['/updatecustomer', id]); // Adjust route as per your routing setup
   }
 
-  viewCustomer(id: string): void {
+  viewCustomer(id: number): void {
     this.router.navigate(['/customerdetails', id]); // Adjust route as needed
-  }
-
-  getInitials(name: string): string {
-    return name
-      .split(' ')
-      .map(part => part[0])
-      .join('')
-      .toUpperCase();
   }
 }

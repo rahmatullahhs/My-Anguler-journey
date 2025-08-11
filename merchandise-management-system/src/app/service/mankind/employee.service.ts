@@ -23,16 +23,16 @@ export class EmployeeService {
     return this.http.post(this.baseUrl+"add", employee);
   }
 
-  updateEmp(id: string, employee: EmployeeModel): Observable<any> {
+  updateEmp(id: number, employee: EmployeeModel): Observable<any> {
     return this.http.put(this.baseUrl + "/" + id, employee);
   }
 
-  deleteEmp(id: string): Observable<any> {
+  deleteEmp(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + "/" + id);
   }
 
   // To Find Employee By ID
-  getEmployeeById(id: string): Observable<any>{
+  getEmployeeById(id: number): Observable<any>{
     return this.http.get(this.baseUrl+"/"+id);
   }
 

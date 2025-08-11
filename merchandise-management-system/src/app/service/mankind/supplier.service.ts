@@ -18,7 +18,7 @@ export class SupplierService {
   }
 
   // Get a supplier by ID
-  getSupplierById(id: string): Observable<SupplierModel> {
+  getSupplierById(id: number): Observable<SupplierModel> {
     return this.http.get<SupplierModel>(`${this.baseUrl}/${id}`);
   }
 
@@ -28,12 +28,12 @@ export class SupplierService {
   }
 
   // Update existing supplier
-  updateSupplier(id: string, supplier: SupplierModel): Observable<SupplierModel> {
+  updateSupplier(id: number, supplier: SupplierModel): Observable<SupplierModel> {
     return this.http.put<SupplierModel>(`${this.baseUrl}/${id}`, supplier);
   }
 
   // Delete a supplier
-  deleteSupplier(id: string): Observable<void> {
+  deleteSupplier(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

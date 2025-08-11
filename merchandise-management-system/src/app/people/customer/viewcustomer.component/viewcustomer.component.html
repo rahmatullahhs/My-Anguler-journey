@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Initials</th>
       <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
@@ -18,7 +17,6 @@
   <tbody>
     <tr *ngFor="let customer of customers; index as i">
       <td>{{ i + 1 }}</td>
-      <td>{{ getInitials(customer.name) }}</td>
       <td>{{ customer.name }}</td>
       <td>{{ customer.email }}</td>
       <td>{{ customer.phone }}</td>

@@ -1,8 +1,8 @@
 export interface GoodModel {
 
-    id?: string;
-    brandId: string;
-    categoryId: string;
+    id?: number;
+    brandId: number;
+    categoryId: number;
     goodsName: string;
     details: string;
 
@@ -12,7 +12,7 @@ export interface GoodModel {
 
     qty: number;
     price: number;
-    discount: number;
+    
 
     paid: number;
     due: number;
