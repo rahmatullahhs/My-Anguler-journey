@@ -34,18 +34,22 @@ export class ViewgoodsComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: string): void {
-    if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteGoods(id).subscribe({
-        next: () => {
-          alert('Product deleted!');
-          this.loadgoods();
-        },
-        error: err => {
-          console.error('Delete failed:', err);
-          alert('Failed to delete product.');
-        }
-      });
+deleteProduct(id: number): void {
+  const confirmed = confirm('Are you sure you want to delete this product?');
+
+  if (!confirmed) return;
+
+  this.productService.deleteGoods(id).subscribe({
+    next: () => {
+      alert('Product deleted successfully.');
+      this.loadgoods();
+    },
+    error: (err) => {
+      console.error('Failed to delete product:', err);
+      alert('An error occurred while deleting the product.');
     }
-  }
+  });
+}
+
+
 }

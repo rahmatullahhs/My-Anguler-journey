@@ -1,17 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* GLOBAL STYLES */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Reset and base layout */
 html, body {
   height: 100%;
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* Main layout container */
 main {
-  background-color: #f8f9fa;
   min-height: 100%;
+  background-color: #f8f9fa; /* Light gray */
 }
 
+/* Responsive fix for sidebar menu if using an ID-based menu */
 @media (max-width: 768px) {
   #sidebarMenu {
     width: 100% !important;

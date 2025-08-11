@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpdatecatComponent implements OnInit {
 
-  id!: string;
+  id!: number;
   categoryForm!: FormGroup;
 
   constructor(

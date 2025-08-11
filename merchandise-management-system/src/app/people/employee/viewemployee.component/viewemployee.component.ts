@@ -33,11 +33,11 @@ employees: any[] = [];
     });
   }
 
-  updateEmp(id: string): void {
+  updateEmp(id: number): void {
     this.router.navigate(['updateEmp', id]);
   }
 
-  deleteEmp(id: string): void {
+  deleteEmp(id: number): void {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.employeeService.deleteEmp(id).subscribe({
         next: () => {

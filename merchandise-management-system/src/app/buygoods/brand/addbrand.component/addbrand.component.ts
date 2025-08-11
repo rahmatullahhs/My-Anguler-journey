@@ -49,10 +49,11 @@ export class AddbrandComponent implements OnInit {
     });
   }
 
-  getCategoryName(id: string | number): string {
-    const cat = this.categories.find(c => c.id === id);
-    return cat ? cat.name : '';
-  }
+getCategoryName(id: number): string {
+  const cat = this.categories.find(c => c.id === id);
+  return cat ? cat.name : 'N/A'; // or '' if you prefer
+}
+
 
   onSubmit(): void {
     if (this.brandForm.invalid) return;
@@ -78,7 +79,7 @@ export class AddbrandComponent implements OnInit {
     this.brandForm.patchValue(brand);
   }
 
-  deleteBrand(id: string): void {
+  deleteBrand(id: number): void {
     this.brandService.deleteBrand(id).subscribe({
       next: () => {
         this.loadBrands();

@@ -1,22 +1,13 @@
-/* Ensure full height minus navbar and footer */
-html, body {
-  height: 100%;
-  margin: 0;
-}
+/* APP COMPONENT STYLES */
 
-main {
-  min-height: 100%;
-  background-color: #f8f9fa; /* light gray */
-}
-
-/* Optional sidebar adjustments */
+/* Sidebar layout (specific to AppComponent's usage) */
 app-sidebar {
   width: 220px;
   background-color: #ffffff;
   border-right: 1px solid #dee2e6;
 }
 
-/* Responsive fix: stack sidebar below navbar on small screens */
+/* Responsive layout fix — stack sidebar below navbar */
 @media (max-width: 768px) {
   .d-flex {
     flex-direction: column;

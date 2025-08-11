@@ -25,11 +25,11 @@ export class GoodService {
     return this.http.put<GoodModel>(`${this.baseUrl}/${goodModel.id}`, goodModel);
   }
 
-  deleteGoods(id: string): Observable<void> {
+  deleteGoods(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  getGoodsById(id: string): Observable<GoodModel> {
+  getGoodsById(id: number): Observable<GoodModel> {
     return this.http.get<GoodModel>(`${this.baseUrl}/${id}`);
   }
 }

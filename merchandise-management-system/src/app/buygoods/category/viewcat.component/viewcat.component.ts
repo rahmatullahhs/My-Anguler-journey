@@ -32,11 +32,11 @@ export class ViewcatComponent implements OnInit {
     });
   }
 
-  updateCategory(id: string): void {
+  updateCategory(id: number): void {
     this.router.navigate(['updateCategory']); // ✅ this path must match the routing config
   }
 
-  deleteCategory(id?: string): void {
+  deleteCategory(id?: number): void {
     if (id) {
       this.categoryService.deleteCategory(id).subscribe({
         next: () => {

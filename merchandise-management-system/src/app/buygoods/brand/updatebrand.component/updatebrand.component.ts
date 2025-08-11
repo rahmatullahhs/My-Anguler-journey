@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './updatebrand.component.css'
 })
 export class UpdatebrandComponent implements OnInit {
-  id!: string;
+  id!: number;
   brand!: BrandModel;
 
   constructor(

@@ -27,12 +27,12 @@ export class CategoryService {
     return this.http.put<CategoryModel>(`${this.baseUrl}/${category.id}`, category);
   }
 
-  deleteCategory(id: string ): Observable<void> {
+  deleteCategory(id: number ): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}${id}`);
   }
   
   // To Find Employee By ID
-  getCategoryById(id: string): Observable<any>{
+  getCategoryById(id: number): Observable<any>{
     return this.http.get(this.baseUrl+"/"+id);
   }
 

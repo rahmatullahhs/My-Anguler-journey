@@ -34,11 +34,11 @@ loadAllBrand(): void {
     });
   }
 
-  updateEmp(id: string): void {
+  updateEmp(id: number): void {
     this.router.navigate(['updateBrand', id]);
   }
 
- deleteBrand(id: string): void {
+ deleteBrand(id: number): void {
     if (confirm('Are you sure you want to delete this brand?')) {
       this.brandService.deleteBrand(id).subscribe({
         next: () => {

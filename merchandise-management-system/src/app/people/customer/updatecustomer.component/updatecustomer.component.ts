@@ -8,11 +8,11 @@ import { CustomerModel } from '../../../models/human/customer.model';
   selector: 'app-updatecustomer.component',
   standalone: false,
   templateUrl: './updatecustomer.component.html',
-  styleUrls: ['./updatecustomer.component.css'] // ✅ fixed styleUrl → styleUrls
+  styleUrls: ['./updatecustomer.component.css']
 })
 export class UpdatecustomerComponent implements OnInit {
   customerForm!: FormGroup;
-  customerId!: string;
+  customerId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +22,15 @@ export class UpdatecustomerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.customerId = this.route.snapshot.paramMap.get('id') || '';
-    if (!this.customerId) {
-      alert('No customer ID provided.');
+    const idParam = this.route.snapshot.paramMap.get('id');
+
+    if (!idParam || isNaN(+idParam)) {
+      alert('Invalid customer ID.');
       this.router.navigate(['/viewcustomers']);
       return;
     }
+
+    this.customerId = +idParam; // ✅ Convert to number
 
     this.customerForm = this.formBuilder.group({
       id: [this.customerId],
@@ -73,4 +76,3 @@ export class UpdatecustomerComponent implements OnInit {
     });
   }
 }
-

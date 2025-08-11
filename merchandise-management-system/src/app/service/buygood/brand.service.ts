@@ -24,10 +24,10 @@ getAllBrand(): Observable<BrandModel[]> {
     return this.http.put<BrandModel>(`${this.baseUrl}/${brandModel.id}`, brandModel);
   }
 
-  deleteBrand(id: string ): Observable<void> {
+  deleteBrand(id: number ): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}${id}`);
   }
-  getBrandById(id: string): Observable<any>{
+  getBrandById(id: number): Observable<any>{
     return this.http.get(this.baseUrl+"/"+id);
   }
 

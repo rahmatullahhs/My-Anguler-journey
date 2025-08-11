@@ -21,7 +21,7 @@ export class UpdategoodsComponent implements OnInit {
   brands: BrandModel[] = [];
   categories: CategoryModel[] = [];
   suppliers: SupplierModel[] = [];
-  goodId: string | null = null;
+goodId: number | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,25 +43,28 @@ export class UpdategoodsComponent implements OnInit {
       date: [null],
       qty: [0, [Validators.required, Validators.min(0)]],
       price: [0, [Validators.required, Validators.min(0)]],
-      discount: [0],
+      
       paid: [0],
       due: [0]
     });
   }
 
   ngOnInit(): void {
-    this.loadDropdownData();
+  this.loadDropdownData();
 
-    this.goodId = this.route.snapshot.paramMap.get('id');
-    if (this.goodId) {
-      this.goodService.getGoodsById(this.goodId).subscribe((good: GoodModel) => {
-        this.goodsForm.patchValue(good);
-        this.calculateDue();
-      });
-    }
+  const idParam = this.route.snapshot.paramMap.get('id');
+  this.goodId = idParam !== null ? +idParam : null;  // Convert string to number or null
 
-    this.goodsForm.valueChanges.subscribe(() => this.calculateDue());
+  if (this.goodId !== null) {
+    this.goodService.getGoodsById(this.goodId).subscribe((good: GoodModel) => {
+      this.goodsForm.patchValue(good);
+      this.calculateDue();
+    });
   }
+
+  this.goodsForm.valueChanges.subscribe(() => this.calculateDue());
+}
+
 
   loadDropdownData(): void {
     this.brandService.getAllBrand().subscribe(res => this.brands = res);

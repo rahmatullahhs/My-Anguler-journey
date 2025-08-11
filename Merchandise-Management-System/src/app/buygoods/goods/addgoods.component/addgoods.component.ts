@@ -37,7 +37,7 @@ export class AddgoodsComponent implements OnInit {
     private supplierService: SupplierService,
   ) {
     this.goodsForm = this.formBuilder.group({
-      id: [null],
+      id: [ ''],
       brandId: ['', Validators.required],
       categoryId: ['', Validators.required],
       goodsName: ['', Validators.required],
@@ -109,17 +109,18 @@ export class AddgoodsComponent implements OnInit {
     });
   }
 
-  getBrandById(brandId: string): string {
-    return this.brands.find(b => b.id === brandId)?.name || 'N/A';
-  }
+  getBrandById(brandId: number): string {
+  return this.brands.find(b => b.id === brandId)?.name || 'N/A';
+}
 
-  getCategoryName(categoryId: string): string {
-    return this.categories.find(c => c.id === categoryId)?.name || 'N/A';
-  }
+getCategoryName(categoryId: number): string {
+  return this.categories.find(c => c.id === categoryId)?.name || 'N/A';
+}
 
-  getSupplierName(supplierId: string): string {
-    return this.suppliers.find(s => s.id === supplierId)?.name || 'N/A';
-  }
+getSupplierName(supplierId: number): string {
+  return this.suppliers.find(s => s.id === supplierId)?.name || 'N/A';
+}
+
 
   PriceCalculation(): void {
     const price = Number(this.goodsForm.value.price) || 0;

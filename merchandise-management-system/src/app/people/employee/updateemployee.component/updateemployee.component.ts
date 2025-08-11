@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './updateemployee.component.css'
 })
 export class UpdateemployeeComponent implements OnInit {
- id!: string;
+ id!: number;
   employee!: EmployeeModel 
 
 
