@@ -1,0 +1,30 @@
+/* Ensure full height minus navbar and footer */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  min-height: 100%;
+  background-color: #f8f9fa; /* light gray */
+}
+
+/* Optional sidebar adjustments */
+app-sidebar {
+  width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #dee2e6;
+}
+
+/* Responsive fix: stack sidebar below navbar on small screens */
+@media (max-width: 768px) {
+  .d-flex {
+    flex-direction: column;
+  }
+
+  app-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+}
