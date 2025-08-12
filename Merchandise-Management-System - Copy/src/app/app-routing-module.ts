@@ -17,6 +17,9 @@ import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbra
 import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
 import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
 import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/updatebrand.component';
+import { ViewstockComponent } from './stock/viewstock.component/viewstock.component';
+import { AddstockComponent } from './stock/addstock.component/addstock.component';
+import { UpdatestockComponent } from './stock/updatestock.component/updatestock.component';
 
 
 const routes: Routes = [
@@ -39,7 +42,9 @@ const routes: Routes = [
   { path: 'viewcategory', component: ViewcatComponent },
   { path: 'updatecatagory/:id', component: UpdatecatComponent },
 
-
+{path:'viewstock',component:ViewstockComponent},
+{path:'addstock',component:AddstockComponent},
+{path:'update',component:UpdatestockComponent}
 
 ];
 
