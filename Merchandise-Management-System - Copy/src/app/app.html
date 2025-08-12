@@ -1,17 +1,11 @@
-<!-- Navbar -->
 <app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
 
-<!-- Responsive Layout: Sidebar + Main -->
-<div class="d-flex flex-grow-1 min-vh-100">
-
-  <!-- Sidebar -->
+<div class="d-flex">
   <app-sidebar [collapsed]="isSidebarCollapsed"></app-sidebar>
 
-  <!-- Main Content -->
   <main class="flex-grow-1 p-4 bg-light">
     <router-outlet></router-outlet>
   </main>
 </div>
 
-<!-- Footer -->
 <app-footer></app-footer>
