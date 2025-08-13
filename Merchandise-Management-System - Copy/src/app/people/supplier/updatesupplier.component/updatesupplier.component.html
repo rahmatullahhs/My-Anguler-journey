@@ -1,1 +1,91 @@
-<p>updatesupplier.component works!</p>
+<div class="container mt-4">
+  <h2>Update Supplier</h2>
+
+  <form (ngSubmit)="updateSupplier()" #supplierForm="ngForm">
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Supplier Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        [(ngModel)]="supplier.name"
+        name="name"
+        required
+      />
+    </div>
+
+    <!-- Contact Person -->
+    <div class="mb-3">
+      <label for="contactPerson" class="form-label">Contact Person</label>
+      <input
+        type="text"
+        id="contactPerson"
+        class="form-control"
+        [(ngModel)]="supplier.contactPerson"
+        name="contactPerson"
+        required
+      />
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="text"
+        id="phone"
+        class="form-control"
+        [(ngModel)]="supplier.phone"
+        name="phone"
+        required
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        [(ngModel)]="supplier.email"
+        name="email"
+        required
+      />
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea
+        id="address"
+        class="form-control"
+        rows="3"
+        [(ngModel)]="supplier.address"
+        name="address"
+      ></textarea>
+    </div>
+
+    <!-- Company Name -->
+    <div class="mb-3">
+      <label for="companyName" class="form-label">Company Name</label>
+      <input
+        type="text"
+        id="companyName"
+        class="form-control"
+        [(ngModel)]="supplier.companyName"
+        name="companyName"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-success"
+      [disabled]="supplierForm.invalid"
+    >
+      Update Supplier
+    </button>
+  </form>
+</div>

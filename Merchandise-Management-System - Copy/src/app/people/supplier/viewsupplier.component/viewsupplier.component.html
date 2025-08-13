@@ -1,1 +1,43 @@
-<p>viewsupplier.component works!</p>
+<div class="container mt-4">
+  <h2 class="mb-3">Supplier List</h2>
+
+  <button class="btn btn-primary mb-3" routerLink="/addSupplier">Add Supplier</button>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Contact Person</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Company Name</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let supplier of suppliers; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ supplier.name }}</td>
+        <td>{{ supplier.contactPerson }}</td>
+        <td>{{ supplier.phone }}</td>
+        <td>{{ supplier.email }}</td>
+        <td>{{ supplier.companyName }}</td>
+        <td>{{ supplier.address }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="updateSupplier(supplier.id)">
+            Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteSupplier(supplier.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="suppliers.length === 0">
+        <td colspan="8" class="text-center">No suppliers found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

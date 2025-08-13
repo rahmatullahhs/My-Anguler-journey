@@ -1,1 +1,64 @@
-<p>addsupplier.component works!</p>
+<div class="container mt-4">
+  <h2>Add Supplier</h2>
+  
+  <form [formGroup]="formGroup" (ngSubmit)="addSupplier()">
+    
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Supplier Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+      <div *ngIf="formGroup.get('name')?.touched && formGroup.get('name')?.invalid" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Contact Person -->
+    <div class="mb-3">
+      <label for="contactPerson" class="form-label">Contact Person</label>
+      <input type="text" id="contactPerson" class="form-control" formControlName="contactPerson">
+      <div *ngIf="formGroup.get('contactPerson')?.touched && formGroup.get('contactPerson')?.invalid" class="text-danger">
+        Contact person is required.
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" id="phone" class="form-control" formControlName="phone">
+      <div *ngIf="formGroup.get('phone')?.touched && formGroup.get('phone')?.invalid" class="text-danger">
+        Phone is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+      <div *ngIf="formGroup.get('email')?.touched && formGroup.get('email')?.invalid" class="text-danger">
+        <div *ngIf="formGroup.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="formGroup.get('email')?.errors?.['email']">Enter a valid email.</div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea id="address" class="form-control" formControlName="address" rows="3"></textarea>
+    </div>
+
+    <!-- Company Name -->
+    <div class="mb-3">
+      <label for="companyName" class="form-label">Company Name</label>
+      <input type="text" id="companyName" class="form-control" formControlName="companyName">
+      <div *ngIf="formGroup.get('companyName')?.touched && formGroup.get('companyName')?.invalid" class="text-danger">
+        Company name is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">
+      Save Supplier
+    </button>
+  </form>
+</div>
+
