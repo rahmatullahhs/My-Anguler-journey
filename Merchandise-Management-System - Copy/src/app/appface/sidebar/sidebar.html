@@ -1,4 +1,8 @@
-<nav id="sidebarMenu" class="sidebar collapse d-md-block text-white" [ngClass]="{ 'show': !collapsed }">
+<nav
+  id="sidebarMenu"
+  class="sidebar collapse d-md-block text-white"
+  [ngClass]="{ 'show': !collapsed }"
+>
   <ul class="nav flex-column">
     <!-- Home -->
     <li class="nav-item mb-2">
@@ -9,9 +13,8 @@
 
     <!-- People -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        🧑 People
+      <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        👥 People
       </a>
       <ul class="dropdown-menu" aria-labelledby="peopleDropdown">
         <li><a class="dropdown-item" routerLink="viewsupplier">🏬 Suppliers</a></li>
@@ -24,12 +27,11 @@
 
     <!-- Sales Products -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        🛒 Sales
+      <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        📦 Sales Products
       </a>
       <ul class="dropdown-menu" aria-labelledby="salesProductsDropdown">
-        <li><a class="dropdown-item" routerLink="viewstock">📋 Products List</a></li>
+        <li><a class="dropdown-item" routerLink="/sales/cart">📋 Products List</a></li>
         <li><a class="dropdown-item" routerLink="/sales/invoice">🛒 Cart</a></li>
         <li><a class="dropdown-item" routerLink="/sales/product">✅ Checkout</a></li>
       </ul>
@@ -37,20 +39,18 @@
 
     <!-- Purchase Products -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="purchaseDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        📦 Purchase
+      <a class="nav-link dropdown-toggle text-white " href="#" id="purchaseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        🛒 Purchase Products
       </a>
       <ul class="dropdown-menu" aria-labelledby="purchaseDropdown">
-        <li><a class="dropdown-item" routerLink="/viewgoods">📦 Purchase product</a></li>
-        <li><a class="dropdown-item" routerLink="/purchases/list">📜 product Processing</a></li>
+        <li><a class="dropdown-item" routerLink="/viewgoods">📦 Purchase</a></li>
+        <li><a class="dropdown-item" routerLink="/purchases/list">📜 Purchase List</a></li>
       </ul>
     </li>
 
     <!-- Accounts -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="accountsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         💼 Accounts
       </a>
       <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
@@ -63,8 +63,7 @@
 
     <!-- Reports -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="reportsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         📊 Reports
       </a>
       <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
@@ -76,8 +75,7 @@
 
     <!-- Inbox -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="inboxDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="inboxDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         📥 Inbox
       </a>
       <ul class="dropdown-menu" aria-labelledby="inboxDropdown">
@@ -88,8 +86,7 @@
 
     <!-- Help / Support -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="supportDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         ❓ Help & Support
       </a>
       <ul class="dropdown-menu" aria-labelledby="supportDropdown">
