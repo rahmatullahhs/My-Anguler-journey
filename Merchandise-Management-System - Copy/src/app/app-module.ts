@@ -38,6 +38,7 @@ import { UserprofileComponent } from './authentication/profiles/userprofile.comp
 import { LoginComponent } from './authentication/login.component/login.component';
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
 
 
 
@@ -71,7 +72,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
     UserprofileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AddgoodComponent
   ],
   imports: [
     BrowserModule,
