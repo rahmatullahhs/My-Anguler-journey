@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Category Management</h2>
+  <hr class="my-4">
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of category">
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td class="text-center">
+        
+          <button class="btn btn-sm btn-warning me-2" (click)="updateCategory(category.id)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="category.length === 0">
+        <td colspan="3" class="text-center text-muted">No categories found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

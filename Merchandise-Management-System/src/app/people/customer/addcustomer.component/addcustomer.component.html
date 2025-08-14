@@ -1,0 +1,69 @@
+<div class="add-customer-container">
+  <h2>Add New Customer</h2>
+
+  <form class="p-5" [formGroup]="formGroup" (ngSubmit)="addCustomer()">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="fullName" class="form-label">
+          <i class="fas fa-user me-1"></i> Full Name
+        </label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="fullName"
+          placeholder="Enter full name"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">
+          <i class="fas fa-envelope me-1"></i> Email Address
+        </label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="example@company.com"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="phone" class="form-label">
+          <i class="fas fa-phone me-1"></i> Phone Number
+        </label>
+        <input
+          formControlName="phone"
+          type="tel"
+          class="form-control"
+          id="phone"
+          placeholder="+1 555-0123"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="address" class="form-label">
+          <i class="fas fa-map-marker-alt me-1"></i> Address
+        </label>
+        <input
+          formControlName="address"
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Enter employee address"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Submit and Cancel Buttons -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Add Customer</button>
+      <button type="button" class="btn btn-secondary" (click)="router.navigate(['/viewcustomer'])">Cancel</button>
+    </div>
+  </form>
+</div>

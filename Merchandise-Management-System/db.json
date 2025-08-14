@@ -1,0 +1,54 @@
+{
+  "goods": [],
+  "category": [
+    {
+      "id": "542a",
+      "name": "Laptop"
+    },
+    {
+      "id": "6d93",
+      "name": "Desktop"
+    },
+    {
+      "id": "f4bd",
+      "name": "BrandPC"
+    },
+    {
+      "id": "d73f",
+      "name": "Accessories"
+    }
+  ],
+  "brand": [
+    {
+      "id": "c6c1",
+      "name": "DELL",
+      "categoryId": "542a"
+    },
+    {
+      "id": "",
+      "name": "HP",
+      "categoryId": ""
+    },
+    {
+      "id": "",
+      "name": "HP",
+      "categoryId": "542a"
+    }
+  ],
+  "supplier": [],
+  "customer": [],
+  "employee": [
+    {
+      "id": "68a8",
+      "name": "Babu",
+      "email": "babu@gmail.com",
+      "phone": "01776488833",
+      "nid": "",
+      "address": "Dhaka",
+      "gender": "Male",
+      "designation": "Store Manager",
+      "salary": 50000
+    }
+  ],
+  "user": []
+}
