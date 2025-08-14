@@ -15,7 +15,7 @@ export class UpdatebrandComponent implements OnInit {
 
   constructor(
     private brandService: BrandService,
-    private router: Router,
+    public router: Router,
     private activeRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
   ) {}

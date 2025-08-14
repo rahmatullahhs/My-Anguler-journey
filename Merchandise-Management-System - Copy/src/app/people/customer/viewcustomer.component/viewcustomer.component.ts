@@ -34,11 +34,11 @@ export class ViewcustomerComponent implements OnInit {
     });
   }
 
-  updateCustomer(id: string): void {
+  updateCustomer(id: number): void {
     this.router.navigate(['updateCustomer', id]);
   }
 
-  deleteCustomer(id: string): void {
+  deleteCustomer(id: number): void {
     if (confirm('Are you sure you want to delete this customer?')) {
       this.customerService.deleteCustomer(id).subscribe({
         next: () => {
