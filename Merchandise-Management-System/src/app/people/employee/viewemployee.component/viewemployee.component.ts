@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../service/mankind/employee.service';
 import { Router } from '@angular/router';
 
@@ -13,11 +13,13 @@ employees: any[] = [];
 
   constructor(
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    public cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.loadAllEmp();
+    this.cdr.markForCheck();
   }
 
   loadAllEmp(): void {
@@ -25,6 +27,7 @@ employees: any[] = [];
       next: res => {
         // Defensive check and fallback if API structure is dynamic
         this.employees = Array.isArray(res) ? res : res?.data || [];
+        this.cdr.markForCheck();
       },
       error: err => {
         console.error('Failed to load employees:', err);
@@ -44,6 +47,7 @@ employees: any[] = [];
       this.employeeService.deleteEmp(id).subscribe({
         next: () => {
           this.loadAllEmp();
+          this.cdr.markForCheck();
         },
         error: err => {
           console.error('Error deleting employee:', err);
