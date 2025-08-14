@@ -9,35 +9,30 @@ import { environment } from '../../../environment/environment';
 })
 export class EmployeeService {
 
- private baseUrl = environment.apiBaseUrl + '/employee/';
+  
+  private baseUrl = environment.apiBaseUrl + '/employee';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   getAllEmp(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(`${this.baseUrl}`);
   }
 
   addEmp(employee: EmployeeModel): Observable<any> {
-    return this.http.post(this.baseUrl+"add", employee);
+    return this.http.post(`${this.baseUrl}/add`, employee);
   }
 
-  updateEmp(id: string, employee: EmployeeModel): Observable<any> {
-    return this.http.put(this.baseUrl + "/" + id, employee);
+  updateEmp(id: number, employee: EmployeeModel): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, employee);
   }
 
-  deleteEmp(id: string): Observable<any> {
-    return this.http.delete(this.baseUrl + "/" + id);
+  deleteEmp(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   // To Find Employee By ID
-  getEmployeeById(id: string): Observable<any>{
-    return this.http.get(this.baseUrl+"/"+id);
+  getEmployeeById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
-
-
-
-
 
 }

@@ -10,7 +10,7 @@ import { SupplierModel } from '../../models/human/supplier.model';
 })
 export class SupplierService {
 
-  private baseUrl = environment.apiBaseUrl + '/supplier/';
+  private baseUrl = environment.apiBaseUrl + '/supplier';
 
   constructor(
     private http: HttpClient

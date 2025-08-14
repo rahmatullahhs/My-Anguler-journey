@@ -43,7 +43,7 @@ export class AddemployeeComponent implements OnInit {
       next: (res) => {
         console.log('Employee Saved:', res);
         this.formGroup.reset();
-        this.router.navigate(['/viewEmp']);
+        this.router.navigate(['/viewemp']);
       },
       error: (error) => {
         console.error('Error:', error);

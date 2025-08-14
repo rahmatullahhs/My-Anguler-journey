@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../service/mankind/customer.service';
 import { Router } from '@angular/router';
 
@@ -14,18 +14,20 @@ export class ViewcustomerComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.loadAllCustomers();
+    this.loadAllCustomer();
   }
 
-  loadAllCustomers(): void {
+  loadAllCustomer(): void {
     this.customerService.getAllCustomer().subscribe({
       next: res => {
         // Defensive check and fallback if API structure is dynamic
         this.customers = Array.isArray(res) ? res : res?.data || [];
+        this.cdr.markForCheck();
       },
       error: err => {
         console.error('Failed to load customers:', err);
@@ -35,14 +37,14 @@ export class ViewcustomerComponent implements OnInit {
   }
 
   updateCustomer(id: number): void {
-    this.router.navigate(['updateCustomer', id]);
+    this.router.navigate(['updatecustomer', id]);
   }
 
   deleteCustomer(id: number): void {
     if (confirm('Are you sure you want to delete this customer?')) {
       this.customerService.deleteCustomer(id).subscribe({
         next: () => {
-          this.loadAllCustomers();
+          this.loadAllCustomer();
         },
         error: err => {
           console.error('Error deleting customer:', err);

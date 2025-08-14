@@ -41,7 +41,7 @@ const routes: Routes = [
 
   { path: 'viewemp', component: ViewemployeeComponent },
   { path: 'addemp', component: AddemployeeComponent },
-  { path: 'updateemp', component: UpdateemployeeComponent },
+  { path: 'updateemp/:id', component: UpdateemployeeComponent },
 
   { path: 'addbrand', component: AddbrandComponent },
   { path: 'viewbrand', component: ViewbrandComponent },

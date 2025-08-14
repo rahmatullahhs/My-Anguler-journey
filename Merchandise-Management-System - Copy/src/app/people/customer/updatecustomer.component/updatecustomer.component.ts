@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UpdatecustomerComponent implements OnInit{
 
-  id!: string;
+  id!: number;
   customer!: CustomerModel;
 
   constructor(
@@ -31,6 +31,7 @@ export class UpdatecustomerComponent implements OnInit{
     this.customerService.getCustomerById(Number(this.id)).subscribe({
       next: (res) => {
         this.customer = res;
+        console.log(res)
         this.cdr.markForCheck();
       },
       error: (error) => {
@@ -42,7 +43,7 @@ export class UpdatecustomerComponent implements OnInit{
   updateCustomer(): void {
     this.customerService.updateCustomer(Number(this.id), this.customer).subscribe({
       next: () => {
-        this.router.navigate(['/viewCustomer']);
+        this.router.navigate(['/viewcustomer']);
       },
       error: (error) => {
         console.error('Error updating customer:', error);

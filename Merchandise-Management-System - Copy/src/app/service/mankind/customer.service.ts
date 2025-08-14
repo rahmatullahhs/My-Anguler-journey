@@ -10,33 +10,34 @@ import { CustomerModel } from '../../models/human/customer.model';
 export class CustomerService {
   
 
-  private baseUrl = environment.apiBaseUrl + '/customer/';
+  private baseUrl = environment.apiBaseUrl + '/customer';
 
   constructor(private http: HttpClient) {}
 
   // Get all customers
-  getAllCustomer(): Observable<any> {
-    return this.http.get(this.baseUrl);
-  }
+getAllCustomer(): Observable<any> {
+  return this.http.get(`${this.baseUrl}`);
+}
+
 
   // Add a new customer
   addCustomer(customer: CustomerModel): Observable<any> {
-    return this.http.post(this.baseUrl + 'add', customer);
+    return this.http.post(this.baseUrl+"/add", customer);
   }
 
   // Update a customer
   updateCustomer(id: number, customer: CustomerModel): Observable<any> {
-    return this.http.put(this.baseUrl + id, customer);
+    return this.http.put(`${this.baseUrl}/${id}`, customer);
   }
 
   // Delete a customer
   deleteCustomer(id: number): Observable<any> {
-    return this.http.delete(this.baseUrl + id);
+    return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
   // Get a customer by ID
   getCustomerById(id: number): Observable<any> {
-    return this.http.get(this.baseUrl + id);
+    return this.http.get(`${this.baseUrl}/${id}`);
   }
 }
 

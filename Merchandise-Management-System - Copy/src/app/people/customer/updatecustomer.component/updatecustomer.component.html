@@ -4,11 +4,7 @@
 
   <form *ngIf="customer" (ngSubmit)="updateCustomer()" #customerForm="ngForm">
 
-    <!-- Customer ID (readonly) -->
-    <div class="form-group">
-      <label for="id">Customer ID</label>
-      <input type="number" id="id" [(ngModel)]="customer.id" name="id" readonly />
-    </div>
+   
 
     <!-- Name -->
     <div class="form-group">

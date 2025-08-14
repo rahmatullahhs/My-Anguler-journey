@@ -12,8 +12,6 @@ import { CustomerModel } from '../../../models/human/customer.model';
 })
 export class AddcustomerComponent implements OnInit{
 
-
-
   formGroup!: FormGroup;
 
   constructor(
@@ -24,8 +22,7 @@ export class AddcustomerComponent implements OnInit{
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      id: [null],
-      name: ['', Validators.required],
+      name: [''],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       address: ['']
@@ -41,7 +38,7 @@ export class AddcustomerComponent implements OnInit{
       next: (res) => {
         console.log('Customer Saved:', res);
         this.formGroup.reset();
-        this.router.navigate(['/viewCustomer']);
+        this.router.navigate(['/viewcustomer']);
       },
       error: (error) => {
         console.error('Error:', error);

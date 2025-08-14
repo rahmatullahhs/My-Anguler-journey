@@ -1,40 +1,37 @@
-<p>viewcustomer.component works!</p>
-<div class="view-customer-container">
+<div class="container">
   <h2>Customer List</h2>
-    <div class="actions-bar">
+<div class="actions-bar">
     <button routerLink="/addcustomer">+ Add Customer</button>
   </div>
-
-  <table *ngIf="customers.length > 0; else noCustomers" class="customer-table">
-    <thead>
+  <table class="table table-bordered table-striped" *ngIf="customers.length > 0; else noCustomers">
+    <thead class="thead-dark">
       <tr>
-        <th>#</th>
-        <th>Customer ID</th>
+      
         <th>Name</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>Address</th>
+          <th>Address</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let customer of customers; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ customer.id }}</td>
+      <tr *ngFor="let customer of customers">
+       
         <td>{{ customer.name }}</td>
         <td>{{ customer.email }}</td>
-        <td>{{ customer.phone || '—' }}</td>
-        <td>{{ customer.address || '—' }}</td>
+        <td>{{ customer.phone }}</td>
+         <td>{{ customer.address }}</td>
         <td>
-          <button (click)="updateCustomer(customer.id)">Update</button>
-          <button (click)="deleteCustomer(customer.id)">Delete</button>
+          <button class="btn btn-primary btn-sm" (click)="updateCustomer(customer.id)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <!-- If no customers -->
   <ng-template #noCustomers>
     <p>No customers found.</p>
   </ng-template>
 </div>
+
+ 

@@ -7,12 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-updateemployee.component',
   standalone: false,
   templateUrl: './updateemployee.component.html',
-  styleUrl: './updateemployee.component.css'
+  styleUrls: ['./updateemployee.component.css'] // Fixed typo
 })
 export class UpdateemployeeComponent implements OnInit {
- id!: string;
-  employee!: EmployeeModel 
-
+  id!: number;
+  employee!: EmployeeModel;
 
   constructor(
     private employeeService: EmployeeService,
@@ -22,38 +21,35 @@ export class UpdateemployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   
-    // this.id = this.activeRoute.snapshot.params['id'];
-    this.loadAllEmp();
-
+    this.loadEmployeeById();
   }
 
-  loadAllEmp(): void {
-      this.id = this.activeRoute.snapshot.params['id'];
-
+  loadEmployeeById(): void {
+    this.id = +this.activeRoute.snapshot.params['id']; // Convert to number
     this.employeeService.getEmployeeById(this.id).subscribe({
       next: (res) => {
         this.employee = res;
         this.cdr.markForCheck();
-        
       },
       error: (error) => {
-        console.log(error);
+        console.error('Error fetching employee:', error);
       }
     });
   }
-
-  updateEmp():void {
+  onSubmit(): void {
+    this.updateEmp();
+    this.router.navigate(['/viewemp']);
+  }
+  updateEmp(): void {
     this.employeeService.updateEmp(this.id, this.employee).subscribe({
       next: () => {
-        this.router.navigate(['/viewallemp'])
+        this.router.navigate(['/viewemp']);
+
+        this.cdr.markForCheck();
       },
       error: (error) => {
-        console.log(error);
+        console.error('Error updating employee:', error);
       }
     });
   }
-
-  
 }
-
