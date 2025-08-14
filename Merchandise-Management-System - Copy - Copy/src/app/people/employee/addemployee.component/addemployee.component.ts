@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../../../service/mankind/employee.service';
 import { Router } from '@angular/router';
@@ -17,8 +17,7 @@ export class AddemployeeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private employeeservice: EmployeeService,
-    private router: Router,
-    public cdr: ChangeDetectorRef
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +42,6 @@ export class AddemployeeComponent implements OnInit {
     this.employeeservice.addEmp(employee).subscribe({
       next: (res) => {
         console.log('Employee Saved:', res);
-        this.cdr.markForCheck();
         this.formGroup.reset();
         this.router.navigate(['/viewemp']);
       },
