@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../../service/mankind/customer.service';
 import { Router } from '@angular/router';
@@ -17,7 +17,8 @@ export class AddcustomerComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    public router: Router
+    public router: Router,
+    public cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +38,7 @@ export class AddcustomerComponent implements OnInit{
     this.customerService.addCustomer(customer).subscribe({
       next: (res) => {
         console.log('Customer Saved:', res);
+        this.cdr.markForCheck();
         this.formGroup.reset();
         this.router.navigate(['/viewcustomer']);
       },
