@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../service/mankind/employee.service';
 import { Router } from '@angular/router';
 
@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
   styleUrl: './viewemployee.component.css'
 })
 export class ViewemployeeComponent implements OnInit {
-employees: any[] = [];
+  employees: any[] = [];
+  searchTerm: string = ''; // 🔍 Search input binding
 
   constructor(
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    public cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +25,7 @@ employees: any[] = [];
   loadAllEmp(): void {
     this.employeeService.getAllEmp().subscribe({
       next: res => {
-        // Defensive check and fallback if API structure is dynamic
+        this.cdr.markForCheck();
         this.employees = Array.isArray(res) ? res : res?.data || [];
       },
       error: err => {
@@ -33,11 +35,18 @@ employees: any[] = [];
     });
   }
 
+  get filteredEmployees() {
+    const term = this.searchTerm.toLowerCase();
+    return this.employees.filter(emp =>
+      emp.name?.toLowerCase().includes(term) ||
+      emp.designation?.toLowerCase().includes(term) ||
+      emp.email?.toLowerCase().includes(term)
+    );
+  }
+
   updateEmp(id: number): void {
     this.router.navigate(['updateemp', id]);
-    
   }
-  
 
   deleteEmp(id: number): void {
     if (confirm('Are you sure you want to delete this employee?')) {
@@ -51,5 +60,4 @@ employees: any[] = [];
       });
     }
   }
-  
 }

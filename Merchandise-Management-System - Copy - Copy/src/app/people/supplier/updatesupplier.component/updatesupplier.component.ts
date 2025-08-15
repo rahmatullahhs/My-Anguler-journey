@@ -46,7 +46,7 @@ export class UpdatesupplierComponent {
   updateSupplier(): void {
     this.supplierService.updateSupplier(this.id, this.supplier).subscribe({
       next: () => {
-        this.router.navigate(['/viewSuppliers']); // Update route if different
+        this.router.navigate(['/viewsupplier']); // Update route if different
       },
       error: (error) => {
         console.error('Error updating supplier:', error);

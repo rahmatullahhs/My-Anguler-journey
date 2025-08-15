@@ -1,7 +1,23 @@
 <div class="container mt-4">
-  <h2 class="mb-3">Supplier List</h2>
+<h2 class="mb-3 d-flex align-items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fd7e14" class="me-2" viewBox="0 0 16 16">
+    <path d="M0 1v11h1a2 2 0 104 0h6a2 2 0 104 0h1V4.5L13.5 1H0zm1 1h11v8H1V2zm12 .5V5h2.5L13 2.5zM3 13a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z"/>
+  </svg>
+  Supplier List
+</h2>
 
-  <button class="btn btn-primary mb-3" routerLink="/addSupplier">Add Supplier</button>
+
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="btn btn-primary me-2" routerLink="/addsupplier">Add Supplier</button>
+    <input
+      type="text"
+      class="form-control rounded-pill px-4 py-3 shadow-sm border-0"
+      style="max-width: 400px;"
+      placeholder="🔍 Search by name, email or designation..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
 
   <table class="table table-bordered table-striped">
     <thead class="table-dark">
@@ -40,4 +56,3 @@
     </tbody>
   </table>
 </div>
-

@@ -37,7 +37,7 @@ const routes: Routes = [
 
   { path: 'viewsupplier', component: ViewsupplierComponent },
   { path: 'addsupplier', component: AddsupplierComponent },
-  { path: 'updatesupplier', component: UpdatesupplierComponent },
+  { path: 'updatesupplier/:id', component: UpdatesupplierComponent },
 
   { path: 'viewemp', component: ViewemployeeComponent },
   { path: 'addemp', component: AddemployeeComponent },

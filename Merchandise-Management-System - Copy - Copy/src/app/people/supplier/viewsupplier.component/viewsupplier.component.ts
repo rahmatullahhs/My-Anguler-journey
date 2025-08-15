@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SupplierModel } from '../../../models/human/supplier.model';
 import { SupplierService } from '../../../service/mankind/supplier.service';
 import { Router } from '@angular/router';
@@ -11,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class ViewsupplierComponent implements OnInit{
 
-
+searchTerm:string='';
   suppliers: SupplierModel[] = [];
 
   constructor(
     private supplierService: SupplierService,
-    private router: Router
+    private router: Router,
+    public cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -24,20 +25,32 @@ export class ViewsupplierComponent implements OnInit{
   }
 
   loadAllSuppliers(): void {
-    this.supplierService.getAllSupplier().subscribe({
-      next: res => {
-        // Defensive fallback in case of different API structures
-        this.suppliers = Array.isArray(res) ? res : res?.data || [];
-      },
-      error: err => {
-        console.error('Failed to load suppliers:', err);
-        this.suppliers = [];
-      }
-    });
+  this.supplierService.getAllSupplier().subscribe({
+    next: res => {
+      this.cdr.markForCheck();
+      this.suppliers = res;
+    },
+    error: err => {
+      console.error('Failed to load suppliers:', err);
+      this.suppliers = [];
+    }
+  });
+}
+
+
+    get filteredSupplier() {
+    const term = this.searchTerm.toLowerCase();
+    return this.suppliers.filter(sup =>
+      sup.name?.toLowerCase().includes(term) ||
+      sup.companyName?.toLowerCase().includes(term) ||
+      sup.email?.toLowerCase().includes(term)
+    );
   }
 
+
+
   updateSupplier(id: number): void {
-    this.router.navigate(['updateSupplier', id]); // Adjust route name if needed
+    this.router.navigate(['updatesupplier',id]); // Adjust route name if needed
   }
 
   deleteSupplier(id: number): void {

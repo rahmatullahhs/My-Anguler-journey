@@ -36,16 +36,16 @@ export class UpdateemployeeComponent implements OnInit {
       }
     });
   }
-  onSubmit(): void {
-    this.updateEmp();
-    this.router.navigate(['/viewemp']);
-  }
+  // onSubmit(): void {
+  //   this.updateEmp();
+  //   this.router.navigate(['/viewemp']);
+  // }
   updateEmp(): void {
     this.employeeService.updateEmp(this.id, this.employee).subscribe({
       next: () => {
+         this.cdr.markForCheck();
         this.router.navigate(['/viewemp']);
-
-        this.cdr.markForCheck();
+        
       },
       error: (error) => {
         console.error('Error updating employee:', error);

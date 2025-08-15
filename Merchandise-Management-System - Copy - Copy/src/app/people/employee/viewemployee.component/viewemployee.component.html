@@ -1,5 +1,17 @@
+
+<div class="container py-4">
+
+  <!-- Search Input -->
+  <div class="mb-4">
+    <input
+      type="text"
+      class="form-control rounded-pill px-4 py-3 shadow-sm border-0"
+      placeholder="🔍 Search by name, email or designation..."
+      [(ngModel)]="searchTerm"
+    />
+  </div>
 <div class="container mb-3">
-  <!-- Header Section with Gradient -->
+    <!-- Header Section with Gradient -->
   <div>
     <div class="rounded-4 p-4 shadow text-white" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
       <div class="row align-items-center">
@@ -20,7 +32,7 @@
   <!-- Employee Cards -->
   <div class="container mt-4">
     <div class="row g-4">
-      <div class="col-12" *ngFor="let emp of employees">
+      <div class="col-12" *ngFor="let emp of filteredEmployees">
         <div class="card border-0 shadow-lg rounded-4 p-4 bg-white hover-shadow transition position-relative">
 
           <!-- Colored Stripe -->
