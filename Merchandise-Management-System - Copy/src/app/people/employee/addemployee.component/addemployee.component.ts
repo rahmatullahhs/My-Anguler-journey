@@ -26,7 +26,6 @@ export class AddemployeeComponent implements OnInit {
       name: [''],
       email: [''],
       phone: [''],
-      nid: [''],
       address: [''],
       gender: [''],
       designation: [''],

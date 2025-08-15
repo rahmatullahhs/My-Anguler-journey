@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupplierService } from '../../../service/mankind/supplier.service';
 import { Router } from '@angular/router';
@@ -17,17 +17,18 @@ export class AddsupplierComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private supplierService: SupplierService,
-    private router: Router
+    private router: Router,
+    public cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      contactPerson: ['', Validators.required],
+      name: [''],
+      contactPerson: [''],
       phone: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: [''],
       address: [''],
-      companyName: ['', Validators.required]
+      companyName: ['']
     });
   }
 
@@ -39,8 +40,10 @@ export class AddsupplierComponent implements OnInit {
     this.supplierService.addSupplier(supplier).subscribe({
       next: (res) => {
         console.log('Supplier Saved:', res);
+      
         this.formGroup.reset();
-        this.router.navigate(['/viewSuppliers']); // Adjust route as needed
+        this.router.navigate(['/viewsupplier']); 
+          this.cdr.markForCheck();// Adjust route as needed
       },
       error: (error) => {
         console.error('Error saving supplier:', error);
