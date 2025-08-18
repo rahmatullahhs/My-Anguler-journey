@@ -8,28 +8,33 @@ import { environment } from '../../../environment/environment';
   providedIn: 'root'
 })
 export class BrandService {
-  private baseUrl = environment.apiBaseUrl + '/brand';
- 
-   constructor(private http: HttpClient) {}
 
-getAllBrand(): Observable<BrandModel[]> {
+  private baseUrl = `${environment.apiBaseUrl}/brand`;
+
+  constructor(private http: HttpClient) {}
+
+  // Get all brands
+  getAllBrand(): Observable<BrandModel[]> {
     return this.http.get<BrandModel[]>(this.baseUrl);
   }
 
+  // Add a new brand
   addBrand(brandModel: BrandModel): Observable<BrandModel> {
-    return this.http.post<BrandModel>(this.baseUrl+'add', brandModel);
+    return this.http.post<BrandModel>(`${this.baseUrl}/add`, brandModel);
   }
 
+  // Update existing brand
   updateBrand(brandModel: BrandModel): Observable<BrandModel> {
     return this.http.put<BrandModel>(`${this.baseUrl}/${brandModel.id}`, brandModel);
   }
 
-  deleteBrand(id: string ): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}${id}`);
-  }
-  getBrandById(id: string): Observable<any>{
-    return this.http.get(this.baseUrl+"/"+id);
+  // Delete brand by id
+  deleteBrand(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  
+  // Optional: Get brand by id (if needed)
+  getBrandById(id: number): Observable<BrandModel> {
+    return this.http.get<BrandModel>(`${this.baseUrl}/${id}`);
+  }
 }

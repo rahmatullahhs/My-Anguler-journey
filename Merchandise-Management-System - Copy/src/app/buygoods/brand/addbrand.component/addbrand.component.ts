@@ -3,8 +3,7 @@ import { BrandModel } from '../../../models/goods/brand.model';
 import { BrandService } from '../../../service/buygood/brand.service';
 import { CategoryService } from '../../../service/buygood/category.service';
 import { CategoryModel } from '../../../models/goods/category.model';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-addbrand.component',
@@ -13,79 +12,70 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './addbrand.component.css'
 })
 export class AddbrandComponent implements OnInit {
-  brandForm!: FormGroup;
+
+  brand: BrandModel = { name: '', categoryId: 0 };
   brands: BrandModel[] = [];
   categories: CategoryModel[] = [];
+  isEditMode = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private brandService: BrandService,
-    private router: Router,
+    private http: HttpClient,
     private catService: CategoryService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef // ✅ Moved to constructor
   ) {}
 
   ngOnInit(): void {
-    this.brandForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      categoryId: ['', Validators.required]
-    });
-
-    this.loadCategories();
     this.loadBrands();
-  }
-
-  loadCategories(): void {
-    this.catService.getAllCategory().subscribe(res => {
-      this.categories = res;
-      this.cdr.markForCheck();
-    });
+    this.loadCategories();
   }
 
   loadBrands(): void {
     this.brandService.getAllBrand().subscribe(res => {
       this.brands = res;
-      this.cdr.markForCheck();
+      this.cdr.markForCheck(); // Optional, only if using OnPush
     });
   }
 
-  getCategoryName(id: string | number): string {
+  loadCategories(): void {
+    this.catService.getAllCategory().subscribe(res => {
+      this.categories = res;
+      this.cdr.markForCheck(); // Optional
+    });
+  }
+
+  getCategoryName(id: number ): string {
     const cat = this.categories.find(c => c.id === id);
     return cat ? cat.name : '';
   }
 
   onSubmit(): void {
-    if (this.brandForm.invalid) return;
-
-    const newBrand: BrandModel = this.brandForm.value;
-    this.brandService.addBrand(newBrand).subscribe({
-      next: res => {
-        console.log('Brand saved:', res);
-        this.brandForm.reset();
+    if (this.isEditMode && this.brand.id) {
+      this.brandService.updateBrand(this.brand).subscribe(() => {
         this.loadBrands();
-      },
-      error: err => {
-        console.error('Error:', err);
-      }
+        this.resetForm();
+      });
+    } else {
+      this.brandService.addBrand(this.brand).subscribe(() => {
+        this.loadBrands();
+        this.resetForm();
+      });
+    }
+  }
+
+  editBrand(b: BrandModel): void {
+    this.brand = { ...b };
+    this.isEditMode = true;
+  }
+
+  deleteBrand(id: number): void {
+    this.brandService.deleteBrand(id).subscribe(() => {
+      this.loadBrands();
     });
   }
 
   resetForm(): void {
-    this.brandForm.reset();
-  }
-
-  editBrand(brand: BrandModel): void {
-    this.brandForm.patchValue(brand);
-  }
-
-  deleteBrand(id: string): void {
-    this.brandService.deleteBrand(id).subscribe({
-      next: () => {
-        this.loadBrands();
-      },
-      error: err => {
-        console.error('Delete error:', err);
-      }
-    });
+    this.brand = { name: '', categoryId: 0 };
+    this.isEditMode = false;
   }
 }

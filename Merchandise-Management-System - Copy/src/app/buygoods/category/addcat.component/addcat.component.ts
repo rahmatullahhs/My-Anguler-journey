@@ -12,34 +12,75 @@ import { CategoryModel } from '../../../models/goods/category.model';
 })
 export class AddcatComponent implements OnInit {
 
-  categoryForm!: FormGroup;
+
+  categories: CategoryModel[] = [];
+  categoryForm: FormGroup;
+  isEditMode = false;
 
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private router: Router,
-    private cdr: ChangeDetectorRef
-  ) {}
-
-  ngOnInit(): void {
+    private cdr:ChangeDetectorRef
+  ) {
     this.categoryForm = this.fb.group({
+      id: [null],
       name: ['', Validators.required]
     });
   }
 
-  addCategory(): void {
-    if (this.categoryForm.invalid) return;
+  ngOnInit(): void {
+    this.getAllCategories();
+  }
 
-    const category: CategoryModel = { ...this.categoryForm.value };
-    this.categoryService.addCategory(category).subscribe({
-      next: (res) => {
-        console.log('Category saved:', res);
-        this.categoryForm.reset();
-        this.router.navigate(['/viewcategory']);
-      },
-      error: (error) => {
-        console.error('Error:', error);
-      }
+  getAllCategories() {
+    this.categoryService.getAllCategory().subscribe(data => {
+      this.categories = data;
+      this.cdr.markForCheck();
     });
   }
+
+  onSubmit() {
+    if (this.categoryForm.valid) {
+      const category: CategoryModel = this.categoryForm.value;
+
+      if (this.isEditMode && category.id) {
+        // UPDATE
+        this.categoryService.updateCategory(category).subscribe(() => {
+          this.getAllCategories();
+          this.resetForm();
+        });
+      } else {
+        // CREATE
+        const newCategory: CategoryModel = { name: category.name }; // no ID
+        this.categoryService.addCategory(newCategory).subscribe(() => {
+          this.getAllCategories();
+          this.categoryForm.reset();
+        });
+      }
+    }
+  }
+
+
+  editCategory(category: CategoryModel) {
+    this.categoryForm.patchValue(category);
+    this.isEditMode = true;
+  }
+
+  deleteCategory(id?: number) {
+    if (id) {
+      this.categoryService.deleteCategory(id).subscribe(() => {
+        this.getAllCategories();
+      });
+    }
+  }
+
+  resetForm() {
+    this.categoryForm.reset();
+    this.isEditMode = false;
+  }
+
 }
+
+
+
+

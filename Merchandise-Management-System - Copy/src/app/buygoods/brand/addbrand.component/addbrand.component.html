@@ -4,16 +4,17 @@
       <h4 class="mb-0">Brand Management</h4>
     </div>
     <div class="card-body">
-      
-      <form [formGroup]="brandForm" (ngSubmit)="onSubmit()" class="row g-3">
+      <form (ngSubmit)="onSubmit()" class="row g-3">
         <div class="col-md-6">
           <label for="brandName" class="form-label">Brand Name</label>
           <input
             type="text"
             id="brandName"
             class="form-control"
-            formControlName="name"
             placeholder="Enter brand name"
+            [(ngModel)]="brand.name"
+            name="name"
+            required
           />
         </div>
 
@@ -22,18 +23,20 @@
           <select
             id="category"
             class="form-select"
-            formControlName="categoryId"
+            [(ngModel)]="brand.categoryId"
+            name="categoryId"
+            required
           >
             <option [ngValue]="null">-- Select Category --</option>
-            <option *ngFor="let cat of categories" [value]="cat.id">
+            <option *ngFor="let cat of categories" [ngValue]="cat.id">
               {{ cat.name }}
             </option>
           </select>
         </div>
 
         <div class="col-12 d-flex justify-content-end">
-          <button type="submit" class="btn btn-success me-2" [disabled]="brandForm.invalid">
-            Add
+          <button type="submit" class="btn btn-success me-2">
+            {{ isEditMode ? 'Update' : 'Add' }}
           </button>
           <button type="button" class="btn btn-secondary" (click)="resetForm()">
             Clear

@@ -1,19 +1,17 @@
 export interface GoodModel {
 
-    id?: string;
-    brandId: string;
-    categoryId: string;
+    id?: number;
+    brandId: number;
+    categoryId: number;
     name: string;
     details: string;
 
     invoice: string;
-    supplierId: string;
+    supplierId: number;
     date: Date;
 
     qty: number;
-    price: number;
-    discount: number;
-
+    price: number;     
     paid: number;
     due: number;
 
@@ -21,5 +19,9 @@ export interface GoodModel {
 
 
 
+ 
+
 }
+
+
 

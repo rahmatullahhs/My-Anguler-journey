@@ -9,32 +9,32 @@ import { environment } from '../../../environment/environment';
 })
 export class CategoryService {
 
- private baseUrl = environment.apiBaseUrl + '/category';
+  private baseUrl = `${environment.apiBaseUrl}/category`;
 
-  constructor(private http: HttpClient,
-    
-  ) {}
- 
+  constructor(private http: HttpClient) {}
+
+  // Get all categories
   getAllCategory(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(this.baseUrl);
   }
 
+  // Add a new category
   addCategory(categoryModel: CategoryModel): Observable<CategoryModel> {
-    return this.http.post<CategoryModel>(this.baseUrl+'add', categoryModel);
+    return this.http.post<CategoryModel>(`${this.baseUrl}/add`, categoryModel);
   }
 
-  updateCategory(category: CategoryModel): Observable<CategoryModel> {
-    return this.http.put<CategoryModel>(`${this.baseUrl}/${category.id}`, category);
+  // Update an existing category
+  updateCategory(categoryModel: CategoryModel): Observable<CategoryModel> {
+    return this.http.put<CategoryModel>(`${this.baseUrl}/${categoryModel.id}`, categoryModel);
   }
 
-  deleteCategory(id: string ): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}${id}`);
-  }
-  
-  // To Find Employee By ID
-  getCategoryById(id: string): Observable<any>{
-    return this.http.get(this.baseUrl+"/"+id);
+  // Delete a category by ID
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-
+  // Get a category by ID (optional utility)
+  getCategoryById(id: number): Observable<CategoryModel> {
+    return this.http.get<CategoryModel>(`${this.baseUrl}/${id}`);
+  }
 }

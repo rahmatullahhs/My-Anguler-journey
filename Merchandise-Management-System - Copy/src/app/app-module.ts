@@ -18,12 +18,7 @@ import { Footer } from './appface/footer/footer';
 import { ViewgoodComponent } from './buygoods/goods/viewgood.component/viewgood.component';
 import { UpdategoodComponent } from './buygoods/goods/updategood.component/updategood.component';
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
-import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
-import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
 import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.component';
-import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbrand.component';
-import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/updatebrand.component';
-
 import { AddcustomerComponent } from './people/customer/addcustomer.component/addcustomer.component';
 import { ViewcustomerComponent } from './people/customer/viewcustomer.component/viewcustomer.component';
 import { UpdatecustomerComponent } from './people/customer/updatecustomer.component/updatecustomer.component';
@@ -50,15 +45,13 @@ import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.com
     Sidebar,
     Footer,
 
-    
+
     ViewgoodComponent,
     UpdategoodComponent,
     AddcatComponent,
-    ViewcatComponent,
-    UpdatecatComponent,
+
     AddbrandComponent,
-    ViewbrandComponent,
-    UpdatebrandComponent,
+
 
     AddcustomerComponent,
     ViewcustomerComponent,
@@ -85,7 +78,7 @@ import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.com
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-    
+
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
