@@ -34,6 +34,9 @@ import { LoginComponent } from './authentication/login.component/login.component
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
+import { AddproductComponent } from './stocks/addproduct.component/addproduct.component';
+import { UpdateproductComponent } from './stocks/updateproduct.component/updateproduct.component';
+import { ViewproductComponent } from './stocks/viewproduct.component/viewproduct.component';
 
 
 
@@ -66,7 +69,10 @@ import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.com
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-    AddgoodComponent
+    AddgoodComponent,
+    AddproductComponent,
+    UpdateproductComponent,
+    ViewproductComponent
   ],
   imports: [
     BrowserModule,

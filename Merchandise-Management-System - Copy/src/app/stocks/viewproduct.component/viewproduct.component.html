@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Name</th><th>Category</th><th>Brand</th><th>Stock</th><th>Price</th><th>Actions</th>
+  </tr>
+  <tr *ngFor="let product of products">
+    <td>{{ product.name }}</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.brand }}</td>
+    <td>{{ product.stock }}</td>
+    <td>{{ product.price }}</td>
+    <td>
+      <button (click)="deleteProduct(product.id)">Delete</button>
+    </td>
+  </tr>
+</table>
+

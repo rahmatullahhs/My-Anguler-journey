@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit()">
+  <input type="text" [(ngModel)]="product.name" name="name" placeholder="Product Name" required />
+
+  <select [(ngModel)]="product.category" name="category">
+    <option value="Laptop">Laptop</option>
+    <option value="Desktop">Desktop</option>
+    <option value="Accessory">Accessory</option>
+    <option value="Brand PC">Brand PC</option>
+  </select>
+
+  <input type="text" [(ngModel)]="product.brand" name="brand" placeholder="Brand" required />
+  <input type="number" [(ngModel)]="product.stock" name="stock" placeholder="Stock" required />
+  <input type="number" [(ngModel)]="product.price" name="price" placeholder="Price" required />
+
+  <!-- Add these: -->
+  <input type="text" [(ngModel)]="product.model" name="model" placeholder="Model" required />
+  <textarea [(ngModel)]="product.details" name="details" placeholder="Details" required></textarea>
+
+  <button type="submit">Add Product</button>
+</form>
