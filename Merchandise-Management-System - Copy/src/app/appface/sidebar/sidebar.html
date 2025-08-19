@@ -22,7 +22,27 @@
         <li><a class="dropdown-item" routerLink="/viewemp">👨‍💼 Employees</a></li>
       </ul>
     </li>
-
+    <!--another style-->
+ <li class="nav-item">
+        <a class="nav-link text-white" data-bs-toggle="collapse" href="#purchaseMenu" role="button">
+          <i class="fas fa-shopping-cart me-1 text-danger"></i> Purchase
+        </a>
+        <div class="collapse ps-3" id="purchaseMenu">
+          <a class="nav-link text-white" routerLink="/addVendor"><i class="fas fa-truck me-1"></i> Add Vendor</a>
+          <a class="nav-link text-white" routerLink="/addItem"><i class="fas fa-box-open me-1"></i> Add Item</a>
+          <a class="nav-link text-white" routerLink="/stockIn"><i class="fas fa-arrow-down me-1"></i> Stock In</a>
+          <a class="nav-link text-white" routerLink="/stockOut"><i class="fas fa-arrow-up me-1"></i> Stock Out</a>
+          <a class="nav-link text-white" routerLink="/createRequisition"><i class="fas fa-file-alt me-1"></i> Create
+            Requisition</a>
+          <a class="nav-link text-white" routerLink="/createPO"><i class="fas fa-file-signature me-1"></i> Create PO</a>
+          <a class="nav-link text-white" routerLink="/viewPO"><i class="fas fa-file-invoice-dollar me-1"></i> View
+            PO</a>
+          <a class="nav-link text-white" routerLink="/viewAllRequ"><i class="fas fa-eye me-1"></i> View Requisitions</a>
+          <a class="nav-link text-white" routerLink="/inventory"><i class="fas fa-warehouse me-1"></i> Inventory</a>
+          <a class="nav-link text-white" routerLink="/viewAllVendor"><i class="fas fa-eye me-1"></i> View Vendor</a>
+          <a class="nav-link text-white" routerLink="/viewAllItem"><i class="fas fa-cubes me-1"></i> View Items</a>
+        </div>
+      </li>
 
 
     <!-- Sales Products -->

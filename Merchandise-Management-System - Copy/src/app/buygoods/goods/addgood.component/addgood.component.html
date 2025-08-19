@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="card shadow border-primary">
-    <div class="card-header bg-primary text-white">
-      <h4><i class="fas fa-box-open me-2"></i>{{ editing ? 'Edit Product' : 'Add Product' }}</h4>
+    <div class="card-header bg-primary text-white ">
+      <h4><i class="fas fa-box-open me-2"></i>{{ editing ? 'Edit Product' : 'Purchase Product' }}</h4>
     </div>
     <div class="card-body bg-light">
       <form [formGroup]="goodForm" (ngSubmit)="onSubmit()">
