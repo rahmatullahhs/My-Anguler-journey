@@ -9,15 +9,15 @@
         <!-- CATEGORY & BRAND -->
         <div class="row mb-3">
           <div class="col-md-4">
-            <label for="categoryId" class="form-label"><i class="fas fa-list me-1 text-primary"></i>Category</label>
-            <select id="categoryId" class="form-select" formControlName="categoryId">
+            <label for="category" class="form-label"><i class="fas fa-list me-1 text-primary"></i>Category</label>
+            <select id="category" class="form-select" formControlName="category">
               <option value="" disabled>Select Category</option>
               <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
             </select>
           </div>
           <div class="col-md-4">
-            <label for="brandId" class="form-label"><i class="fas fa-tags me-1 text-success"></i>Brand</label>
-            <select id="brandId" class="form-select" formControlName="brandId">
+            <label for="brand" class="form-label"><i class="fas fa-tags me-1 text-success"></i>Brand</label>
+            <select id="brand" class="form-select" formControlName="brand">
               <option value="" disabled>Select Brand</option>
               <option *ngFor="let b of brands" [value]="b.id">{{ b.name }}</option>
             </select>
@@ -43,8 +43,8 @@
             <input id="invoice" type="text" class="form-control" formControlName="invoice">
           </div>
           <div class="col-md-4">
-            <label for="supplierId" class="form-label"><i class="fas fa-truck me-1 text-info"></i>Supplier</label>
-            <select id="supplierId" class="form-select" formControlName="supplierId">
+            <label for="supplier" class="form-label"><i class="fas fa-truck me-1 text-info"></i>Supplier</label>
+            <select id="supplier" class="form-select" formControlName="supplier">
               <option value="" disabled>Select Supplier</option>
               <option *ngFor="let s of supplier" [value]="s.id">{{ s.name }}</option>
             </select>
@@ -108,6 +108,6 @@
     <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
     <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
     <a routerLink="/viewsupplier" class="btn btn-outline-dark me-2"><i class="fas fa-truck"></i> Suppliers</a>
-    <a routerLink="/viewallstock" class="btn btn-outline-info"><i class="fas fa-boxes"></i> View Stock</a>
+    <a routerLink="/viewgoods" class="btn btn-outline-info"><i class="fas fa-boxes"></i> View Stock</a>
   </div>
 </div>

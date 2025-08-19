@@ -49,9 +49,9 @@ export class AddgoodComponent implements OnInit {
       price: [0],
       qty: [0],
       discount: [0], // ✅ Added discount
-      brandId: [null, Validators.required],
-      categoryId: [null, Validators.required],
-      supplierId: [null]
+      brand: [0, Validators.required],
+      category: [0, Validators.required],
+      supplier: [0]
     });
   }
 
@@ -101,17 +101,21 @@ export class AddgoodComponent implements OnInit {
 
     const formValue = this.goodForm.value;
 
+    // Construct the product correctly for backend expectations
+    const newProduct: GoodModel = {
+      ...formValue,
+      brand: { id: formValue.brand },
+      category: { id: formValue.category },
+      supplier: { id: formValue.supplier }
+    };
+
     if (this.editing && formValue.id) {
-      this.goodService.updateGoods(formValue).subscribe(() => {
+      this.goodService.updateGoods(newProduct).subscribe(() => {
         alert('Product updated successfully!');
         this.loadGood();
         this.cancelEdit();
       });
     } else {
-      const newProduct: GoodModel = {
-        ...formValue
-      };
-
       this.goodService.addGoods(newProduct).subscribe(() => {
         alert('Product added successfully!');
         this.loadGood();
@@ -125,14 +129,15 @@ export class AddgoodComponent implements OnInit {
           price: 0,
           qty: 0,
           discount: 0,
-          brandId: null,
-          categoryId: null,
-          supplierId: null
+          brand: 0,
+          category: 0,
+          supplier: 0
         });
-        this.router.navigate(['/viewallstock']);
+        this.router.navigate(['/viewgoods']);
       });
     }
   }
+
 
   editGoods(good: GoodModel): void {
     this.editing = true;
@@ -167,9 +172,9 @@ export class AddgoodComponent implements OnInit {
       price: 0,
       qty: 0,
       discount: 0,
-      brandId: null,
-      categoryId: null,
-      supplierId: null
+      brand: 0,
+      category: 0,
+      supplier: 0
     });
   }
 
