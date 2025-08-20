@@ -3,8 +3,8 @@ export interface ProductModel {
     category: 'Laptop' | 'Accessory' | 'Brand PC';
     brand: string;
     name: string;
-    model?: string;
-    details?:string;
+    model: string;
+    details:string;
     stock: number;
     price: number;
 

@@ -1,58 +1,53 @@
-<p>addproduct.component works!</p>
+<div class="container mt-5">
+  <h3 class="mb-4 text-center">
+    <i class="bi bi-plus-circle-fill text-primary"></i> Add New Product
+  </h3>
 
-<form (ngSubmit)="onSubmit()" #productForm="ngForm">
-  <input
-    type="text"
-    [(ngModel)]="product.name"
-    name="name"
-    placeholder="Product Name"
-    required
-  />
+  <form [formGroup]="formGroup" (ngSubmit)="addProduct()" class="row g-3">
 
-  <select [(ngModel)]="product.category" name="category" required>
-    <option value="Laptop">Laptop</option>
-    <option value="Accessory">Accessory</option>
-    <option value="Brand PC">Brand PC</option>
-  </select>
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-box-seam me-2"></i>Product Name</label>
+      <input formControlName="name" type="text" class="form-control" placeholder="Enter product name" />
+    </div>
 
-  <input
-    type="text"
-    [(ngModel)]="product.brand"
-    name="brand"
-    placeholder="Brand"
-    required
-  />
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-tags me-2"></i>Category</label>
+      <select formControlName="category" class="form-select">
+        <option value="Laptop">Laptop</option>
+        <option value="Accessory">Accessory</option>
+        <option value="Brand PC">Brand PC</option>
+      </select>
+    </div>
 
-  <input
-    type="number"
-    [(ngModel)]="product.stock"
-    name="stock"
-    placeholder="Stock"
-    required
-  />
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-building me-2"></i>Brand</label>
+      <input formControlName="brand" type="text" class="form-control" placeholder="Enter brand" />
+    </div>
 
-  <input
-    type="number"
-    [(ngModel)]="product.price"
-    name="price"
-    placeholder="Price"
-    required
-  />
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-cpu-fill me-2"></i>Model</label>
+      <input formControlName="model" type="text" class="form-control" placeholder="Enter model" />
+    </div>
 
-  <input
-    type="text"
-    [(ngModel)]="product.model"
-    name="model"
-    placeholder="Model"
-    required
-  />
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-boxes me-2"></i>Stock</label>
+      <input formControlName="stock" type="number" class="form-control" placeholder="Enter stock quantity" />
+    </div>
 
-  <textarea
-    [(ngModel)]="product.details"
-    name="details"
-    placeholder="Details"
-    required
-  ></textarea>
+    <div class="col-md-6">
+      <label class="form-label"><i class="bi bi-currency-dollar me-2"></i>Price</label>
+      <input formControlName="price" type="number" class="form-control" placeholder="Enter price" />
+    </div>
 
-  <button type="submit" [disabled]="productForm.invalid">Add Product</button>
-</form>
+    <div class="col-12">
+      <label class="form-label"><i class="bi bi-card-text me-2"></i>Details</label>
+      <textarea formControlName="details" class="form-control" rows="3" placeholder="Enter product details"></textarea>
+    </div>
+
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary px-5" [disabled]="formGroup.invalid">
+        <i class="bi bi-save me-2"></i>Save Product
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,57 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../service/product.service';
 import { ProductModel } from '../../../models/products/product.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
-  standalone:false,
+  standalone: false,
   selector: 'app-addproduct',
   templateUrl: './addproduct.component.html',
-  styleUrls: ['./addproduct.component.css'] // ✅ use "styleUrls" instead of "styleUrl"
+  styleUrls: ['./addproduct.component.css']
 })
 export class AddproductComponent implements OnInit {
-  product: ProductModel = {
-    id: 0,
-    name: '',
-    category: 'Laptop',
-    brand: '',
-    stock: 0,
-    price: 0,
-    model: '',
-    details: ''
-  };
+  formGroup!: FormGroup;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
+    private router: Router,
+    public cdr:ChangeDetectorRef  ) {}
 
   ngOnInit(): void {
-    // ✅ No need to throw error; leave empty or initialize logic
-  }
-
-  onSubmit() {
-    this.product.id = Date.now(); // Unique ID
-
-    // Send product to backend
-    this.productService.addProduct(this.product).subscribe({
-      next: (response) => {
-        console.log('Product added:', response);
-        // ✅ Reset form
-        this.resetForm();
-      },
-      error: (error) => {
-        console.error('Error adding product:', error);
-      }
+    this.formGroup = this.formBuilder.group({
+      name: ['', Validators.required],
+      category: ['Laptop', Validators.required],
+      brand: ['', Validators.required],
+      stock: [0, [Validators.required, Validators.min(0)]],
+      price: [0, [Validators.required, Validators.min(0)]],
+      model: ['', Validators.required],
+      details: ['', Validators.required]
     });
   }
 
-  resetForm() {
-    this.product = {
-      id: 0,
-      name: '',
-      category: 'Laptop',
-      brand: '',
-      stock: 0,
-      price: 0,
-      model: '',
-      details: ''
-    };
+  addProduct(): void {
+    if (this.formGroup.invalid) return;
+
+    const product: ProductModel = { ...this.formGroup.value };
+
+    this.productService.addProduct(product).subscribe({
+      next: (res) => {
+        console.log('Product Saved:', res);
+        this.formGroup.reset 
+         this.router.navigate(['/viewproduct']); 
+        this.cdr.markForCheck();
+             },
+      error: (error) => {
+        console.error('Error saving product:', error);
+      }
+    });
   }
 }

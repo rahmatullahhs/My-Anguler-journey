@@ -37,6 +37,7 @@ import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.com
 import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
+import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
 
 
 
@@ -74,7 +75,8 @@ import { ViewproductComponent } from './sellProducts/products/viewproduct.compon
     
     AddproductComponent,
     UpdateproductComponent,
-    ViewproductComponent
+    ViewproductComponent,
+    AddcartComponent
 
 
   ],
