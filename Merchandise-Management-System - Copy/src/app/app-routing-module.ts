@@ -18,7 +18,9 @@ import { UpdatecustomerComponent } from './people/customer/updatecustomer.compon
 import { AddsupplierComponent } from './people/supplier/addsupplier.component/addsupplier.component';
 import { UpdatesupplierComponent } from './people/supplier/updatesupplier.component/updatesupplier.component';
 import { UpdateemployeeComponent } from './people/employee/updateemployee.component/updateemployee.component';
-import { AddproductComponent } from './stocks/addproduct.component/addproduct.component';
+import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
+import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
+import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,10 @@ const routes: Routes = [
   { path: 'addgoods', component: AddgoodComponent },
   { path: 'viewgoods', component: ViewgoodComponent },
   { path: 'updategoods/:id', component: UpdategoodComponent },
-  {path:'addproduct',component:AddproductComponent}
+  
+  { path: 'addproduct', component: AddproductComponent },
+  { path: 'viewproduct', component: ViewproductComponent },
+  { path: 'updateproduct', component: UpdateproductComponent }
 
 ];
 

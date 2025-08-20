@@ -1,0 +1,58 @@
+<p>addproduct.component works!</p>
+
+<form (ngSubmit)="onSubmit()" #productForm="ngForm">
+  <input
+    type="text"
+    [(ngModel)]="product.name"
+    name="name"
+    placeholder="Product Name"
+    required
+  />
+
+  <select [(ngModel)]="product.category" name="category" required>
+    <option value="Laptop">Laptop</option>
+    <option value="Accessory">Accessory</option>
+    <option value="Brand PC">Brand PC</option>
+  </select>
+
+  <input
+    type="text"
+    [(ngModel)]="product.brand"
+    name="brand"
+    placeholder="Brand"
+    required
+  />
+
+  <input
+    type="number"
+    [(ngModel)]="product.stock"
+    name="stock"
+    placeholder="Stock"
+    required
+  />
+
+  <input
+    type="number"
+    [(ngModel)]="product.price"
+    name="price"
+    placeholder="Price"
+    required
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="product.model"
+    name="model"
+    placeholder="Model"
+    required
+  />
+
+  <textarea
+    [(ngModel)]="product.details"
+    name="details"
+    placeholder="Details"
+    required
+  ></textarea>
+
+  <button type="submit" [disabled]="productForm.invalid">Add Product</button>
+</form>

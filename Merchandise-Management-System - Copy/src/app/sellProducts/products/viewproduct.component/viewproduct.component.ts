@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductModel } from '../../models/product.model';
-import { ProductService } from '../../service/product.service';
+import { ProductService } from '../../../service/product.service';
+import { ProductModel } from '../../../models/products/product.model';
 
 @Component({
   selector: 'app-viewproduct.component',
@@ -29,3 +29,4 @@ export class ViewproductComponent {
     });
   }
 }
+

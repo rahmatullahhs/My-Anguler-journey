@@ -34,9 +34,10 @@ import { LoginComponent } from './authentication/login.component/login.component
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
-import { AddproductComponent } from './stocks/addproduct.component/addproduct.component';
-import { UpdateproductComponent } from './stocks/updateproduct.component/updateproduct.component';
-import { ViewproductComponent } from './stocks/viewproduct.component/viewproduct.component';
+import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
+import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
+import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
+
 
 
 
@@ -48,20 +49,21 @@ import { ViewproductComponent } from './stocks/viewproduct.component/viewproduct
     Sidebar,
     Footer,
 
-
+    AddgoodComponent,
     ViewgoodComponent,
     UpdategoodComponent,
     AddcatComponent,
-
     AddbrandComponent,
 
 
     AddcustomerComponent,
     ViewcustomerComponent,
     UpdatecustomerComponent,
+
     UpdatesupplierComponent,
     AddsupplierComponent,
     ViewsupplierComponent,
+
     ViewemployeeComponent,
     UpdateemployeeComponent,
     AddemployeeComponent,
@@ -69,10 +71,12 @@ import { ViewproductComponent } from './stocks/viewproduct.component/viewproduct
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-    AddgoodComponent,
+    
     AddproductComponent,
     UpdateproductComponent,
     ViewproductComponent
+
+
   ],
   imports: [
     BrowserModule,
