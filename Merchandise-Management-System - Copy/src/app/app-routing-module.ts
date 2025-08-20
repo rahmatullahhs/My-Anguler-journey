@@ -21,6 +21,7 @@ import { UpdateemployeeComponent } from './people/employee/updateemployee.compon
 import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
+import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,8 @@ const routes: Routes = [
   
   { path: 'addproduct', component: AddproductComponent },
   { path: 'viewproduct', component: ViewproductComponent },
-  { path: 'updateproduct', component: UpdateproductComponent }
+  { path: 'updateproduct', component: UpdateproductComponent },
+  {path:'checkout',component:AddcheckoutComponent}
 
 ];
 

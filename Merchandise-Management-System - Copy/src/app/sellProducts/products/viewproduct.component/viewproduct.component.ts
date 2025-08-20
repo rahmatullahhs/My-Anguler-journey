@@ -33,10 +33,13 @@ export class ViewproductComponent implements OnInit {
     });
   }
 
-  loadCart(): void {
-    this.cartItems = this.cartService.getCart();
-    this.calculateTotal();
-  }
+loadCart(): void {
+  const cart = this.cartService.getCart(); // returns { items: CartModel[], total: number }
+  this.cartItems = cart.items;
+  this.total = cart.total;
+}
+
+
 
   addToCart(product: ProductModel): void {
     this.cartService.addItem(product);
@@ -75,4 +78,10 @@ export class ViewproductComponent implements OnInit {
   viewDetails(product: ProductModel): void {
     this.router.navigate(['/product', product.id]);
   }
+
+
+  goToCheckout() {
+  this.cartService.setCart(this.cartItems, this.total);
+  this.router.navigate(['/checkout']);
+}
 }

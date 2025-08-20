@@ -7,40 +7,52 @@ import { ProductModel } from '../../models/products/product.model';
 })
 export class CartService {
  
-  cart: CartModel[] = [];
+  private cartItems: CartModel[] = [];
+    private total: number = 0;
 
-  getCart(): CartModel[] {
-    return this.cart;
+  getCart() {
+    return {
+      items: this.cartItems ,
+      total: this.total
+    };
   }
 
   addItem(product: ProductModel): void {
-    const item = this.cart.find(c => c.product.id === product.id);
+    const item = this.cartItems.find(c => c.product.id === product.id);
     if (item) {
       if (item.quantity < product.stock) {
         item.quantity++;
       }
     } else {
-      this.cart.push({ product, quantity: 1 });
+      this.cartItems.push({ product, quantity: 1 });
     }
   }
 
   removeItem(productId: number): void {
-    const index = this.cart.findIndex(c => c.product.id === productId);
+    const index = this.cartItems.findIndex(c => c.product.id === productId);
     if (index !== -1) {
-      this.cart.splice(index, 1);
+      this.cartItems.splice(index, 1);
     }
   }
 
   updateQuantity(productId: number, quantity: number): void {
-    const item = this.cart.find(c => c.product.id === productId);
+    const item = this.cartItems.find(c => c.product.id === productId);
     if (item && quantity > 0 && quantity <= item.product.stock) {
       item.quantity = quantity;
     }
   }
 
   clearCart(): void {
-    this.cart = [];
+    this.cartItems = [];
+    this.total = 0;
   }
+   setCart(items: any[], total: number) {
+    this.cartItems = items;
+    this.total = total;
+  }
+
+
+ 
 }
 
 

@@ -38,6 +38,7 @@ import { AddproductComponent } from './sellProducts/products/addproduct.componen
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
+import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
 
 
 
@@ -76,7 +77,8 @@ import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.
     AddproductComponent,
     UpdateproductComponent,
     ViewproductComponent,
-    AddcartComponent
+    AddcartComponent,
+    AddcheckoutComponent
 
 
   ],

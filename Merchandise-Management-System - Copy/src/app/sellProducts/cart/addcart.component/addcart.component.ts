@@ -19,10 +19,12 @@ export class AddcartComponent implements OnInit{
     this.loadCart();
   }
 
-  loadCart(): void {
-    this.cartItems = this.cartService.getCart();
-    this.calculateTotal();
-  }
+ loadCart(): void {
+  const cart = this.cartService.getCart();
+  this.cartItems = cart.items;
+  this.total = cart.total;
+}
+
 
   updateQuantity(productId: number, quantityStr: string): void {
     const quantity = parseInt(quantityStr, 10);
