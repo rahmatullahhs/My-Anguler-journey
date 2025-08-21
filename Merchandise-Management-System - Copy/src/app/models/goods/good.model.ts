@@ -1,24 +1,25 @@
 export interface GoodModel {
 
-    id: number;
-    brand: { id: number };
-    category: { id: number };
+    id?: string;
+    brandId: string;
+    categoryId: string;
     name: string;
     details: string;
 
     invoice: string;
-     supplier: { id: number };
+    supplierId: string;
     date: Date;
 
     qty: number;
-    price: number;     
+    price: number;
+    discount: number;
+
     paid: number;
     due: number;
 
+
+
+
+
 }
-
-
-
-
-
 

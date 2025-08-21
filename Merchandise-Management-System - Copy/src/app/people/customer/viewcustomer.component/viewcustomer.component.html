@@ -1,42 +1,37 @@
-<div class="container mt-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary"><i class="bi bi-people-fill me-2"></i>Customer List</h2>
-    <button class="btn btn-success" routerLink="/addcustomer">
-      <i class="bi bi-person-plus-fill"></i> Add Customer
-    </button>
+<div class="container">
+  <h2>Customer List</h2>
+<div class="actions-bar">
+    <button routerLink="/addcustomer">+ Add Customer</button>
   </div>
-
-  <table class="table table-hover table-bordered shadow-sm" *ngIf="customers.length > 0; else noCustomers">
-    <thead class="table-dark text-center">
+  <table class="table table-bordered table-striped" *ngIf="customers.length > 0; else noCustomers">
+    <thead class="thead-dark">
       <tr>
-        <th><i class="bi bi-person-circle me-1 text-info"></i> Name</th>
-        <th><i class="bi bi-envelope-at-fill me-1 text-warning"></i> Email</th>
-        <th><i class="bi bi-telephone-fill me-1 text-success"></i> Phone</th>
-        <th><i class="bi bi-geo-alt-fill me-1 text-danger"></i> Address</th>
-        <th><i class="bi bi-gear-fill me-1 text-secondary"></i> Actions</th>
+      
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+          <th>Address</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers">
-        <td><i class="bi bi-person-fill me-1 text-info"></i>{{ customer.name }}</td>
-        <td><i class="bi bi-envelope-fill me-1 text-warning"></i>{{ customer.email }}</td>
-        <td><i class="bi bi-telephone-fill me-1 text-success"></i>{{ customer.phone }}</td>
-        <td><i class="bi bi-geo-fill me-1 text-danger"></i>{{ customer.address }}</td>
-        <td class="text-center">
-          <button class="btn btn-sm btn-outline-primary me-2" (click)="updateCustomer(customer.id)">
-            <i class="bi bi-pencil-square"></i> Update
-          </button>
-          <button class="btn btn-sm btn-outline-danger" (click)="deleteCustomer(customer.id)">
-            <i class="bi bi-trash-fill"></i> Delete
-          </button>
+       
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+         <td>{{ customer.address }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="updateCustomer(customer.id)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <ng-template #noCustomers>
-    <div class="alert alert-info text-center">
-      <i class="bi bi-info-circle-fill me-2"></i> No customers found.
-    </div>
+    <p>No customers found.</p>
   </ng-template>
 </div>
+
+ 

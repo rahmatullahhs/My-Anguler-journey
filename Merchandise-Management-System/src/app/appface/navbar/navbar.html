@@ -1,0 +1,99 @@
+<nav
+  class="navbar navbar-expand-lg shadow-sm px-3 py-0"
+  style="height: 64px; background-color: #5c00dc;"
+>
+  <div class="container-fluid">
+
+    <!-- Sidebar Toggle (mobile only) -->
+    <button
+      class="btn btn-outline-light d-lg-none me-2"
+      type="button"
+      (click)="toggleSidebar.emit()"
+    >
+      ☰
+    </button>
+
+    <!-- Brand Logo + Name -->
+  <a
+  class="navbar-brand fw-bold d-flex align-items-center text-white"
+  routerLink="/"
+  style="font-family: 'Poppins', sans-serif;"
+>
+  <img
+    src="assets/gt-logo.jpg"
+    alt="Business Icon"
+    width="45"
+    height="45"
+    class="me-2"
+    style="object-fit: contain; border: 1px solid black; border-radius: 4px;"
+  />
+  <span style="font-size: 1.4rem;">Global Tech</span>
+</a>
+
+
+    <!-- Search Bar -->
+    <form class="d-none d-md-flex ms-auto me-2" role="search">
+      <input
+        class="form-control form-control-sm me-2"
+        type="search"
+        placeholder="Search..."
+        aria-label="Search"
+        style="height: 32px;"
+      />
+      <button class="btn btn-sm btn-outline-light" type="submit">🔍</button>
+    </form>
+
+    <!-- Admin Dropdown -->
+    <div class="dropdown">
+      <img
+        src="assets/rrr.png"
+        alt="Admin"
+        class="rounded-circle dropdown-toggle"
+        width="40"
+        height="40"
+        style="object-fit: cover; cursor: pointer;"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      />
+
+      <ul class="dropdown-menu dropdown-menu-end mt-1 shadow-sm">
+        <!-- User Profile Preview -->
+        <li class="dropdown-header text-center py-2 border-bottom">
+          <a routerLink="userprofile">
+            <img
+              src="assets/rrr.png"
+              alt="User Avatar"
+              class="rounded-circle mb-2"
+              width="50"
+              height="50"
+              style="object-fit: cover;"
+            />
+          </a>
+          <div class="fw-semibold">Rahmat</div>
+          <small class="text-muted">rahmatogamil.com</small>
+        </li>
+
+        <!-- Action Links -->
+        <li>
+          <a class="dropdown-item d-flex align-items-center" routerLink="register">
+            <img src="assets/register.png" alt="Register" class="me-2" width="18" />
+            Register
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item d-flex align-items-center" routerLink="login">
+            <img src="assets/login.png" alt="Login" class="me-2" width="18" />
+            Login
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item d-flex align-items-center" href="#">
+            <img src="assets/logout.png" alt="Logout" class="me-2" width="18" />
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

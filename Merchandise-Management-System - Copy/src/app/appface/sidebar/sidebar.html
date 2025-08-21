@@ -1,4 +1,8 @@
-<nav id="sidebarMenu" class="sidebar collapse d-md-block text-white" [ngClass]="{ 'show': !collapsed }">
+<nav
+  id="sidebarMenu"
+  class="sidebar collapse d-md-block text-white"
+  [ngClass]="{ 'show': !collapsed }"
+>
   <ul class="nav flex-column">
     <!-- Home -->
     <li class="nav-item mb-2">
@@ -9,8 +13,7 @@
 
     <!-- People -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         👥 People
       </a>
       <ul class="dropdown-menu" aria-labelledby="peopleDropdown">
@@ -19,37 +22,16 @@
         <li><a class="dropdown-item" routerLink="/viewemp">👨‍💼 Employees</a></li>
       </ul>
     </li>
-    <!--another style-->
-    <li class="nav-item">
-      <a class="nav-link text-white" data-bs-toggle="collapse" href="#purchaseMenu" role="button">
-        <i class="fas fa-shopping-cart me-1 text-danger"></i> Purchase
-      </a>
-      <div class="collapse ps-3" id="purchaseMenu">
-        <a class="nav-link text-white" routerLink="/addVendor"><i class="fas fa-truck me-1"></i> Add Vendor</a>
-        <a class="nav-link text-white" routerLink="/addItem"><i class="fas fa-box-open me-1"></i> Add Item</a>
-        <a class="nav-link text-white" routerLink="/stockIn"><i class="fas fa-arrow-down me-1"></i> Stock In</a>
-        <a class="nav-link text-white" routerLink="/stockOut"><i class="fas fa-arrow-up me-1"></i> Stock Out</a>
-        <a class="nav-link text-white" routerLink="/createRequisition"><i class="fas fa-file-alt me-1"></i> Create
-          Requisition</a>
-        <a class="nav-link text-white" routerLink="/createPO"><i class="fas fa-file-signature me-1"></i> Create PO</a>
-        <a class="nav-link text-white" routerLink="/viewPO"><i class="fas fa-file-invoice-dollar me-1"></i> View
-          PO</a>
-        <a class="nav-link text-white" routerLink="/viewAllRequ"><i class="fas fa-eye me-1"></i> View Requisitions</a>
-        <a class="nav-link text-white" routerLink="/inventory"><i class="fas fa-warehouse me-1"></i> Inventory</a>
-        <a class="nav-link text-white" routerLink="/viewAllVendor"><i class="fas fa-eye me-1"></i> View Vendor</a>
-        <a class="nav-link text-white" routerLink="/viewAllItem"><i class="fas fa-cubes me-1"></i> View Items</a>
-      </div>
-    </li>
+
 
 
     <!-- Sales Products -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         📦 Sales Products
       </a>
       <ul class="dropdown-menu" aria-labelledby="salesProductsDropdown">
-        <li><a class="dropdown-item" routerLink="/viewproduct">📋 Stock</a></li>
+        <li><a class="dropdown-item" routerLink="/viewproduct">📋 Products List</a></li>
         <li><a class="dropdown-item" routerLink="/sales/invoice">🛒 Cart</a></li>
         <li><a class="dropdown-item" routerLink="/sales/product">✅ Checkout</a></li>
       </ul>
@@ -57,22 +39,18 @@
 
     <!-- Purchase Products -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="purchaseDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="purchaseDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         🛒 Purchase Products
       </a>
       <ul class="dropdown-menu" aria-labelledby="purchaseDropdown">
-        <li><a class="dropdown-item" routerLink="/addgoods"> 🛒Purchase</a></li>
-        <li><a class="dropdown-item" routerLink="/viewgoods">📜 Purchase List</a></li>
-        <li> <a class="dropdown-item" routerLink="/addproduct">  📦 Add Stock </a></li>
-         <li><a class="dropdown-item" routerLink="/viewgoods">📜 Purchase List</a></li>
+        <li><a class="dropdown-item" routerLink="/viewgoods">📦 Purchase</a></li>
+        <li><a class="dropdown-item" routerLink="/purchases/list">📜 Purchase List</a></li>
       </ul>
     </li>
 
     <!-- Accounts -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="accountsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         💼 Accounts
       </a>
       <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
@@ -85,8 +63,7 @@
 
     <!-- Reports -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="reportsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         📊 Reports
       </a>
       <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
@@ -98,8 +75,7 @@
 
     <!-- Inbox -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="inboxDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="inboxDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         📥 Inbox
       </a>
       <ul class="dropdown-menu" aria-labelledby="inboxDropdown">
@@ -110,8 +86,7 @@
 
     <!-- Help / Support -->
     <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="supportDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="supportDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         ❓ Help & Support
       </a>
       <ul class="dropdown-menu" aria-labelledby="supportDropdown">

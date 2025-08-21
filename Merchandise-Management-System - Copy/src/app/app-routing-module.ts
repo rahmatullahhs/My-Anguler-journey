@@ -10,6 +10,10 @@ import { LoginComponent } from './authentication/login.component/login.component
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.component';
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
+import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbrand.component';
+import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
+import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
+import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/updatebrand.component';
 import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
 import { ViewgoodComponent } from './buygoods/goods/viewgood.component/viewgood.component';
 import { UpdategoodComponent } from './buygoods/goods/updategood.component/updategood.component';
@@ -21,7 +25,6 @@ import { UpdateemployeeComponent } from './people/employee/updateemployee.compon
 import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
-import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
 
 
 const routes: Routes = [
@@ -44,16 +47,22 @@ const routes: Routes = [
   { path: 'updateemp/:id', component: UpdateemployeeComponent },
 
   { path: 'addbrand', component: AddbrandComponent },
+  { path: 'viewbrand', component: ViewbrandComponent },
+  { path: 'updatebrand/:id', component: UpdatebrandComponent },
+
   { path: 'addcategory', component: AddcatComponent },
+  { path: 'viewcategory', component: ViewcatComponent },
+  { path: 'updatecatagory/:id', component: UpdatecatComponent },
 
   { path: 'addgoods', component: AddgoodComponent },
   { path: 'viewgoods', component: ViewgoodComponent },
   { path: 'updategoods/:id', component: UpdategoodComponent },
-  
+
   { path: 'addproduct', component: AddproductComponent },
   { path: 'viewproduct', component: ViewproductComponent },
-  { path: 'updateproduct', component: UpdateproductComponent },
-  {path:'checkout',component:AddcheckoutComponent}
+  { path: 'updateproduct/:id', component: UpdateproductComponent }
+
+
 
 ];
 

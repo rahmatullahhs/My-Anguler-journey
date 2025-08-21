@@ -18,7 +18,12 @@ import { Footer } from './appface/footer/footer';
 import { ViewgoodComponent } from './buygoods/goods/viewgood.component/viewgood.component';
 import { UpdategoodComponent } from './buygoods/goods/updategood.component/updategood.component';
 import { AddcatComponent } from './buygoods/category/addcat.component/addcat.component';
+import { ViewcatComponent } from './buygoods/category/viewcat.component/viewcat.component';
+import { UpdatecatComponent } from './buygoods/category/updatecat.component/updatecat.component';
 import { AddbrandComponent } from './buygoods/brand/addbrand.component/addbrand.component';
+import { ViewbrandComponent } from './buygoods/brand/viewbrand.component/viewbrand.component';
+import { UpdatebrandComponent } from './buygoods/brand/updatebrand.component/updatebrand.component';
+
 import { AddcustomerComponent } from './people/customer/addcustomer.component/addcustomer.component';
 import { ViewcustomerComponent } from './people/customer/viewcustomer.component/viewcustomer.component';
 import { UpdatecustomerComponent } from './people/customer/updatecustomer.component/updatecustomer.component';
@@ -34,12 +39,9 @@ import { LoginComponent } from './authentication/login.component/login.component
 import { RegisterComponent } from './authentication/register.component/register.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AddgoodComponent } from './buygoods/goods/addgood.component/addgood.component';
-import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
+import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
-import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
-import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
-
 
 
 
@@ -51,21 +53,22 @@ import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.compon
     Sidebar,
     Footer,
 
-    AddgoodComponent,
+    
     ViewgoodComponent,
     UpdategoodComponent,
     AddcatComponent,
+    ViewcatComponent,
+    UpdatecatComponent,
     AddbrandComponent,
-
+    ViewbrandComponent,
+    UpdatebrandComponent,
 
     AddcustomerComponent,
     ViewcustomerComponent,
     UpdatecustomerComponent,
-
     UpdatesupplierComponent,
     AddsupplierComponent,
     ViewsupplierComponent,
-
     ViewemployeeComponent,
     UpdateemployeeComponent,
     AddemployeeComponent,
@@ -73,14 +76,10 @@ import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.compon
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-    
-    AddproductComponent,
+    AddgoodComponent,
     UpdateproductComponent,
-    ViewproductComponent,
-    AddcartComponent,
-    AddcheckoutComponent
-
-
+    AddproductComponent,
+    ViewproductComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +91,7 @@ import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.compon
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-
+    
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
