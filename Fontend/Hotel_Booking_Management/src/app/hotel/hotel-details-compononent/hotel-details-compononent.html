@@ -1,0 +1,30 @@
+<div class="hotel-details-container" *ngIf="!loading && hotel">
+    <!-- Hotel Info -->
+    <div class="hotel-info card mb-4">
+        <img [src]="'/assets/images/hotels/' + hotel.image" alt="{{hotel.name}}" class="hotel-image">
+        <div class="hotel-text">
+            <h2>{{ hotel.name }}</h2>
+            <p class="address">{{ hotel.address }}</p>
+            <p class="rating">Rating: {{ hotel.rating }} ⭐</p>
+           
+        </div>
+    </div>
+
+    <!-- Rooms -->
+    <h3 class="mb-3">Available Rooms</h3>
+    <div *ngIf="rooms.length > 0; else noRooms">
+        <div class="room-card" *ngFor="let room of rooms">
+            <h5>{{ room.roomType }}</h5>
+            <p>Price: ${{ room.price }}/night</p>
+            <p>Available: {{ room.availableRooms }} / {{ room.totalRooms }}</p>
+           
+        </div>
+    </div>
+    <ng-template #noRooms>
+        <p class="text-muted">No rooms available for this hotel.</p>
+    </ng-template>
+</div>
+
+<div *ngIf="loading">
+    <p>Loading hotel details...</p>
+</div>
