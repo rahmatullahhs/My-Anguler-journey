@@ -3,7 +3,7 @@
     <!-- Home -->
     <li class="nav-item mb-2">
       <a class="nav-link text-white " routerLink="/">
-        🏠 Home
+        🏠︎ Home
       </a>
     </li>
 
@@ -11,7 +11,7 @@
     <li class="nav-item dropdown mb-2">
       <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button"
         data-bs-toggle="dropdown" aria-expanded="false">
-        👥 People
+        👨‍👨 People
       </a>
       <ul class="dropdown-menu" aria-labelledby="peopleDropdown">
         <li><a class="dropdown-item" routerLink="viewsupplier">🏬 Suppliers</a></li>
@@ -19,29 +19,7 @@
         <li><a class="dropdown-item" routerLink="/viewemp">👨‍💼 Employees</a></li>
       </ul>
     </li>
-    <!--another style-->
-    <li class="nav-item">
-      <a class="nav-link text-white" data-bs-toggle="collapse" href="#purchaseMenu" role="button">
-        <i class="fas fa-shopping-cart me-1 text-danger"></i> Purchase
-      </a>
-      <div class="collapse ps-3" id="purchaseMenu">
-        <a class="nav-link text-white" routerLink="/addVendor"><i class="fas fa-truck me-1"></i> Add Vendor</a>
-        <a class="nav-link text-white" routerLink="/addItem"><i class="fas fa-box-open me-1"></i> Add Item</a>
-        <a class="nav-link text-white" routerLink="/stockIn"><i class="fas fa-arrow-down me-1"></i> Stock In</a>
-        <a class="nav-link text-white" routerLink="/stockOut"><i class="fas fa-arrow-up me-1"></i> Stock Out</a>
-        <a class="nav-link text-white" routerLink="/createRequisition"><i class="fas fa-file-alt me-1"></i> Create
-          Requisition</a>
-        <a class="nav-link text-white" routerLink="/createPO"><i class="fas fa-file-signature me-1"></i> Create PO</a>
-        <a class="nav-link text-white" routerLink="/viewPO"><i class="fas fa-file-invoice-dollar me-1"></i> View
-          PO</a>
-        <a class="nav-link text-white" routerLink="/viewAllRequ"><i class="fas fa-eye me-1"></i> View Requisitions</a>
-        <a class="nav-link text-white" routerLink="/inventory"><i class="fas fa-warehouse me-1"></i> Inventory</a>
-        <a class="nav-link text-white" routerLink="/viewAllVendor"><i class="fas fa-eye me-1"></i> View Vendor</a>
-        <a class="nav-link text-white" routerLink="/viewAllItem"><i class="fas fa-cubes me-1"></i> View Items</a>
-      </div>
-    </li>
-
-
+   
     <!-- Sales Products -->
     <li class="nav-item dropdown mb-2">
       <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button"
@@ -65,9 +43,41 @@
         <li><a class="dropdown-item" routerLink="/addgoods"> 🛒Purchase</a></li>
         <li><a class="dropdown-item" routerLink="/viewgoods">📜 Purchase List</a></li>
         <li> <a class="dropdown-item" routerLink="/addproduct">  📦 Add Stock </a></li>
-         <li><a class="dropdown-item" routerLink="/viewgoods">📜 Purchase List</a></li>
+     
       </ul>
     </li>
+
+
+<!-- Product Return/Damage -->
+<li class="nav-item dropdown mb-2">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="productDropdown" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    🔧After Sells Services
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="productDropdown">
+    <li>
+      <a class="dropdown-item" routerLink="returnproduct">
+        📦 Return Product
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="servicerequest">
+        🛠️ Product Service
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="resell">
+        ♻️ Resell Items
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="wastemanagement">
+        🗑️ Waste Management
+      </a>
+    </li>
+  </ul>
+</li>
+
 
     <!-- Accounts -->
     <li class="nav-item dropdown mb-2">
@@ -80,21 +90,25 @@
         <li><a class="dropdown-item" routerLink="/accounts/sales">💵 Sales Accounts</a></li>
         <li><a class="dropdown-item" routerLink="/accounts/cogs">📉 COGS</a></li>
         <li><a class="dropdown-item" routerLink="/accounts/payable">💳 Accounts Payable</a></li>
+        <li><a class="dropdown-item" routerLink="/accounts/payable">💰 Accounts Receivable</a></li>
       </ul>
     </li>
 
-    <!-- Reports -->
-    <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-white " href="#" id="reportsDropdown" role="button"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        📊 Reports
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
-        <li><a class="dropdown-item" routerLink="/settings/profile">👤 Profile Settings</a></li>
-        <li><a class="dropdown-item" routerLink="/settings/email">📧 Email Preferences</a></li>
-        <li><a class="dropdown-item" routerLink="/settings/security">🔐 Security Settings</a></li>
-      </ul>
-    </li>
+<!-- Reports -->
+<li class="nav-item dropdown mb-2">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="reportsDropdown" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    📊 Reports
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+    <li><a class="dropdown-item" routerLink="/balancesheet">📈 Balance Sheet</a></li>
+    <li><a class="dropdown-item" routerLink="/generalledger">📒 General Ledger</a></li>
+    <li><a class="dropdown-item" routerLink="/importreports">📑 Import Reports</a></li>
+    <li><a class="dropdown-item" routerLink="/bankdetails">🏦 Bank Details</a></li>
+    <li><a class="dropdown-item" routerLink="/taxreport">🏛️ Tax Report</a></li>
+  </ul>
+</li>
+
 
     <!-- Inbox -->
     <li class="nav-item dropdown mb-2">
@@ -102,10 +116,13 @@
         data-bs-toggle="dropdown" aria-expanded="false">
         📥 Inbox
       </a>
-      <ul class="dropdown-menu" aria-labelledby="inboxDropdown">
-        <li><a class="dropdown-item" routerLink="/inbox/emails">📨 Emails</a></li>
-        <li><a class="dropdown-item" routerLink="/inbox/orders">📦 Orders</a></li>
+    
+      <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+        <li><a class="dropdown-item" routerLink="/settings/profile">👨🏻‍💼 Profile Settings</a></li>
+        <li><a class="dropdown-item" routerLink="/settings/email">✉ Email Preferences</a></li>
+        <li><a class="dropdown-item" routerLink="/settings/security">🔐 Security Settings</a></li>
       </ul>
+      
     </li>
 
     <!-- Help / Support -->
