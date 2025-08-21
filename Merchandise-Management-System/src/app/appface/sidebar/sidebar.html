@@ -1,0 +1,141 @@
+<nav id="sidebarMenu" class="sidebar collapse d-md-block text-white" [ngClass]="{ 'show': !collapsed }">
+  <ul class="nav flex-column">
+    <!-- Home -->
+    <li class="nav-item mb-2">
+      <a class="nav-link text-white " routerLink="/">
+        🏠︎ Home
+      </a>
+    </li>
+
+    <!-- People -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="peopleDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        👨‍👨 People
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="peopleDropdown">
+        <li><a class="dropdown-item" routerLink="viewsupplier">🏬 Suppliers</a></li>
+        <li><a class="dropdown-item" routerLink="viewcustomer">👥 Customers</a></li>
+        <li><a class="dropdown-item" routerLink="/viewemp">👨‍💼 Employees</a></li>
+      </ul>
+    </li>
+   
+    <!-- Sales Products -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="salesProductsDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        📦 Sales Products
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="salesProductsDropdown">
+        <li><a class="dropdown-item" routerLink="/viewproduct">📋 Stock</a></li>
+        <li><a class="dropdown-item" routerLink="/sales/invoice">🛒 Cart</a></li>
+        <li><a class="dropdown-item" routerLink="/sales/product">✅ Checkout</a></li>
+      </ul>
+    </li>
+
+    <!-- Purchase Products -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="purchaseDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        🛒 Purchase Products
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="purchaseDropdown">
+        <li><a class="dropdown-item" routerLink="/addgoods"> 🛒Purchase</a></li>
+        <li><a class="dropdown-item" routerLink="/viewgoods">📜 Purchase List</a></li>
+        <li> <a class="dropdown-item" routerLink="/addproduct">  📦 Add Stock </a></li>
+     
+      </ul>
+    </li>
+
+
+<!-- Product Return/Damage -->
+<li class="nav-item dropdown mb-2">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="productDropdown" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    🔧After Sells Services
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="productDropdown">
+    <li>
+      <a class="dropdown-item" routerLink="returnproduct">
+        📦 Return Product
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="servicerequest">
+        🛠️ Product Service
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="resell">
+        ♻️ Resell Items
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item" routerLink="wastemanagement">
+        🗑️ Waste Management
+      </a>
+    </li>
+  </ul>
+</li>
+
+
+    <!-- Accounts -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="accountsDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        💼 Accounts
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="accountsDropdown">
+        <li><a class="dropdown-item" routerLink="/accounts/buying">📘 Buying Accounts</a></li>
+        <li><a class="dropdown-item" routerLink="/accounts/sales">💵 Sales Accounts</a></li>
+        <li><a class="dropdown-item" routerLink="/accounts/cogs">📉 COGS</a></li>
+        <li><a class="dropdown-item" routerLink="/accounts/payable">💳 Accounts Payable</a></li>
+        <li><a class="dropdown-item" routerLink="/accounts/payable">💰 Accounts Receivable</a></li>
+      </ul>
+    </li>
+
+<!-- Reports -->
+<li class="nav-item dropdown mb-2">
+  <a class="nav-link dropdown-toggle text-white" href="#" id="reportsDropdown" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    📊 Reports
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+    <li><a class="dropdown-item" routerLink="/balancesheet">📈 Balance Sheet</a></li>
+    <li><a class="dropdown-item" routerLink="/generalledger">📒 General Ledger</a></li>
+    <li><a class="dropdown-item" routerLink="/importreports">📑 Import Reports</a></li>
+    <li><a class="dropdown-item" routerLink="/bankdetails">🏦 Bank Details</a></li>
+    <li><a class="dropdown-item" routerLink="/taxreport">🏛️ Tax Report</a></li>
+  </ul>
+</li>
+
+
+    <!-- Inbox -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="inboxDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        📥 Inbox
+      </a>
+    
+      <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+        <li><a class="dropdown-item" routerLink="/settings/profile">👨🏻‍💼 Profile Settings</a></li>
+        <li><a class="dropdown-item" routerLink="/settings/email">✉ Email Preferences</a></li>
+        <li><a class="dropdown-item" routerLink="/settings/security">🔐 Security Settings</a></li>
+      </ul>
+      
+    </li>
+
+    <!-- Help / Support -->
+    <li class="nav-item dropdown mb-2">
+      <a class="nav-link dropdown-toggle text-white " href="#" id="supportDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        ❓ Help & Support
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="supportDropdown">
+        <li><a class="dropdown-item" routerLink="/help/knowledge">📚 Knowledge Base</a></li>
+        <li><a class="dropdown-item" routerLink="/help/contact">📞 Contact Support</a></li>
+        <li><a class="dropdown-item" routerLink="/help/faq">❓ FAQ</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

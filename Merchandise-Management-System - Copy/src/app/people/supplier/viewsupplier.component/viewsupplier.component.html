@@ -1,65 +1,57 @@
 <div class="container mt-4">
-  <!-- Page Header -->
-  <h2 class="mb-3 d-flex align-items-center text-primary">
-    <i class="bi bi-truck me-2 fs-3 text-warning"></i> Supplier List
-  </h2>
+<h2 class="mb-3 d-flex align-items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fd7e14" class="me-2" viewBox="0 0 16 16">
+    <path d="M0 1v11h1a2 2 0 104 0h6a2 2 0 104 0h1V4.5L13.5 1H0zm1 1h11v8H1V2zm12 .5V5h2.5L13 2.5zM3 13a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z"/>
+  </svg>
+  Supplier List
+</h2>
 
-  <!-- Top Bar: Add + Search -->
-  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
-    <button class="btn btn-success" routerLink="/addsupplier">
-      <i class="bi bi-person-plus-fill"></i> Add Supplier
-    </button>
 
-    <input type="text" class="form-control rounded-pill px-4 py-2 shadow-sm border-0" style="max-width: 400px;"
-      placeholder="🔍 Search by name, email or designation..." [(ngModel)]="searchTerm" />
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="btn btn-primary me-2" routerLink="/addsupplier">Add Supplier</button>
+    <input
+      type="text"
+      class="form-control rounded-pill px-4 py-3 shadow-sm border-0"
+      style="max-width: 400px;"
+      placeholder="🔍 Search by name, email or designation..."
+      [(ngModel)]="searchTerm"
+    />
   </div>
 
-  <!-- Supplier Table -->
-  <table class="table table-hover table-bordered shadow-sm">
-    <thead class="table-dark text-center">
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
       <tr>
-        <th><i class="bi bi-hash"></i></th>
-        <th><i class="bi bi-person-fill text-info"></i> Name</th>
-        <th><i class="bi bi-person-lines-fill text-secondary"></i> Contact</th>
-        <th><i class="bi bi-telephone-fill text-success"></i> Phone</th>
-        <th><i class="bi bi-envelope-fill text-warning"></i> Email</th>
-        <th><i class="bi bi-building text-primary"></i> Company</th>
-        <th><i class="bi bi-geo-alt-fill text-danger"></i> Address</th>
-        <th><i class="bi bi-tools text-light"></i> Actions</th>
+        <th>#</th>
+        <th>Name</th>
+        <th>Contact Person</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Company Name</th>
+        <th>Address</th>
+        <th>Actions</th>
       </tr>
     </thead>
-
     <tbody>
       <tr *ngFor="let supplier of suppliers; index as i">
-        <td class="text-center">{{ i + 1 }}</td>
-        <td><i class=" me-1 text-info"></i>{{ supplier.name }}</td>
-        <td><i class=" me-1 text-secondary"></i>{{ supplier.contactPerson }}</td>
-        <td><i class=" me-1 text-success"></i>{{ supplier.phone }}</td>
-        <td><i class=" me-1 text-warning"></i>{{ supplier.email }}</td>
-        <td><i class=" me-1 text-primary"></i>{{ supplier.companyName }}</td>
-        <td><i class=" me-1 text-danger"></i>{{ supplier.address }}</td>
-        <td class="text-center">
-          <div class="d-inline-flex align-items-center">
-            <button
-              class="btn btn-sm btn-warning text-white rounded-circle me-2 d-flex align-items-center justify-content-center"
-              style="width: 32px; height: 32px; transition: background-color 0.3s;"
-              (click)="updateSupplier(supplier.id)" title="Edit Supplier">
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-
-            <button class="btn btn-sm btn-danger rounded-circle d-flex align-items-center justify-content-center"
-              style="width: 32px; height: 32px; transition: background-color 0.3s;"
-              (click)="deleteSupplier(supplier.id)" title="Delete Supplier">
-              <i class="bi bi-trash-fill"></i>
-            </button>
-          </div>
+        <td>{{ i + 1 }}</td>
+        <td>{{ supplier.name }}</td>
+        <td>{{ supplier.contactPerson }}</td>
+        <td>{{ supplier.phone }}</td>
+        <td>{{ supplier.email }}</td>
+        <td>{{ supplier.companyName }}</td>
+        <td>{{ supplier.address }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="updateSupplier(supplier.id)">
+            Edit
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteSupplier(supplier.id)">
+            Delete
+          </button>
         </td>
-        <!-- Fallback Row -->
+      </tr>
       <tr *ngIf="suppliers.length === 0">
-        <td colspan="8" class="text-center text-muted py-4">
-          <i class="bi bi-exclamation-circle-fill text-secondary me-2"></i>
-          No suppliers found.
-        </td>
+        <td colspan="8" class="text-center">No suppliers found.</td>
       </tr>
     </tbody>
   </table>

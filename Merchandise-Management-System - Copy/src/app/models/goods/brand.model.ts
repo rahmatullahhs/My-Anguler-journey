@@ -1,5 +1,5 @@
 export interface BrandModel {
-      id?: number;
+      id?: string;
   name: string;
-  categoryId: number;
+  categoryId: string;
 }

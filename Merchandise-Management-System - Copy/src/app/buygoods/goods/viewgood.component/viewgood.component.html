@@ -1,60 +1,7 @@
-<div class="container mt-4">
-      <div class="mt-4 mb-3">
-      <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
-      <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
-      <a routerLink="/viewsupplier" class="btn btn-outline-dark me-2"><i class="fas fa-truck"></i> Suppliers</a>
-      <a routerLink="/addgoods" class="btn btn-outline-info"><i class="fas fa-boxes"></i> Buy Goods</a>
-    </div>
-  <!-- Search Input -->
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Search by product name, brand, category or supplier..."
-      [(ngModel)]="searchText" />
-  </div>
-
-  <!-- Product Table -->
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Brand</th>
-          <th>Category</th>
-          <th>Name</th>
-          <th>Details</th>
-          <th>Invoice</th>
-          <th>Supplier</th>
-          <th>Date</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Paid</th>
-          <th>Due</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of filteredGoods">
-          <td>{{ product.id }}</td>
-          <td>{{ getBrandName(product.brand.id) }}</td>
-          <td>{{ getCategoryName(product.category.id) }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.details }}</td>
-          <td>{{ product.invoice }}</td>
-          <td>{{ getSupplierName(product.supplier.id) }}</td>
-          <td>{{ product.date | date:'yyyy-MM-dd' }}</td>
-          <td>{{ product.qty }}</td>
-          <td>{{ product.price | currency }}</td>
-          <td>{{ product.paid | currency }}</td>
-          <td>{{ product.due | currency }}</td>
-          <td>
-            <button class="btn btn-sm btn-warning me-2" (click)="editGoods(product)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="deleteGoods(product.id)">Delete</button>
-          </td>
-        </tr>
-        <tr *ngIf="filteredGoods.length === 0">
-          <td colspan="13" class="text-center">No products found.</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
+<!-- buttons.component.html -->
+<div class="button-group">
+  <button routerLink="/addGood" class="btn btn-primary">Add Good</button>
+  <button routerLink="/viewcategory" class="btn btn-success">Category</button>
+  <button routerLink="/viewbrand" class="btn btn-info">Brand</button>
 </div>
+
