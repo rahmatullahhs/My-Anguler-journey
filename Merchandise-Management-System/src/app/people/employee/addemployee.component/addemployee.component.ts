@@ -13,6 +13,8 @@ import { EmployeeModel } from '../../../models/human/employee.model';
 export class AddemployeeComponent implements OnInit {
 
   formGroup!: FormGroup;
+  selectedFile: File | null = null;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,29 +31,42 @@ export class AddemployeeComponent implements OnInit {
       address: [''],
       gender: [''],
       designation: [''],
-      salary: ['']
+      salary: [''],
+       
     });
   }
 
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    this.selectedFile = file;
+  }
+}
 
-  addEmp(): void {
-    if (this.formGroup.invalid) return;
 
-    const employee: EmployeeModel = { ...this.formGroup.value };
 
-    this.employeeservice.addEmp(employee).subscribe({
-      next: (res) => {
-        console.log('Employee Saved:', res);
-        this.cdr.markForCheck();
-        this.formGroup.reset();
-        this.router.navigate(['/viewemp']);
-      },
-      error: (error) => {
-        console.error('Error:', error);
-      }
-    });
+addEmp(): void {
+  if (this.formGroup.invalid) return;
+
+  const formData = new FormData();
+  const employee = { ...this.formGroup.value };
+
+  formData.append('employee', JSON.stringify(employee));
+
+  if (this.selectedFile) {
+    formData.append('photo', this.selectedFile);
   }
 
-
-
+  this.employeeservice.addEmployee(formData).subscribe({
+    next: (res) => {
+      console.log('Employee added successfully', res);
+      this.formGroup.reset();
+      this.selectedFile = null;
+      this.router.navigate(['/viewemp']);
+    },
+    error: (err) => {
+      console.error('Error:', err);
+    }
+  });
+}
 }

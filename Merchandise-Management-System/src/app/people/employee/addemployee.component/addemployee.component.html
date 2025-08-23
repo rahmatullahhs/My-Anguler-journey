@@ -122,19 +122,20 @@
         </div>
 
 
-        <!-- <div class="col-md-6">
+        <div class="col-md-6">
           <label for="photoUrl" class="form-label">
             <i class="fas fa-image me-1"></i> Profile Photo URL
           </label>
-          <input
-            formControlName="photoUrl"
-            type="text"
-            class="form-control"
-            id="photoUrl"
-            placeholder="https://example.com/photo.jpg"
-          />
-          <small class="text-muted">Use a direct image URL or leave blank for default</small>
-        </div> -->
+         <input
+  type="file"
+  class="form-control"
+  id="photo"
+  (change)="onFileSelected($event)"
+  accept="image/*"
+/>
+<small class="text-muted">Upload employee photo (optional)</small>
+
+        </div>
 
 
 

@@ -8,7 +8,7 @@ export interface EmployeeModel {
     gender: string;
     designation: string;
     address: string;
-    // photoUrl?: string;
+    photoUrl?: string;
     salary: number;
 
 }

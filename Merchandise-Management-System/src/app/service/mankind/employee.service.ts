@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeModel } from '../../models/human/employee.model';
@@ -18,9 +18,13 @@ export class EmployeeService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  addEmp(employee: EmployeeModel): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add`, employee);
-  }
+  
+// employee.service.ts
+addEmployee(employeeFormData: FormData): Observable<any> {
+  return this.http.post('http://localhost:8085/api/employee/add', employeeFormData);
+}
+
+
 
   updateEmp(id: number, employee: EmployeeModel): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, employee);

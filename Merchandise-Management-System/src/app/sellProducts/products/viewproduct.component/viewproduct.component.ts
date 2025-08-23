@@ -36,8 +36,11 @@ export class ViewproductComponent implements OnInit {
 loadCart(): void {
   const cart = this.cartService.getCart(); // returns { items: CartModel[], total: number }
   this.cartItems = cart.items;
-  this.total = cart.total;
+
+  // Instead of relying on cart.total, recalculate from items
+  this.calculateTotal();
 }
+
 
 
 
@@ -51,11 +54,12 @@ loadCart(): void {
     this.loadCart();
   }
 
-  updateQuantity(productId: number, quantityStr: string): void {
-    const quantity = parseInt(quantityStr, 10);
-    this.cartService.updateQuantity(productId, quantity);
-    this.loadCart();
-  }
+updateQuantity(productId: number, quantityStr: string): void {
+  const quantity = parseInt(quantityStr, 10);
+  this.cartService.updateQuantity(productId, quantity);
+  this.loadCart(); // this will now recalculate total as well
+}
+
 
   calculateTotal(): void {
     this.total = this.cartItems.reduce(

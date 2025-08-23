@@ -1,1 +1,16 @@
 
+body {
+  background-color: #f8f9fa;
+}
+.card {
+  margin-bottom: 20px;
+  color: #fff;
+}
+.section-title {
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 5px;
+}
+.card-title i {
+  margin-right: 8px;
+}
