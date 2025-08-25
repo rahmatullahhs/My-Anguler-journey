@@ -1,5 +1,8 @@
-<div>
-<app-navbar (toggleSidebar)="toggleSidebar()"></app-navbar>
+<app-navbar (toggleSidebar)="toggleSidebar()">
+  <a class="nav-link text-white" routerLink="/cart">
+    🛒 Cart ({{ cartCount$ | async }})
+  </a>
+</app-navbar>
 
 <div class="d-flex">
   <app-sidebar [collapsed]="isSidebarCollapsed"></app-sidebar>
@@ -11,10 +14,17 @@
 
 <app-footer></app-footer>
 
-
+<!-- Scroll to Top Button -->
 <button
-  class="bg-violet"
-  style="
+  class="scroll-to-top"
+  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+>
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Optional: move styles to a global CSS file -->
+<style>
+  .scroll-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -29,8 +39,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  "
-  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
->
-<i class="fas fa-arrow-up"></i>
-</button>
+    z-index: 1000;
+  }
+</style>

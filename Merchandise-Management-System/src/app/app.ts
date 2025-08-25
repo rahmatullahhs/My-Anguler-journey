@@ -1,24 +1,31 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CartService } from './service/sale-product/cart.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  standalone:false
 })
-export class App {
-   protected readonly title = signal('Merchandise-Management-System');
+export class App implements OnInit {
 
+  // Page title (using signal, if needed elsewhere)
+  protected readonly title = signal('Merchandise-Management-System');
+
+  // Sidebar toggle
   isSidebarCollapsed = true;
-collapsed: any;
 
+  // Reactive cart count
+  cartCount$!: Observable<number>;
 
+  constructor(private cartService: CartService) {}
 
-  toggleSidebar() {
+  ngOnInit(): void {
+    this.cartCount$ = this.cartService.cartCount$;
+  }
+
+  toggleSidebar(): void {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 }
-
-
-
-
