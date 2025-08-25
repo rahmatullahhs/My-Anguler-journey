@@ -39,6 +39,9 @@ import { UpdateproductComponent } from './sellProducts/products/updateproduct.co
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
 import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
+import { FaqComponents } from './help-supports/faq.components/faq.components';
+import { SupportComponents } from './help-supports/support.components/support.components';
+import { KbComponents } from './help-supports/kb.components/kb.components';
 
 
 
@@ -78,7 +81,10 @@ import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.compon
     UpdateproductComponent,
     ViewproductComponent,
     AddcartComponent,
-    AddcheckoutComponent
+    AddcheckoutComponent,
+    FaqComponents,
+    SupportComponents,
+    KbComponents
 
 
   ],

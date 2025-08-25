@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../service/product.service';
+
 import { ProductModel } from '../../../models/products/product.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductService } from '../../../service/sale-product/product.service';
 
 @Component({
   standalone: false,

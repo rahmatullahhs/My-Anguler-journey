@@ -22,6 +22,9 @@ import { AddproductComponent } from './sellProducts/products/addproduct.componen
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
+import { FaqComponents } from './help-supports/faq.components/faq.components';
+import { SupportComponents } from './help-supports/support.components/support.components';
+import { KbComponents } from './help-supports/kb.components/kb.components';
 
 
 const routes: Routes = [
@@ -53,7 +56,10 @@ const routes: Routes = [
   { path: 'addproduct', component: AddproductComponent },
   { path: 'viewproduct', component: ViewproductComponent },
   { path: 'updateproduct', component: UpdateproductComponent },
-  {path:'checkout',component:AddcheckoutComponent}
+  {path:'checkout',component:AddcheckoutComponent},
+  {path: 'faq',component:FaqComponents},
+  {path:'support',component:SupportComponents},
+  {path:'kb',component:KbComponents}
 
 ];
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../service/product.service';
+
 import { ProductModel } from '../../../models/products/product.model';
-import { CartService } from '../../../service/carts/cart.service';
+import { CartService } from '../../../service/sale-product/cart.service';
 import { CartModel } from '../../../models/products/cart.model';
 import { Router } from '@angular/router';
+import { ProductService } from '../../../service/sale-product/product.service';
 
 @Component({
   standalone: false,
@@ -31,22 +32,6 @@ export class ViewproductComponent implements OnInit {
     this.productService.getAll().subscribe(data => {
       this.products = data;
     });
-  }
-
-loadCart(): void {
-  const cart = this.cartService.getCart(); // returns { items: CartModel[], total: number }
-  this.cartItems = cart.items;
-
-  // Instead of relying on cart.total, recalculate from items
-  this.calculateTotal();
-}
-
-
-
-
-  addToCart(product: ProductModel): void {
-    this.cartService.addItem(product);
-    this.loadCart();
   }
 
   remove(productId: number): void {
@@ -88,4 +73,20 @@ updateQuantity(productId: number, quantityStr: string): void {
   this.cartService.setCart(this.cartItems, this.total);
   this.router.navigate(['/checkout']);
 }
+
+
+loadCart(): void {
+  const cart = this.cartService.getCart(); // returns { items: CartModel[], total: number }
+  this.cartItems = cart.items;
+
+  // Instead of relying on cart.total, recalculate from items
+  this.calculateTotal();
+}
+
+
+
+  addToCart(product: ProductModel): void {
+    this.cartService.addItem(product);
+    this.loadCart();
+  }
 }
