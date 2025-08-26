@@ -1,110 +1,107 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CogsModel } from '../../../models/Accounts/cogs.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CogsService } from '../../../service/Accounts/cogs.service';
 
 @Component({
   selector: 'app-add-cogs.component',
   standalone: false,
   templateUrl: './add-cogs.component.html',
-  styleUrl: './add-cogs.component.css'
+  styleUrls: ['./add-cogs.component.css'] // ✅ fixed typo
 })
-export class AddCogsComponent {
+export class AddCogsComponent implements OnInit {
 
-  cogsList: CogsModel[] = [];  // Array to hold all COGS data
-  cogsForm: FormGroup;  // Form for COGS data
-  isEditMode = false;  // Flag to track if in edit mode
+  cogsList: CogsModel[] = [];
+  cogsForm: FormGroup;
+  isEditMode = false;
 
   constructor(
-
     private fb: FormBuilder,
-    private cogsService: CogsService , // Service to interact with COGS API
-    private cdr:ChangeDetectorRef
-
+    private cogsService: CogsService,
+    private cdr: ChangeDetectorRef
   ) {
-    // Initialize form with the appropriate fields
     this.cogsForm = this.fb.group({
-      id: [null],  // ID for editing COGS
-       purchaseInvoice:[''],
-      productprice: [null],  // Product price
-      transportfee: [null],  // Transport fee
-      labourcost: [null],  // Labour cost
-      packingcost: [null],  // Packing cost
-      tax: [null],  // Tax
-        totalCogs: []
+      id: [null],
+      purchaseInvoice: ['', Validators.required],
+      productName: ['', Validators.required],
+      productPrice: [0, Validators.required],
+      transportFee: [0, Validators.required],
+      labourCost: [0, Validators.required],
+      packingCost: [0, Validators.required],
+      date:[''],
+      tax: [0],
+      totalCogs: [0]
     });
   }
 
   ngOnInit(): void {
-    this.getAllCogs();  // Fetch all COGS data on component load
+    this.getAllCogs();
   }
 
-  // Fetch all COGS data from the server
   getAllCogs() {
     this.cogsService.getAllCogs().subscribe(data => {
-      this.cogsList = data;  // Store fetched COGS data
+      this.cogsList = data;
       this.cdr.markForCheck();
     });
   }
 
-  // Method to calculate the total COGS
-calculateTotalCogs(): number {
-  const formValues = this.cogsForm.value;
-  const tax = formValues.productprice * 0.205; // 20.5% of product price
+  // Calculate total cost of goods sold
+  calculateTotalCogs(): number {
+    const {
+      productPrice,
+      transportFee,
+      labourCost,
+      packingCost
+    } = this.cogsForm.value;
 
-  return formValues.productprice +
-         formValues.transportfee +
-         formValues.labourcost +
-         formValues.packingcost +
-         tax;
-}
+    const tax = productPrice * 0.205;
 
-  // Handle form submission
-  onSubmit() {
-    if (this.cogsForm.valid) {
-      const totalCogs = this.calculateTotalCogs();  // Calculate total COGS
+    this.cogsForm.patchValue({ tax }); // update tax field in form
 
-      const cogs: CogsModel = { 
-        ...this.cogsForm.value, 
-        totalCogs: totalCogs  // Add calculated total COGS to the model
-      };
+    return productPrice + transportFee + labourCost + packingCost + tax;
+  }
 
-      if (this.isEditMode && cogs.id) {
-        // If in edit mode, update the existing COGS
-        this.cogsService.updateCogs(cogs).subscribe(() => {
-          this.getAllCogs();  // Refresh the COGS list
-          this.resetForm();   // Reset the form after submission
-        });
-      } else {
-        // If new entry, add a new COGS record
-        this.cogsService.addCogs(cogs).subscribe(() => {
-          this.getAllCogs();  // Refresh the COGS list
-          this.resetForm();   // Reset the form after submission
-        });
-      }
+ onSubmit() {
+  if (this.cogsForm.valid) {
+    const totalCogs = this.calculateTotalCogs();
+    const cogs: CogsModel = {
+      ...this.cogsForm.value,
+      totalCogs: totalCogs
+    };
+
+    console.log('Submitting COGS:', cogs);  // <-- Add this to inspect data sent
+
+    if (this.isEditMode && cogs.id) {
+      this.cogsService.updateCogs(cogs).subscribe(() => {
+        this.getAllCogs();
+        this.resetForm();
+      });
+    } else {
+      this.cogsService.addCogs(cogs).subscribe(() => {
+        this.getAllCogs();
+        this.resetForm();
+      });
     }
   }
+}
 
-  // Edit an existing COGS entry
+    
+
   editCogs(cogs: CogsModel) {
-    this.cogsForm.patchValue(cogs);  // Patch the form with the COGS data
-    this.isEditMode = true;  // Set edit mode to true
+    this.cogsForm.patchValue(cogs);
+    this.isEditMode = true;
   }
 
-  // Delete a COGS entry by its ID
-  deleteCogs(id: string) {
+  deleteCogs(id: number) {
     if (id) {
       this.cogsService.deleteCogs(id).subscribe(() => {
-        this.getAllCogs();  // Refresh the COGS list after deletion
+        this.getAllCogs();
       });
     }
   }
 
-  // Reset the form
   resetForm() {
-    this.cogsForm.reset();  // Reset the form fields
-    this.isEditMode = false;  // Reset edit mode flag
+    this.cogsForm.reset();
+    this.isEditMode = false;
   }
 }
-
-

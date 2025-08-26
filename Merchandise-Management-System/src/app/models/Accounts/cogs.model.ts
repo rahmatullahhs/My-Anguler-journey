@@ -1,12 +1,12 @@
 export interface CogsModel {
-
-    id?: string;
-    purchaseInvoice: string;
-    productprice: number;
-    transportfee: number;
-    labourcost: number;
-    packingcost: number;
-    tax: number;
-    totalCogs: number;
-
+  id?: number;
+  purchaseInvoice: string;
+  productName: string;
+  productPrice: number;
+  transportFee: number;
+  labourCost: number;
+  packingCost: number; // ← fixed casing to match camelCase
+  tax: number;
+  date: Date| string;
+  totalCogs: number;
 }
