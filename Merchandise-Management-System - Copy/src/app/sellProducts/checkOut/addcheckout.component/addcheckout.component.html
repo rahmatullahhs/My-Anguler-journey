@@ -1,0 +1,99 @@
+<div class="container mt-4">
+   <!-- INVOICE, SUPPLIER, DATE -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="invoice" class="form-label"><i class="fas fa-file-invoice me-1 text-danger"></i>Invoice No</label>
+            <input id="invoice" type="text" class="form-control" formControlName="invoice">
+          </div>
+       <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="fullName" class="form-label">
+          <i class="fas fa-user me-1"></i> Full Name
+        </label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control"
+          id="fullName"
+          placeholder="Enter full name"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">
+          <i class="fas fa-envelope me-1"></i> Email Address
+        </label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="example@company.com"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="phone" class="form-label">
+          <i class="fas fa-phone me-1"></i> Phone Number
+        </label>
+        <input
+          formControlName="phone"
+          type="tel"
+          class="form-control"
+          id="phone"
+          placeholder="+1 555-0123"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="address" class="form-label">
+          <i class="fas fa-map-marker-alt me-1"></i> Address
+        </label>
+        <input
+          formControlName="address"
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Enter employee address"
+          required
+        />
+      </div>
+    </div>
+            <label for="date" class="form-label"><i class="fas fa-calendar me-1 text-primary"></i>Purchase Date</label>
+            <input type="date" class="form-control" id="date" formControlName="date">
+          </div>
+        </div>
+  <h2>Invoice/checkout</h2>
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ item.product.price }}</td>
+        <td>${{ item.quantity * item.product.price }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="text-end"><strong>Total</strong></td>
+        <td><strong>${{ total }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+   <!-- Footer Notes -->
+  <div style="margin-top: 30px;">
+    <p><strong>Payment Instructions:</strong> Please make payment by the due date. Contact us for any questions regarding this invoice.</p>
+    <p><strong>Thank you for your business!</strong></p>
+  </div>
+

@@ -42,6 +42,7 @@ import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.compon
 import { FaqComponents } from './help-supports/faq.components/faq.components';
 import { SupportComponents } from './help-supports/support.components/support.components';
 import { KbComponents } from './help-supports/kb.components/kb.components';
+import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 
 
 
@@ -84,7 +85,8 @@ import { KbComponents } from './help-supports/kb.components/kb.components';
     AddcheckoutComponent,
     FaqComponents,
     SupportComponents,
-    KbComponents
+    KbComponents,
+    AddCogsComponent
 
 
   ],

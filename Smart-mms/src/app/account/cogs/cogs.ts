@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CogsService } from '../../services/cogs.service';  // Update this to your COGS service
 import { CogsModel } from '../../models/cogs.model';  // Updated COGS model import
 

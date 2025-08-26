@@ -3,11 +3,9 @@ import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
 import { OrderModel } from '../../models/order.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SalestrackingModel } from '../../models/saletracking.model';
 import { SaletrackingService } from '../../services/saletracking.service';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
-import { ProductService } from '../../services/product.service';
 import { InventoryService } from '../../services/inventory.service';
 import { InventoryModel } from '../../models/inventory.model';
 
