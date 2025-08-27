@@ -28,3 +28,56 @@ app-sidebar {
     border-bottom: 1px solid #dee2e6;
   }
 }
+/* .... */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #0646a8, #1e40af, #3b82f6);
+  color: white;
+  border-radius: 50%;
+  box-shadow:
+    0 8px 15px rgba(8, 12, 240, 0.5),
+    0 4px 6px rgba(0, 0, 0, 0.3);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: bounce 2s infinite;
+  font-size: 24px;
+  user-select: none;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Hover effects */
+.scroll-to-top:hover {
+  box-shadow:
+    0 10px 20px rgba(8, 12, 240, 0.8),
+    0 6px 10px rgba(0, 0, 0, 0.4),
+    0 0 15px #3b82f6;
+  transform: scale(1.15) translateY(-4px);
+}
+
+/* Optional: add an arrow or icon */
+.scroll-to-top::before {
+  content: "↑";
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 1;
+  color: white;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}

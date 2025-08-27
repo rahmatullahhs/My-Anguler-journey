@@ -42,7 +42,7 @@ export class AddcartComponent implements OnInit{
       sum + item.product.price * item.quantity, 0);
   }
 
-
+   
 
 
 getInputValue(event: Event): string {

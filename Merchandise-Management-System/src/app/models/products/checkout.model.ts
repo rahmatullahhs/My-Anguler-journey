@@ -3,19 +3,27 @@ export interface CheckoutModel {
     id: number;
     product: { id: number };
     qty: number;
-    subtotal: number;
+
+    invoiceNumber: string;
+    date: Date;
+    paid: number;
+    due: number;
 
     customerName: string;
     customerPhone: string;
     customerAddress: string;
     customerEmail: string;
 
+    subtotal: number;
+    discount: number;
+    taxRate: number;
+    taxAmount: number;
+    total: number;
 
-    invoice: string;
-    date: Date;
-    paid: number;
-    due: number;
 
-    creatBy:string;
+    products: [];
+    creatBy: string;
 
 }
+
+

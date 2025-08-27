@@ -24,11 +24,11 @@ export class ViewproductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadProduct();
     this.loadCart();
   }
 
-  loadProducts(): void {
+  loadProduct(): void {
     this.productService.getAll().subscribe(data => {
       this.products = data;
     });
@@ -60,7 +60,7 @@ updateQuantity(productId: number, quantityStr: string): void {
 
   deleteProduct(id: number): void {
     this.productService.deleteProduct(id).subscribe(() => {
-      this.loadProducts();
+      this.loadProduct();
     });
   }
 

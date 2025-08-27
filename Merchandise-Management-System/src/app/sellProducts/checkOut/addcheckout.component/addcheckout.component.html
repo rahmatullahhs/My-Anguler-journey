@@ -1,143 +1,221 @@
 <div class="container mt-4">
-   <!-- INVOICE, SUPPLIER, DATE -->
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="invoice" class="form-label"><i class="fas fa-file-invoice me-1 text-danger"></i>Invoice No</label>
-            <input id="invoice" type="text" class="form-control" formControlName="invoice">
-          </div>
-       <div class="row mb-4">
-      <div class="col-md-6">
-        <label for="fullName" class="form-label">
-          <i class="fas fa-user me-1"></i> Full Name
-        </label>
-        <input
-          formControlName="name"
-          type="text"
-          class="form-control"
-          id="fullName"
-          placeholder="Enter full name"
-          required
-        />
-      </div>
-      <div class="col-md-6">
-        <label for="email" class="form-label">
-          <i class="fas fa-envelope me-1"></i> Email Address
-        </label>
-        <input
-          formControlName="email"
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="example@company.com"
-          required
-        />
-      </div>
-    </div>
 
-    <div class="row mb-4">
-      <div class="col-md-6">
-        <label for="phone" class="form-label">
-          <i class="fas fa-phone me-1"></i> Phone Number
-        </label>
-        <input
-          formControlName="phone"
-          type="tel"
-          class="form-control"
-          id="phone"
-          placeholder="+1 555-0123"
-          required
-        />
+  <!-- FIXED SHOP DETAILS -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <!-- Logo Placeholder -->
+        <div
+  style="
+    width: 80px;
+    height: 80px;
+  
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    padding: 8px; /* add some padding so image isn't flush to edges */
+    box-sizing: border-box;
+  "
+>
+  <img
+    src="assets/gt-logo.jpg"
+    alt="Business Icon"
+    style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border: 1px solid black;
+      border-radius: 4px;
+      display: block;
+    "
+  />
+</div>
+
+        <div>
+          <h3 class="mb-1" style="color:#513aa3;"><b>Global Tech</b></h3>
+          <p class="mb-0" style="font-size:14px; color:#555;">1234 Tech Avenue, Silicon City, CA 94043</p>
+          <p class="mb-0" style="font-size:14px; color:#555;">Phone: +1 (555) 123-4567 | Email: info@globaltech.com</p>
+          <p class="mb-0" style="font-size:14px; color:#555;">Website: www.globaltech.com</p>
+        </div>
       </div>
-      <div class="col-md-6">
-        <label for="address" class="form-label">
-          <i class="fas fa-map-marker-alt me-1"></i> Address
-        </label>
-        <input
-          formControlName="address"
-          type="text"
-          class="form-control"
-          id="address"
-          placeholder="Enter employee address"
-          required
-        />
+      <div>
+        <h5 class="text-muted">INVOICE</h5>
+        <h6 class="fw-bold">#{{ orderForm.value.invoiceNumber || '0000' }}</h6>
       </div>
     </div>
-            <label for="date" class="form-label"><i class="fas fa-calendar me-1 text-primary"></i>Purchase Date</label>
-            <input type="date" class="form-control" id="date" formControlName="date">
-          </div>
+  </div>
+
+  <!-- INVOICE INFO SECTION -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="invoiceNumber" class="form-label fw-semibold">
+            <i class="fas fa-file-invoice me-1 text-danger"></i> Invoice No
+          </label>
+          <input id="invoiceNumber" type="text" class="form-control" formControlName="invoiceNumber" placeholder="Invoice Number">
         </div>
-  <h2>Invoice/checkout</h2>
-  <table class="table table-bordered mt-3">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Subtotal</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of cartItems">
-        <td>{{ item.product.name }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>${{ item.product.price }}</td>
-        <td>${{ item.quantity * item.product.price }}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3" class="text-end"><strong>Total</strong></td>
-        <td><strong>${{ total }}</strong></td>
-      </tr>
-    </tfoot>
-  </table>
-   <!-- Footer Notes -->
-  <div style="margin-top: 30px;">
+
+        <div class="col-md-4">
+          <label for="date" class="form-label fw-semibold">
+            <i class="fas fa-calendar me-1 text-primary"></i> Purchase Date
+          </label>
+          <input type="date" class="form-control" id="date" formControlName="date">
+        </div>
+
+        <div class="col-md-4">
+          <label for="creatBy" class="form-label fw-semibold">
+            <i class="fas fa-user-edit me-1 text-info"></i> Created By
+          </label>
+          <input type="text" class="form-control" id="creatBy" formControlName="creatBy" placeholder="Created By">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMER INFO SECTION -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="customerName" class="form-label fw-semibold">
+            <i class="fas fa-user me-1"></i> Customer Name
+          </label>
+          <input formControlName="customerName" type="text" class="form-control" id="customerName" placeholder="Enter full name" required />
+        </div>
+        <div class="col-md-6">
+          <label for="customerEmail" class="form-label fw-semibold">
+            <i class="fas fa-envelope me-1"></i>  Customer Email Address
+          </label>
+          <input formControlName="customerEmail" type="email" class="form-control" id="customerEmail" placeholder="example@company.com" required />
+        </div>
+      </div>
+
+      <div class="row g-3 mt-3">
+        <div class="col-md-6">
+          <label for="customerPhone" class="form-label fw-semibold">
+            <i class="fas fa-phone me-1"></i>  Customer Phone Number
+          </label>
+          <input formControlName="customerPhone" type="tel" class="form-control" id="customerPhone" placeholder="+1 555-0123" required />
+        </div>
+        <div class="col-md-6">
+          <label for="customerAddress" class="form-label fw-semibold">
+            <i class="fas fa-map-marker-alt me-1"></i>  Customer Address
+          </label>
+          <input formControlName="customerAddress" type="text" class="form-control" id="customerAddress" placeholder="Enter customer address" required />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS TABLE -->
+  <h2 class="mb-3" style="color:#007b5e; font-weight:700;">Invoice / Checkout</h2>
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-bordered table-striped mb-0 align-middle">
+      <thead class="table-success">
+        <tr>
+          <th>Product</th>
+          <th class="text-center">Quantity</th>
+          <th class="text-end">Unit Price</th>
+          <th class="text-end">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.product.name }}</td>
+          <td class="text-center">{{ item.qty }}</td>
+          <td class="text-end">${{ item.product.price.toFixed(2) }}</td>
+          <td class="text-end">${{ (item.qty * item.product.price).toFixed(2) }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-end fw-semibold">Subtotal</td>
+          <td class="text-end fw-bold">${{ orderForm.value.subtotal.toFixed(2) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end fw-semibold">Discount</td>
+          <td class="text-end fw-bold">-${{ orderForm.value.discount.toFixed(2) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end fw-semibold">Tax ({{ orderForm.value.taxRate }}%)</td>
+          <td class="text-end fw-bold">${{ orderForm.value.taxAmount.toFixed(2) }}</td>
+        </tr>
+        <tr class="table-primary">
+          <td colspan="3" class="text-end fw-semibold fs-5">Total</td>
+          <td class="text-end fw-bold fs-5">${{ orderForm.value.total.toFixed(2) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end fw-semibold">Paid</td>
+          <td class="text-end fw-bold">${{ orderForm.value.paid.toFixed(2) }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end fw-semibold">Due</td>
+          <td class="text-end fw-bold">${{ orderForm.value.due.toFixed(2) }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- FOOTER NOTES -->
+  <div class="mt-4 p-3 bg-light rounded shadow-sm" style="font-size:15px; color:#444;">
     <p><strong>Payment Instructions:</strong> Please make payment by the due date. Contact us for any questions regarding this invoice.</p>
     <p><strong>Thank you for your business!</strong></p>
   </div>
-  <!-- Invoice Preview
-<div id="invoiceToPrint" style="display:none; background:#fff; padding:30px; max-width:800px; margin:auto; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.1);">
-  <div style="text-align:center; margin-bottom:25px;">
-    <h2 style="color:#007b5e; margin:0;">Vertex Tech World</h2>
-    <p>Order Invoice</p>
-    <hr style="border:2px solid #007b5e; width:100px; margin:10px auto;">
-  </div>
-  <div style="display:flex; justify-content:space-between; margin-bottom:25px;">
-    <div>
-      <p><i class="fas fa-user text-primary"></i> <strong>{{ orderForm.value.customername }}</strong></p>
-      <p><i class="fas fa-phone text-success"></i> {{ orderForm.value.customerphone }}</p>
-      <p><i class="fas fa-envelope text-danger"></i> {{ orderForm.value.customeremail }}</p>
-    </div>
-    <div style="text-align:right;">
-      <p><i class="fas fa-calendar-alt text-info"></i> {{ orderForm.value.date | date:'mediumDate' }}</p>
-      <p><i class="fas fa-file-invoice text-warning"></i> #{{ orderForm.value.invoice }}</p>
-    </div>
-  </div>
-  <table width="100%" cellpadding="10" style="border-collapse:collapse;font-size:15px;">
-    <thead style="background:#fff;color:#333;border:1px solid #ddd;">
-      <tr>
-        <th>Product</th><th style="text-align:right;">Unit Price</th><th style="text-align:right;">Qty</th><th style="text-align:right;">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ orderForm.value.productdetail }}</td>
-        <td style="text-align:right;">৳{{ orderForm.value.price }}</td>
-        <td style="text-align:right;">{{ orderForm.value.productqty }}</td>
-        <td style="text-align:right;">৳{{ totalprice }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div style="margin-top:25px; text-align:right;">
-    <p><strong>Subtotal:</strong> ৳{{ totalprice }}</p>
-    <p><strong>Discount:</strong> {{ orderForm.value.discount }}%</p>
-    <p><strong>Final Price:</strong> ৳{{ finalprice }}</p>
-    <p><strong>Paid:</strong> ৳{{ orderForm.value.paid }}</p>
-    <p><strong>Due:</strong> ৳{{ due }}</p>
-  </div>
-  <div style="margin-top:40px; text-align:right; font-size:14px; color:#555;">
-    <strong>Prepared By:</strong> Rahmat
-  </div>
-</div> -->
 
+  <!-- INVOICE PREVIEW -->
+  <div id="invoiceToPrint" style="display:none; background:#fff; padding:30px; max-width:800px; margin:auto; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,0.15); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="text-align:center; margin-bottom:25px;">
+      <h2 style="color:#007b5e; margin:0;">Vertex Tech World</h2>
+      <p>Order Invoice</p>
+      <hr style="border:3px solid #007b5e; width:120px; margin:10px auto;">
+    </div>
+
+    <div style="display:flex; justify-content:space-between; margin-bottom:25px; font-size:14px; color:#333;">
+      <div>
+        <p><i class="fas fa-user text-primary"></i> <strong>{{ orderForm.value.customerName }}</strong></p>
+        <p><i class="fas fa-phone text-success"></i> {{ orderForm.value.customerPhone }}</p>
+        <p><i class="fas fa-envelope text-danger"></i> {{ orderForm.value.customerEmail }}</p>
+      </div>
+      <div style="text-align:right;">
+        <p><i class="fas fa-calendar-alt text-info"></i> {{ orderForm.value.date | date:'mediumDate' }}</p>
+        <p><i class="fas fa-file-invoice text-warning"></i> #{{ orderForm.value.invoiceNumber }}</p>
+      </div>
+    </div>
+
+    <table width="100%" cellpadding="10" style="border-collapse:collapse;font-size:15px; color:#222;">
+      <thead style="background:#e9f7ef; border:1px solid #b5d6c5;">
+        <tr>
+          <th>Product</th>
+          <th style="text-align:right;">Unit Price</th>
+          <th style="text-align:right;">Qty</th>
+          <th style="text-align:right;">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems" style="border-bottom:1px solid #ddd;">
+          <td>{{ item.product.name }}</td>
+          <td style="text-align:right;">${{ item.product.price.toFixed(2) }}</td>
+          <td style="text-align:right;">{{ item.qty }}</td>
+          <td style="text-align:right;">${{ (item.qty * item.product.price).toFixed(2) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:25px; text-align:right; font-size:16px; color:#333;">
+      <p><strong>Subtotal:</strong> ${{ orderForm.value.subtotal.toFixed(2) }}</p>
+      <p><strong>Discount:</strong> ${{ orderForm.value.discount.toFixed(2) }}</p>
+      <p><strong>Tax:</strong> ${{ orderForm.value.taxAmount.toFixed(2) }}</p>
+      <p style="font-size:18px;"><strong>Total:</strong> ${{ orderForm.value.total.toFixed(2) }}</p>
+      <p><strong>Paid:</strong> ${{ orderForm.value.paid.toFixed(2) }}</p>
+      <p><strong>Due:</strong> ${{ orderForm.value.due.toFixed(2) }}</p>
+    </div>
+
+    <div style="margin-top:40px; text-align:right; font-size:14px; color:#555;">
+      <strong>Prepared By:</strong> {{ orderForm.value.creatBy }}
+    </div>
+  </div>
+
+</div>
