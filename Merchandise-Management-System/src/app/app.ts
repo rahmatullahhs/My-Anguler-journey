@@ -9,6 +9,10 @@ import { CartService } from './service/sale-product/cart.service';
   standalone:false
 })
 export class App implements OnInit {
+  
+scrollToTop(): void {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
   // Page title (using signal, if needed elsewhere)
   protected readonly title = signal('Merchandise-Management-System');

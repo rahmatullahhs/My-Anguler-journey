@@ -1,0 +1,54 @@
+/* Sidebar container */
+.sidebar {
+  width: 220px;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #253549; /* Dark blue background */
+  padding: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle right border */
+  font-family: 'Lato', sans-serif; /* Modern font */
+}
+
+/* Navigation links inside sidebar */
+.sidebar .nav-link {
+  color: #ffffff; /* White text */
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
+}
+
+/* Hover and focus states for nav links */
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.1); /* Slight white overlay */
+}
+
+/* Dropdown menu styling */
+.sidebar .dropdown-menu {
+  background-color: #29476e; /* Slightly lighter blue */
+  color: white;
+  border: none;
+  font-size: 14px;
+}
+
+/* Dropdown items */
+.sidebar .dropdown-item {
+  color: white;
+  padding: 8px 16px;
+  font-weight: 400; /* Normal weight */
+}
+
+/* Dropdown items hover */
+.sidebar .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* Slightly stronger hover effect */
+}
+
+/* Spacing between nav items */
+.sidebar .nav-item {
+  margin-bottom: 6px;
+}
+
+/* Space after dropdown toggle arrow */
+.sidebar .dropdown-toggle::after {
+  margin-left: 0.5rem;
+}
