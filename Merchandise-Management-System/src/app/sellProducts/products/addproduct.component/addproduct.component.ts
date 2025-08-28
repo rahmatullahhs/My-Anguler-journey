@@ -25,7 +25,7 @@ export class AddproductComponent implements OnInit {
       name: ['', Validators.required],
       category: ['Laptop', Validators.required],
       brand: ['', Validators.required],
-      stock: [0, [Validators.required, Validators.min(0)]],
+      quantity: [0, [Validators.required, Validators.min(0)]],
       price: [0, [Validators.required, Validators.min(0)]],
       model: ['', Validators.required],
       details: ['', Validators.required]

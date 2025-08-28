@@ -58,15 +58,7 @@ updateQuantity(productId: number, quantityStr: string): void {
     return input.value;
   }
 
-  deleteProduct(id: number): void {
-    this.productService.deleteProduct(id).subscribe(() => {
-      this.loadProduct();
-    });
-  }
 
-  viewDetails(product: ProductModel): void {
-    this.router.navigate(['/product', product.id]);
-  }
 
 
   goToCheckout() {
