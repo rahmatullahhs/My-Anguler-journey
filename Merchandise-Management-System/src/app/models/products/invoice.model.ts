@@ -1,4 +1,4 @@
-export interface CheckoutModel {
+export interface InvoiceModel {
 
     id: number;
     product: { id: number };

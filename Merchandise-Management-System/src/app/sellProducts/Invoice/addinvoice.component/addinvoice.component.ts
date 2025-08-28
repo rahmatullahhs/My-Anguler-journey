@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CartService } from '../../../service/sale-product/cart.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 @Component({
-  selector: 'app-addcheckout',
+  selector: 'app-addinvoice.component',
   standalone: false,
-  templateUrl: './addcheckout.component.html',
-  styleUrls: ['./addcheckout.component.css'] // <-- corrected
+  templateUrl: './addinvoice.component.html',
+  styleUrl: './addinvoice.component.css'
 })
-export class AddcheckoutComponent implements OnInit {
-  cartItems: any[] = [];
+export class AddinvoiceComponent {
+ cartItems: any[] = [];
   total: number = 0;
 
   orderForm!: FormGroup;

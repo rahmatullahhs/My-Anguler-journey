@@ -71,7 +71,7 @@ updateQuantity(productId: number, quantityStr: string): void {
 
   goToCheckout() {
   this.cartService.setCart(this.cartItems, this.total);
-  this.router.navigate(['/checkout']);
+  this.router.navigate(['/invoice']);
 }
 
 
@@ -82,7 +82,6 @@ loadCart(): void {
   // Instead of relying on cart.total, recalculate from items
   this.calculateTotal();
 }
-
 
 
   addToCart(product: ProductModel): void {

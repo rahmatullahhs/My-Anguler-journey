@@ -38,11 +38,12 @@ import { AddproductComponent } from './sellProducts/products/addproduct.componen
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
-import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
+
 import { FaqComponents } from './help-supports/faq.components/faq.components';
 import { SupportComponents } from './help-supports/support.components/support.components';
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
+import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
 
 
 
@@ -82,11 +83,11 @@ import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.co
     UpdateproductComponent,
     ViewproductComponent,
     AddcartComponent,
-    AddcheckoutComponent,
     FaqComponents,
     SupportComponents,
     KbComponents,
-    AddCogsComponent
+    AddCogsComponent,
+    AddinvoiceComponent
 
 
   ],
