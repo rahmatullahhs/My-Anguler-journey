@@ -45,6 +45,7 @@ import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
 import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
+import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 
 
 
@@ -89,7 +90,8 @@ import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component
     KbComponents,
     AddCogsComponent,
     AddinvoiceComponent,
-    SellsaccountsComponent
+    SellsaccountsComponent,
+    ProductspriceComponent
 
 
   ],

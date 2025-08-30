@@ -1,7 +1,5 @@
 export interface CogsModel {
   id?: number;
-  quantity:number;
-  productPricePerUnit:number;
   purchaseInvoice: string;
   productName: string;
   productPrice: number;
