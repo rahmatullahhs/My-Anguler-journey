@@ -59,15 +59,23 @@ export class AddCogsComponent implements OnInit {
 
     const tax = productPrice * 0.205;
 
-    this.cogsForm.patchValue({ tax }); // Update tax field in form
+    // Update the tax field in form
+    this.cogsForm.patchValue({ tax });
 
-    return (productPrice + transportFee + labourCost + packingCost + tax) * quantity;
+    // Calculate total COGS (product cost + transport + labor + packing + tax)
+    const totalCogs = (productPrice + transportFee + labourCost + packingCost + tax) * quantity;
+
+    // Update totalCogs in the form
+    this.cogsForm.patchValue({ totalCogs });
+
+    return totalCogs;
   }
 
   // Calculate price per unit
   calculatePricePerUnit() {
     const { totalCogs, quantity } = this.cogsForm.value;
 
+    // Avoid division by zero
     if (quantity > 0) {
       return totalCogs / quantity;
     } else {
@@ -130,7 +138,8 @@ export class AddCogsComponent implements OnInit {
       productPricePerUnit: 0
     });
   }
-    // Handle quantity change to update price per unit
+
+  // Handle quantity change to update price per unit
   onQuantityChange() {
     this.calculatePricePerUnit(); // Recalculate unit price when quantity changes
   }
