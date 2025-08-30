@@ -46,6 +46,7 @@ import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.co
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
 import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
+import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 
 
 
@@ -91,7 +92,8 @@ import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/
     AddCogsComponent,
     AddinvoiceComponent,
     SellsaccountsComponent,
-    ProductspriceComponent
+    ProductspriceComponent,
+    ViewinvoiceComponent
 
 
   ],

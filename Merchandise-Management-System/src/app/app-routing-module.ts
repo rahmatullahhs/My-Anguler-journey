@@ -28,6 +28,7 @@ import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.co
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
 import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
+import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 
 
 const routes: Routes = [
@@ -65,7 +66,8 @@ const routes: Routes = [
   {path:'kb',component:KbComponents},
   {path:'cogs',component:AddCogsComponent},
     {path:'sellAccount',component:SellsaccountsComponent},
-    {path:'productprice',component:ProductspriceComponent}
+    {path:'productprice',component:ProductspriceComponent},
+      {path:'viewinvoice',component:ViewinvoiceComponent}
 
 ];
 

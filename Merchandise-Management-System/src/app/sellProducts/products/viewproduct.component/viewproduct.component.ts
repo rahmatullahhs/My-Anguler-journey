@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { ProductModel } from '../../../models/products/product.model';
 import { CartService } from '../../../service/sale-product/cart.service';
@@ -20,7 +20,8 @@ export class ViewproductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+     public cdr:ChangeDetectorRef 
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class ViewproductComponent implements OnInit {
   loadProduct(): void {
     this.productService.getAll().subscribe(data => {
       this.products = data;
+      this.cdr.markForCheck();
     });
   }
 
