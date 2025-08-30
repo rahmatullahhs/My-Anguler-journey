@@ -26,6 +26,7 @@ import { SupportComponents } from './help-supports/support.components/support.co
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
+import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 
 
 const routes: Routes = [
@@ -61,7 +62,8 @@ const routes: Routes = [
   {path: 'faq',component:FaqComponents},
   {path:'support',component:SupportComponents},
   {path:'kb',component:KbComponents},
-  {path:'cogs',component:AddCogsComponent}
+  {path:'cogs',component:AddCogsComponent},
+    {path:'sellAccount',component:SellsaccountsComponent}
 
 ];
 

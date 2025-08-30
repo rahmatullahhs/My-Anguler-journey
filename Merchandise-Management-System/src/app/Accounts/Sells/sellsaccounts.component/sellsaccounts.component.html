@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Accounts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-search, .btn-view-all {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <!-- Sales Accounts Header -->
+    <div class="card">
+        <div class="card-header">
+            <h4>Sales Accounts</h4>
+        </div>
+        <div class="card-body">
+            <h5>Product Sell</h5>
+            <!-- Search and View All Buttons -->
+            <div class="d-flex mb-3">
+                <input type="text" id="productSearchInput" class="form-control" placeholder="Search by Product Name">
+                <button class="btn btn-primary btn-search" onclick="searchProductSell()">Search</button>
+                <button class="btn btn-secondary btn-view-all" onclick="viewAllProductSell()">View All</button>
+            </div>
+            <!-- Table for Product Sell -->
+            <table class="table table-striped" id="productSellTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Sale ID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price (৳)</th>
+                        <th scope="col">Total (৳)</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Rows -->
+                    <tr>
+                        <td>001</td>
+                        <td>Product A</td>
+                        <td>2</td>
+                        <td>500</td>
+                        <td>1000</td>
+                        <td>2025-08-30</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Product B</td>
+                        <td>1</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>2025-08-29</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Refurbished Product Sell -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Refurbished Product Sell</h5>
+        </div>
+        <div class="card-body">
+            <!-- Search and View All Buttons -->
+            <div class="d-flex mb-3">
+                <input type="text" id="refurbishedSearchInput" class="form-control" placeholder="Search by Product Name">
+                <button class="btn btn-primary btn-search" onclick="searchRefurbishedProductSell()">Search</button>
+                <button class="btn btn-secondary btn-view-all" onclick="viewAllRefurbishedProductSell()">View All</button>
+            </div>
+            <!-- Table for Refurbished Product Sell -->
+            <table class="table table-striped" id="refurbishedSellTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Sale ID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Refurbished Price (৳)</th>
+                        <th scope="col">Total (৳)</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Rows -->
+                    <tr>
+                        <td>003</td>
+                        <td>Refurbished Product A</td>
+                        <td>5</td>
+                        <td>300</td>
+                        <td>1500</td>
+                        <td>2025-08-30</td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>Refurbished Product B</td>
+                        <td>2</td>
+                        <td>600</td>
+                        <td>1200</td>
+                        <td>2025-08-28</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Waste Sell -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Waste Sell</h5>
+        </div>
+        <div class="card-body">
+            <!-- Search and View All Buttons -->
+            <div class="d-flex mb-3">
+                <input type="text" id="wasteSearchInput" class="form-control" placeholder="Search by Waste Type">
+                <button class="btn btn-primary btn-search" onclick="searchWasteSell()">Search</button>
+                <button class="btn btn-secondary btn-view-all" onclick="viewAllWasteSell()">View All</button>
+            </div>
+            <!-- Table for Waste Sell -->
+            <table class="table table-striped" id="wasteSellTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Sale ID</th>
+                        <th scope="col">Waste Type</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price (৳)</th>
+                        <th scope="col">Total (৳)</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample Rows -->
+                    <tr>
+                        <td>005</td>
+                        <td>Plastic Waste</td>
+                        <td>10</td>
+                        <td>50</td>
+                        <td>500</td>
+                        <td>2025-08-30</td>
+                    </tr>
+                    <tr>
+                        <td>006</td>
+                        <td>Metal Waste</td>
+                        <td>7</td>
+                        <td>150</td>
+                        <td>1050</td>
+                        <td>2025-08-29</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Search Product Sell
+    function searchProductSell() {
+        const input = document.getElementById('productSearchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#productSellTable tbody tr');
+        rows.forEach(row => {
+            const productName = row.cells[1].textContent.toLowerCase();
+            if (productName.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // View All Product Sell
+    function viewAllProductSell() {
+        const rows = document.querySelectorAll('#productSellTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = '';
+        });
+    }
+
+    // Search Refurbished Product Sell
+    function searchRefurbishedProductSell() {
+        const input = document.getElementById('refurbishedSearchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#refurbishedSellTable tbody tr');
+        rows.forEach(row => {
+            const productName = row.cells[1].textContent.toLowerCase();
+            if (productName.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // View All Refurbished Product Sell
+    function viewAllRefurbishedProductSell() {
+        const rows = document.querySelectorAll('#refurbishedSellTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = '';
+        });
+    }
+
+    // Search Waste Sell
+    function searchWasteSell() {
+        const input = document.getElementById('wasteSearchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#wasteSellTable tbody tr');
+        rows.forEach(row => {
+            const wasteType = row.cells[1].textContent.toLowerCase();
+            if (wasteType.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // View All Waste Sell
+    function viewAllWasteSell() {
+        const rows = document.querySelectorAll('#wasteSellTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = '';
+        });
+    }
+</script>
+
+</body>
+</html>

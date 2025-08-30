@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../../service/sale-product/cart.service';
+import { ProductService } from '../../../service/sale-product/product.service';
+import { InvoiceService } from '../../../service/sale-product/invoice.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { CartModel } from '../../../models/products/cart.model';
+import { ProductModel } from '../../../models/products/product.model';
+import { InvoiceModel } from '../../../models/products/invoice.model';
 
 @Component({
   selector: 'app-addinvoice.component',
@@ -15,13 +19,17 @@ export class AddinvoiceComponent implements OnInit {
 
   cartItems: CartModel[] = [];
   total = 0;
-  orderForm: FormGroup;
+  invoiceForm: FormGroup;
+  product: ProductModel[] = [];
 
   constructor(
+    private invoiceService: InvoiceService,
+    private productService: ProductService,
+    private cdr: ChangeDetectorRef,
     private cartService: CartService,
     private fb: FormBuilder
   ) {
-    this.orderForm = this.fb.group({
+    this.invoiceForm = this.fb.group({
       invoiceNumber: [''],
       date: [new Date().toISOString().split('T')[0]],
       customerName: ['', Validators.required],
@@ -43,27 +51,26 @@ export class AddinvoiceComponent implements OnInit {
     const cart = this.cartService.getCart();
     this.cartItems = cart.items || [];
     this.total = cart.total || 0;
-
-    this.orderForm.patchValue({ subtotal: this.total });
+    this.invoiceForm.patchValue({ subtotal: this.total });
     this.calculateTotals();
-
-    this.orderForm.valueChanges.subscribe(() => {
-      this.calculateTotals();
+    this.invoiceForm.valueChanges.subscribe(() => {
+    this.calculateTotals();
     });
   }
 
+  
   calculateTotals(): void {
     const subtotal = this.total;
-    const discount = this.orderForm.value.discount || 0;
-    const taxRate = this.orderForm.value.taxRate || 0;
-    const paid = this.orderForm.value.paid || 0;
+    const discount = this.invoiceForm.value.discount || 0;
+    const taxRate = this.invoiceForm.value.taxRate || 0;
+    const paid = this.invoiceForm.value.paid || 0;
 
     const discountedAmount = subtotal - discount;
     const taxAmount = (discountedAmount * taxRate) / 100;
     const finalTotal = discountedAmount + taxAmount;
     const due = finalTotal - paid;
 
-    this.orderForm.patchValue({
+    this.invoiceForm.patchValue({
       subtotal: subtotal,
       taxAmount: taxAmount,
       total: finalTotal,
@@ -71,8 +78,27 @@ export class AddinvoiceComponent implements OnInit {
     }, { emitEvent: false });
   }
 
+  // Updated function to reduce inventory quantity using InvoiceService
+  updateInventory(): void {
+    for (const item of this.cartItems) {
+      // Create a product object to update the inventory
+      const updatedProduct: ProductModel = {
+        ...item.product,
+        quantity: item.product.quantity - item.quantity
+      };
+      this.invoiceService.updateInventory(item.product.id, item.quantity, updatedProduct).subscribe({
+        next: () => {
+          console.log(`✅ Updated inventory for product ${item.product.name}`);
+        },
+        error: (err) => {
+          console.error('❌ Inventory update failed', err);
+        }
+      });
+    }
+  }
+
   submitOrder(): void {
-    if (this.orderForm.invalid) {
+    if (this.invoiceForm.invalid) {
       alert('Please fill all required fields correctly.');
       return;
     }
@@ -82,21 +108,35 @@ export class AddinvoiceComponent implements OnInit {
       return;
     }
 
-    const orderData = {
-      ...this.orderForm.value,
+    // Prepare the order data to submit
+    const orderData: InvoiceModel = {
+      ...this.invoiceForm.value,
       items: this.cartItems
     };
 
     console.log('✅ Order Submitted:', orderData);
     alert('Sale Completed Successfully!');
 
-    // TODO: Submit orderData to backend here
+    // 1. Reduce product quantities in inventory
+    this.updateInventory();
 
+    // 2. Submit the invoice to the backend
+    this.invoiceService.addInvoice(orderData).subscribe({
+      next: (response) => {
+        console.log('✅ Invoice saved successfully!', response);
+      },
+      error: (err) => {
+        console.error('❌ Error saving invoice', err);
+      }
+    });
+
+    // 3. Clear the cart
     this.cartService.clearCart();
     this.cartItems = [];
     this.total = 0;
 
-    this.orderForm.reset({
+    // 4. Reset the form
+    this.invoiceForm.reset({
       invoiceNumber: '',
       date: new Date().toISOString().split('T')[0],
       customerName: '',
@@ -114,6 +154,8 @@ export class AddinvoiceComponent implements OnInit {
     });
   }
 
+
+
   printInvoice(): void {
     const el = document.getElementById('invoiceToPrint');
     if (!el) return;
@@ -127,7 +169,7 @@ export class AddinvoiceComponent implements OnInit {
         const w = pdf.internal.pageSize.getWidth();
         const h = (canvas.height * w) / canvas.width;
         pdf.addImage(img, 'PNG', 0, 0, w, h);
-        pdf.save(`${this.orderForm.value.customerName || 'invoice'}.pdf`);
+        pdf.save(`${this.invoiceForm.value.customerName || 'invoice'}.pdf`);
         el.style.display = 'none';
       });
     }, 300);

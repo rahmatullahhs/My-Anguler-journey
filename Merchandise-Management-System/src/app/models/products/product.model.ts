@@ -1,5 +1,5 @@
 export interface ProductModel {
-    id: number;
+    id: number ;
     category: 'Laptop' | 'Accessory' ;
     brand: string;
     name: string;

@@ -44,6 +44,7 @@ import { SupportComponents } from './help-supports/support.components/support.co
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
+import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 
 
 
@@ -87,7 +88,8 @@ import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component
     SupportComponents,
     KbComponents,
     AddCogsComponent,
-    AddinvoiceComponent
+    AddinvoiceComponent,
+    SellsaccountsComponent
 
 
   ],

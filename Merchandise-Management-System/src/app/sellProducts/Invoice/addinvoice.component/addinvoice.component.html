@@ -16,7 +16,7 @@
       </div>
       <div>
         <h5 class="text-muted">INVOICE</h5>
-        <h6 class="fw-bold">#{{ orderForm.value.invoiceNumber || '0000' }}</h6>
+        <h6 class="fw-bold">#{{ invoiceForm.value.invoiceNumber || '0000' }}</h6>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
   <!-- Invoice Info -->
   <div class="card mb-4 shadow-sm">
     <div class="card-body">
-      <form [formGroup]="orderForm">
+      <form [formGroup]="invoiceForm">
         <div class="row g-3">
           <div class="col-md-4">
             <label for="invoiceNumber" class="form-label fw-semibold">
@@ -54,7 +54,7 @@
   <!-- Customer Info -->
   <div class="card mb-4 shadow-sm">
     <div class="card-body">
-      <form [formGroup]="orderForm">
+      <form [formGroup]="invoiceForm">
         <div class="row g-3">
           <div class="col-md-6">
             <label for="customerName" class="form-label fw-semibold">
@@ -116,7 +116,7 @@
 
   <!-- Totals -->
   <div class="card p-3 shadow-sm mt-4" style="max-width: 400px;">
-    <form [formGroup]="orderForm" class="mb-3">
+    <form [formGroup]="invoiceForm" class="mb-3">
       <div class="mb-2">
         <label for="discount" class="form-label">Discount</label>
         <input id="discount" type="number" class="form-control" formControlName="discount" min="0" />
@@ -133,12 +133,12 @@
       </div>
     </form>
 
-    <p><strong>Subtotal:</strong> {{ orderForm.value.subtotal | currency }}</p>
-    <p><strong>Tax Amount:</strong> {{ orderForm.value.taxAmount | currency }}</p>
-    <p><strong>Total:</strong> {{ orderForm.value.total | currency }}</p>
-    <p><strong>Due:</strong> {{ orderForm.value.due | currency }}</p>
+    <p><strong>Subtotal:</strong> {{ invoiceForm.value.subtotal | currency }}</p>
+    <p><strong>Tax Amount:</strong> {{ invoiceForm.value.taxAmount | currency }}</p>
+    <p><strong>Total:</strong> {{ invoiceForm.value.total | currency }}</p>
+    <p><strong>Due:</strong> {{ invoiceForm.value.due | currency }}</p>
 
-    <button class="btn btn-primary w-100 mt-3" (click)="submitOrder()" [disabled]="orderForm.invalid || cartItems.length === 0">Complete Sale</button>
+    <button class="btn btn-primary w-100 mt-3" (click)="submitOrder()" [disabled]="invoiceForm.invalid || cartItems.length === 0">Complete Sale</button>
     <button class="btn btn-outline-secondary w-100 mt-2" (click)="printInvoice()" [disabled]="cartItems.length === 0">Print Invoice</button>
   </div>
 
@@ -148,10 +148,10 @@
 <div id="invoiceToPrint" style="display:none; width: 210mm; padding: 20px; background-color: white;">
   <!-- Duplicate the invoice content here for printing -->
   <h1>Invoice Preview</h1>
-  <p><strong>Invoice Number:</strong> {{ orderForm.value.invoiceNumber || '0000' }}</p>
-  <p><strong>Date:</strong> {{ orderForm.value.date }}</p>
-  <p><strong>Customer Name:</strong> {{ orderForm.value.customerName }}</p>
-  <p><strong>Customer Email:</strong> {{ orderForm.value.customerEmail }}</p>
+  <p><strong>Invoice Number:</strong> {{ invoiceForm.value.invoiceNumber || '0000' }}</p>
+  <p><strong>Date:</strong> {{ invoiceForm.value.date }}</p>
+  <p><strong>Customer Name:</strong> {{ invoiceForm.value.customerName }}</p>
+  <p><strong>Customer Email:</strong> {{ invoiceForm.value.customerEmail }}</p>
 
   <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
     <thead>
@@ -174,10 +174,10 @@
     </tbody>
   </table>
 
-  <p><strong>Subtotal:</strong> {{ orderForm.value.subtotal | currency }}</p>
-  <p><strong>Discount:</strong> {{ orderForm.value.discount | currency }}</p>
-  <p><strong>Tax Amount:</strong> {{ orderForm.value.taxAmount | currency }}</p>
-  <p><strong>Total:</strong> {{ orderForm.value.total | currency }}</p>
-  <p><strong>Paid:</strong> {{ orderForm.value.paid | currency }}</p>
-  <p><strong>Due:</strong> {{ orderForm.value.due | currency }}</p>
+  <p><strong>Subtotal:</strong> {{ invoiceForm.value.subtotal | currency }}</p>
+  <p><strong>Discount:</strong> {{ invoiceForm.value.discount | currency }}</p>
+  <p><strong>Tax Amount:</strong> {{ invoiceForm.value.taxAmount | currency }}</p>
+  <p><strong>Total:</strong> {{ invoiceForm.value.total | currency }}</p>
+  <p><strong>Paid:</strong> {{ invoiceForm.value.paid | currency }}</p>
+  <p><strong>Due:</strong> {{ invoiceForm.value.due | currency }}</p>
 </div>
