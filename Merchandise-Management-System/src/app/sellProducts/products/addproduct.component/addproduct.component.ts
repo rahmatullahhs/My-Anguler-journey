@@ -26,8 +26,8 @@ export class AddproductComponent implements OnInit {
       category: ['Laptop', Validators.required],
       brand: ['', Validators.required],
       model: ['', Validators.required],
-      quantity: [0, [Validators.required, Validators.min(0)]],
-      price: [0, [Validators.required, Validators.min(0)]],
+      quantity: [, [Validators.required, Validators.min(0)]],
+      price: [, [Validators.required, Validators.min(0)]],
       details: ['']
     });
   }
@@ -40,7 +40,7 @@ export class AddproductComponent implements OnInit {
     this.productService.addProduct(product).subscribe({
       next: (res) => {
         console.log('✅ Product Saved:', res);
-        this.formGroup.reset(); // FIXED: reset was missing ()
+        this.formGroup.reset(); 
         this.router.navigate(['/viewproduct']);
         this.cdr.markForCheck();
       },

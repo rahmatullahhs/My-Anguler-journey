@@ -8,6 +8,7 @@ import jsPDF from 'jspdf';
 import { CartModel } from '../../../models/products/cart.model';
 import { ProductModel } from '../../../models/products/product.model';
 import { InvoiceModel } from '../../../models/products/invoice.model';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addinvoice.component',
@@ -27,7 +28,8 @@ export class AddinvoiceComponent implements OnInit {
     private productService: ProductService,
     private cdr: ChangeDetectorRef,
     private cartService: CartService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.invoiceForm = this.fb.group({
       invoiceNumber: [''],
@@ -36,14 +38,14 @@ export class AddinvoiceComponent implements OnInit {
       customerPhone: ['', Validators.required],
       customerAddress: ['', Validators.required],
       customerEmail: ['', [Validators.required, Validators.email]],
-      subtotal: [0],
-      discount: [0],
+      subtotal: [],
+      discount: [],
       taxRate: [5],
-      taxAmount: [0],
-      total: [0],
-      paid: [0],
-      due: [0],
-      creatBy: ['']
+      taxAmount: [],
+      total: [],
+      paid: [],
+      due: [],
+      createdBy: ['']
     });
   }
 
@@ -53,12 +55,12 @@ export class AddinvoiceComponent implements OnInit {
     this.total = cart.total || 0;
     this.invoiceForm.patchValue({ subtotal: this.total });
     this.calculateTotals();
+
     this.invoiceForm.valueChanges.subscribe(() => {
-    this.calculateTotals();
+      this.calculateTotals();
     });
   }
 
-  
   calculateTotals(): void {
     const subtotal = this.total;
     const discount = this.invoiceForm.value.discount || 0;
@@ -71,29 +73,24 @@ export class AddinvoiceComponent implements OnInit {
     const due = finalTotal - paid;
 
     this.invoiceForm.patchValue({
-      subtotal: subtotal,
-      taxAmount: taxAmount,
+      subtotal,
+      taxAmount,
       total: finalTotal,
-      due: due
+      due
     }, { emitEvent: false });
   }
 
-  // Updated function to reduce inventory quantity using InvoiceService
   updateInventory(): void {
     for (const item of this.cartItems) {
-      // Create a product object to update the inventory
       const updatedProduct: ProductModel = {
         ...item.product,
         quantity: item.product.quantity - item.quantity
       };
-      this.invoiceService.updateInventory(item.product.id, item.quantity, updatedProduct).subscribe({
-        next: () => {
-          console.log(`✅ Updated inventory for product ${item.product.name}`);
-        },
-        error: (err) => {
-          console.error('❌ Inventory update failed', err);
-        }
-      });
+      this.invoiceService.updateInventory(item.product.id, item.quantity, updatedProduct)
+        .subscribe({
+          next: () => console.log(`✅ Updated inventory for product ${item.product.name}`),
+          error: (err) => console.error('❌ Inventory update failed', err)
+        });
     }
   }
 
@@ -108,7 +105,6 @@ export class AddinvoiceComponent implements OnInit {
       return;
     }
 
-    // Prepare the order data to submit
     const orderData: InvoiceModel = {
       ...this.invoiceForm.value,
       items: this.cartItems
@@ -117,25 +113,25 @@ export class AddinvoiceComponent implements OnInit {
     console.log('✅ Order Submitted:', orderData);
     alert('Sale Completed Successfully!');
 
-    // 1. Reduce product quantities in inventory
+    // 1. Reduce inventory
     this.updateInventory();
 
-    // 2. Submit the invoice to the backend
+    // 2. Submit invoice
     this.invoiceService.addInvoice(orderData).subscribe({
       next: (response) => {
         console.log('✅ Invoice saved successfully!', response);
+        this.router.navigate(['/viewinvoice']);
+        this.cdr.markForCheck();
       },
-      error: (err) => {
-        console.error('❌ Error saving invoice', err);
-      }
+      error: (err) => console.error('❌ Error saving invoice', err)
     });
 
-    // 3. Clear the cart
+    // 3. Clear cart
     this.cartService.clearCart();
     this.cartItems = [];
     this.total = 0;
 
-    // 4. Reset the form
+    // 4. Reset form
     this.invoiceForm.reset({
       invoiceNumber: '',
       date: new Date().toISOString().split('T')[0],
@@ -150,11 +146,9 @@ export class AddinvoiceComponent implements OnInit {
       total: 0,
       paid: 0,
       due: 0,
-      creatBy: ''
+      createdBy: ''
     });
   }
-
-
 
   printInvoice(): void {
     const el = document.getElementById('invoiceToPrint');

@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.css'
 })
 export class Dashboard {
-
+ userName = 'Rahmat Ullah';
+  project = {
+    name: 'My Project Work Tracking',
+    completedPercent: 42
+  };
 }

@@ -47,7 +47,6 @@ updateQuantity(productId: number, quantityStr: string): void {
   this.loadCart(); // this will now recalculate total as well
 }
 
-
   calculateTotal(): void {
     this.total = this.cartItems.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
@@ -61,13 +60,10 @@ updateQuantity(productId: number, quantityStr: string): void {
   }
 
 
-
-
   goToCheckout() {
   this.cartService.setCart(this.cartItems, this.total);
   this.router.navigate(['/invoice']);
 }
-
 
 loadCart(): void {
   const cart = this.cartService.getCart(); // returns { items: CartModel[], total: number }
