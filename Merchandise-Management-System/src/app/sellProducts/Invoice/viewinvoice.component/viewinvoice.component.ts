@@ -10,25 +10,49 @@ import { Router } from '@angular/router';
   styleUrl: './viewinvoice.component.css'
 })
 export class ViewinvoiceComponent implements OnInit{
-  invoice: InvoiceModel[] = [];
+
+  invoices: InvoiceModel[] = []; // Renamed to match usage
 
   constructor(
     private invoiceService: InvoiceService,
-    
     private router: Router,
-     public cdr:ChangeDetectorRef 
+    public cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.loadInvoice();
-    
+    this.loadInvoices(); // Fetch invoices when the component initializes
   }
 
-  loadInvoice(): void {
-    this.invoiceService.getAllInvoice().subscribe(data => {
-      this.invoice = data;
-      this.cdr.markForCheck();
+  loadInvoices(): void {
+    this.invoiceService.getAllInvoice().subscribe({
+      next: (data) => {
+        this.invoices = data;
+        this.cdr.markForCheck(); // Ensure change detection happens
+      },
+      error: (err) => {
+        console.error('Error fetching invoices', err);
+      }
     });
   }
 
+  viewInvoice(id: number): void {
+    // Navigate to a detailed view page of the selected invoice
+    this.router.navigate([`/invoice/${id}`]);
+  }
+
+  deleteInvoice(id: number): void {
+    // Confirm before deleting
+    if (confirm('Are you sure you want to delete this invoice?')) {
+      this.invoiceService.deleteInvoice(id).subscribe({
+        next: () => {
+          this.invoices = this.invoices.filter(invoice => invoice.id !== id); // Remove from the list
+          alert('Invoice deleted successfully!');
+        },
+        error: (err) => {
+          console.error('Error deleting invoice', err);
+          alert('Failed to delete invoice.');
+        }
+      });
+    }
+  }
 }

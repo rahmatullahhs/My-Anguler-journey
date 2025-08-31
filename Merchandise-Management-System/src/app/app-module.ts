@@ -47,6 +47,10 @@ import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component
 import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
+import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
+import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
+import { UpdateexpenseComponent } from './Accounts/Expenses/updateexpense.component/updateexpense.component';
+import { AddexpensefieldComponent } from './Accounts/Expenses/addexpensefield.component/addexpensefield.component';
 
 
 
@@ -93,7 +97,11 @@ import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.compone
     AddinvoiceComponent,
     SellsaccountsComponent,
     ProductspriceComponent,
-    ViewinvoiceComponent
+    ViewinvoiceComponent,
+    AddexpenseComponent,
+    ViewexpenseComponent,
+    UpdateexpenseComponent,
+    AddexpensefieldComponent
 
 
   ],

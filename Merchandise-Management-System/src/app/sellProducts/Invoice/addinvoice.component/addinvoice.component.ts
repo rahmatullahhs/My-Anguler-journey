@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../../service/sale-product/cart.service';
 import { ProductService } from '../../../service/sale-product/product.service';
 import { InvoiceService } from '../../../service/sale-product/invoice.service';
-import { Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { CartModel } from '../../../models/products/cart.model';
@@ -28,8 +27,7 @@ export class AddinvoiceComponent implements OnInit {
     private productService: ProductService,
     private cdr: ChangeDetectorRef,
     private cartService: CartService,
-    private fb: FormBuilder,
-    private router: Router // Inject the router here
+    private fb: FormBuilder
   ) {
     this.invoiceForm = this.fb.group({
       invoiceNumber: [''],
@@ -45,7 +43,7 @@ export class AddinvoiceComponent implements OnInit {
       total: [0],
       paid: [0],
       due: [0],
-      createdBy: ['']
+      creatBy: ['']
     });
   }
 
@@ -56,28 +54,11 @@ export class AddinvoiceComponent implements OnInit {
     this.invoiceForm.patchValue({ subtotal: this.total });
     this.calculateTotals();
     this.invoiceForm.valueChanges.subscribe(() => {
-      this.calculateTotals();
+    this.calculateTotals();
     });
   }
 
-  addInvoice(): void {
-    if (this.invoiceForm.invalid) return; // Fixing the reference to invoiceForm
-
-    const invoice: InvoiceModel = { ...this.invoiceForm.value };
-
-    this.invoiceService.addInvoice(invoice).subscribe({
-      next: (res) => {
-        console.log('Invoice Saved:', res);
-        this.invoiceForm.reset(); // Correctly resetting the form
-        this.router.navigate(['/viewinvoice']); // Fixed router navigation
-        this.cdr.markForCheck();
-      },
-      error: (error) => {
-        console.error('Error saving Invoice:', error);
-      }
-    });
-  }
-
+  
   calculateTotals(): void {
     const subtotal = this.total;
     const discount = this.invoiceForm.value.discount || 0;
@@ -97,8 +78,10 @@ export class AddinvoiceComponent implements OnInit {
     }, { emitEvent: false });
   }
 
+  // Updated function to reduce inventory quantity using InvoiceService
   updateInventory(): void {
     for (const item of this.cartItems) {
+      // Create a product object to update the inventory
       const updatedProduct: ProductModel = {
         ...item.product,
         quantity: item.product.quantity - item.quantity
@@ -125,6 +108,7 @@ export class AddinvoiceComponent implements OnInit {
       return;
     }
 
+    // Prepare the order data to submit
     const orderData: InvoiceModel = {
       ...this.invoiceForm.value,
       items: this.cartItems
@@ -133,7 +117,10 @@ export class AddinvoiceComponent implements OnInit {
     console.log('✅ Order Submitted:', orderData);
     alert('Sale Completed Successfully!');
 
-    this.updateInventory(); // Reduce inventory quantities
+    // 1. Reduce product quantities in inventory
+    this.updateInventory();
+
+    // 2. Submit the invoice to the backend
     this.invoiceService.addInvoice(orderData).subscribe({
       next: (response) => {
         console.log('✅ Invoice saved successfully!', response);
@@ -143,10 +130,12 @@ export class AddinvoiceComponent implements OnInit {
       }
     });
 
+    // 3. Clear the cart
     this.cartService.clearCart();
     this.cartItems = [];
     this.total = 0;
 
+    // 4. Reset the form
     this.invoiceForm.reset({
       invoiceNumber: '',
       date: new Date().toISOString().split('T')[0],
@@ -161,9 +150,11 @@ export class AddinvoiceComponent implements OnInit {
       total: 0,
       paid: 0,
       due: 0,
-      createdBy: ''
+      creatBy: ''
     });
   }
+
+
 
   printInvoice(): void {
     const el = document.getElementById('invoiceToPrint');
@@ -171,7 +162,6 @@ export class AddinvoiceComponent implements OnInit {
 
     el.style.display = 'block';
 
-    
     setTimeout(() => {
       html2canvas(el).then((canvas) => {
         const img = canvas.toDataURL('image/png');
