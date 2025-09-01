@@ -1,0 +1,12 @@
+<div class="kb-container">
+  <h2>Help Center</h2>
+
+  <input type="text" placeholder="Search articles..." [(ngModel)]="searchTerm" />
+
+  <div *ngFor="let article of filteredArticles()" class="article-card">
+    <h3>{{ article.title }}</h3>
+    <p>{{ article.summary }}</p>
+    <a [routerLink]="['/help/article', article.id]">Read more</a>
+  </div>
+</div>
+

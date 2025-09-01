@@ -1,0 +1,22 @@
+
+
+/* styles.scss */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+main {
+  min-height: 100%;
+  background-color: #f8f9fa;
+}
+
+
+@media (max-width: 768px) {
+  #sidebarMenu {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+}

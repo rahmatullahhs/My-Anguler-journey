@@ -1,0 +1,12 @@
+.product-list {
+  margin-top: 20px;
+}
+
+.product-list table {
+  border-collapse: collapse;
+}
+
+.product-list th, .product-list td {
+  padding: 8px;
+  text-align: left;
+}
