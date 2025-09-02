@@ -21,11 +21,18 @@ import { UpdateemployeeComponent } from './people/employee/updateemployee.compon
 import { AddproductComponent } from './sellProducts/products/addproduct.component/addproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
-import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
 import { FaqComponents } from './help-supports/faq.components/faq.components';
 import { SupportComponents } from './help-supports/support.components/support.components';
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
+import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
+import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
+import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
+import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
+import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
+
+
+
 
 
 const routes: Routes = [
@@ -57,11 +64,16 @@ const routes: Routes = [
   { path: 'addproduct', component: AddproductComponent },
   { path: 'viewproduct', component: ViewproductComponent },
   { path: 'updateproduct', component: UpdateproductComponent },
-  {path:'checkout',component:AddcheckoutComponent},
+  {path:'invoice',component:AddinvoiceComponent},
   {path: 'faq',component:FaqComponents},
   {path:'support',component:SupportComponents},
   {path:'kb',component:KbComponents},
-  {path:'cogs',component:AddCogsComponent}
+  {path:'cogs',component:AddCogsComponent},
+    {path:'sellAccount',component:SellsaccountsComponent},
+    {path:'productprice',component:ProductspriceComponent},
+      {path:'viewinvoice',component:ViewinvoiceComponent},
+      {path:'due',component:DuelistComponent}
+ 
 
 ];
 

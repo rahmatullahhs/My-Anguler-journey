@@ -8,22 +8,22 @@ import { CartService } from '../../../service/sale-product/cart.service';
   templateUrl: './addcart.component.html',
   styleUrl: './addcart.component.css'
 })
-export class AddcartComponent implements OnInit{
+export class AddcartComponent implements OnInit {
 
   cartItems: CartModel[] = [];
   total = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loadCart();
   }
 
- loadCart(): void {
-  const cart = this.cartService.getCart();
-  this.cartItems = cart.items;
-  this.total = cart.total;
-}
+  loadCart(): void {
+    const cart = this.cartService.getCart();
+    this.cartItems = cart.items;
+    this.total = cart.total;
+  }
 
 
   updateQuantity(productId: number, quantityStr: string): void {
@@ -42,13 +42,13 @@ export class AddcartComponent implements OnInit{
       sum + item.product.price * item.quantity, 0);
   }
 
-   
 
 
-getInputValue(event: Event): string {
-  const input = event.target as HTMLInputElement;
-  return input.value;
-}
+
+  getInputValue(event: Event): string {
+    const input = event.target as HTMLInputElement;
+    return input.value;
+  }
 
 
 }

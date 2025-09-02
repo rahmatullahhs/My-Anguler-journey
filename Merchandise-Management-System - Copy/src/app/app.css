@@ -1,24 +1,24 @@
-/* Ensure full height minus navbar and footer */
 html, body {
   height: 100%;
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 main {
   min-height: 100%;
-  background-color: #f8f9fa; /* light gray */
+  background-color: #f8f9fa;
 }
 
-/* Optional sidebar adjustments */
+/* Sidebar */
 app-sidebar {
   width: 220px;
   background-color: #ffffff;
   border-right: 1px solid #dee2e6;
 }
 
-/* Responsive fix: stack sidebar below navbar on small screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .d-flex {
+  .d-flex.app-layout {
     flex-direction: column;
   }
 
@@ -28,7 +28,8 @@ app-sidebar {
     border-bottom: 1px solid #dee2e6;
   }
 }
-/* .... */
+
+/* Scroll to top button */
 .scroll-to-top {
   position: fixed;
   bottom: 30px;
@@ -51,9 +52,25 @@ app-sidebar {
   animation: bounce 2s infinite;
   font-size: 24px;
   user-select: none;
+
+  &::before {
+    content: "↑";
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 1;
+    color: white;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  }
+
+  &:hover {
+    box-shadow:
+      0 10px 20px rgba(8, 12, 240, 0.8),
+      0 6px 10px rgba(0, 0, 0, 0.4),
+      0 0 15px #3b82f6;
+    transform: scale(1.15) translateY(-4px);
+  }
 }
 
-/* Bounce animation */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);
@@ -61,23 +78,4 @@ app-sidebar {
   50% {
     transform: translateY(-6px);
   }
-}
-
-/* Hover effects */
-.scroll-to-top:hover {
-  box-shadow:
-    0 10px 20px rgba(8, 12, 240, 0.8),
-    0 6px 10px rgba(0, 0, 0, 0.4),
-    0 0 15px #3b82f6;
-  transform: scale(1.15) translateY(-4px);
-}
-
-/* Optional: add an arrow or icon */
-.scroll-to-top::before {
-  content: "↑";
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 1;
-  color: white;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
 }

@@ -1,16 +1,23 @@
-
 body {
   background-color: #f8f9fa;
 }
+
 .card {
   margin-bottom: 20px;
-  color: #fff;
 }
-.section-title {
-  margin: 40px 0 20px;
-  border-bottom: 2px solid #dee2e6;
-  padding-bottom: 5px;
+
+
+.card-header {
+  font-weight: bold;
+  font-size: 1.1rem;
 }
-.card-title i {
-  margin-right: 8px;
+
+.card-header button {
+  font-size: 0.8rem;
 }
+canvas {
+  max-height: 300px;
+}
+
+
+

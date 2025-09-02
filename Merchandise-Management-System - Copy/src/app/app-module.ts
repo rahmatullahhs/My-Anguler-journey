@@ -38,15 +38,30 @@ import { AddproductComponent } from './sellProducts/products/addproduct.componen
 import { UpdateproductComponent } from './sellProducts/products/updateproduct.component/updateproduct.component';
 import { ViewproductComponent } from './sellProducts/products/viewproduct.component/viewproduct.component';
 import { AddcartComponent } from './sellProducts/cart/addcart.component/addcart.component';
-import { AddcheckoutComponent } from './sellProducts/checkOut/addcheckout.component/addcheckout.component';
+
 import { FaqComponents } from './help-supports/faq.components/faq.components';
 import { SupportComponents } from './help-supports/support.components/support.components';
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
+import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
+import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
+import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
+import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
+import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
+import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
+import { UpdateexpenseComponent } from './Accounts/Expenses/updateexpense.component/updateexpense.component';
+import { AddexpensefieldComponent } from './Accounts/Expenses/addexpensefield.component/addexpensefield.component';
+import { Sellpage } from './appface/dashboard/sellpage/sellpage';
+import { Chart } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
 
 
 
 
+
+
+Chart.register(ChartDataLabels); 
 @NgModule({
   declarations: [
     App,
@@ -82,11 +97,21 @@ import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.co
     UpdateproductComponent,
     ViewproductComponent,
     AddcartComponent,
-    AddcheckoutComponent,
     FaqComponents,
     SupportComponents,
     KbComponents,
-    AddCogsComponent
+    AddCogsComponent,
+    AddinvoiceComponent,
+    SellsaccountsComponent,
+    ProductspriceComponent,
+    ViewinvoiceComponent,
+    AddexpenseComponent,
+    ViewexpenseComponent,
+    UpdateexpenseComponent,
+    AddexpensefieldComponent,
+    Sellpage,
+DuelistComponent
+
 
 
   ],

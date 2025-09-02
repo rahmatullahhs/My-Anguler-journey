@@ -1,11 +1,11 @@
 export interface ProductModel {
-    id: number;
-    category: 'Laptop' | 'Accessory' | 'Brand PC';
-    brand: string;
+    id: number ;
+    category?: 'Laptop' | 'Accessory' ;
+    brand?: string;
     name: string;
-    model: string;
-    details:string;
-    stock: number;
+    model?: string;
+    details?:string;
+    quantity: number;
     price: number;
 
 }

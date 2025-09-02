@@ -2,7 +2,7 @@
 .sidebar {
   width: 220px;
   min-height: 100vh; /* Full viewport height */
-  background-color: #253549; /* Dark blue background */
+  background-color:white; /* Dark blue background */
   padding: 1rem;
   border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle right border */
   font-family: 'Lato', sans-serif; /* Modern font */
