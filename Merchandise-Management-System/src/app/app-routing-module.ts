@@ -29,6 +29,10 @@ import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component
 import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
+import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
+
+
+
 
 
 const routes: Routes = [
@@ -67,7 +71,9 @@ const routes: Routes = [
   {path:'cogs',component:AddCogsComponent},
     {path:'sellAccount',component:SellsaccountsComponent},
     {path:'productprice',component:ProductspriceComponent},
-      {path:'viewinvoice',component:ViewinvoiceComponent}
+      {path:'viewinvoice',component:ViewinvoiceComponent},
+      {path:'due',component:DuelistComponent}
+ 
 
 ];
 

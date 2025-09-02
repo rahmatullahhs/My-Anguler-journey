@@ -54,6 +54,9 @@ import { AddexpensefieldComponent } from './Accounts/Expenses/addexpensefield.co
 import { Sellpage } from './appface/dashboard/sellpage/sellpage';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
+
+
 
 
 
@@ -106,7 +109,9 @@ Chart.register(ChartDataLabels);
     ViewexpenseComponent,
     UpdateexpenseComponent,
     AddexpensefieldComponent,
-    Sellpage
+    Sellpage,
+DuelistComponent
+
 
 
   ],
