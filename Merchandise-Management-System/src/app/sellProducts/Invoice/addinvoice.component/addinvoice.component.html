@@ -87,10 +87,10 @@
       <tbody>
         <tr *ngFor="let item of cartItems; let i = index">
           <td>{{ i + 1 }}</td>
-          <td>{{ item.product.name }}</td>
+          <td>{{ item.name }}</td>
           <td>{{ item.quantity }}</td>
-          <td>{{ item.product.price | currency }}</td>
-          <td>{{ item.quantity * item.product.price | currency }}</td>
+          <td>{{ item.price| currency }}</td>
+          <td>{{ item.quantity * item.price | currency }}</td>
         </tr>
       </tbody>
     </table>
@@ -218,10 +218,10 @@
           <tbody>
             <tr *ngFor="let item of cartItems; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ item.product.name }}</td>
+              <td>{{ item.name }}</td>
               <td>{{ item.quantity }}</td>
-              <td>{{ item.product.price | currency }}</td>
-              <td>{{ item.quantity * item.product.price | currency }}</td>
+              <td>{{ item.price | currency }}</td>
+              <td>{{ item.quantity * item.price | currency }}</td>
             </tr>
           </tbody>
         </table>

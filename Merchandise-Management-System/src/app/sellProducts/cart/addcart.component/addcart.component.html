@@ -2,11 +2,11 @@
 <h3>Cart</h3>
 <div *ngIf="cartItems.length; else emptyCart">
   <div *ngFor="let item of cartItems">
-    {{ item.product.name }} - ${{ item.product.price }} x
+    {{ item.name }} - ${{ item.price }} x
     <input type="number" [value]="item.quantity"
-           (change)="updateQuantity(item.product.id, getInputValue($event).toString())"/>
+           (change)="updateQuantity(item.id, getInputValue($event).toString())"/>
 >
-    <button (click)="remove(item.product.id)">Remove</button>
+    <button (click)="remove(item.id)">Remove</button>
   </div>
 
   <hr />
@@ -16,4 +16,3 @@
 <ng-template #emptyCart>
   <p>Cart is empty.</p>
 </ng-template>
-k

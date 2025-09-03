@@ -25,30 +25,49 @@ export class CartService {
     };
   }
 
-  /** Add item to cart */
-  addItem(product: ProductModel): void {
-    const item = this.cartItems.find(c => c.product.id === product.id);
-    if (item) {
-      if (item.quantity < product.quantity) {
-        item.quantity++;
-      }
-    } else {
-      this.cartItems.push({ product, quantity: 1 });
-    }
+  // /** Add item to cart */
+  // addItem(product: ProductModel): void {
+  //   const item = this.cartItems.find(c => c.id === product.id);
+  //   if (item) {
+  //     if (item.quantity < product.quantity) {
+  //       item.quantity++;
+  //     }
+  //   } else {
+  //     //this.cartItems.push({ product, quantity: 1 });
+  //   }
 
-    this.recalculateCart();
+  //   this.recalculateCart();
+  // }
+
+
+  /** Add item to cart */
+addItem(product: ProductModel): void {
+  const item = this.cartItems.find(c => c.id === product.id);
+
+  if (item) {
+    // Increment quantity but don't exceed available stock
+    if (item.quantity < product.quantity) {
+      item.quantity++;
+    }
+  } else {
+    // Add new item to cart with quantity 1
+    this.cartItems.push({ ...product, quantity: 1 });
   }
+
+  this.recalculateCart();
+}
+
 
   /** Remove item by product ID */
   removeItem(productId: number): void {
-    this.cartItems = this.cartItems.filter(c => c.product.id !== productId);
+    this.cartItems = this.cartItems.filter(c => c.id !== productId);
     this.recalculateCart();
   }
 
   /** Update item quantity */
   updateQuantity(productId: number, quantity: number): void {
-    const item = this.cartItems.find(c => c.product.id === productId);
-    if (item && quantity > 0 && quantity <= item.product.quantity) {
+    const item = this.cartItems.find(c => c.id === productId);
+    if (item && quantity > 0 && quantity <= item.quantity) {
       item.quantity = quantity;
     }
     this.recalculateCart();
@@ -70,7 +89,7 @@ export class CartService {
 
   /** Internal: Recalculate cart total and count */
   private recalculateCart(): void {
-    this.total = this.cartItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    this.total = this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
     this.cartCountSubject.next(this.cartItems.length);
   }
 }

@@ -1,8 +1,8 @@
 import { ProductModel } from "./product.model";
 
 export interface InvoiceModel {
-  id?: number;              
-  date?: Date;          
+  id?: number;
+  date?: Date;
   name: string;
   email: string;
   phone: string;
@@ -18,7 +18,10 @@ export interface InvoiceModel {
   due?: number;
 
   invoiceNumber: string;
-createdBy:String;
+  createdBy: String;
   products: ProductModel[];
+
+
+  
 }
 

@@ -5,10 +5,12 @@ import { ProductService } from '../../../service/sale-product/product.service';
 import { InvoiceService } from '../../../service/sale-product/invoice.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { CartModel } from '../../../models/products/cart.model';
+
 import { ProductModel } from '../../../models/products/product.model';
 import { InvoiceModel } from '../../../models/products/invoice.model';
 import { Router } from '@angular/router';
+import { CartModel } from '../../../models/products/cart.model';
+
 
 @Component({
   selector: 'app-addinvoice.component',
@@ -79,6 +81,9 @@ export class AddinvoiceComponent implements OnInit {
     }, { emitEvent: false });
   }
 
+
+
+
   submitOrder(): void {
     if (this.invoiceForm.invalid) {
       alert('Please fill all required fields correctly.');
@@ -90,57 +95,123 @@ export class AddinvoiceComponent implements OnInit {
       return;
     }
 
+    // Map cart items to products list for backend
+    const products = this.cartItems.map(item => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      category: item.category,
+      brand: item.brand,
+      model: item.model,
+      details: item.details
+    }));
+
     const orderData: InvoiceModel = {
       ...this.invoiceForm.value,
-      items: this.cartItems,
-      products: {
-        
-      },
-      date: '2025-09-01'
+      products: products,       // send proper products
+      date: this.invoiceForm.value.date 
+      ? new Date(this.invoiceForm.value.date).toISOString()
+      : new Date().toISOString()
     };
 
-    alert('Sale Completed Successfully!');
-    this.updateInventory();
+
+
+    
+      // Log the JSON to console
+  console.log('Invoice JSON to send:', JSON.stringify(orderData, null, 2));
+
 
     this.invoiceService.addInvoice(orderData).subscribe({
       next: (response) => {
+        alert('Sale Completed Successfully!');
         this.router.navigate(['/viewinvoice']);
         this.cdr.markForCheck();
+
+        // Clear cart after successful save
+        this.cartService.clearCart();
+        this.cartItems = [];
+        this.total = 0;
+
+        this.invoiceForm.reset({
+          invoiceNumber: '',
+          date: new Date().toISOString().split('T')[0],
+          customerName: '',
+          customerPhone: '',
+          customerAddress: '',
+          customerEmail: '',
+          subtotal: 0,
+          discount: 0,
+          taxRate: 5,
+          taxAmount: 0,
+          total: 0,
+          paid: 0,
+          due: 0,
+          createdBy: ''
+        });
       },
       error: (err) => console.error('Error saving invoice', err)
     });
-
-    this.cartService.clearCart();
-    this.cartItems = [];
-    this.total = 0;
-
-    this.invoiceForm.reset({
-      invoiceNumber: '',
-      date: new Date().toISOString().split('T')[0],
-      customerName: '',
-      customerPhone: '',
-      customerAddress: '',
-      customerEmail: '',
-      subtotal: 0,
-      discount: 0,
-      taxRate: 5,
-      taxAmount: 0,
-      total: 0,
-      paid: 0,
-      due: 0,
-      createdBy: ''
-    });
   }
 
-  updateInventory(): void {
-    for (const item of this.cartItems) {
-      const updatedProduct: ProductModel = {
-        ...item.product,
-        quantity: item.product.quantity - item.quantity
-      };
-      this.invoiceService.updateInventory(item.product.id, item.quantity, updatedProduct).subscribe();
-    }
-  }
+
+
+
+
+  // submitOrder(): void {
+  //   if (this.invoiceForm.invalid) {
+  //     alert('Please fill all required fields correctly.');
+  //     return;
+  //   }
+
+  //   if (this.cartItems.length === 0) {
+  //     alert('Cart is empty. Please add products.');
+  //     return;
+  //   }
+
+  //   const orderData: InvoiceModel = {
+  //     ...this.invoiceForm.value,
+  //     items: this.cartItems,
+  //     products: {
+
+  //     },
+  //     date: '2025-09-01'
+  //   };
+
+  //   alert('Sale Completed Successfully!');
+  //   this.updateInventory();
+
+  //   this.invoiceService.addInvoice(orderData).subscribe({
+  //     next: (response) => {
+  //       this.router.navigate(['/viewinvoice']);
+  //       this.cdr.markForCheck();
+  //     },
+  //     error: (err) => console.error('Error saving invoice', err)
+  //   });
+
+  //   this.cartService.clearCart();
+  //   this.cartItems = [];
+  //   this.total = 0;
+
+  //   this.invoiceForm.reset({
+  //     invoiceNumber: '',
+  //     date: new Date().toISOString().split('T')[0],
+  //     customerName: '',
+  //     customerPhone: '',
+  //     customerAddress: '',
+  //     customerEmail: '',
+  //     subtotal: 0,
+  //     discount: 0,
+  //     taxRate: 5,
+  //     taxAmount: 0,
+  //     total: 0,
+  //     paid: 0,
+  //     due: 0,
+  //     createdBy: ''
+  //   });
+  // }
+
+
 
   // printInvoice(): void {
   //   const el = document.getElementById('invoiceToPrint');
@@ -157,13 +228,13 @@ export class AddinvoiceComponent implements OnInit {
   //     });
   //   }, 300);
   // }
-  
+
   printInvoice() {
-  const printContents = document.getElementById('invoiceToPrint')?.innerHTML;
-  const popupWin = window.open('', '_blank', 'width=800,height=1000');
-  if (popupWin && printContents) {
-    popupWin.document.open();
-    popupWin.document.write(`
+    const printContents = document.getElementById('invoiceToPrint')?.innerHTML;
+    const popupWin = window.open('', '_blank', 'width=800,height=1000');
+    if (popupWin && printContents) {
+      popupWin.document.open();
+      popupWin.document.write(`
       <html>
         <head>
           <title>Invoice</title>
@@ -201,8 +272,8 @@ export class AddinvoiceComponent implements OnInit {
         </body>
       </html>
     `);
-    popupWin.document.close();
+      popupWin.document.close();
+    }
   }
-}
 
 }

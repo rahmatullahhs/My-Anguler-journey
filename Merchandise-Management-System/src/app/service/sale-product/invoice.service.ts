@@ -27,7 +27,7 @@ export class InvoiceService {
 
 
    addInvoice(invoice: InvoiceModel): Observable<any> {
-      return this.http.post(`${this.baseUrl}/add`, invoice);
+      return this.http.post(`${this.baseUrl}`, invoice);
     }
    
   

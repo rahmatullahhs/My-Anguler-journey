@@ -49,7 +49,7 @@ updateQuantity(productId: number, quantityStr: string): void {
 
   calculateTotal(): void {
     this.total = this.cartItems.reduce(
-      (sum, item) => sum + item.product.price * item.quantity,
+      (sum, item) => sum + item.price * item.quantity,
       0
     );
   }
@@ -78,4 +78,6 @@ loadCart(): void {
     this.cartService.addItem(product);
     this.loadCart();
   }
+
+  
 }
