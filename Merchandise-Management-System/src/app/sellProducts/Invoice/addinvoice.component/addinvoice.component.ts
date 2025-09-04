@@ -35,10 +35,10 @@ export class AddinvoiceComponent implements OnInit {
     this.invoiceForm = this.fb.group({
       invoiceNumber: [''],
       date: [new Date().toISOString().slice(0, 19)],
-      customerName: [''],
-      customerPhone: [''],
-      customerAddress: [''],
-      customerEmail: [''],
+      name: [''],
+      phone: [''],
+      address: [''],
+      email: [''],
       subtotal: [],
       discount: [],
       taxRate: [5],
@@ -110,7 +110,8 @@ export class AddinvoiceComponent implements OnInit {
     const orderData: InvoiceModel = {
       ...this.invoiceForm.value,
       products: products,       // send proper products
-      date: this.invoiceForm.value.date 
+      date: this.invoiceForm.value.date
+     
       ? new Date(this.invoiceForm.value.date).toISOString()
       : new Date().toISOString()
     };

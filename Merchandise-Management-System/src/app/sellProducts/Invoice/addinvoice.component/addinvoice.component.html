@@ -50,22 +50,22 @@
         <div class="row g-3">
           <div class="col-md-6">
             <label for="customerName" class="form-label">Customer Name</label>
-            <input id="customerName" type="text" class="form-control" formControlName="customerName" placeholder="Full name" />
+            <input id="customerName" type="text" class="form-control" formControlName="name" placeholder="Full name" />
           </div>
           <div class="col-md-6">
             <label for="customerEmail" class="form-label">Email</label>
-            <input id="customerEmail" type="email" class="form-control" formControlName="customerEmail" placeholder="email@example.com" />
+            <input id="customerEmail" type="email" class="form-control" formControlName="email" placeholder="email@example.com" />
           </div>
         </div>
 
         <div class="row g-3 mt-3">
           <div class="col-md-6">
             <label for="customerPhone" class="form-label">Phone Number</label>
-            <input id="customerPhone" type="tel" class="form-control" formControlName="customerPhone" placeholder="+1 555-1234" />
+            <input id="customerPhone" type="tel" class="form-control" formControlName="phone" placeholder="+1 555-1234" />
           </div>
           <div class="col-md-6">
             <label for="customerAddress" class="form-label">Address</label>
-            <input id="customerAddress" type="text" class="form-control" formControlName="customerAddress" placeholder="Customer Address" />
+            <input id="customerAddress" type="text" class="form-control" formControlName="address" placeholder="Customer Address" />
           </div>
         </div>
       </div>
@@ -154,7 +154,15 @@
   <form [formGroup]="invoiceForm">
     <div id="invoiceToPrint" class="p-4 rounded shadow" style="background-color: #f8f9fa;">
 
+
+
+
+
       <!-- Invoice Header -->
+
+
+
+
       <div class="card border-primary mb-4">
         <div class="card-body d-flex justify-content-between align-items-start">
           
@@ -192,8 +200,8 @@
           <h5 class="text-dark fw-bold mb-3">Customer Information</h5>
           <div class="row">
             <div class="col-md-6">
-              <p><strong>Name:</strong> {{ invoiceForm.value.customerName }}</p>
-              <p><strong>Email:</strong> {{ invoiceForm.value.customerEmail }}</p>
+              <p><strong>Name:</strong> {{ invoiceForm.value.name }}</p>
+              <p><strong>Email:</strong> {{ invoiceForm.value.email }}</p>
             </div>
             <div class="col-md-6">
               <p><strong>Phone:</strong> {{ invoiceForm.value.customerPhone }}</p>
