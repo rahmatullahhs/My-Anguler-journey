@@ -1,17 +1,20 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: false,
+  standalone: false, 
   templateUrl: './sidebar.html',
-  styleUrl: './sidebar.css'
+  styleUrls: ['./sidebar.css']
 })
 export class Sidebar {
-toggleSidebar() {
-throw new Error('Method not implemented.');
-}
-@Input() collapsed = false;
-isMobile(): boolean {
-  return window.innerWidth < 768;
-}
+  @Input() collapsed = true;
+
+  toggleSidebar() {
+    throw new Error('Method not implemented.');
+  }
+
+  isMobile(): boolean {
+    return window.innerWidth < 768;
+  }
 }

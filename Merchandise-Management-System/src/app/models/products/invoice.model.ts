@@ -21,7 +21,5 @@ export interface InvoiceModel {
   createdBy: String;
   products: ProductModel[];
 
-
-  
 }
 

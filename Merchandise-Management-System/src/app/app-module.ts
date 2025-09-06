@@ -44,7 +44,6 @@ import { SupportComponents } from './help-supports/support.components/support.co
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
-import { SellsaccountsComponent } from './Accounts/Sells/sellsaccounts.component/sellsaccounts.component';
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
@@ -102,7 +101,7 @@ Chart.register(ChartDataLabels);
     KbComponents,
     AddCogsComponent,
     AddinvoiceComponent,
-    SellsaccountsComponent,
+
     ProductspriceComponent,
     ViewinvoiceComponent,
     AddexpenseComponent,

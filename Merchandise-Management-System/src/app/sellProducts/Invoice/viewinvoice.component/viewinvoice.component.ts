@@ -11,46 +11,56 @@ import { Router } from '@angular/router';
 })
 export class ViewinvoiceComponent implements OnInit{
 
-  invoices: InvoiceModel[] = []; // Renamed to match usage
+  invoices: any[] = [];
+    loading = false;
+
+searchTerm: string = ''; // 🔍 Search input binding
+error: any;
 
   constructor(
     private invoiceService: InvoiceService,
     private router: Router,
-    public cdr: ChangeDetectorRef
+    public cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.loadInvoices(); // Fetch invoices when the component initializes
+      this.loading = true;
+    this.loadAllInvoices();
   }
 
-  loadInvoices(): void {
-    this.invoiceService.getAllInvoice().subscribe({
-      next: (data) => {
-        this.invoices = data;
-        this.cdr.markForCheck(); // Ensure change detection happens
+  loadAllInvoices(): void {
+ this.invoiceService.getAllInvoice().subscribe({
+      next: res => {
+        this.cdr.markForCheck();
+        this.invoices = Array.isArray(res) ? res : res?.data || [];
+          this.loading = false;
       },
-      error: (err) => {
-        console.error('Error fetching invoices', err);
+        error: err => {
+        console.error('Failed to load invoice:', err);
+        this.invoices = [];
+          this.loading = false;
       }
     });
   }
 
-  viewInvoice(id: number): void {
-    // Navigate to a detailed view page of the selected invoice
-    this.router.navigate([`/invoice/${id}`]);
+get filteredInvoice() {
+    const term = this.searchTerm.toLowerCase();
+    return this.invoices.filter(inv =>
+      inv.name?.toLowerCase().includes(term) ||
+      inv.invoice?.toLowerCase().includes(term) ||
+      inv.email?.toLowerCase().includes(term) ||
+      inv.data?.toLowerCase().includes(term)
+    );
   }
 
   deleteInvoice(id: number): void {
-    // Confirm before deleting
     if (confirm('Are you sure you want to delete this invoice?')) {
       this.invoiceService.deleteInvoice(id).subscribe({
         next: () => {
-          this.invoices = this.invoices.filter(invoice => invoice.id !== id); // Remove from the list
-          alert('Invoice deleted successfully!');
+          this.loadAllInvoices();
         },
-        error: (err) => {
-          console.error('Error deleting invoice', err);
-          alert('Failed to delete invoice.');
+        error: err => {
+          console.error('Error deleting invoice:', err);
         }
       });
     }

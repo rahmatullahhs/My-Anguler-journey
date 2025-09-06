@@ -3,9 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../../service/sale-product/cart.service';
 import { ProductService } from '../../../service/sale-product/product.service';
 import { InvoiceService } from '../../../service/sale-product/invoice.service';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
 import { ProductModel } from '../../../models/products/product.model';
 import { InvoiceModel } from '../../../models/products/invoice.model';
 import { Router } from '@angular/router';
@@ -19,6 +16,7 @@ import { CartModel } from '../../../models/products/cart.model';
   styleUrls: ['./addinvoice.component.css']
 })
 export class AddinvoiceComponent implements OnInit {
+
   cartItems: CartModel[] = [];
   total = 0;
   invoiceForm: FormGroup;
@@ -34,7 +32,7 @@ export class AddinvoiceComponent implements OnInit {
   ) {
     this.invoiceForm = this.fb.group({
       invoiceNumber: [''],
-      date: [new Date().toISOString().slice(0, 19)],
+      date:new Date().toISOString().split('T')[0],// => "2025-09-06"
       name: [''],
       phone: [''],
       address: [''],
@@ -111,16 +109,13 @@ export class AddinvoiceComponent implements OnInit {
       ...this.invoiceForm.value,
       products: products,       // send proper products
       date: this.invoiceForm.value.date
-     
-      ? new Date(this.invoiceForm.value.date).toISOString()
-      : new Date().toISOString()
+
+        ? new Date(this.invoiceForm.value.date).toISOString()
+        : new Date().toISOString()
     };
 
-
-
-    
-      // Log the JSON to console
-  console.log('Invoice JSON to send:', JSON.stringify(orderData, null, 2));
+    // Log the JSON to console
+    console.log('Invoice JSON to send:', JSON.stringify(orderData, null, 2));
 
 
     this.invoiceService.addInvoice(orderData).subscribe({
@@ -136,7 +131,8 @@ export class AddinvoiceComponent implements OnInit {
 
         this.invoiceForm.reset({
           invoiceNumber: '',
-          date: new Date().toISOString().split('T')[0],
+          date: new Date().toISOString().split('T')[0], // => "2025-09-06"
+
           customerName: '',
           customerPhone: '',
           customerAddress: '',
@@ -156,79 +152,6 @@ export class AddinvoiceComponent implements OnInit {
   }
 
 
-
-
-
-  // submitOrder(): void {
-  //   if (this.invoiceForm.invalid) {
-  //     alert('Please fill all required fields correctly.');
-  //     return;
-  //   }
-
-  //   if (this.cartItems.length === 0) {
-  //     alert('Cart is empty. Please add products.');
-  //     return;
-  //   }
-
-  //   const orderData: InvoiceModel = {
-  //     ...this.invoiceForm.value,
-  //     items: this.cartItems,
-  //     products: {
-
-  //     },
-  //     date: '2025-09-01'
-  //   };
-
-  //   alert('Sale Completed Successfully!');
-  //   this.updateInventory();
-
-  //   this.invoiceService.addInvoice(orderData).subscribe({
-  //     next: (response) => {
-  //       this.router.navigate(['/viewinvoice']);
-  //       this.cdr.markForCheck();
-  //     },
-  //     error: (err) => console.error('Error saving invoice', err)
-  //   });
-
-  //   this.cartService.clearCart();
-  //   this.cartItems = [];
-  //   this.total = 0;
-
-  //   this.invoiceForm.reset({
-  //     invoiceNumber: '',
-  //     date: new Date().toISOString().split('T')[0],
-  //     customerName: '',
-  //     customerPhone: '',
-  //     customerAddress: '',
-  //     customerEmail: '',
-  //     subtotal: 0,
-  //     discount: 0,
-  //     taxRate: 5,
-  //     taxAmount: 0,
-  //     total: 0,
-  //     paid: 0,
-  //     due: 0,
-  //     createdBy: ''
-  //   });
-  // }
-
-
-
-  // printInvoice(): void {
-  //   const el = document.getElementById('invoiceToPrint');
-  //   if (!el) return;
-
-  //   setTimeout(() => {
-  //     html2canvas(el).then((canvas) => {
-  //       const img = canvas.toDataURL('image/png');
-  //       const pdf = new jsPDF('p', 'mm', 'a4');
-  //       const w = pdf.internal.pageSize.getWidth();
-  //       const h = (canvas.height * w) / canvas.width;
-  //       pdf.addImage(img, 'PNG', 0, 0, w, h);
-  //       pdf.save(`${this.invoiceForm.value.customerName || 'invoice'}.pdf`);
-  //     });
-  //   }, 300);
-  // }
 
   printInvoice() {
     const printContents = document.getElementById('invoiceToPrint')?.innerHTML;

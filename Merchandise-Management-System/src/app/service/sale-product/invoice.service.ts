@@ -15,9 +15,8 @@ export class InvoiceService {
   constructor(private http: HttpClient) { }
 
 
- getAllInvoice(): Observable<any> {
-    return this.http.get(this.baseUrl);
-
+  getAllInvoice(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
   }
 
   getInvoiceById(id: number): Observable<any> {
@@ -39,7 +38,7 @@ export class InvoiceService {
       return this.http.delete<void>(`${this.baseUrl}/${id}`);
     }
   
-    updateInventory(productId: number, quantity: number, productModel: ProductModel): Observable<ProductModel> {
-    return this.http.put<ProductModel>(`${this.baseUrl}/${productModel.id}`, productModel);
-  }
+  //   updateInventory(productId: number, quantity: number, productModel: ProductModel): Observable<ProductModel> {
+  //   return this.http.put<ProductModel>(`${this.baseUrl}/${productModel.id}`, productModel);
+  // }
 }

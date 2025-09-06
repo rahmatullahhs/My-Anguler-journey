@@ -37,7 +37,7 @@
   left: 25%;
   width: 50%;
   height: 50%;
-  background-image: url('/assets/watermark.png');
+ 
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -50,4 +50,26 @@
   position: relative;
   z-index: 1;
 }
+
+@media print {
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+
+body {
+  print-color-adjust: exact;            /* Standard */
+  -webkit-print-color-adjust: exact;    /* WebKit-specific */
+}
+
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
 
