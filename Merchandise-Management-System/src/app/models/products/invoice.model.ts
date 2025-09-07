@@ -2,7 +2,7 @@ import { ProductModel } from "./product.model";
 
 export interface InvoiceModel {
   id?: number;
-  date?: Date;
+  date: Date;
   name: string;
   email: string;
   phone: string;
