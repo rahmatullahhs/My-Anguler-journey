@@ -37,6 +37,7 @@ import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.com
 const routes: Routes = [
 
   { path: '', component: Dashboard },
+
   { path: 'userprofile', component: UserprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
