@@ -54,6 +54,8 @@ import { Sellpage } from './appface/dashboard/sellpage/sellpage';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
+import { AddReturnComponent } from './ReturnDamage/ReturnDamage/add-return.component/add-return.component';
+import { ViewReturnComponent } from './ReturnDamage/ReturnDamage/view-return.component/view-return.component';
 
 
 
@@ -109,7 +111,9 @@ Chart.register(ChartDataLabels);
     UpdateexpenseComponent,
     AddexpensefieldComponent,
     Sellpage,
-DuelistComponent
+DuelistComponent,
+AddReturnComponent,
+ViewReturnComponent
 
 
 
