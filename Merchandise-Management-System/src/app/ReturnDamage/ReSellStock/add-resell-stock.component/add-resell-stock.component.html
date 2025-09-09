@@ -1,1 +1,123 @@
-<p>add-resell-stock.component works!</p>
+
+<div class="container mt-4">
+  <h2>Add Resell Stock</h2>
+
+  <form [formGroup]="resellForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group mb-3">
+      <label>Product Name</label>
+      <input type="text" class="form-control" formControlName="name" />
+      <div *ngIf="submitted && resellForm.get('name')?.invalid" class="text-danger">
+        Product name is required.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Details</label>
+      <textarea class="form-control" formControlName="details"></textarea>
+      <div *ngIf="submitted && resellForm.get('details')?.invalid" class="text-danger">
+        Details are required.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Quantity</label>
+      <input type="number" class="form-control" formControlName="qty" />
+      <div *ngIf="submitted && resellForm.get('qty')?.invalid" class="text-danger">
+        Quantity must be at least 1.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" formControlName="price" step="0.01" />
+      <div *ngIf="submitted && resellForm.get('price')?.invalid" class="text-danger">
+        Price must be greater than 0.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Paid</label>
+      <input type="number" class="form-control" formControlName="paid" step="0.01" />
+      <div *ngIf="submitted && resellForm.get('paid')?.invalid" class="text-danger">
+        Paid amount is required.
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <label>Date</label>
+      <input type="date" class="form-control" formControlName="date" />
+      <div *ngIf="submitted && resellForm.get('date')?.invalid" class="text-danger">
+        Date is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
+
+
+
+<!-- <div class="container mt-4">
+  <h2>Add Resell Stock</h2>
+
+  <form [formGroup]="resellForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group mb-3">
+      <label>Product Name</label>
+      <input type="text" class="form-control" formControlName="productName" />
+      <div *ngIf="submitted && resellForm.controls.productName.invalid" class="text-danger">
+        Product name is required.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Quantity</label>
+      <input type="number" class="form-control" formControlName="quantity" />
+      <div *ngIf="submitted && resellForm.controls.quantity.invalid" class="text-danger">
+        Quantity must be at least 1.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Price</label>
+      <input type="number" class="form-control" formControlName="price" step="0.01" />
+      <div *ngIf="submitted && resellForm.controls.price.invalid" class="text-danger">
+        Price must be greater than 0.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Supplier</label>
+      <input type="text" class="form-control" formControlName="supplier" />
+      <div *ngIf="submitted && resellForm.controls.supplier.invalid" class="text-danger">
+        Supplier is required.
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
+      <label>Date</label>
+      <input type="date" class="form-control" formControlName="date" />
+      <div *ngIf="submitted && resellForm.controls.date.invalid" class="text-danger">
+        Date is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
+ -->

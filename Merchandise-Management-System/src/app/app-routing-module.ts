@@ -29,6 +29,12 @@ import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component
 import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
+import { AddResellStockComponent } from './ReturnDamage/ReSellStock/add-resell-stock.component/add-resell-stock.component';
+import { AddReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/add-replace-unit.component/add-replace-unit.component';
+import { AddReturnProductComponent } from './ReturnDamage/ReturnProduct/add-return-product.component/add-return-product.component';
+import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell-stock.component/view-resell-stock.component';
+import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
+import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-return-product.component/view-return-product.component';
 
 
 
@@ -71,8 +77,18 @@ const routes: Routes = [
   {path:'cogs',component:AddCogsComponent},
     {path:'productprice',component:ProductspriceComponent},
       {path:'viewinvoice',component:ViewinvoiceComponent},
-      {path:'due',component:DuelistComponent}
- 
+      {path:'due',component:DuelistComponent},
+
+
+   {path:'addresellstock',component:AddResellStockComponent},
+     {path:'addreplaceUnit',component:AddReplaceUnitComponent},
+       {path:'addreturnProduct',component:AddReturnProductComponent},
+
+
+   {path:'viewresellstock',component:ViewResellStockComponent},
+     {path:'viewreplaceUnit',component:ViewReplaceUnitComponent},
+       {path:'viwereturnProduct',component:ViewReturnProductComponent}
+
 
 ];
 

@@ -1,1 +1,51 @@
-<p>view-replace-unit.component works!</p>
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Return Products</h2>
+    <a class="btn btn-primary" routerLink="/addreturnProduct">Add Return Product</a>
+  </div>
+
+  <div *ngIf="loading" class="alert alert-info">Loading...</div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading && returnProducts.length > 0" class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Invoice</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th>Reason</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of returnProducts">
+        <td>{{ product.id }}</td>
+        <td>{{ product.invoice }}</td>
+        <td>{{ product.type }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.date | date: 'shortDate' }}</td>
+        <td>{{ product.reason }}</td>
+        <td>{{ product.productName }}</td>
+        <td>
+          <img *ngIf="product.photo" [src]="product.photo" alt="Product Photo" width="50" class="img-thumbnail" />
+          <span *ngIf="!product.photo">No Image</span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteReturnProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && returnProducts.length === 0" class="alert alert-warning">
+    No return products found.
+  </div>
+
+</div>
+
