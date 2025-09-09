@@ -61,7 +61,6 @@ import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell
 import { AddReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/add-replace-unit.component/add-replace-unit.component';
 import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
 import { ViewRepairComponent } from './ReturnDamage/ProductInRepair/view-repair.component/view-repair.component';
-import { ReturnproductModel } from './models/ReturnProduct/returnproduct.model/returnproduct.model';
 
 
 
@@ -125,8 +124,7 @@ AddResellStockComponent,
 ViewResellStockComponent,
 AddReplaceUnitComponent,
 ViewReplaceUnitComponent,
-ViewRepairComponent,
-ReturnproductModel
+ViewRepairComponent
 
 
 
