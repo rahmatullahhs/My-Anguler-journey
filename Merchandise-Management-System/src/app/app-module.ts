@@ -54,8 +54,13 @@ import { Sellpage } from './appface/dashboard/sellpage/sellpage';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
-import { AddReturnComponent } from './ReturnDamage/ReturnDamage/add-return.component/add-return.component';
-import { ViewReturnComponent } from './ReturnDamage/ReturnDamage/view-return.component/view-return.component';
+import { AddReturnProductComponent } from './ReturnDamage/ReturnProduct/add-return-product.component/add-return-product.component';
+import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-return-product.component/view-return-product.component';
+import { AddResellStockComponent } from './ReturnDamage/ReSellStock/add-resell-stock.component/add-resell-stock.component';
+import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell-stock.component/view-resell-stock.component';
+import { AddReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/add-replace-unit.component/add-replace-unit.component';
+import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
+import { ViewRepairComponent } from './ReturnDamage/ProductInRepair/view-repair.component/view-repair.component';
 
 
 
@@ -112,8 +117,14 @@ Chart.register(ChartDataLabels);
     AddexpensefieldComponent,
     Sellpage,
 DuelistComponent,
-AddReturnComponent,
-ViewReturnComponent
+
+AddReturnProductComponent,
+ViewReturnProductComponent,
+AddResellStockComponent,
+ViewResellStockComponent,
+AddReplaceUnitComponent,
+ViewReplaceUnitComponent,
+ViewRepairComponent
 
 
 

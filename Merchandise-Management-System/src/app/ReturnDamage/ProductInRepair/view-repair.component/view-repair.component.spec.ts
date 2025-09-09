@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddReturnComponent } from './add-return.component';
+import { ViewRepairComponent } from './view-repair.component';
 
-describe('AddReturnComponent', () => {
-  let component: AddReturnComponent;
-  let fixture: ComponentFixture<AddReturnComponent>;
+describe('ViewRepairComponent', () => {
+  let component: ViewRepairComponent;
+  let fixture: ComponentFixture<ViewRepairComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddReturnComponent]
+      declarations: [ViewRepairComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddReturnComponent);
+    fixture = TestBed.createComponent(ViewRepairComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
