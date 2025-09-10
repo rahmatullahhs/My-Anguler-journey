@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ReturnproductModel } from '../../../models/ReturnProduct/returnproduct.model';
-import { ReturnProductService } from '../../../service/ReturnProduct/return-product.service';
+import { ReplaceunitModel } from '../../../models/ReturnProduct/replaceunit.model';
+import { ReplaceunitService } from '../../../service/ReturnProduct/replaceunit.service';
 
 @Component({
   selector: 'app-view-replace-unit.component',
@@ -10,44 +10,26 @@ import { ReturnProductService } from '../../../service/ReturnProduct/return-prod
 })
 export class ViewReplaceUnitComponent implements OnInit{
 
+stockItems: ReplaceunitModel[] = [];
 
-  returnProducts: ReturnproductModel[] = [];
-  errorMessage = '';
-  loading = false;
+  constructor(private replaceunitService: ReplaceunitService) {}
 
-  constructor(private returnProductService: ReturnProductService) {}
-
-  ngOnInit(): void {
-    this.fetchReturnProducts();
+  ngOnInit() {
+    this.loadUnit();
   }
 
-  fetchReturnProducts(): void {
-    this.loading = true;
-    this.returnProductService.getAllReturnProduct().subscribe({
+  loadUnit() {
+    this.replaceunitService.getAllReplaceunit().subscribe({
       next: (data) => {
-        this.returnProducts = data;
-        this.loading = false;
+        this.stockItems = data;
+      
       },
       error: (err) => {
-        console.error(err);
-        this.errorMessage = 'Failed to load return products.';
-        this.loading = false;
+        console.error('Failed to load resell stock items', err);
       }
     });
   }
 
-  // Optional: Delete functionality
-  deleteReturnProduct(id: number): void {
-    if (confirm('Are you sure you want to delete this item?')) {
-      this.returnProductService.deleteReturnProduct(id).subscribe({
-        next: () => this.fetchReturnProducts(),
-        error: (err) => {
-          console.error(err);
-          this.errorMessage = 'Failed to delete return product.';
-        }
-      });
-    }
-  }
 }
 
 

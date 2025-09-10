@@ -13,7 +13,13 @@
     <label for="productName">Product Name</label>
     <input id="productName" formControlName="productName" class="form-control" />
   </div>
-
+        <div class="mb-3">
+          <label class="form-label">Type</label>
+          <select class="form-select" formControlName="type">
+            <option value="RETURN">Return</option>
+            <option value="DAMAGE">Damage</option>
+          </select>
+        </div>
   <div class="form-group mb-3">
     <label for="quantity">Quantity</label>
     <input id="quantity" type="number" formControlName="quantity" class="form-control" />
@@ -39,64 +45,4 @@
 
 <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
 <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
-
-
-<!-- <div class="container mt-4">
-  <div class="card shadow-sm">
-    <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">Add Return Product</h4>
-    </div>
-
-    <div class="card-body">
-      <form [formGroup]="returnForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <label class="form-label">Invoice</label>
-          <input type="text" class="form-control" formControlName="invoice" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Type</label>
-          <select class="form-select" formControlName="type">
-            <option value="RETURN">Return</option>
-            <option value="DAMAGE">Damage</option>
-          </select>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Quantity</label>
-          <input type="number" class="form-control" formControlName="quantity" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Date</label>
-          <input type="date" class="form-control" formControlName="date" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Reason</label>
-          <textarea class="form-control" rows="3" formControlName="reason"></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Product Name</label>
-          <input type="text" class="form-control" formControlName="productName" />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Photo URL</label>
-          <input type="text" class="form-control" formControlName="photo" />
-        </div>
-
-        <button type="submit" class="btn btn-success w-100">Add Return Product</button>
-      </form>
-
-      <div *ngIf="successMessage" class="alert alert-success mt-3">
-        {{ successMessage }}
-      </div>
-
-      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-        {{ errorMessage }}
-      </div>
-    </div>
-  </div>
-</div> -->
+   

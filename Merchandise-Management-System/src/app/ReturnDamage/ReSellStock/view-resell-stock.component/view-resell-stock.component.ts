@@ -10,22 +10,19 @@ import { ResellStockService } from '../../../service/ReturnProduct/resell-stock.
 })
 export class ViewResellStockComponent implements OnInit {
 
-
 stockItems: ResellStockModel[] = [];
-  filteredItems: ResellStockModel[] = [];
-  searchTerm: string = '';
 
   constructor(private resellStockService: ResellStockService) {}
 
   ngOnInit() {
-    this.loadStockItems();
+    this.loadStock();
   }
 
-  loadStockItems() {
+  loadStock() {
     this.resellStockService.getAllResellstock().subscribe({
       next: (data) => {
         this.stockItems = data;
-        this.filteredItems = [...data];
+      
       },
       error: (err) => {
         console.error('Failed to load resell stock items', err);
@@ -33,12 +30,6 @@ stockItems: ResellStockModel[] = [];
     });
   }
 
-  onSearchTermChange() {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredItems = this.stockItems.filter(item =>
-      item.name.toLowerCase().includes(term)
-    );
-  }
 }
 
 

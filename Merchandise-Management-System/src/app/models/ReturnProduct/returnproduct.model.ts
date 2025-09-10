@@ -1,5 +1,6 @@
 export interface ReturnproductModel {
 
+
   id: number;
   invoice: string;
   type: 'RETURN' | 'DAMAGE'; // restricts to valid values
@@ -7,7 +8,8 @@ export interface ReturnproductModel {
   date: Date | string;
   reason: string;
   productName: string;
-  photo: string; // could be a filename or base64 or URL
+  photo?: string;
+  status?: 'NEW' | 'FIXING' | 'FIXED';  // could be a filename or base64 or URL
   
 }
 

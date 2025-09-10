@@ -25,7 +25,8 @@ export class ResellStockService {
 
   // Create a new resellStock
   createResellstock(resellStock: ResellStockModel): Observable<ResellStockModel> {
-    return this.http.post<ResellStockModel>(this.baseUrl, resellStock);
+    return this.http.post<ResellStockModel>(`${this.baseUrl}/add`, resellStock);
+    
   }
 
   // Update an existing resellStock

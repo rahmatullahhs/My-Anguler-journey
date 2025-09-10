@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReplaceunitService } from '../../../service/ReturnProduct/replaceunit.service';
+import { Router } from '@angular/router';
+import { ReplaceunitModel } from '../../../models/ReturnProduct/replaceunit.model';
 
 @Component({
   selector: 'app-add-replace-unit.component',
@@ -8,38 +11,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './add-replace-unit.component.css'
 })
 export class AddReplaceUnitComponent {
-  replaceForm: FormGroup;
-  submitted = false;
-  successMessage = '';
-  errorMessage = '';
+ 
 
-  constructor(private fb: FormBuilder) {
-    this.replaceForm = this.fb.group({
-      originalUnitId: ['', Validators.required],
-      replacementUnitId: ['', Validators.required],
-      reason: ['', Validators.required],
-      date: [new Date().toISOString().split('T')[0], Validators.required],
-      technician: ['', Validators.required]
+  formGroup!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private replaceUnitService: ReplaceunitService,
+    private router: Router,
+    public cdr: ChangeDetectorRef
+  ) { }
+
+  ngOnInit(): void {
+    this.formGroup = this.formBuilder.group({
+      name: [''],
+      details: [''],
+      qty: [''],
+      price: [''],
+
     });
   }
 
-  onSubmit(): void {
-    this.submitted = true;
+  addReplaceUnit(): void {
+    if (this.formGroup.invalid) return;
 
-    if (this.replaceForm.invalid) {
-      this.errorMessage = 'Please fill in all fields correctly.';
-      this.successMessage = '';
-      return;
-    }
+    const replaceunit: ReplaceunitModel = { ...this.formGroup.value };
 
-    // Simulate success
-    console.log('Replacement Unit Data:', this.replaceForm.value);
-    this.successMessage = 'Replacement unit added successfully!';
-    this.errorMessage = '';
-
-    // Optionally reset form
-    this.replaceForm.reset();
-    this.submitted = false;
+    this.replaceUnitService.createReplaceunit(replaceunit).subscribe({
+      next: (res) => {
+        console.log('replaceunit Saved:', res);
+        this.formGroup.reset();
+        this.router.navigate(['/viewreplaceUnit']);
+        this.cdr.markForCheck();// Adjust route as needed
+      },
+      error: (error) => {
+        console.error('Error saving replaceunit:', error);
+      }
+    });
   }
 }
 

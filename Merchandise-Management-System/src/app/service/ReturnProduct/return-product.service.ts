@@ -48,5 +48,12 @@ export class ReturnProductService {
   deleteReturnProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+
+markProductAsFixed(id: number) {
+  return this.http.put(`/api/return-products/${id}/mark-fixed`, {});
+}
+
+
 }
 

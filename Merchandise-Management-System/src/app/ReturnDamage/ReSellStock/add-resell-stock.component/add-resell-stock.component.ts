@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ResellStockModel } from '../../../models/ReturnProduct/resellstock.model';
+import { ResellStockService } from '../../../service/ReturnProduct/resell-stock.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-resell-stock.component',
@@ -8,49 +10,44 @@ import { ResellStockModel } from '../../../models/ReturnProduct/resellstock.mode
   templateUrl: './add-resell-stock.component.html',
   styleUrl: './add-resell-stock.component.css'
 })
-export class AddResellStockComponent implements OnInit{
-
-  resellForm: FormGroup;
-  submitted = false;
-  successMessage = '';
-  errorMessage = '';
-  filteredItems: ResellStockModel[] = [];
+export class AddResellStockComponent implements OnInit {
 
 
-  constructor(private fb: FormBuilder) {
-   this.resellForm = this.fb.group({
-  name: ['', Validators.required],
-  details: ['', Validators.required],
-  qty: [1, [Validators.required, Validators.min(1)]],
-  price: [0, [Validators.required, Validators.min(0.01)]],
-  paid: [0, Validators.required],
-  date: ['', Validators.required]
-});
-  }
+  formGroup!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private resellService: ResellStockService,
+    private router: Router,
+    public cdr: ChangeDetectorRef
+  ) { }
+
   ngOnInit(): void {
-    
-    
+    this.formGroup = this.formBuilder.group({
+      name: [''],
+      details: [''],
+      qty: [''],
+      price: [''],
 
+    });
   }
 
-  onSubmit(): void {
-    this.submitted = true;
+  addResellStock(): void {
+    if (this.formGroup.invalid) return;
 
-    if (this.resellForm.invalid) {
-      this.errorMessage = 'Please fill all required fields correctly.';
-      return;
-    }
+    const resellStock: ResellStockModel = { ...this.formGroup.value };
 
-    // Simulate success action
-    this.successMessage = 'Resell stock added successfully!';
-    this.errorMessage = '';
-
-    console.log('Form data:', this.resellForm.value);
-
-    // Reset form after submit
-    this.resellForm.reset();
-    this.submitted = false;
+    this.resellService.createResellstock(resellStock).subscribe({
+      next: (res) => {
+        console.log('resellStock Saved:', res);
+        this.formGroup.reset();
+        this.router.navigate(['/viewresellstock']);
+        this.cdr.markForCheck();// Adjust route as needed
+      },
+      error: (error) => {
+        console.error('Error saving resellStock:', error);
+      }
+    });
   }
 }
-
 

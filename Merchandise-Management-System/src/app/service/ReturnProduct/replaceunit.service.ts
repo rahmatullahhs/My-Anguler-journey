@@ -26,7 +26,7 @@ export class ReplaceunitService {
 
   // Create a new replaceUnit
   createReplaceunit(replaceUnit: ReplaceunitModel): Observable<ReplaceunitModel> {
-    return this.http.post<ReplaceunitModel>(this.baseUrl, replaceUnit);
+    return this.http.post<ReplaceunitModel>(`${this.baseUrl}/add`, replaceUnit);
   }
 
   // Update an existing replaceUnit
