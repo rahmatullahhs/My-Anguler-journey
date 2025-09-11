@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GoodModel } from '../../../models/goods/good.model';
 import { CategoryModel } from '../../../models/goods/category.model';
 import { BrandModel } from '../../../models/goods/brand.model';
@@ -19,56 +19,108 @@ import { SupplierService } from '../../../service/mankind/supplier.service';
 export class AddgoodComponent implements OnInit {
 
   goodForm: FormGroup;
-  editing: boolean = false;
-  goodModel: GoodModel[] = [];
+
   categories: CategoryModel[] = [];
   brands: BrandModel[] = [];
   supplier: SupplierModel[] = [];
-
   totalprice: number = 0;
   finalprice: number = 0;
   due: number = 0;
-
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private formBuilder: FormBuilder,
     private goodService: GoodService,
     private brandService: BrandService,
     private categoryService: CategoryService,
-    private supplierService: SupplierService
+    private supplierService: SupplierService,
+    private router: Router
   ) {
     this.goodForm = this.formBuilder.group({
-      id: [null],
+      products: this.formBuilder.array([])
+    });
+
+    this.addProduct();
+  }
+
+  ngOnInit(): void {
+    this.loadBrands();
+    this.loadCategories();
+    this.loadSuppliers();
+  }
+
+  get products(): FormArray {
+    return this.goodForm.get('products') as FormArray;
+  }
+
+  createProductForm(): FormGroup {
+    const group = this.formBuilder.group({
       name: ['', Validators.required],
       details: [''],
       invoice: [''],
       date: [new Date(), Validators.required],
-      paid: [0],
-      due: [0],
-      price: [0],
-      qty: [0],
-      discount: [0], // ✅ Added discount
+      paid: [],
+      due: [{ value: 0, disabled: true }],
+      price: [],
+      qty: [],
+      discount: [],
       brand: [0, Validators.required],
       category: [0, Validators.required],
-      supplier: [0]
+      supplier: [],
+     totalPrice: [{ value: 0, disabled: true }], 
+    finalPrice: [{ value: 0, disabled: true }]
     });
+
+    group.valueChanges.subscribe(values => {
+      const price = +values.price! ;
+      const qty = +values.qty! || 0;
+      const discount = +values.discount !|| 0;
+      const paid = +values.paid !|| 0;
+
+      const total = price * qty;
+      const final = total - discount;
+      const due = final - paid;
+
+      group.patchValue({
+        totalPrice: total,
+        finalPrice: final,
+        due: due
+      }, { emitEvent: false });
+    });
+
+    return group;
   }
 
-  ngOnInit(): void {
-    this.loadGood();
-    this.loadBrands();
-    this.loadCategories();
-    this.loadSupplier();
-
-    this.goodForm.valueChanges.subscribe(() => {
-      this.PriceCalculation();
-    });
+  addProduct(): void {
+    this.products.push(this.createProductForm());
   }
 
-  loadGood(): void {
-    this.goodService.getAllGoods().subscribe(res => {
-      this.goodModel = res;
+  removeProduct(index: number): void {
+    if (this.products.length > 1) {
+      this.products.removeAt(index);
+    }
+  }
+
+  onSubmit(): void {
+    if (this.goodForm.invalid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const formValue = this.goodForm.value;
+
+    const newProducts: GoodModel[] = formValue.products.map((formProduct: any) => ({
+      ...formProduct,
+      brand: { id: formProduct.brand },
+      category: { id: formProduct.category },
+      supplier: { id: formProduct.supplier }
+    }));
+
+    newProducts.forEach((product, index) => {
+      this.goodService.addGoods(product).subscribe(() => {
+        if (index === newProducts.length - 1) {
+          alert('All products added successfully!');
+          this.router.navigate(['/viewgoods']);
+        }
+      });
     });
   }
 
@@ -86,126 +138,10 @@ export class AddgoodComponent implements OnInit {
     });
   }
 
-  loadSupplier(): void {
+  loadSuppliers(): void {
     this.supplierService.getAllSupplier().subscribe({
       next: res => this.supplier = res,
       error: err => console.error('Error loading suppliers:', err)
     });
-  }
-
-  onSubmit(): void {
-    if (!this.goodForm.valid) {
-      alert('Please fill in required fields.');
-      return;
-    }
-
-    const formValue = this.goodForm.value;
-
-    // Construct the product correctly for backend expectations
-    const newProduct: GoodModel = {
-      ...formValue,
-      brand: { id: formValue.brand },
-      category: { id: formValue.category },
-      supplier: { id: formValue.supplier }
-    };
-
-    if (this.editing && formValue.id) {
-      this.goodService.updateGoods(newProduct).subscribe(() => {
-        alert('Product updated successfully!');
-        this.loadGood();
-        this.cancelEdit();
-      });
-    } else {
-      this.goodService.addGoods(newProduct).subscribe(() => {
-        alert('Product added successfully!');
-        this.loadGood();
-        this.goodForm.reset({
-          name: '',
-          details: '',
-          invoice: '',
-          date: new Date(),
-          paid: 0,
-          due: 0,
-          price: 0,
-          qty: 0,
-          discount: 0,
-          brand: 0,
-          category: 0,
-          supplier: 0
-        });
-        this.router.navigate(['/viewgoods']);
-      });
-    }
-  }
-
-
-  editGoods(good: GoodModel): void {
-    this.editing = true;
-    this.goodForm.patchValue(good);
-  }
-
-  deleteGoods(id: number): void {
-    const confirmed = confirm('Are you sure you want to delete this goods?');
-    if (!confirmed) return;
-
-    this.goodService.deleteGoods(id).subscribe({
-      next: () => {
-        alert('Goods deleted!');
-        this.loadGood();
-      },
-      error: (err) => {
-        console.error('Failed to delete goods:', err);
-        alert('An error occurred while deleting the goods.');
-      }
-    });
-  }
-
-  cancelEdit(): void {
-    this.editing = false;
-    this.goodForm.reset({
-      name: '',
-      details: '',
-      invoice: '',
-      date: new Date(),
-      paid: 0,
-      due: 0,
-      price: 0,
-      qty: 0,
-      discount: 0,
-      brand: 0,
-      category: 0,
-      supplier: 0
-    });
-  }
-
-  getBrandName(brandId: number): string {
-    return this.brands.find(b => b.id === brandId)?.name || 'N/A';
-  }
-
-  getCategoryName(categoryId: number): string {
-    return this.categories.find(c => c.id === categoryId)?.name || 'N/A';
-  }
-
-  getSupplierName(supplierId: number): string {
-    return this.supplier.find(s => s.id === supplierId)?.name || 'N/A';
-  }
-
-  PriceCalculation(): void {
-    const price = Number(this.goodForm.value.price) || 0;
-    const qty = Number(this.goodForm.value.qty) || 0;
-    const paid = Number(this.goodForm.value.paid) || 0;
-    const discount = Number(this.goodForm.value.discount) || 0;
-
-    this.totalprice = price * qty;
-    this.finalprice = this.totalprice - discount;
-    this.due = this.finalprice - paid;
-
-    this.goodForm.patchValue({
-      due: this.due
-    }, { emitEvent: false });
-  }
-
-  onFocusLost(): void {
-    this.PriceCalculation();
   }
 }

@@ -26,7 +26,7 @@ import { SupportComponents } from './help-supports/support.components/support.co
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
-import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
+
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 import { DuelistComponent } from './Accounts/Sells/duelist.component/duelist.component';
 import { AddResellStockComponent } from './ReturnDamage/ReSellStock/add-resell-stock.component/add-resell-stock.component';
@@ -75,7 +75,7 @@ const routes: Routes = [
   {path:'support',component:SupportComponents},
   {path:'kb',component:KbComponents},
   {path:'cogs',component:AddCogsComponent},
-    {path:'productprice',component:ProductspriceComponent},
+   
       {path:'viewinvoice',component:ViewinvoiceComponent},
       {path:'due',component:DuelistComponent},
 

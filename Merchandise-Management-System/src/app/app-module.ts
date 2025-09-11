@@ -44,7 +44,6 @@ import { SupportComponents } from './help-supports/support.components/support.co
 import { KbComponents } from './help-supports/kb.components/kb.components';
 import { AddCogsComponent } from './Accounts/COGS/add-cogs.component/add-cogs.component';
 import { AddinvoiceComponent } from './sellProducts/Invoice/addinvoice.component/addinvoice.component';
-import { ProductspriceComponent } from './Accounts/COGS/productsprice.component/productsprice.component';
 import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.component/viewinvoice.component';
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
 import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
@@ -61,6 +60,8 @@ import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell
 import { AddReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/add-replace-unit.component/add-replace-unit.component';
 import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
 import { ViewRepairComponent } from './ReturnDamage/ProductInRepair/view-repair.component/view-repair.component';
+import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
+
 
 
 
@@ -110,7 +111,7 @@ Chart.register(ChartDataLabels);
     AddCogsComponent,
     AddinvoiceComponent,
 
-    ProductspriceComponent,
+ 
     ViewinvoiceComponent,
     AddexpenseComponent,
     ViewexpenseComponent,
@@ -126,6 +127,7 @@ ViewResellStockComponent,
 AddReplaceUnitComponent,
 ViewReplaceUnitComponent,
 ViewRepairComponent,
+ViewcogsComponent
 
 
 

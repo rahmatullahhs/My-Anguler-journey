@@ -8,7 +8,7 @@ import { environment } from '../../../environment/environment';
   providedIn: 'root'
 })
 export class CogsService {
-  
+   
   private baseUrl = `${environment.apiBaseUrl}/cogs`;
 
   constructor(private http: HttpClient) {}

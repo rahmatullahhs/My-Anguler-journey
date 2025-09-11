@@ -1,57 +1,68 @@
 <div class="container">
-  <button class="btn btn-sm btn-success" routerLink="/productprice" >Product Price</button>
+  <button class="btn btn-sm btn-success" routerLink="/productprice">Product Price</button>
   <h2>{{ isEditMode ? 'Edit COGS Entry' : 'Add New COGS Entry' }}</h2>
 
-  <form [formGroup]="cogsForm" (ngSubmit)="onSubmit()" method="post">
-
+  <form [formGroup]="cogsForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-4">
-        <label for="date" class="form-label"><i class="fas fa-calendar me-1 text-primary"></i> Date</label>
-        <input type="date" class="form-control" id="date" formControlName="date">
+        <label>Date</label>
+        <input type="date" class="form-control" formControlName="date">
       </div>
 
       <div class="col-md-4">
         <label>Purchase Invoice</label>
-        <input type="text" formControlName="purchaseInvoice" class="form-control" required />
+        <input type="text" class="form-control" formControlName="purchaseInvoice">
       </div>
 
       <div class="col-md-4">
         <label>Product Name</label>
-        <input type="text" formControlName="productName" class="form-control" required />
+        <input type="text" class="form-control" formControlName="productName">
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-md-4">
+        <label>Product Qty</label>
+        <input type="number" class="form-control" formControlName="productQty" min="1">
+      </div>
+
+      <div class="col-md-4">
         <label>Product Price</label>
-        <input type="number" formControlName="productPrice" class="form-control" required />
+        <input type="number" class="form-control" formControlName="productPrice">
       </div>
 
       <div class="col-md-4">
         <label>Transport Fee</label>
-        <input type="number" formControlName="transportFee" class="form-control" required />
-      </div>
-
-      <div class="col-md-4">
-        <label>Labour Cost</label>
-        <input type="number" formControlName="labourCost" class="form-control" required />
+        <input type="number" class="form-control" formControlName="transportFee">
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col-md-4">
-        <label>Packing Cost</label>
-        <input type="number" formControlName="packingCost" class="form-control" required />
+        <label>Labour Cost</label>
+        <input type="number" class="form-control" formControlName="labourCost">
       </div>
 
       <div class="col-md-4">
-        <label>Tax (⬇️~20.5% of CIF=Cost, Insurance, Freight,)</label>
-        <input type="number" formControlName="tax" class="form-control" readonly />
+        <label>Packing Cost</label>
+        <input type="number" class="form-control" formControlName="packingCost">
       </div>
 
+      <div class="col-md-4">
+        <label>Tax (20.5% of CIF)</label>
+        <input type="number" class="form-control" formControlName="tax" readonly>
+      </div>
+    </div>
+
+    <div class="row mt-3">
       <div class="col-md-4">
         <label>Total COGS</label>
-        <input type="number" class="form-control" [value]="cogsForm.value.totalCogs" readonly />
+        <input type="number" class="form-control" formControlName="totalCogs" readonly>
+      </div>
+
+      <div class="col-md-4">
+        <label>Each Product Price</label>
+        <input type="number" class="form-control" formControlName="eachProductPrice" readonly>
       </div>
     </div>
 
@@ -61,21 +72,23 @@
     </div>
   </form>
 
-  <hr />
+  <hr>
 
   <h3>COGS Records</h3>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Date</th>
-        <th>Purchase Invoice</th>
-        <th>Product Name</th>
-        <th>Product Price</th>
-        <th>Transport Fee</th>
-        <th>Labour Cost</th>
-        <th>Packing Cost</th>
+        <th>Invoice</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Transport</th>
+        <th>Labour</th>
+        <th>Packing</th>
         <th>Tax</th>
-        <th>Total COGS</th>
+        <th>Total</th>
+        <th>Each Price</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -84,12 +97,14 @@
         <td>{{ cogs.date | date:'yyyy-MM-dd' }}</td>
         <td>{{ cogs.purchaseInvoice }}</td>
         <td>{{ cogs.productName }}</td>
-        <td>{{ cogs.productPrice }}</td>
+        <td>{{ cogs.productQty }}</td>
+        <td>{{ cogs.productCost }}</td>
         <td>{{ cogs.transportFee }}</td>
         <td>{{ cogs.labourCost }}</td>
         <td>{{ cogs.packingCost }}</td>
         <td>{{ cogs.tax | number:'1.2-2' }}</td>
         <td>{{ cogs.totalCogs | number:'1.2-2' }}</td>
+        <td>{{ cogs.eachProductPrice | number:'1.2-2' }}</td>
         <td>
           <button class="btn btn-sm btn-info" (click)="editCogs(cogs)">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="deleteCogs(cogs.id!)">Delete</button>

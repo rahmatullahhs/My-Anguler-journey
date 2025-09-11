@@ -1,7 +1,9 @@
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { CogsModel } from '../../../models/Accounts/cogs.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CogsService } from '../../../service/Accounts/cogs.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CogsModel } from '../../../models/Accounts/cogs.model';
+
 
 @Component({
   selector: 'app-add-cogs.component',
@@ -22,15 +24,17 @@ export class AddCogsComponent implements OnInit {
   ) {
     this.cogsForm = this.fb.group({
       id: [null],
+      date: [''],
       purchaseInvoice: ['', Validators.required],
       productName: ['', Validators.required],
+      productQty: [0, [Validators.required, Validators.min(1)]],
       productPrice: [0, Validators.required],
       transportFee: [0, Validators.required],
       labourCost: [0, Validators.required],
       packingCost: [0, Validators.required],
-      date:[''],
       tax: [0],
-      totalCogs: [0]
+      totalCogs: [0],
+      eachProductPrice: [0]
     });
   }
 
@@ -45,47 +49,48 @@ export class AddCogsComponent implements OnInit {
     });
   }
 
-  // Calculate total cost of goods sold
-  calculateTotalCogs(): number {
+  calculateTotalCogs() {
     const {
       productPrice,
       transportFee,
       labourCost,
-      packingCost
+      packingCost,
+      productQty
     } = this.cogsForm.value;
 
-    const tax = productPrice * 0.205;
+    const cif = productPrice + transportFee + labourCost + packingCost;
+    const tax = cif * 0.205;
+    const totalCogs = cif + tax;
+    const eachProductPrice = productQty > 0 ? totalCogs / productQty : 0;
 
-    this.cogsForm.patchValue({ tax }); // update tax field in form
-
-    return productPrice + transportFee + labourCost + packingCost + tax;
+    this.cogsForm.patchValue({
+      tax: tax,
+      totalCogs: totalCogs,
+      eachProductPrice: eachProductPrice
+    });
   }
 
- onSubmit() {
-  if (this.cogsForm.valid) {
-    const totalCogs = this.calculateTotalCogs();
-    const cogs: CogsModel = {
-      ...this.cogsForm.value,
-      totalCogs: totalCogs
-    };
+  onSubmit() {
+    if (this.cogsForm.valid) {
+      this.calculateTotalCogs();
 
-    console.log('Submitting COGS:', cogs);  // <-- Add this to inspect data sent
+      const cogs: CogsModel = {
+        ...this.cogsForm.value
+      };
 
-    if (this.isEditMode && cogs.id) {
-      this.cogsService.updateCogs(cogs).subscribe(() => {
-        this.getAllCogs();
-        this.resetForm();
-      });
-    } else {
-      this.cogsService.addCogs(cogs).subscribe(() => {
-        this.getAllCogs();
-        this.resetForm();
-      });
+      if (this.isEditMode && cogs.id) {
+        this.cogsService.updateCogs(cogs).subscribe(() => {
+          this.getAllCogs();
+          this.resetForm();
+        });
+      } else {
+        this.cogsService.addCogs(cogs).subscribe(() => {
+          this.getAllCogs();
+          this.resetForm();
+        });
+      }
     }
   }
-}
-
-    
 
   editCogs(cogs: CogsModel) {
     this.cogsForm.patchValue(cogs);

@@ -1,12 +1,23 @@
 export interface CogsModel {
-  id?: number;
+
+  id: number;
   purchaseInvoice: string;
+
+  // Product details
   productName: string;
-  productPrice: number;
+  productQty: number;
+
+  // Cost components
+  productCost: number; // e.g., base product cost (from invoice)
   transportFee: number;
   labourCost: number;
-  packingCost: number; // ← fixed casing to match camelCase
+  packingCost: number;
   tax: number;
-  date: Date| string;
-  totalCogs: number;
+
+  // Date of transaction
+  date:Date ;
+
+  // Calculated fields
+  totalCogs?: number;          // Total COGS = all costs
+  eachProductPrice?: number;   // Total COGS / productQty
 }
