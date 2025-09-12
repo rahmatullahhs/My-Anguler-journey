@@ -50,9 +50,12 @@ export class ReturnProductService {
   }
 
 
-markProductAsFixed(id: number) {
-  return this.http.put(`/api/return-products/${id}/mark-fixed`, {});
+// return-product.service.ts
+
+markProductAsFixed(id: number): Observable<ReturnproductModel> {
+  return this.http.post<ReturnproductModel>(`${this.baseUrl}/markFixed/${id}`, {}); 
 }
+ 
 
 
 }

@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CogsModel } from '../../../models/Accounts/cogs.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CogsService } from '../../../service/Accounts/cogs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-viewcogs.component',
@@ -12,43 +13,29 @@ import { CogsService } from '../../../service/Accounts/cogs.service';
 export class ViewcogsComponent implements OnInit {
 
   cogsList: CogsModel[] = [];
-  cogsForm: FormGroup;
-  isEditMode = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private cogsService: CogsService,
-    private cdr: ChangeDetectorRef
-  ) {
-    this.cogsForm = this.fb.group({
-      id: [null],
-      purchaseInvoice: ['', Validators.required],
-
-      productName: ['', Validators.required],
-      productQty:[],
-
-      productPrice: [0, Validators.required],
-      transportFee: [0, Validators.required],
-      labourCost: [0, Validators.required],
-      packingCost: [0, Validators.required],
-      tax: [0],
-
-      date:[''],
-      
-      totalCogs: [0],
-  eachProductPrice: [0]
-
-    });
-  }
+  constructor(private cogsService: CogsService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllCogs();
+    this.loadCogs();
   }
-  getAllCogs() {
+
+  loadCogs() {
     this.cogsService.getAllCogs().subscribe(data => {
       this.cogsList = data;
-      this.cdr.markForCheck();
     });
   }
 
+  editCogs(cogs: CogsModel) {
+    // Navigate to AddCogsComponent and pass the data
+    this.router.navigate(['/add-cogs'], { state: { cogsData: cogs } });
+  }
+
+  deleteCogs(id: number) {
+    if (confirm('Are you sure you want to delete this entry?')) {
+      this.cogsService.deleteCogs(id).subscribe(() => {
+        this.loadCogs();
+      });
+    }
+  }
 }

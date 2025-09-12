@@ -22,6 +22,7 @@
         <th>Invoice</th>
         <th>Type</th>
         <th>Quantity</th>
+        <th>Price</th>
         <th>Date</th>
         <th>Reason</th>
         <th>Product Name</th>
@@ -36,6 +37,7 @@
         <td>{{ product.invoice }}</td>
         <td>{{ product.type }}</td>
         <td>{{ product.quantity }}</td>
+         <td>{{ product.price || 'N/A' }}</td>
         <td>{{ product.date | date: 'shortDate' }}</td>
         <td>{{ product.reason }}</td>
         <td>{{ product.productName }}</td>

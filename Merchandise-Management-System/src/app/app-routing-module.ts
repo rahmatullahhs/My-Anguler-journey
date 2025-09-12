@@ -35,6 +35,7 @@ import { AddReturnProductComponent } from './ReturnDamage/ReturnProduct/add-retu
 import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell-stock.component/view-resell-stock.component';
 import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
 import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-return-product.component/view-return-product.component';
+import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
 
 
 
@@ -74,7 +75,8 @@ const routes: Routes = [
   {path: 'faq',component:FaqComponents},
   {path:'support',component:SupportComponents},
   {path:'kb',component:KbComponents},
-  {path:'cogs',component:AddCogsComponent},
+  {path:'addcogs',component:AddCogsComponent},
+    { path: 'viewcogs', component: ViewcogsComponent },
    
       {path:'viewinvoice',component:ViewinvoiceComponent},
       {path:'due',component:DuelistComponent},

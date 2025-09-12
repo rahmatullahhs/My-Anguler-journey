@@ -30,7 +30,8 @@ returnForm!: FormGroup;
       date: [new Date()],
       reason: [''],
       productName: [''],
-      photo: [null] // Not used directly
+      photo: [null] ,// Not used directly
+      price:[]
     });
   }
 

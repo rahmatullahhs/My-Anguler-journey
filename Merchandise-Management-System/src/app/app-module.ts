@@ -62,7 +62,8 @@ import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replac
 import { ViewRepairComponent } from './ReturnDamage/ProductInRepair/view-repair.component/view-repair.component';
 import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -143,6 +144,8 @@ ViewcogsComponent
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
+       BrowserAnimationsModule, // required for Toastr
+    ToastrModule.forRoot()
 
   ],
   providers: [

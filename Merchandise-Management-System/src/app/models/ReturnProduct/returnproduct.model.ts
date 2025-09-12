@@ -10,7 +10,7 @@ export interface ReturnproductModel {
   productName: string;
   photo?: string;
   status?: 'NEW' | 'FIXING' | 'FIXED';  // could be a filename or base64 or URL
-  
+   price:number ; // ✅ Ensure this exists
 }
 
 

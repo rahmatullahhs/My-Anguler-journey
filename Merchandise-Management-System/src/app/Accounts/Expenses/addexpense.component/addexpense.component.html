@@ -1,1 +1,69 @@
-<p>addexpense.component works!</p>
+<div class="container mt-4">
+  <h4 class="mb-4">Add Expense Record</h4>
+
+  <form [formGroup]="expenseForm" (ngSubmit)="saveExpense()" class="row g-3">
+
+    <!-- Date -->
+    <div class="col-md-4">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" class="form-control" id="date" formControlName="date" required>
+    </div>
+
+    <!-- Title -->
+    <div class="col-md-8">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="e.g., Laptop Repair, Rent" required>
+    </div>
+
+    <!-- Description -->
+    <div class="col-12">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" rows="2" placeholder="Optional details"></textarea>
+    </div>
+
+    <!-- Amount -->
+    <div class="col-md-4">
+      <label for="amount" class="form-label">Total Amount</label>
+      <input type="number" class="form-control" id="amount" formControlName="amount" placeholder="0.00" required>
+    </div>
+
+    <!-- Paid -->
+    <div class="col-md-4">
+      <label for="paid" class="form-label">Paid</label>
+      <input type="number" class="form-control" id="paid" formControlName="paid" placeholder="0.00" required>
+    </div>
+
+    <!-- Due -->
+    <div class="col-md-4">
+      <label for="due" class="form-label">Due</label>
+      <input type="number" class="form-control" id="due" formControlName="due" placeholder="0.00" required>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="col-md-6">
+      <label for="paymentMethod" class="form-label">Payment Method</label>
+      <select class="form-select" id="paymentMethod" formControlName="paymentMethod">
+        <option value="">Select</option>
+        <option>Cash</option>
+        <option>Bank Transfer</option>
+        <option>bKash</option>
+        <option>Nagad</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- Added By -->
+    <div class="col-md-6">
+      <label for="addedBy" class="form-label">Added By</label>
+      <input type="text" class="form-control" id="addedBy" formControlName="addedBy" placeholder="Admin or Staff Name">
+    </div>
+
+    <!-- Submit Button -->
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary" [disabled]="isSaving">
+        {{ isSaving ? 'Saving...' : 'Save Expense' }}
+      </button>
+    </div>
+
+  </form>
+</div>
