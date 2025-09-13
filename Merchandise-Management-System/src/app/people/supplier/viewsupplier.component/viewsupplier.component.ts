@@ -43,7 +43,8 @@ searchTerm:string='';
     return this.suppliers.filter(sup =>
       sup.name?.toLowerCase().includes(term) ||
       sup.companyName?.toLowerCase().includes(term) ||
-      sup.email?.toLowerCase().includes(term)
+      sup.email?.toLowerCase().includes(term)||
+      sup.phone?.toLowerCase().includes(term)
     );
   }
 

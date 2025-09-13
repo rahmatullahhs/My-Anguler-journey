@@ -1,4 +1,10 @@
 <div class="container mt-4">
+   <div class="col-12 text-end">
+  <a class="btn btn-link" [routerLink]="'/viewexpense'">
+    <i class="bi bi-plus-circle"></i> view Expense
+  </a>
+</div>
+
   <h4 class="mb-4">Add Expense Record</h4>
 
   <form [formGroup]="expenseForm" (ngSubmit)="saveExpense()" class="row g-3">

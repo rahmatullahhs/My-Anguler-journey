@@ -36,6 +36,8 @@ import { ViewResellStockComponent } from './ReturnDamage/ReSellStock/view-resell
 import { ViewReplaceUnitComponent } from './ReturnDamage/RePlaceUnit/view-replace-unit.component/view-replace-unit.component';
 import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-return-product.component/view-return-product.component';
 import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
+import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
+import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
 
 
 
@@ -67,29 +69,31 @@ const routes: Routes = [
   { path: 'addgoods', component: AddgoodComponent },
   { path: 'viewgoods', component: ViewgoodComponent },
   { path: 'updategoods/:id', component: UpdategoodComponent },
-  
+
   { path: 'addproduct', component: AddproductComponent },
   { path: 'viewproduct', component: ViewproductComponent },
   { path: 'updateproduct', component: UpdateproductComponent },
-  {path:'invoice',component:AddinvoiceComponent},
-  {path: 'faq',component:FaqComponents},
-  {path:'support',component:SupportComponents},
-  {path:'kb',component:KbComponents},
-  {path:'addcogs',component:AddCogsComponent},
-    { path: 'viewcogs', component: ViewcogsComponent },
-   
-      {path:'viewinvoice',component:ViewinvoiceComponent},
-      {path:'due',component:DuelistComponent},
+  { path: 'invoice', component: AddinvoiceComponent },
+  { path: 'faq', component: FaqComponents },
+  { path: 'support', component: SupportComponents },
+  { path: 'kb', component: KbComponents },
+  { path: 'addcogs', component: AddCogsComponent },
+  { path: 'viewcogs', component: ViewcogsComponent },
+
+  { path: 'viewinvoice', component: ViewinvoiceComponent },
+  { path: 'due', component: DuelistComponent },
 
 
-   {path:'addresellstock',component:AddResellStockComponent},
-     {path:'addreplaceUnit',component:AddReplaceUnitComponent},
-       {path:'addreturnProduct',component:AddReturnProductComponent},
+  { path: 'addresellstock', component: AddResellStockComponent },
+  { path: 'addreplaceUnit', component: AddReplaceUnitComponent },
+  { path: 'addreturnProduct', component: AddReturnProductComponent },
 
 
-   {path:'viewresellstock',component:ViewResellStockComponent},
-     {path:'viewreplaceUnit',component:ViewReplaceUnitComponent},
-       {path:'viwereturnProduct',component:ViewReturnProductComponent}
+  { path: 'viewresellstock', component: ViewResellStockComponent },
+  { path: 'viewreplaceUnit', component: ViewReplaceUnitComponent },
+  { path: 'viwereturnProduct', component: ViewReturnProductComponent },
+  { path: 'addexpense', component: AddexpenseComponent },
+  { path: 'viewexpense', component: ViewexpenseComponent }
 
 
 ];

@@ -32,29 +32,39 @@
     <table *ngIf="filteredInvoice.length > 0" class="table table-hover align-middle">
       <thead class="table-primary">
         <tr>
-          <th>#</th>
           <th>Invoice</th>
-          <th>Date</th>
-          <th>Customer</th>
-          <th>Total</th>
-          <th>Paid</th>
-          <th>Due</th>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Subtotal</th>
+      <th>Discount</th>
+      <th>Tax</th>
+      <th>Total</th>
+      <th>Paid</th>
+      <th>Due</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let inv of filteredInvoice; let i = index">
-          <td>{{ i + 1 }}</td>
           <td>{{ inv.invoiceNumber || '—' }}</td>
-          <td>{{ inv.date | date: 'mediumDate' }}</td>
-          <td>{{ inv.name || '—' }}</td>
-          <td>{{ inv.total | currency }}</td>
-          <td>{{ inv.paid | currency }}</td>
-          <td>
-            <span [ngClass]="{'text-danger fw-semibold': inv.due > 0, 'text-success': inv.due === 0}">
-              {{ inv.due | currency }}
-            </span>
-          </td>
+      <td>{{ inv.date | date: 'mediumDate' }}</td>
+      <td>{{ inv.name || '—' }}</td>
+      <td>{{ inv.email || '—' }}</td>
+      <td>{{ inv.phone || '—' }}</td>
+       <td>{{ inv.address || '—' }}</td>
+      <td>{{ inv.subtotal | currency:'USD':'symbol':'1.2-2' }}</td>
+      <td>{{ inv.discount }}%</td>
+      <td>{{ inv.taxAmount | currency }}</td>
+      <td>{{ inv.total | currency }}</td>
+      <td>{{ inv.paid | currency }}</td>
+      <td>
+        <span [ngClass]="{'text-danger fw-semibold': inv.due > 0, 'text-success': inv.due === 0}">
+          {{ inv.due | currency }}
+        </span>
+      </td>
           <td class="text-center">
             <button class="btn btn-sm btn-outline-danger" (click)="deleteInvoice(inv.id)">
               <i class="bi bi-trash-fill me-1"></i> Delete

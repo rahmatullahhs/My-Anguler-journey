@@ -58,7 +58,7 @@ export class AddgoodComponent implements OnInit {
       invoice: [''],
       date: [new Date(), Validators.required],
       paid: [],
-      due: [{ value: 0, disabled: true }],
+      due: [0],
       price: [],
       qty: [],
       discount: [],
@@ -100,29 +100,29 @@ export class AddgoodComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.goodForm.invalid) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
-    const formValue = this.goodForm.value;
-
-    const newProducts: GoodModel[] = formValue.products.map((formProduct: any) => ({
-      ...formProduct,
-      brand: { id: formProduct.brand },
-      category: { id: formProduct.category },
-      supplier: { id: formProduct.supplier }
-    }));
-
-    newProducts.forEach((product, index) => {
-      this.goodService.addGoods(product).subscribe(() => {
-        if (index === newProducts.length - 1) {
-          alert('All products added successfully!');
-          this.router.navigate(['/viewgoods']);
-        }
-      });
-    });
+  if (this.goodForm.invalid) {
+    alert('Please fill in all required fields.');
+    return;
   }
+
+  const formValue = this.goodForm.getRawValue(); // ✅ Important fix here
+
+  const newProducts: GoodModel[] = formValue.products.map((formProduct: any) => ({
+    ...formProduct,
+    brand: { id: formProduct.brand },
+    category: { id: formProduct.category },
+    supplier: { id: formProduct.supplier }
+  }));
+
+  newProducts.forEach((product, index) => {
+    this.goodService.addGoods(product).subscribe(() => {
+      if (index === newProducts.length - 1) {
+        alert('All products added successfully!');
+        this.router.navigate(['/viewgoods']);
+      }
+    });
+  });
+}
 
   loadBrands(): void {
     this.brandService.getAllBrand().subscribe({

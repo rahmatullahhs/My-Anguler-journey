@@ -1,14 +1,14 @@
 <div class="container py-4">
   <div class="card shadow-sm">
-   <div class="card-header bg-primary text-white">
-  <h4 class="mb-0">
-    <i class="fas fa-tags me-2"></i> Brand Management
-  </h4>
-</div>
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">
+        <i class="fas fa-tags me-2"></i> Brand Management
+      </h4>
+    </div>
 
     <div class="card-body">
       <form (ngSubmit)="onSubmit()" class="row g-3">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <label for="brandName" class="form-label">Brand Name</label>
           <input
             type="text"
@@ -20,7 +20,7 @@
             required
           />
         </div>
-
+<!-- 
         <div class="col-md-6">
           <label for="category" class="form-label">Category</label>
           <select
@@ -35,7 +35,7 @@
               {{ cat.name }}
             </option>
           </select>
-        </div>
+        </div> -->
 
         <div class="col-12 d-flex justify-content-end">
           <button type="submit" class="btn btn-success me-2">
@@ -58,14 +58,14 @@
         <thead class="table-light">
           <tr>
             <th scope="col">Brand</th>
-            <th scope="col">Category</th>
+            <!-- <th scope="col">Category</th> -->
             <th scope="col" class="text-end">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let b of brands">
             <td>{{ b.name }}</td>
-            <td>{{ getCategoryName(b.categoryId) }}</td>
+            <!-- <td>{{ getCategoryName(b.categoryId) }}</td> -->
             <td class="text-end">
               <button class="btn btn-sm btn-outline-primary me-2" (click)="editBrand(b)">
                 Edit

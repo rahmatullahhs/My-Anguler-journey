@@ -48,7 +48,6 @@ import { ViewinvoiceComponent } from './sellProducts/Invoice/viewinvoice.compone
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
 import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
 import { UpdateexpenseComponent } from './Accounts/Expenses/updateexpense.component/updateexpense.component';
-import { AddexpensefieldComponent } from './Accounts/Expenses/addexpensefield.component/addexpensefield.component';
 import { Sellpage } from './appface/dashboard/sellpage/sellpage';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -117,7 +116,7 @@ Chart.register(ChartDataLabels);
     AddexpenseComponent,
     ViewexpenseComponent,
     UpdateexpenseComponent,
-    AddexpensefieldComponent,
+
     Sellpage,
 DuelistComponent,
 

@@ -1,19 +1,33 @@
- <li>
-      <a class="dropdown-item" routerLink="/addresellstock">
-        🛠️ add
-      </a>
-      <div class="container mt-4">
-  <h2 class="mb-4">Resell Stock Items</h2>
+<div class="container mt-5">
+  <!-- Title Section -->
+  <div class="text-center mb-4">
+    <h2 class="text-primary fw-bold">
+      <i class="bi bi-laptop me-2 text-dark"></i>
+      Sell Used & Refurbished Laptops in Bulk – Packs of 5 Available!
+    </h2>
+    <p class="text-muted">
+      We offer high-quality refurbished laptops and Accessories available in affordable bulk deals.
+    </p>
+  </div>
 
-  <!-- Loading / No Data Message -->
-  <div *ngIf="stockItems.length === 0" class="alert alert-info">
+  <!-- Add Button -->
+  <div class="d-flex justify-content-end mb-3">
+    <a class="btn btn-success shadow-sm d-flex align-items-center" routerLink="/addresellstock">
+      <i class="bi bi-plus-circle-fill me-2"></i>
+      Add Stock Item
+    </a>
+  </div>
+
+  <!-- Alert Message -->
+  <div *ngIf="stockItems.length === 0" class="alert alert-warning text-center shadow-sm">
+    <i class="bi bi-exclamation-circle-fill me-2"></i>
     No resell stock items available.
   </div>
 
-  <!-- Table of Stock Items -->
-  <div *ngIf="stockItems.length > 0">
-    <table class="table table-bordered table-striped">
-      <thead class="table-light">
+  <!-- Table -->
+  <div *ngIf="stockItems.length > 0" class="table-responsive shadow-sm">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-info text-center">
         <tr>
           <th>#</th>
           <th>Name</th>
@@ -24,10 +38,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of stockItems; let i = index">
-          <td>{{ i + 1 }}</td>
+          <td class="text-center">{{ i + 1 }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.details || '—' }}</td>
-          <td>{{ item.qty }}</td>
+          <td class="text-center">{{ item.qty }}</td>
           <td>{{ item.price | currency }}</td>
         </tr>
       </tbody>

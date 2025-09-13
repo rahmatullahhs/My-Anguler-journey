@@ -1,5 +1,11 @@
 <form [formGroup]="goodForm" (ngSubmit)="onSubmit()">
   <div formArrayName="products">
+    <div class="mt-4 mb-3">
+    <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
+    <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
+    <a routerLink="/viewsupplier" class="btn btn-outline-dark me-2"><i class="fas fa-truck"></i> Suppliers</a>
+    <a routerLink="/viewgoods" class="btn btn-outline-info"><i class="fas fa-boxes"></i> View Stock</a>
+  </div>
     <div *ngFor="let product of products.controls; let i = index" [formGroupName]="i" class="card mb-4 border-primary">
       <div class="card-header bg-primary text-white">
         <h5>Product {{ i + 1 }}</h5>
@@ -87,7 +93,7 @@
           </div>
           <div class="col-md-4">
             <label>Due</label>
-            <input type="number" class="form-control" formControlName="due" readonly>
+       <input type="number" class="form-control" formControlName="due" readonly>
           </div>
         </div>
 
@@ -112,4 +118,5 @@
       <i class="fas fa-check-circle"></i> Submit All Products
     </button>
   </div>
+
 </form>

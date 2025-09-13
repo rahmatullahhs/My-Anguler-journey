@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class ExpenseService {
   
-  private baseUrl = `${environment.apiBaseUrl}/expanse`;
+  private baseUrl = `${environment.apiBaseUrl}/expense`;
   constructor(private http: HttpClient) {}
  
-  getAllField(): Observable<ExpenseModel[]> {
+  getAllExpense(): Observable<ExpenseModel[]> {
     return this.http.get<ExpenseModel[]>(this.baseUrl);
   }
 
@@ -24,7 +24,7 @@ export class ExpenseService {
     return this.http.put<ExpenseModel>(`${this.baseUrl}/${addentryModel.id}`, addentryModel);
   }
 
-  deleteEntry(id: number ): Observable<void> {
+  deleteExpense(id: number ): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
   
