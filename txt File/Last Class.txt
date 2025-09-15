@@ -1,6 +1,0 @@
-jsp
-servlet
-add show all student json server api
-angular array
-savestudent
- merchandise
