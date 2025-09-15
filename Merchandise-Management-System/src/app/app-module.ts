@@ -63,6 +63,7 @@ import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.c
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
 
 
 
@@ -127,7 +128,8 @@ ViewResellStockComponent,
 AddReplaceUnitComponent,
 ViewReplaceUnitComponent,
 ViewRepairComponent,
-ViewcogsComponent
+ViewcogsComponent,
+AddreinvoiceComponent
 
 
 

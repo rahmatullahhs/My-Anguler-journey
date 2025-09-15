@@ -1,0 +1,118 @@
+<div class="container my-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">🧾 Add Re-Invoice</h4>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="invoiceForm" (ngSubmit)="addReinvoice()">
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="invoiceNumber" class="form-label">Invoice Number</label>
+            <input type="text" id="invoiceNumber" class="form-control" formControlName="invoiceNumber" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" id="date" class="form-control" formControlName="date" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="name" class="form-label">Customer Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="phone" class="form-label">Customer Phone</label>
+            <input type="text" id="phone" class="form-control" formControlName="phone" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="email" class="form-label">Customer Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email">
+          </div>
+
+          <div class="col-md-6">
+            <label for="address" class="form-label">Customer Address</label>
+            <textarea id="address" rows="2" class="form-control" formControlName="address"></textarea>
+          </div>
+
+          <div class="col-md-6">
+            <label for="productdetail" class="form-label">Product</label>
+            <select id="productdetail" class="form-select" formControlName="productdetail">
+              <option value="">-- Select Product --</option>
+              <option *ngFor="let item of resellStockModel" [value]="item.id">
+                {{ item.name }} (Available: {{ item.qty }})
+              </option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="productqty" class="form-label">Quantity</label>
+            <input type="number" id="productqty" class="form-control" formControlName="productqty" (blur)="onFocusLost()">
+            <small class="text-muted">Available: {{ availableQty }}</small>
+          </div>
+
+          <div class="col-md-4">
+            <label for="price" class="form-label">Unit Price</label>
+            <input type="number" id="price" class="form-control" formControlName="price" readonly>
+          </div>
+
+          <div class="col-md-4">
+            <label for="discount" class="form-label">Discount (%)</label>
+            <input type="number" id="discount" class="form-control" formControlName="discount" (blur)="onFocusLost()">
+          </div>
+
+          <div class="col-md-4">
+            <label for="paid" class="form-label">Paid Amount</label>
+            <input type="number" id="paid" class="form-control" formControlName="paid" (blur)="onFocusLost()">
+          </div>
+
+          <div class="col-md-4">
+            <label for="due" class="form-label">Due Amount</label>
+            <input type="number" id="due" class="form-control" formControlName="due" readonly>
+          </div>
+        </div>
+
+        <div class="mt-4 p-3 border rounded bg-light">
+          <p><strong>Total Price:</strong> {{ totalprice | currency }}</p>
+          <p><strong>Final Price (After Discount):</strong> {{ finalprice | currency }}</p>
+          <p><strong>Due:</strong> {{ due | currency }}</p>
+        </div>
+
+        <div class="mt-4 d-flex gap-3">
+          <button type="submit" class="btn btn-success" [disabled]="invoiceForm.invalid">💾 Save Invoice</button>
+          <button type="button" class="btn btn-outline-primary" (click)="printInvoice()">🖨️ Print</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden printable invoice -->
+<div id="invoiceToPrint" style="display: none; background: #fff; padding: 30px;">
+  <h3 class="text-center border-bottom pb-2 mb-4">🧾 Re-Invoice</h3>
+
+  <p><strong>Invoice No:</strong> {{ invoiceForm.value.invoiceNumber }}</p>
+  <p><strong>Date:</strong> {{ invoiceForm.value.date }}</p>
+
+  <p><strong>Customer Name:</strong> {{ invoiceForm.value.name }}</p>
+  <p><strong>Phone:</strong> {{ invoiceForm.value.phone }}</p>
+  <p><strong>Email:</strong> {{ invoiceForm.value.email }}</p>
+  <p><strong>Address:</strong> {{ invoiceForm.value.address }}</p>
+
+  <hr>
+
+  <p><strong>Product:</strong> {{ getProductNameById(invoiceForm.value.productdetail) }}</p>
+  <p><strong>Quantity:</strong> {{ invoiceForm.value.productqty }}</p>
+  <p><strong>Unit Price:</strong> {{ invoiceForm.value.price | currency }}</p>
+  <p><strong>Discount:</strong> {{ invoiceForm.value.discount }}%</p>
+
+  <hr>
+
+  <p><strong>Total Price:</strong> {{ totalprice | currency }}</p>
+  <p><strong>Final Price:</strong> {{ finalprice | currency }}</p>
+  <p><strong>Paid:</strong> {{ invoiceForm.value.paid | currency }}</p>
+  <p><strong>Due:</strong> {{ due | currency }}</p>
+</div>

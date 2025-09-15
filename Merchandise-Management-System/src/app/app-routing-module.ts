@@ -38,6 +38,7 @@ import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-re
 import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
 import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
+import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
 
 
 
@@ -93,7 +94,8 @@ const routes: Routes = [
   { path: 'viewreplaceUnit', component: ViewReplaceUnitComponent },
   { path: 'viwereturnProduct', component: ViewReturnProductComponent },
   { path: 'addexpense', component: AddexpenseComponent },
-  { path: 'viewexpense', component: ViewexpenseComponent }
+  { path: 'viewexpense', component: ViewexpenseComponent },
+  {path:'addreinvoice',component:AddreinvoiceComponent}
 
 
 ];

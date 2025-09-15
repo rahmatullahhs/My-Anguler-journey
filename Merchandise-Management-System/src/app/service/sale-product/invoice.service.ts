@@ -38,7 +38,5 @@ export class InvoiceService {
       return this.http.delete<void>(`${this.baseUrl}/${id}`);
     }
   
-  //   updateInventory(productId: number, quantity: number, productModel: ProductModel): Observable<ProductModel> {
-  //   return this.http.put<ProductModel>(`${this.baseUrl}/${productModel.id}`, productModel);
-  // }
+  
 }
