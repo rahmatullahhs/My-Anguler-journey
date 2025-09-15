@@ -1,0 +1,42 @@
+<div class="container">
+    <a routerLink="/addcogs" class="btn btn-success mb-3">➕ Add New COGS</a>
+
+  <h3>COGS Records</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Invoice</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Cost</th>
+        <th>Transport</th>
+        <th>Labour</th>
+        <th>Packing</th>
+        <th>Tax</th>
+        <th>Total</th>
+        <th>Each Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cogs of cogsList">
+        <td>{{ cogs.date | date:'yyyy-MM-dd' }}</td>
+        <td>{{ cogs.purchaseInvoice }}</td>
+        <td>{{ cogs.productName }}</td>
+        <td>{{ cogs.productQty }}</td>
+        <td>{{ cogs.productCost }}</td>
+        <td>{{ cogs.transportFee }}</td>
+        <td>{{ cogs.labourCost }}</td>
+        <td>{{ cogs.packingCost }}</td>
+        <td>{{ cogs.tax | number:'1.2-2' }}</td>
+        <td>{{ cogs.totalCogs | number:'1.2-2' }}</td>
+        <td>{{ cogs.eachProductPrice | number:'1.2-2' }}</td>
+        <td>
+          <button class="btn btn-sm btn-info" (click)="editCogs(cogs)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCogs(cogs.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

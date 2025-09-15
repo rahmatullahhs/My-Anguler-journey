@@ -1,0 +1,26 @@
+body {
+  background: linear-gradient(135deg, #1380ee 0%, #00c6ff 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1.text-primary {
+  color: #fff;
+}
+
+p.lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card {
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.progress-bar {
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}

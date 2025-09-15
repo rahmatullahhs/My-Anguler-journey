@@ -1,0 +1,82 @@
+<!-- Main Container -->
+<div class="container mt-5 dashboard">
+
+<!-- Sales Summary Row -->
+<div class="row mb-4">
+
+  <!-- Total Sales Toggle -->
+  <div class="col-md-3 mb-3">
+    <div class="card text-white bg-primary h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <h5 class="card-title">
+            Total Sales <span>({{ salesPeriod }})</span>
+          </h5>
+          <div class="dropdown">
+            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Period
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="updateSales('Today', '$12,340')">Today</a></li>
+              <li><a class="dropdown-item" (click)="updateSales('Last Week', '$78,900')">Last Week</a></li>
+              <li><a class="dropdown-item" (click)="updateSales('Last Month', '$312,450')">Last Month</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="card-text display-6">{{ salesValue }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sales Overview Cards -->
+  <div class="col-md-3 mb-3" *ngFor="let card of overviewCards">
+    <div class="card text-white h-100" [ngClass]="card.bg">
+      <div class="card-body">
+        <h5 class="card-title">{{ card.title }}</h5>
+        <p class="card-text">{{ card.value }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- Charts Section -->
+  <div class="row mb-4" *ngIf="isBrowser">
+    <div class="col-md-6">
+      <h5>📈 Sales Line Chart</h5>
+      <canvas baseChart
+              [data]="lineChartData"
+              [labels]="pieChartLabels"
+              [options]="lineChartOptions"
+              [type]="'line'">
+      </canvas>
+    </div>
+    <div class="col-md-6">
+      <h5>💻 Product Distribution: Laptops & Accessories</h5>
+      <canvas baseChart
+              [data]="pieChartData"
+              [labels]="pieChartLabels"
+              [options]="pieChartOptions"
+              [plugins]="[ChartDataLabels]"
+              [type]="'pie'">
+      </canvas>
+    </div>
+  </div>
+
+  <!-- Modular Cards Section -->
+  <ng-container *ngFor="let section of infoSections">
+    <div class="card mb-4" [ngClass]="section.bgClass">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>{{ section.title }}</span>
+        <button class="btn btn-primary btn-sm">{{ section.title }}</button>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li *ngFor="let item of section.items">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

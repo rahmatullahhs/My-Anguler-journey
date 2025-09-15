@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h2>Add Replace Unit</h2>
+
+  <form [formGroup]="formGroup" (ngSubmit)="addReplaceUnit()">
+    
+    <!-- Name Field -->
+    <div class="form-group mb-3">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        class="form-control"
+        type="text"
+        formControlName="name"
+        placeholder="Enter product name"
+      />
+    </div>
+
+    <!-- Details Field -->
+    <div class="form-group mb-3">
+      <label for="details">Details</label>
+      <textarea
+        id="details"
+        class="form-control"
+        formControlName="details"
+        placeholder="Enter product details"
+      ></textarea>
+    </div>
+
+    <!-- Quantity Field -->
+    <div class="form-group mb-3">
+      <label for="qty">Quantity</label>
+      <input
+        id="qty"
+        class="form-control"
+        type="number"
+        formControlName="qty"
+        placeholder="Enter quantity"
+      />
+    </div>
+
+    <!-- Price Field -->
+    <div class="form-group mb-3">
+      <label for="price">Price</label>
+      <input
+        id="price"
+        class="form-control"
+        type="number"
+        formControlName="price"
+        placeholder="Enter price"
+        step="0.01"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid">
+      Submit
+    </button>
+
+  </form>
+</div>

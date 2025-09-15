@@ -1,0 +1,122 @@
+<form [formGroup]="goodForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="products">
+    <div class="mt-4 mb-3">
+    <a routerLink="/addcategory" class="btn btn-outline-info me-2"><i class="fas fa-list"></i> Categories</a>
+    <a routerLink="/addbrand" class="btn btn-outline-secondary me-2"><i class="fas fa-tags"></i> Brands</a>
+    <a routerLink="/viewsupplier" class="btn btn-outline-dark me-2"><i class="fas fa-truck"></i> Suppliers</a>
+    <a routerLink="/viewgoods" class="btn btn-outline-info"><i class="fas fa-boxes"></i> View Stock</a>
+  </div>
+    <div *ngFor="let product of products.controls; let i = index" [formGroupName]="i" class="card mb-4 border-primary">
+      <div class="card-header bg-primary text-white">
+        <h5>Product {{ i + 1 }}</h5>
+      </div>
+      <div class="card-body bg-light">
+
+        <!-- CATEGORY, BRAND, SUPPLIER -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label>Category</label>
+            <select class="form-select" formControlName="category">
+              <option value="" disabled>Select Category</option>
+              <option *ngFor="let c of categories" [value]="c.id">{{ c.name }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label>Brand</label>
+            <select class="form-select" formControlName="brand">
+              <option value="" disabled>Select Brand</option>
+              <option *ngFor="let b of brands" [value]="b.id">{{ b.name }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label>Supplier</label>
+            <select class="form-select" formControlName="supplier">
+              <option value="" disabled>Select Supplier</option>
+              <option *ngFor="let s of supplier" [value]="s.id">{{ s.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- NAME, DETAILS -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label>Product Name</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+          <div class="col-md-8">
+            <label>Details</label>
+            <input type="text" class="form-control" formControlName="details">
+          </div>
+        </div>
+
+        <!-- INVOICE, DATE -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label>Invoice</label>
+            <input type="text" class="form-control" formControlName="invoice">
+          </div>
+          <div class="col-md-4">
+            <label>Date</label>
+            <input type="date" class="form-control" formControlName="date">
+          </div>
+        </div>
+
+        <!-- PRICE INPUTS -->
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <label>Price</label>
+            <input type="number" class="form-control" formControlName="price">
+          </div>
+          <div class="col-md-3">
+            <label>Qty</label>
+            <input type="number" class="form-control" formControlName="qty">
+          </div>
+          <div class="col-md-3">
+            <label>Discount</label>
+            <input type="number" class="form-control" formControlName="discount">
+          </div>
+          <div class="col-md-3">
+            <label>Paid</label>
+            <input type="number" class="form-control" formControlName="paid">
+          </div>
+        </div>
+
+        <!-- 💡 AUTO-CALCULATED FIELDS -->
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label>Total Price</label>
+            <input type="number" class="form-control" formControlName="totalPrice" readonly>
+          </div>
+          <div class="col-md-4">
+            <label>Final Price (after discount)</label>
+            <input type="number" class="form-control" formControlName="finalPrice" readonly>
+          </div>
+          <div class="col-md-4">
+            <label>Due</label>
+       <input type="number" class="form-control" formControlName="due" readonly>
+          </div>
+        </div>
+
+        <!-- REMOVE BUTTON -->
+        <div class="text-end">
+          <button type="button" class="btn btn-danger" (click)="removeProduct(i)" *ngIf="products.length > 1">
+            <i class="fas fa-trash-alt"></i> Remove Product
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD PRODUCT + SUBMIT -->
+  <div class="mt-4">
+    <button type="button" class="btn btn-info me-2" (click)="addProduct()">
+      <i class="fas fa-plus-circle"></i> Add Another Product
+    </button>
+
+    <button type="submit" class="btn btn-success">
+      <i class="fas fa-check-circle"></i> Submit All Products
+    </button>
+  </div>
+
+</form>

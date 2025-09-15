@@ -1,0 +1,77 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary mb-0">📄 Invoices</h2>
+   <a [routerLink]="['/viewproduct']" class="btn btn-success">➕ New Invoice</a>
+
+  </div>
+
+  <!-- 🔍 Search input -->
+  <div class="input-group mb-4 shadow-sm">
+    <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by name, invoice number, email, or date"
+      [(ngModel)]="searchTerm"
+    />
+  </div>
+
+  <!-- Loading and error messages -->
+  <div *ngIf="loading" class="alert alert-info d-flex align-items-center">
+    <i class="bi bi-hourglass-split me-2"></i> Loading invoices...
+  </div>
+  <div *ngIf="error" class="alert alert-danger d-flex align-items-center">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ error }}
+  </div>
+  <div *ngIf="!loading && filteredInvoice.length === 0" class="alert alert-warning">
+    No invoices found. <a routerLink="/addinvoice" class="text-decoration-underline">Create one now</a>.
+  </div>
+
+  <!-- Invoice Table -->
+  <div class="table-responsive shadow-sm rounded">
+    <table *ngIf="filteredInvoice.length > 0" class="table table-hover align-middle">
+      <thead class="table-primary">
+        <tr>
+          <th>Invoice</th>
+      <th>Date</th>
+      <th>Customer</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Subtotal</th>
+      <th>Discount</th>
+      <th>Tax</th>
+      <th>Total</th>
+      <th>Paid</th>
+      <th>Due</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let inv of filteredInvoice; let i = index">
+          <td>{{ inv.invoiceNumber || '—' }}</td>
+      <td>{{ inv.date | date: 'mediumDate' }}</td>
+      <td>{{ inv.name || '—' }}</td>
+      <td>{{ inv.email || '—' }}</td>
+      <td>{{ inv.phone || '—' }}</td>
+       <td>{{ inv.address || '—' }}</td>
+      <td>{{ inv.subtotal | currency:'USD':'symbol':'1.2-2' }}</td>
+      <td>{{ inv.discount }}%</td>
+      <td>{{ inv.taxAmount | currency }}</td>
+      <td>{{ inv.total | currency }}</td>
+      <td>{{ inv.paid | currency }}</td>
+      <td>
+        <span [ngClass]="{'text-danger fw-semibold': inv.due > 0, 'text-success': inv.due === 0}">
+          {{ inv.due | currency }}
+        </span>
+      </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteInvoice(inv.id)">
+              <i class="bi bi-trash-fill me-1"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

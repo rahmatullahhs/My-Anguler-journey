@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Add Resell Stock</h2>
+
+  <form [formGroup]="formGroup" (ngSubmit)="addResellStock()">
+
+    <!-- Name Field -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Product Name *</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        [class.is-invalid]="formGroup.get('name')?.invalid && formGroup.get('name')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="formGroup.get('name')?.hasError('required')">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Details Field -->
+    <div class="mb-3">
+      <label for="details" class="form-label">Details</label>
+      <textarea
+        id="details"
+        formControlName="details"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <!-- Quantity Field -->
+    <div class="mb-3">
+      <label for="qty" class="form-label">Quantity *</label>
+      <input
+        type="number"
+        id="qty"
+        formControlName="qty"
+        class="form-control"
+        [class.is-invalid]="formGroup.get('qty')?.invalid && formGroup.get('qty')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="formGroup.get('qty')?.hasError('required')">
+        Quantity is required.
+      </div>
+      <div class="invalid-feedback" *ngIf="formGroup.get('qty')?.hasError('min')">
+        Quantity must be at least 1.
+      </div>
+    </div>
+
+    <!-- Price Field -->
+    <div class="mb-3">
+      <label for="price" class="form-label">Price *</label>
+      <input
+        type="number"
+        id="price"
+        formControlName="price"
+        class="form-control"
+        step="0.01"
+        [class.is-invalid]="formGroup.get('price')?.invalid && formGroup.get('price')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="formGroup.get('price')?.hasError('required')">
+        Price is required.
+      </div>
+      <div class="invalid-feedback" *ngIf="formGroup.get('price')?.hasError('min')">
+        Price must be 0 or higher.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

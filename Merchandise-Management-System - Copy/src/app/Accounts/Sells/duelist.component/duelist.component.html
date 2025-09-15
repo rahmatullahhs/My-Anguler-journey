@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Due List</h2>
+
+  <!-- Search Box -->
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search by customer, invoice number, or date"
+    class="form-control mb-3"
+  />
+
+  <!-- Loading Indicator -->
+  <div *ngIf="loading" class="text-center my-4">
+    <p>Loading invoices...</p>
+  </div>
+
+  <!-- Error Display -->
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error.message || 'Failed to load due list.' }}
+  </div>
+
+  <!-- Invoice Table -->
+  <table class="table table-bordered table-striped" *ngIf="!loading && filteredDueList.length">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Invoice Number</th>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Total Amount</th>
+        <th>Paid</th>
+        <th>Due</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let due of filteredDueList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ due.invoiceNumber }}</td>
+        <td>{{ due.date | date: 'shortDate' }}</td>
+        <td>{{ due.customerName }}</td>
+        <td>{{ due.totalAmount | currency }}</td>
+        <td>{{ due.payment | currency }}</td>
+        <td>{{ due.due | currency }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteDue(due.id!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Results -->
+  <div *ngIf="!loading && filteredDueList.length === 0" class="text-center text-muted">
+    No invoices found.
+  </div>
+</div>

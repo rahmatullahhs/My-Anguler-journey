@@ -1,0 +1,82 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Return Products</h2>
+    <a class="btn btn-primary" routerLink="/addreturnProduct">Add Return Product</a>
+    <div class="mb-3">
+  <button class="btn btn-outline-secondary" (click)="generatePDF()">
+    Export PDF
+  </button>
+</div>
+
+  </div>
+
+  <div *ngIf="loading" class="alert alert-info">Loading...</div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading && returnProducts.length > 0" class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Invoice</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Date</th>
+        <th>Reason</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th class="text-center">Product In</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of returnProducts">
+        <td>{{ product.id }}</td>
+        <td>{{ product.invoice }}</td>
+        <td>{{ product.type }}</td>
+        <td>{{ product.quantity }}</td>
+         <td>{{ product.price || 'N/A' }}</td>
+        <td>{{ product.date | date: 'shortDate' }}</td>
+        <td>{{ product.reason }}</td>
+        <td>{{ product.productName }}</td>
+        <td>
+          <img
+            *ngIf="product.photo"
+            [src]="'http://localhost:8085/images/return_product/' + product.photo"
+            alt="Product Photo"
+            width="50"
+            class="img-thumbnail"
+            (error)="onImageError($event)"
+          />
+          <span *ngIf="!product.photo" class="text-muted">No Image</span>
+        </td>
+        <td class="text-center">
+          <button
+            class="btn btn-success btn-sm me-2"
+            (click)="markFixed(product.id)"
+            [disabled]="product.status === 'FIXED'"
+            title="Mark as Fixed"
+          >
+            Mark as Fixed
+          </button>
+
+          <span *ngIf="product.status === 'FIXED'" class="text-success fw-bold">
+            ✔ Fixed
+          </span>
+        </td>
+        <button
+            class="btn btn-danger btn-sm ms-2"
+            (click)="deleteReturnProduct(product.id)"
+          >
+            Delete
+          </button>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && returnProducts.length === 0" class="alert alert-warning text-center">
+    No return products found.
+  </div>
+
+</div>

@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <div class="col-12 text-end mb-3">
+    <a class="btn btn-primary" routerLink="/addexpense">
+      <i class="bi bi-plus-circle"></i> Add Expense
+    </a>
+  </div>
+
+  <h4 class="mb-3">Expense Records</h4>
+
+  <!-- 🔍 Filters -->
+  <div class="row g-2 mb-3">
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title or description"
+        [(ngModel)]="searchTerm"
+        (input)="filterExpenses()"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="startDate"
+        (change)="filterExpenses()"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="endDate"
+        (change)="filterExpenses()"
+      />
+    </div>
+
+    <div class="col-md-2 text-end">
+      <button class="btn btn-secondary w-100" (click)="clearFilters()">Clear</button>
+    </div>
+  </div>
+
+  <!-- 🔄 Loading -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <!-- ℹ️ No Data -->
+  <div *ngIf="!isLoading && filteredExpenses.length === 0" class="alert alert-info">
+    No matching expenses found.
+  </div>
+
+  <!-- ✅ Table -->
+  <div *ngIf="!isLoading && filteredExpenses.length > 0" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Paid</th>
+          <th>Due</th>
+          <th>Payment Method</th>
+          <th>Added By</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expense of filteredExpenses">
+          <td>{{ expense.date | date: 'shortDate' }}</td>
+          <td>{{ expense.title }}</td>
+          <td>{{ expense.description || '-' }}</td>
+          <td>{{ expense.amount | currency }}</td>
+          <td>{{ expense.paid | currency }}</td>
+          <td>{{ expense.due | currency }}</td>
+          <td>{{ expense.paymentMethod }}</td>
+          <td>{{ expense.addedBy }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteExpense(expense.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+
+<form [formGroup]="returnForm" (ngSubmit)="onSubmit()" novalidate enctype="multipart/form-data">
+
+  <div class="form-group mb-3">
+    <label for="invoice">Invoice</label>
+    <input id="invoice" formControlName="invoice" class="form-control" />
+    <div *ngIf="submitted && returnForm.controls['invoice'].invalid" class="text-danger">
+      Invoice is required.
+    </div>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="productName">Product Name</label>
+    <input id="productName" formControlName="productName" class="form-control" />
+  </div>
+        <div class="mb-3">
+          <label class="form-label">Type</label>
+          <select class="form-select" formControlName="type">
+            <option value="RETURN">Return</option>
+            <option value="DAMAGE">Damage</option>
+          </select>
+        </div>
+  <div class="form-group mb-3">
+    <label for="quantity">Quantity</label>
+    <input id="quantity" type="number" formControlName="quantity" class="form-control" />
+  </div>
+ <div class="form-group mb-3">
+    <label for="price">Price</label>
+    <input id="price" type="number" formControlName="price" class="form-control" />
+  </div>
+  <div class="form-group mb-3">
+    <label for="reason">Reason</label>
+    <textarea id="reason" formControlName="reason" rows="3" class="form-control"></textarea>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="date">Date</label>
+    <input id="date" type="date" formControlName="date" class="form-control" />
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="photo">Photo (optional)</label>
+    <input id="photo" type="file" (change)="onFileChange($event)" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+   

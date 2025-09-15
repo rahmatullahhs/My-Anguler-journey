@@ -1,0 +1,40 @@
+<p>sellpage works!</p>
+<div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 py-3">
+  <!-- Welcome Section -->
+  <div class="row align-items-center mb-5 w-100" style="max-width: 800px;">
+    <div class="col-md-3 text-center mb-3 mb-md-0">
+      <img src="assets/r.jpg" class="rounded-0" style="width:180px; height:190px;">
+    </div>
+    <div class="col-md-9 text-center text-md-start">
+      <h1 class="display-4 fw-bold mb-1">Welcome back,</h1>
+      <h1 class="display-4 fw-bold text-primary mb-3">Rahmat Ullah 👋</h1>
+      <p class="lead text-muted">
+        Glad to see you! Here’s your latest project update.
+      </p>
+    </div>
+  </div>
+
+  <!-- Project Progress -->
+  <div class="row w-100" style="max-width: 600px;">
+    <div class="col-12">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">{{ project.name }}</h5>
+          <div class="progress mb-3" style="height: 25px;">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
+                 role="progressbar" 
+                 [style.width.%]="project.completedPercent" 
+                 [attr.aria-valuenow]="project.completedPercent" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+              {{ project.completedPercent }}%
+            </div>
+          </div>
+          <p class="text-muted small mb-0">
+            Status: {{ project.completedPercent < 50 ? 'In Progress' : 'On Track' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
