@@ -15,15 +15,19 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./addreinvoice.component.css']
 })
 export class AddreinvoiceComponent implements OnInit {
+ 
   invoiceForm!: FormGroup;
   resellStockModel: ResellStockModel[] = [];
   availableQty: number = 0;
+  originalQty: number = 0;
+  selectedProductId: number | null = null;
+
   totalprice = 0;
   finalprice = 0;
   due = 0;
 
   constructor(
-    private orderService: ReinvoiceService,
+    private reinvoiceService: ReinvoiceService,
     private resellStockService: ResellStockService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -32,31 +36,48 @@ export class AddreinvoiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.invoiceForm = this.formBuilder.group({
-      invoiceNumber: ['', Validators.required],
-      date: ['', Validators.required],
-      name: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: [''],
-      address: [''],
-      productdetail: ['', Validators.required],
-      productqty: [null, Validators.required],
-      price: [''],
-      discount: [0],
-      paid: [0],
-      due: [0]
-    });
+  invoiceNumber: ['', Validators.required],
+  date: ['', Validators.required],
+  name: ['', Validators.required],
+  phone: ['', Validators.required],
+  email: [''],
+  address: [''],
+  productdetail: ['', Validators.required],
+  productqty: [null, [Validators.required, Validators.min(1)]],
+  price: ['', Validators.required],
+  discount: [0],
+  paid: [0],
+  due: [0]
+});
+
 
     this.loadAllInventory();
 
+    // Handle product selection
     this.invoiceForm.get('productdetail')?.valueChanges.subscribe(pid => {
-      const inv = this.resellStockModel.find(i => i.id === pid);
-      if (inv) {
-        this.invoiceForm.patchValue({ price: inv.price, productqty: 1 });
-        this.availableQty = inv.qty;
+      const selectedProduct = this.resellStockModel.find(p => p.id === pid);
+
+      if (selectedProduct) {
+        this.selectedProductId = selectedProduct.id;
+        this.originalQty = selectedProduct.qty;
+        this.availableQty = selectedProduct.qty;
+
+        // Set default values
+        this.invoiceForm.patchValue({
+          price: selectedProduct.price,
+          productqty: selectedProduct.qty > 0 ? 1 : null
+        }, { emitEvent: false });
+
         this.calculatePrice();
       } else {
+        this.selectedProductId = null;
+        this.originalQty = 0;
         this.availableQty = 0;
-        this.invoiceForm.patchValue({ price: '', productqty: null });
+
+        this.invoiceForm.patchValue({
+          price: '',
+          productqty: null
+        });
       }
     });
   }
@@ -70,50 +91,37 @@ export class AddreinvoiceComponent implements OnInit {
 
   calculatePrice(): void {
     const { price, productqty, discount, paid } = this.invoiceForm.value;
-    const p = Number(price) || 0;
-    const q = Number(productqty) || 0;
-    const d = Number(discount) || 0;
-    const pa = Number(paid) || 0;
 
-    this.totalprice = p * q;
-    this.finalprice = this.totalprice - (this.totalprice * d / 100);
-    this.due = this.finalprice - pa;
+    const unitPrice = Number(price) || 0;
+    const qty = Number(productqty) || 0;
+    const disc = Number(discount) || 0;
+    const paidAmt = Number(paid) || 0;
 
+    this.totalprice = unitPrice * qty;
+    this.finalprice = this.totalprice - (this.totalprice * disc / 100);
+    this.due = this.finalprice - paidAmt;
+
+    // Update due only, not productqty!
     this.invoiceForm.patchValue({ due: this.due }, { emitEvent: false });
+
+    // Simulate reduction for display
+    this.availableQty = this.originalQty - qty;
   }
 
-  updateInventoryQty(productId: number, soldQty: number): void {
-    const inv = this.resellStockModel.find(i => i.id === productId);
-    if (!inv) return;
-
-    const newQty = inv.qty - soldQty;
-    if (newQty < 0) {
-      alert('❌ Not enough stock available.');
-      return;
-    }
-
-    const updated: ResellStockModel = { ...inv, qty: newQty };
-
-    this.resellStockService.updateResellstock(inv.id!, updated).subscribe({
-      next: () => {
-        console.log(`✅ Stock updated. New qty: ${newQty}`);
-        this.loadAllInventory();
-      },
-      error: err => console.error('❌ Inventory update failed', err)
-    });
+  onFocusLost(): void {
+    this.calculatePrice();
   }
 
   addReinvoice(): void {
     if (this.invoiceForm.invalid) {
-      alert('❌ Please fill required fields.');
+      alert('❌ Please fill all required fields.');
       return;
     }
 
     this.calculatePrice();
-
     const f = this.invoiceForm.value;
 
-    if (f.productqty > this.availableQty) {
+    if (f.productqty > this.originalQty) {
       alert('❌ Cannot order more than available stock.');
       return;
     }
@@ -129,23 +137,38 @@ export class AddreinvoiceComponent implements OnInit {
       paid: Number(f.paid),
       total: this.finalprice,
       due: this.due,
-      createdBy: 'admin' // Replace with auth logic if needed
+      createdBy: 'admin'
     };
 
-    this.orderService.saveReInvoice(reinvoiceModel).subscribe({
+    this.reinvoiceService.saveReInvoice(reinvoiceModel).subscribe({
       next: _res => {
-        alert('✅ Invoice saved');
-        this.updateInventoryQty(f.productdetail, Number(f.productqty));
+        alert('✅ Invoice saved successfully.');
+        this.updateInventoryQty(f.productdetail, f.productqty);
         this.invoiceForm.reset();
         this.availableQty = 0;
+        this.originalQty = 0;
         this.router.navigate(['/viewallorder']);
       },
-      error: err => console.error('❌ Invoice save failed', err)
+      error: err => console.error('❌ Failed to save invoice', err)
     });
   }
 
-  onFocusLost(): void {
-    this.calculatePrice();
+  updateInventoryQty(productId: number, soldQty: number): void {
+    const product = this.resellStockModel.find(p => p.id === productId);
+    if (!product) return;
+
+    const newQty = product.qty - soldQty;
+    if (newQty < 0) {
+      alert('❌ Not enough stock.');
+      return;
+    }
+
+    const updated: ResellStockModel = { ...product, qty: newQty };
+
+    this.resellStockService.updateResellstock(product.id!, updated).subscribe({
+      next: () => this.loadAllInventory(),
+      error: err => console.error('❌ Inventory update failed', err)
+    });
   }
 
   printInvoice(): void {
@@ -169,12 +192,14 @@ export class AddreinvoiceComponent implements OnInit {
     }, 300);
   }
 
-
-
-
   getProductNameById(productId: number): string {
-  const product = this.resellStockModel.find(item => item.id === productId);
-  return product ? product.name : 'Unknown';
-}
+    const product = this.resellStockModel.find(p => p.id === productId);
+    return product ? product.name : 'Unknown';
+  }
+
+
+
+ 
+  
 
 }

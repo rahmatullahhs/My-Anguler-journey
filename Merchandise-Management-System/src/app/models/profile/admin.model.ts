@@ -1,11 +1,12 @@
-
-export interface User {
+export interface RoleAdmin {
 
     id: number;
     name: string;
     email: string;
-    password: string;
     phone: string;
+    gender: string;
+    address: string;
+    dateOfBirth: Date;
     photo: string;
 
 }

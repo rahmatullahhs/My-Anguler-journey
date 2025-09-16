@@ -1,41 +1,53 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { UserModel } from '../../models/profile/user.model';
+
 import { BehaviorSubject, catchError, map, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
-import { AuthResponseModel } from '../../models/profile/auth-response.model';
+import { AuthResponse } from '../../models/profile/auth-response.model';
+import { User } from '../../models/profile/user.model';
+import { Router } from '@angular/router';
+import { environment } from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string = "http://localhost:3000/user";
 
-  private currentUserSubject: BehaviorSubject<UserModel | null>;
-  public currentUser$: Observable<UserModel | null>;
+  
+  private baseUrl = environment.apiBaseUrl + '/auth';
 
-    constructor(
+
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  private userRoleSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+
+  public userRole$: Observable<string | null> = this.userRoleSubject.asObservable();
+
+
+
+  // private currentUserSubject: BehaviorSubject<User | null>;
+  // public currentUser$: Observable<User | null>;
+
+  constructor(
     private http: HttpClient,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
 
-    const storedUser = this.isBrowser() ? JSON.parse(localStorage.getItem('currentUser') || 'null') : null;
-    this.currentUserSubject = new BehaviorSubject<UserModel | null>(storedUser);
-    this.currentUser$ = this.currentUserSubject.asObservable();
+    // const storedUser = this.isBrowser() ? JSON.parse(localStorage.getItem('currentUser') || 'null') : null;
+    // this.currentUserSubject = new BehaviorSubject<User | null>(storedUser);
+    // this.currentUser$ = this.currentUserSubject.asObservable();
 
   }
 
-   private isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
 
-  registration(user: UserModel): Observable<AuthResponseModel> {
-    return this.http.post<UserModel>(this.baseUrl, user).pipe(
-      map((newUser: UserModel) => {
+  registration(user: User): Observable<AuthResponse> {
+    return this.http.post<User>(this.baseUrl, user).pipe(
+      map((newUser: User) => {
 
         // create token by username and password 
         const token = btoa(`${newUser.email}${newUser.password}`);
-        return {token ,user:newUser } as AuthResponseModel;
+        return { token, user: newUser } as AuthResponse;
       }),
       catchError(error => {
         console.error('Registration error:', error);
@@ -46,120 +58,138 @@ export class AuthService {
 
 
 
-  login(credentials: { email: string; password: string }): Observable<AuthResponseModel> {
-    let params = new HttpParams().append('email', credentials.email);
+  login(email: string, password: string): Observable<AuthResponse> {
 
-    return this.http.get<UserModel[]>(`${this.baseUrl}`, { params }).pipe(
-      map(users => {
-        if (users.length > 0) {
-          const user = users[0];
-          if (user.password === credentials.password) {
-            const token = btoa(`${user.email}:${user.password}`);
-            this.storeToken(token);
-            this.setCurrentUser(user);
-            return { token, user } as AuthResponseModel;
-          } else {
-            throw new Error('Invalid password');
+    return this.http.post<AuthResponse>(this.baseUrl + '/login', { email, password }, { headers: this.headers }).pipe(
+
+      map(
+        (response: AuthResponse) => {
+          if (this.isBrowser() && response.token) {
+            localStorage.setItem('authToken', response.token);
+            const decodeToken = this.decodeToken(response.token);
+            localStorage.setItem('userRole', decodeToken.role);
+            this.userRoleSubject.next(decodeToken.role);
           }
-        } else {
-          throw new Error('User not found');
+          return response;
+
         }
-      }),
-      catchError(error => {
-        console.error('Login error:', error);
-        throw error;
-      })
+
+      )
     );
   }
 
 
-storeToken(token: string): void {
-    if (this.isBrowser()) {
-      localStorage.setItem('token', token);
-    }
-  }
-
-
-  private setCurrentUser(user: UserModel): void {
-    if (this.isBrowser()) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-    }
-    this.currentUserSubject.next(user);
-  }
-
-
-  // start logout
-  logout(): void {
-    this.clearCurrentUser();
-    if (this.isBrowser()) {
-      localStorage.removeItem('token');
-    }
-  }
-
-  private clearCurrentUser(): void {
-    if (this.isBrowser()) {
-      localStorage.removeItem('currentUser');
-    }
-    this.currentUserSubject.next(null);
-  }
-
-  removeUserDetails(): void {
-    if (this.isBrowser()) {
-      localStorage.clear();
-    }
-  }
-
-  // log out end
-
-  getUserRole(): any {
-    return this.currentUserValue?.role;
-  }
-  
-  public get currentUserValue(): UserModel | null {
-    return this.currentUserSubject.value;
-  }
-
-  getToken(): string | null {
-    return this.isBrowser() ? localStorage.getItem('token') : null;
-  }
-
-
-  isAuthenticated(): boolean {
+   isAuthenticated(): boolean {
     return !!this.getToken();
   }
 
-
-   storeUserProfile(user: UserModel): void {
-    if (this.isBrowser()) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-    }
+  
+  private isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 
-  getUserProfileFromStorage(): UserModel | null {
+
+  decodeToken(token: string) {
+
+    const payload = token.split('.')[1];
+    return JSON.parse(atob(payload));
+
+  }
+
+  getToken(): string | null {
+
     if (this.isBrowser()) {
-      const userProfile = localStorage.getItem('currentUser');
-      console.log('User Profile is: ', userProfile);
-      return userProfile ? JSON.parse(userProfile) : null;
+      return localStorage.getItem('authToken');
     }
     return null;
+
   }
-  
+
+
+  getUserRole(): string | null {
+
+    if (this.isBrowser()) {
+      return localStorage.getItem('userRole');
+    }
+    return null;
+
+  }
+
+  isTokenExpired(token: string): boolean {
+    const docodeToken = this.decodeToken(token);
+
+    const expiry = docodeToken.exp * 1000;
+    return Date.now() > expiry;
+  }
+
+  isLoggIn(): boolean {
+    const token = this.getToken();
+    if (token && !this.isTokenExpired(token)) {
+      return true;
+    }
+    this.logout();
+    return false;
+
+  }
+
+
+  logout(): void {
+    if (this.isBrowser()) {
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('authToken');
+      this.userRoleSubject.next(null);
+    }
+    this.router.navigate(['/login']);
+  }
+
+
+  hasRole(roles: string[]): boolean {
+
+    const userRole = this.getUserRole();
+    return userRole ? roles.includes(userRole) : false;
+
+  }
+
+
+
   isSuperAdmin(): boolean {
-  const role = this.getUserRole();
-  return role === 'superadmin';
-}
-   isAdmin(): boolean {
-    return this.getUserRole() === 'admin';
+    const role = this.getUserRole();
+    return role === 'superadmin';
   }
-  
-  isCasiar(): boolean {
+  isAdmin(): boolean {
+    return this.getUserRole() === 'ADMIN';
+  }
+
+  isUser(): boolean {
     const role = this.getUserRole();
     return role === 'user';
   }
-isManager(): boolean {
-  const role = this.getUserRole();
-  return role === 'purchasemanager';
-}
+  isPurchaseManager(): boolean {
+    const role = this.getUserRole();
+    return role === 'purchasemanager';
+  }
+  isPurchaseExecutive(): boolean {
+    const role = this.getUserRole();
+    return role === 'purchaseexecutive';
+  }
+  isMerchandiserManager(): boolean {
+    const role = this.getUserRole();
+    return role === 'merchandisermanager';
+  }
+  isMerchandiserJr(): boolean {
+    const role = this.getUserRole();
+    return role === 'merchandiserjunior';
+  }
+
+  isHRAdmin(): boolean {
+    const role = this.getUserRole();
+    return role === 'hradmin';
+  }
+  isHRExecutive(): boolean {
+    const role = this.getUserRole();
+    return role === 'hrexecutive';
+  }
+
 
 
 }

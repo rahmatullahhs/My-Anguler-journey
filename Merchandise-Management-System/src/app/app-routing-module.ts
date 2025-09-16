@@ -39,6 +39,7 @@ import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.c
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
 import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
 import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
+import { Admin } from './Registration/admin/admin';
 
 
 
@@ -95,7 +96,10 @@ const routes: Routes = [
   { path: 'viwereturnProduct', component: ViewReturnProductComponent },
   { path: 'addexpense', component: AddexpenseComponent },
   { path: 'viewexpense', component: ViewexpenseComponent },
-  {path:'addreinvoice',component:AddreinvoiceComponent}
+  {path:'addreinvoice',component:AddreinvoiceComponent},
+
+  // Registration
+  {path: 'adminReg', component: Admin}
 
 
 ];

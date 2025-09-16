@@ -48,16 +48,36 @@
             </select>
           </div>
 
-          <div class="col-md-6">
-            <label for="productqty" class="form-label">Quantity</label>
-            <input type="number" id="productqty" class="form-control" formControlName="productqty" (blur)="onFocusLost()">
-            <small class="text-muted">Available: {{ availableQty }}</small>
-          </div>
+        <!-- Quantity -->
+<div class="col-md-6">
+  <label for="productqty" class="form-label">Quantity</label>
+  <input
+    type="number"
+    id="productqty"
+    class="form-control"
+    formControlName="productqty"
+    [min]="1"
+    [max]="originalQty"
+    (input)="onFocusLost()"
+    placeholder="Enter quantity" />
+  <small class="text-muted">Available after input: {{ availableQty }}</small>
+</div>
 
-          <div class="col-md-4">
-            <label for="price" class="form-label">Unit Price</label>
-            <input type="number" id="price" class="form-control" formControlName="price" readonly>
-          </div>
+
+
+<!-- Unit Price -->
+<div class="col-md-4">
+  <label for="price" class="form-label">Unit Price</label>
+  <input
+    type="number"
+    id="price"
+    class="form-control"
+    formControlName="price"
+    (blur)="onFocusLost()"
+    [readonly]="!invoiceForm.get('productdetail')?.value"
+    placeholder="Enter unit price" />
+</div>
+
 
           <div class="col-md-4">
             <label for="discount" class="form-label">Discount (%)</label>
@@ -82,7 +102,18 @@
         </div>
 
         <div class="mt-4 d-flex gap-3">
-          <button type="submit" class="btn btn-success" [disabled]="invoiceForm.invalid">💾 Save Invoice</button>
+<button
+  type="submit"
+  class="btn btn-success"
+  [disabled]=""
+  >
+  💾 Save Invoice
+</button>
+
+
+
+
+
           <button type="button" class="btn btn-outline-primary" (click)="printInvoice()">🖨️ Print</button>
         </div>
       </form>
