@@ -1,27 +1,26 @@
 export interface ReinvoiceModel {
  
-      id?: number;
-      date: Date;
+  
+  invoiceNumber: string;
+  date: string;
+  name: string;
+  phone: string;
+  email?: string;
+  address?: string;
+  productdetail: string;
+  productqty: number;
+  price: number;
+  discount: number;
+  paid: number;
+  total: number;
+  due: number;
+  createdBy: string;
+}
 
-      name: string;
-      email: string;
-      phone: string;
-      address: string;
-    
-      subtotal?: number;
-      discount: number;
-      taxAmount?: number;
-
-      total?: number;
-      paid: number;
-      due?: number;
-    
-      invoiceNumber: string;
-      createdBy: String;
  
 
     
-    }
+    
     
     
 
