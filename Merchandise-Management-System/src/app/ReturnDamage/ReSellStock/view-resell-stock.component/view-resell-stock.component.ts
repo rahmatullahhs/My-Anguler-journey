@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // ✅ Import Router for navigation
 import { ResellStockModel } from '../../../models/ReturnProduct/resellstock.model';
 import { ResellStockService } from '../../../service/ReturnProduct/resell-stock.service';
@@ -18,7 +18,8 @@ export class ViewResellStockComponent implements OnInit {
   constructor(
     private resellStockService: ResellStockService,
     private toastr: ToastrService,
-    private router: Router // ✅ Inject Router
+    private router: Router ,
+    private cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -30,6 +31,7 @@ export class ViewResellStockComponent implements OnInit {
     this.resellStockService.getAllResellstock().subscribe({
       next: (data) => {
         this.stockItems = data;
+          this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Failed to load resell stock items', err);
@@ -41,6 +43,7 @@ export class ViewResellStockComponent implements OnInit {
   // ✅ Edit item: Navigate to edit page
  onEdit(item: ResellStockModel) {
   this.router.navigate(['/addresellstock', item.id]);
+    this.cdr.markForCheck();
 }
 
   // ✅ Delete item: Confirm and delete from server
@@ -49,7 +52,8 @@ export class ViewResellStockComponent implements OnInit {
       this.resellStockService.deleteResellstock(item.id).subscribe({
         next: () => {
           this.toastr.success('Item deleted successfully');
-          this.loadStock(); // Refresh the list
+          this.loadStock();
+            this.cdr.markForCheck();
         },
         error: (err) => {
           console.error('Delete failed', err);

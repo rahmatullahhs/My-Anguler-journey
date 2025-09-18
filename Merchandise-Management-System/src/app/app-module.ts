@@ -69,6 +69,7 @@ import { Cashier } from './Registration/cashier/cashier';
 import { ManagerProfile } from './profiles/manager-profile/manager-profile';
 import { Manager } from './Registration/manager/manager';
 import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
+import { ViewreinvoiceComponent } from './ReturnDamage/ReSellStock/viewreinvoice.component/viewreinvoice.component';
 
 
 
@@ -139,7 +140,8 @@ Admin,
 Cashier,
 ManagerProfile,
 Manager,
-CashierProfile
+CashierProfile,
+ViewreinvoiceComponent
 
 
 

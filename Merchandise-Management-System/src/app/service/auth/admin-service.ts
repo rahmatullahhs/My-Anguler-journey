@@ -10,10 +10,6 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AdminService {
   
-
-  
-
-  
   private baseUrl = environment.apiBaseUrl + '/admin';
 
   

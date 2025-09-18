@@ -14,18 +14,20 @@ export class ExpenseService {
 
    constructor(
     private http: HttpClient,
+    
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
  
   getAllExpense(): Observable<ExpenseModel[]> {
-    let headers = new HttpHeaders();
 
+    let headers = new HttpHeaders();
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('authToken');
       if (token) {
         headers = headers.set('Authorization', 'Bearer ' + token);
       }
     }
+
     return this.http.get<ExpenseModel[]>(this.baseUrl ,{headers});
   }
 

@@ -10,11 +10,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ManagerService {
   
-  
-  
   private baseUrl = environment.apiBaseUrl + '/manager';
 
-  
     constructor(
       private http: HttpClient,
       @Inject(PLATFORM_ID) private platformId: Object

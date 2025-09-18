@@ -10,11 +10,10 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class CashierService {
   
-   
   private baseUrl = environment.apiBaseUrl + '/cashier';
 
-  
     constructor(
+      
       private http: HttpClient,
       @Inject(PLATFORM_ID) private platformId: Object
     ) { }

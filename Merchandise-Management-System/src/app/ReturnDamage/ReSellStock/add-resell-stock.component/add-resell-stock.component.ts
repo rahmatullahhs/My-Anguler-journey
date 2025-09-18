@@ -8,7 +8,7 @@ import { ResellStockService } from '../../../service/ReturnProduct/resell-stock.
   selector: 'app-add-resell-stock.component',
   standalone: false,
   templateUrl: './add-resell-stock.component.html',
-  styleUrl: './add-resell-stock.component.css'
+  styleUrls: ['./add-resell-stock.component.css']
 })
 export class AddResellStockComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class AddResellStockComponent implements OnInit {
     private formBuilder: FormBuilder,
     private resellService: ResellStockService,
     private router: Router,
-    private route: ActivatedRoute, // ✅ To get route params
+    private route: ActivatedRoute,
     public cdr: ChangeDetectorRef
   ) {}
 
@@ -28,19 +28,21 @@ export class AddResellStockComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: ['', Validators.required],
       details: [''],
-      qty: ['', Validators.required],
-      price: ['', Validators.required],
+      qty: ['', [Validators.required, Validators.min(1)]],
+      price: ['', [Validators.required, Validators.min(0)]],
     });
 
-    // ✅ Check if we're editing (route param: id)
-    this.stockId = +this.route.snapshot.paramMap.get('id')!;
+    // Check if editing
+    const idParam = this.route.snapshot.paramMap.get('id');
+    this.stockId = idParam ? +idParam : null;
+
     if (this.stockId) {
       this.isEditMode = true;
       this.loadResellStock(this.stockId);
     }
   }
 
-  // ✅ Load existing stock item for editing
+  // Load existing stock item
   loadResellStock(id: number): void {
     this.resellService.getResellstockById(id).subscribe({
       next: (data) => {
@@ -53,13 +55,12 @@ export class AddResellStockComponent implements OnInit {
     });
   }
 
-  // ✅ Unified create/update method
+  // Unified save method
   saveResellStock(): void {
     if (this.formGroup.invalid) return;
 
     const resellStock: ResellStockModel = {
-      ...this.formGroup.value,
-      id: this.stockId // Include ID only in edit mode
+      ...this.formGroup.value
     };
 
     if (this.isEditMode) {
@@ -69,7 +70,7 @@ export class AddResellStockComponent implements OnInit {
     }
   }
 
-  // ✅ Create new item
+  // Create
   createResellStock(resellStock: ResellStockModel): void {
     this.resellService.createResellstock(resellStock).subscribe({
       next: () => {
@@ -82,7 +83,7 @@ export class AddResellStockComponent implements OnInit {
     });
   }
 
-  // ✅ Update existing item
+  // Update
   updateResellStock(resellStock: ResellStockModel): void {
     this.resellService.updateResellstock(this.stockId!, resellStock).subscribe({
       next: () => {

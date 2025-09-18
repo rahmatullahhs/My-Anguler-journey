@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>All Re-Invoices</h2>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Invoice #</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Discount (%)</th>
+        <th>Total</th>
+        <th>Paid</th>
+        <th>Due</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of reinvoices">
+        <td>{{ invoice.invoiceNumber }}</td>
+        <td>{{ invoice.date }}</td>
+        <td>{{ invoice.name }}</td>
+        <td>{{ invoice.phone }}</td>
+        <td>{{ invoice.productdetail }}</td>
+        <td>{{ invoice.productqty }}</td>
+        <td>{{ invoice.price }}</td>
+        <td>{{ invoice.discount }}</td>
+        <td>{{ invoice.total }}</td>
+        <td>{{ invoice.paid }}</td>
+        <td>{{ invoice.due }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="printInvoice(invoice)">Print</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

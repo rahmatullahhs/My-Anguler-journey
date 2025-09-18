@@ -180,7 +180,7 @@ export class AddreinvoiceComponent implements OnInit {
         this.invoiceForm.reset();
         this.availableQty = 0;
         this.originalQty = 0;
-        this.router.navigate(['/viewallorder']);
+        this.router.navigate(['/viewreinvoice']);
       },
       error: err => console.error('❌ Failed to save invoice', err)
     });

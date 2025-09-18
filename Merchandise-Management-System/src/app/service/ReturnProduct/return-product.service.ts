@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../environment/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReturnproductModel } from '../../models/ReturnProduct/returnproduct.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +13,46 @@ export class ReturnProductService {
 
   private baseUrl = `${environment.apiBaseUrl}/returnproduct`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+     @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   // Get all return products
   getAllReturnProduct(): Observable<ReturnproductModel[]> {
-    return this.http.get<ReturnproductModel[]>(this.baseUrl);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.get<ReturnproductModel[]>(this.baseUrl,{headers});
   }
 
   // Get a return product by ID
   getReturnProductById(id: number): Observable<ReturnproductModel> {
-    return this.http.get<ReturnproductModel>(`${this.baseUrl}/${id}`);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.get<ReturnproductModel>(`${this.baseUrl}/${id}`,{headers});
   }
 
   // Create a new return product with optional photo upload
   createReturnProduct(returnProduct: ReturnproductModel, photo?: File): Observable<any> {
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
     const formData = new FormData();
 
     // Attach JSON object as a string
@@ -36,26 +63,49 @@ export class ReturnProductService {
       formData.append('photo', photo);
     }
 
-    return this.http.post(this.baseUrl, formData);
+    return this.http.post(this.baseUrl, formData,{headers});
   }
 
   // Update an existing return product
   updateReturnProduct(id: number, returnProduct: ReturnproductModel): Observable<ReturnproductModel> {
-    return this.http.put<ReturnproductModel>(`${this.baseUrl}/${id}`, returnProduct);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.put<ReturnproductModel>(`${this.baseUrl}/${id}`, returnProduct,{headers});
   }
 
   // Delete a return product by ID
   deleteReturnProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.delete<void>(`${this.baseUrl}/${id}`,{headers});
   }
 
 
 // return-product.service.ts
-
 markProductAsFixed(id: number): Observable<ReturnproductModel> {
-  return this.http.post<ReturnproductModel>(`${this.baseUrl}/markFixed/${id}`, {}); 
+  let headers = new HttpHeaders();
+  if (isPlatformBrowser(this.platformId)) {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+  }
+
+  return this.http.post<ReturnproductModel>(`${this.baseUrl}/markFixed/${id}`, {}, { headers });
 }
- 
+
 
 
 }

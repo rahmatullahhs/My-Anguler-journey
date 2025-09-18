@@ -1,6 +1,6 @@
 // view-return-product.component.ts
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ReturnproductModel } from '../../../models/ReturnProduct/returnproduct.model';
 import { ReturnProductService } from '../../../service/ReturnProduct/return-product.service';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,8 @@ export class ViewReturnProductComponent implements OnInit {
 
   constructor(
     private returnProductService: ReturnProductService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private cdr:ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class ViewReturnProductComponent implements OnInit {
       next: (data) => {
         this.returnProducts = data;
         this.loading = false;
+          this.cdr.markForCheck();
       },
       error: (err) => {
         console.error(err);
@@ -52,6 +54,7 @@ export class ViewReturnProductComponent implements OnInit {
         next: () => {
           this.toastr.success('Return product deleted.');
           this.fetchReturnProducts();
+          this.cdr.markForCheck();
         },
         error: (err) => {
           console.error(err);
