@@ -9,7 +9,7 @@ import { ResellStockModel } from '../../models/ReturnProduct/resellstock.model';
   providedIn: 'root'
 })
 export class ReinvoiceService {
-   private baseUrl = `${environment.apiBaseUrl}/reinvoice`;
+   private baseUrl = `${environment.apiBaseUrl}/reinvoices`;
 
   constructor(private http: HttpClient) {}
 

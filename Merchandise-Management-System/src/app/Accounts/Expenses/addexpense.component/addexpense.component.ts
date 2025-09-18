@@ -21,7 +21,7 @@ export class AddexpenseComponent {
 
   ngOnInit(): void {
     this.expenseForm = this.fb.group({
-      date: [new Date(), Validators.required],
+      date: [this.formatDate(new Date()), Validators.required],
       title: ['', Validators.required],
       description: [''],
       amount: [null, [Validators.required, Validators.min(1)]],
@@ -45,7 +45,7 @@ export class AddexpenseComponent {
       next: () => {
         this.toastr.success('Expense saved successfully.');
         this.expenseForm.reset();
-        this.expenseForm.get('date')?.setValue(new Date()); // Reset date
+        this.expenseForm.get('date')?.setValue(this.formatDate(new Date())); // Reset date
         this.expenseForm.get('paymentMethod')?.setValue('Cash');
         this.isSaving = false;
       },
@@ -56,8 +56,8 @@ export class AddexpenseComponent {
       }
     });
   }
+
+  private formatDate(date: Date): string {
+    return date.toISOString().split('T')[0]; // Formats to yyyy-MM-dd
+  }
 }
-
-
-
-

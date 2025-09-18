@@ -66,6 +66,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
 import { Admin } from './Registration/admin/admin';
 import { Cashier } from './Registration/cashier/cashier';
+import { ManagerProfile } from './profiles/manager-profile/manager-profile';
+import { Manager } from './Registration/manager/manager';
+import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
 
 
 
@@ -133,7 +136,10 @@ ViewRepairComponent,
 ViewcogsComponent,
 AddreinvoiceComponent,
 Admin,
-Cashier
+Cashier,
+ManagerProfile,
+Manager,
+CashierProfile
 
 
 

@@ -1,163 +1,173 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Add Reinvoice</h2>
+<div class="container py-4">
+  <h2 class="mb-4 text-primary">🧾 Add Reinvoice</h2>
 
   <form [formGroup]="invoiceForm" (ngSubmit)="addReinvoice()">
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="invoiceNumber" class="form-label">Invoice Number <span class="text-danger">*</span></label>
-        <input type="text" id="invoiceNumber" formControlName="invoiceNumber" class="form-control" placeholder="Enter invoice number" />
-        <div *ngIf="invoiceForm.get('invoiceNumber')?.invalid && invoiceForm.get('invoiceNumber')?.touched" class="text-danger small">
-          Invoice Number is required.
+    <!-- Section: Invoice Details -->
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h5 class="text-secondary">📄 Invoice Details</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="invoiceNumber" class="form-label">Invoice Number <span class="text-danger">*</span></label>
+          <input type="text" id="invoiceNumber" formControlName="invoiceNumber" class="form-control" placeholder="Enter invoice number" />
+          <div *ngIf="invoiceForm.get('invoiceNumber')?.invalid && invoiceForm.get('invoiceNumber')?.touched" class="text-danger small">
+            Invoice Number is required.
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-6">
-        <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
-        <input type="date" id="date" formControlName="date" class="form-control" />
-        <div *ngIf="invoiceForm.get('date')?.invalid && invoiceForm.get('date')?.touched" class="text-danger small">
-          Date is required.
-        </div>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="name" class="form-label">Customer Name <span class="text-danger">*</span></label>
-        <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter customer name" />
-        <div *ngIf="invoiceForm.get('name')?.invalid && invoiceForm.get('name')?.touched" class="text-danger small">
-          Customer Name is required.
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
-        <input type="tel" id="phone" formControlName="phone" class="form-control" placeholder="Enter phone number" />
-        <div *ngIf="invoiceForm.get('phone')?.invalid && invoiceForm.get('phone')?.touched" class="text-danger small">
-          Phone is required.
+        <div class="col-md-6">
+          <label for="date" class="form-label">Date <span class="text-danger">*</span></label>
+          <input type="date" id="date" formControlName="date" class="form-control" />
+          <div *ngIf="invoiceForm.get('date')?.invalid && invoiceForm.get('date')?.touched" class="text-danger small">
+            Date is required.
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter email" />
-      </div>
-
-      <div class="col-md-6">
-        <label for="address" class="form-label">Address</label>
-        <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter address" />
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <label for="productdetail" class="form-label">Product <span class="text-danger">*</span></label>
-        <select id="productdetail" formControlName="productdetail" class="form-select">
-          <option value="">Select Product</option>
-          <option *ngFor="let p of resellStockModel" [value]="p.id">{{ p.name }}</option>
-        </select>
-        <div *ngIf="invoiceForm.get('productdetail')?.invalid && invoiceForm.get('productdetail')?.touched" class="text-danger small">
-          Please select a product.
+    <!-- Section: Customer Information -->
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h5 class="text-secondary">👤 Customer Information</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+          <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter customer name" />
+          <div *ngIf="invoiceForm.get('name')?.invalid && invoiceForm.get('name')?.touched" class="text-danger small">
+            Customer Name is required.
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-3">
-        <label for="productqty" class="form-label">Quantity <span class="text-danger">*</span></label>
-        <input
-          type="number"
-          id="productqty"
-          formControlName="productqty"
-          class="form-control"
-          placeholder="Quantity"
-          min="1"
-          (blur)="onFocusLost()"
-        />
-        <small class="text-muted">Available: {{ availableQty }}</small>
-        <div *ngIf="invoiceForm.get('productqty')?.invalid && invoiceForm.get('productqty')?.touched" class="text-danger small">
-          Quantity must be at least 1.
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+          <input type="tel" id="phone" formControlName="phone" class="form-control" placeholder="Enter phone number" />
+          <div *ngIf="invoiceForm.get('phone')?.invalid && invoiceForm.get('phone')?.touched" class="text-danger small">
+            Phone is required.
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-3">
-        <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
-        <input type="number" id="price" formControlName="price" class="form-control" placeholder="Unit price" readonly />
-      </div>
-    </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter email" />
+        </div>
 
-    <div class="row mb-3">
-      <div class="col-md-3">
-        <label for="discount" class="form-label">Discount (%)</label>
-        <input
-          type="number"
-          id="discount"
-          formControlName="discount"
-          class="form-control"
-          placeholder="Discount"
-          min="0"
-          max="100"
-          (blur)="onFocusLost()"
-        />
-      </div>
-
-      <div class="col-md-3">
-        <label for="paid" class="form-label">Paid Amount</label>
-        <input
-          type="number"
-          id="paid"
-          formControlName="paid"
-          class="form-control"
-          placeholder="Paid amount"
-          min="0"
-          (blur)="onFocusLost()"
-        />
-      </div>
-
-      <div class="col-md-3">
-        <label for="due" class="form-label">Due</label>
-        <input type="number" id="due" formControlName="due" class="form-control" readonly />
-      </div>
-
-      <div class="col-md-3">
-        <label for="createdBy" class="form-label">Created By <span class="text-danger">*</span></label>
-        <input
-          type="text"
-          id="createdBy"
-          formControlName="createdBy"
-          class="form-control"
-          placeholder="Enter creator name"
-        />
-        <div *ngIf="invoiceForm.get('createdBy')?.invalid && invoiceForm.get('createdBy')?.touched" class="text-danger small">
-          Created By is required.
+        <div class="col-md-6">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter address" />
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-between mt-4">
-      <button type="submit" class="btn btn-primary">Save Invoice</button>
-      <button type="button" class="btn btn-secondary" (click)="printInvoice()">Print Invoice</button>
+    <!-- Section: Product Information -->
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h5 class="text-secondary">📦 Product Information</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="productdetail" class="form-label">Product <span class="text-danger">*</span></label>
+          <select id="productdetail" formControlName="productdetail" class="form-select">
+            <option value="">Select Product</option>
+            <option *ngFor="let p of resellStockModel" [value]="p.id">{{ p.name }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="productqty" class="form-label">Quantity <span class="text-danger">*</span></label>
+          <input type="number" id="productqty" formControlName="productqty" class="form-control" min="1" placeholder="Quantity" (blur)="onFocusLost()" />
+          <small class="text-muted">Available: {{ availableQty }}</small>
+          <div *ngIf="invoiceForm.get('productqty')?.invalid && invoiceForm.get('productqty')?.touched" class="text-danger small">
+            Quantity must be at least 1.
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="unitPrice" class="form-label">Unit Price <span class="text-danger">*</span></label>
+          <input type="number" id="unitPrice" formControlName="price" class="form-control" placeholder="Price" readonly />
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <label class="form-label">Total Price</label>
+          <input type="number" class="form-control" [value]="totalprice" readonly />
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Payment Details -->
+    <div class="border rounded p-3 mb-4 bg-light">
+      <h5 class="text-secondary">💰 Payment Details</h5>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label for="discount" class="form-label">Discount (%)</label>
+          <input type="number" id="discount" formControlName="discount" class="form-control" placeholder="Discount" min="0" max="100" (blur)="onFocusLost()" />
+        </div>
+
+
+<div class="col-md-3">
+  <label for="finalPrice" class="form-label">Final Price</label>
+  <input
+    type="text"
+    id="finalPrice"
+    class="form-control"
+    [value]="finalprice | currency"
+    readonly
+  />
+</div>
+
+        <div class="col-md-3">
+          <label for="paid" class="form-label">Paid Amount</label>
+          <input type="number" id="paid" formControlName="paid" class="form-control" placeholder="Paid amount" min="0" (blur)="onFocusLost()" />
+        </div>
+
+        
+        <div class="col-md-3">
+  <label for="balanceDue" class="form-label">Balance Due</label>
+  <input
+    type="text"
+    id="balanceDue"
+    class="form-control"
+    [value]="(finalprice - (invoiceForm.value.paid || 0)) | currency"
+    readonly
+  />
+</div>
+
+      </div>
+    </div>
+
+    <!-- Section: Other Info -->
+    <div class="border rounded p-3 mb-4 bg-light">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="createdBy" class="form-label">Created By <span class="text-danger">*</span></label>
+          <input type="text" id="createdBy" formControlName="createdBy" class="form-control" placeholder="Enter your name" />
+          <div *ngIf="invoiceForm.get('createdBy')?.invalid && invoiceForm.get('createdBy')?.touched" class="text-danger small">
+            Created By is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-end gap-2 mt-4">
+      <button type="submit" class="btn btn-success">💾 Save Invoice</button>
+      <button type="button" class="btn btn-outline-primary" (click)="printInvoice()">🖨️ Print Invoice</button>
     </div>
   </form>
 
-  <!-- Hidden invoice printable area -->
-  <div
-    id="invoiceToPrint"
-    style="display: none; margin-top: 30px; padding: 20px; border: 1px solid #ccc;"
-  >
-    <h3>Invoice</h3>
+  <!-- Hidden Printable Invoice -->
+  <div id="invoiceToPrint" style="display: none;" class="mt-5 p-4 border bg-white shadow-sm">
+    <h3>🧾 Invoice</h3>
     <p><strong>Invoice Number:</strong> {{ invoiceForm.value.invoiceNumber }}</p>
     <p><strong>Date:</strong> {{ invoiceForm.value.date }}</p>
-    <p><strong>Customer Name:</strong> {{ invoiceForm.value.name }}</p>
+    <p><strong>Customer:</strong> {{ invoiceForm.value.name }}</p>
     <p><strong>Phone:</strong> {{ invoiceForm.value.phone }}</p>
     <p><strong>Email:</strong> {{ invoiceForm.value.email }}</p>
     <p><strong>Address:</strong> {{ invoiceForm.value.address }}</p>
     <p><strong>Product:</strong> {{ getProductNameById(invoiceForm.value.productdetail) }}</p>
     <p><strong>Quantity:</strong> {{ invoiceForm.value.productqty }}</p>
-    <p><strong>Price:</strong> {{ invoiceForm.value.price | currency }}</p>
+    <p><strong>Unit Price:</strong> {{ invoiceForm.value.price | currency }}</p>
+    <p><strong>Total Price:</strong> {{ totalprice | currency }}</p>
     <p><strong>Discount:</strong> {{ invoiceForm.value.discount }}%</p>
+    <p><strong>Final Price:</strong> {{ finalprice | currency }}</p>
     <p><strong>Paid:</strong> {{ invoiceForm.value.paid | currency }}</p>
-    <p><strong>Total:</strong> {{ finalprice | currency }}</p>
     <p><strong>Due:</strong> {{ due | currency }}</p>
     <p><strong>Created By:</strong> {{ invoiceForm.value.createdBy }}</p>
   </div>

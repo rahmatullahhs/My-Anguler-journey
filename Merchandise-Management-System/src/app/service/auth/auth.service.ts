@@ -25,8 +25,9 @@ export class AuthService {
 
 
 
-  // private currentUserSubject: BehaviorSubject<User | null>;
-  // public currentUser$: Observable<User | null>;
+private currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+public currentUser$: Observable<User | null> = this.currentUserSubject.asObservable();
+
 
   constructor(
     private http: HttpClient,
@@ -189,6 +190,8 @@ export class AuthService {
     const role = this.getUserRole();
     return role === 'hrexecutive';
   }
+
+
 
 
 
