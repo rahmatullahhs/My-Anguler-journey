@@ -43,6 +43,7 @@ export class AddreinvoiceComponent implements OnInit {
 
   private initForm(): void {
     this.invoiceForm = this.formBuilder.group({
+      id:[''],
       invoiceNumber: ['', Validators.required],
       date: ['', Validators.required],
       name: ['', Validators.required],
@@ -157,6 +158,7 @@ export class AddreinvoiceComponent implements OnInit {
     }
 
     const reinvoiceModel: ReinvoiceModel = {
+      id:f.id,
       invoiceNumber: f.invoiceNumber,
       date: f.date,
       name: f.name,

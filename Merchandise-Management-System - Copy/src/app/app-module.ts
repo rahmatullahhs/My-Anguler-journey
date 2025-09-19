@@ -63,6 +63,13 @@ import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.c
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
+import { Admin } from './Registration/admin/admin';
+import { Cashier } from './Registration/cashier/cashier';
+import { ManagerProfile } from './profiles/manager-profile/manager-profile';
+import { Manager } from './Registration/manager/manager';
+import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
+import { ViewreinvoiceComponent } from './ReturnDamage/ReSellStock/viewreinvoice.component/viewreinvoice.component';
 
 
 
@@ -127,7 +134,14 @@ ViewResellStockComponent,
 AddReplaceUnitComponent,
 ViewReplaceUnitComponent,
 ViewRepairComponent,
-ViewcogsComponent
+ViewcogsComponent,
+AddreinvoiceComponent,
+Admin,
+Cashier,
+ManagerProfile,
+Manager,
+CashierProfile,
+ViewreinvoiceComponent
 
 
 

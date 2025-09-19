@@ -1,6 +1,6 @@
 export interface ReinvoiceModel {
  
-  
+  id:number;
   invoiceNumber: string;
   date: string;
   name: string;

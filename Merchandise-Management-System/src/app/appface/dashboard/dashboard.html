@@ -37,7 +37,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 
@@ -80,3 +79,24 @@
   </ng-container>
 
 </div>
+<!-- .... -->
+<!--  
+  totalPaid: number = 0;
+  totalAmount: number = 0;
+  totalDue: number = 0;
+  constructor(private orderService: OrderService, private cd: ChangeDetectorRef) { } 
+  ngOnInit(): void {
+    this.cd.detectChanges();
+    this.loadTotals();
+  } 
+  loadTotals(): void {
+    this.orderService.getAllOrder().subscribe((orders: OrderModel[]) => {
+      this.totalPaid = orders.reduce((sum, order) => sum + order.paid, 0);
+      console.log(this.totalPaid)
+      this.totalAmount = orders.reduce((sum, order) => sum + order.totalAmount, 0);
+      console.log(this.totalAmount)
+      this.totalDue = orders.reduce((sum, order) => sum + order.due, 0);
+      console.log(this.totalDue)
+    });
+  }
+} -->

@@ -1,7 +1,9 @@
 <div class="container mt-4">
-  <h2 class="mb-4">Add Resell Stock</h2>
+  <h2 class="mb-4">
+    {{ isEditMode ? 'Edit Resell Stock' : 'Add Resell Stock' }}
+  </h2>
 
-  <form [formGroup]="formGroup" (ngSubmit)="addResellStock()">
+  <form [formGroup]="formGroup" (ngSubmit)="saveResellStock()">
 
     <!-- Name Field -->
     <div class="mb-3">
@@ -67,6 +69,9 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">
+      {{ isEditMode ? 'Update Stock' : 'Add Stock' }}
+    </button>
+
   </form>
 </div>

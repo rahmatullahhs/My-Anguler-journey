@@ -38,6 +38,13 @@ import { ViewReturnProductComponent } from './ReturnDamage/ReturnProduct/view-re
 import { ViewcogsComponent } from './Accounts/COGS/viewcogs.component/viewcogs.component';
 import { AddexpenseComponent } from './Accounts/Expenses/addexpense.component/addexpense.component';
 import { ViewexpenseComponent } from './Accounts/Expenses/viewexpense.component/viewexpense.component';
+import { AddreinvoiceComponent } from './ReturnDamage/ReSellStock/addreinvoice.component/addreinvoice.component';
+import { Admin } from './Registration/admin/admin';
+import { ManagerProfile } from './profiles/manager-profile/manager-profile';
+import { Manager } from './Registration/manager/manager';
+import { Cashier } from './Registration/cashier/cashier';
+import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
+import { ViewreinvoiceComponent } from './ReturnDamage/ReSellStock/viewreinvoice.component/viewreinvoice.component';
 
 
 
@@ -93,8 +100,18 @@ const routes: Routes = [
   { path: 'viewreplaceUnit', component: ViewReplaceUnitComponent },
   { path: 'viwereturnProduct', component: ViewReturnProductComponent },
   { path: 'addexpense', component: AddexpenseComponent },
-  { path: 'viewexpense', component: ViewexpenseComponent }
+  { path: 'viewexpense', component: ViewexpenseComponent },
+  {path:'addreinvoice',component:AddreinvoiceComponent},
 
+  // Registration
+  {path: 'adminReg', component: Admin},
+  {path: 'managerReg' , component: Manager},
+  {path: 'cashierReg' , component: Cashier},
+
+  //Profiles
+{path: 'managerProfile' , component:ManagerProfile},
+{path: 'cashierProfile' , component: CashierProfile},
+{path: 'viewreinvoice',component:ViewreinvoiceComponent}
 
 ];
 

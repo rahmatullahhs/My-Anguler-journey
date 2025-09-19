@@ -32,8 +32,9 @@
         <td>{{ invoice.paid }}</td>
         <td>{{ invoice.due }}</td>
         <td>
-          <button class="btn btn-sm btn-primary" (click)="printInvoice(invoice)">Print</button>
-        </td>
+  <button class="btn btn-sm btn-primary me-1" (click)="printInvoice(invoice)">Print</button>
+  <button class="btn btn-sm btn-danger" (click)="deleteInvoice(invoice.id)">Delete</button>
+</td>
       </tr>
     </tbody>
   </table>

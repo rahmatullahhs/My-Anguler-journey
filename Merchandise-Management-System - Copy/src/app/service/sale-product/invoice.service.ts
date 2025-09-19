@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../environment/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InvoiceModel } from '../../models/products/invoice.model';
 import { Observable } from 'rxjs';
 import { ProductModel } from '../../models/products/product.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,33 +13,71 @@ export class InvoiceService {
 
   private baseUrl = environment.apiBaseUrl + '/invoice';
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient,
+       @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   getAllInvoice(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.get(`${this.baseUrl}`,{headers});
   }
 
   getInvoiceById(id: number): Observable<any> {
-    return this.http.get(this.baseUrl+'/'+id);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+    return this.http.get(this.baseUrl+'/'+id,{headers});
 
   }
 
-
    addInvoice(invoice: InvoiceModel): Observable<any> {
-      return this.http.post(`${this.baseUrl}`, invoice);
+    
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+      return this.http.post(`${this.baseUrl}`, invoice,{headers});
     }
    
   
     updateInvoice(invoice: InvoiceModel): Observable<InvoiceModel> {
-      return this.http.put<InvoiceModel>(`${this.baseUrl}/${invoice.id}`, invoice);
+      
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+      return this.http.put<InvoiceModel>(`${this.baseUrl}/${invoice.id}`, invoice,{headers});
     }
   
     deleteInvoice(id: number): Observable<void> {
-      return this.http.delete<void>(`${this.baseUrl}/${id}`);
+      
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+      return this.http.delete<void>(`${this.baseUrl}/${id}`,{headers});
     }
   
-  //   updateInventory(productId: number, quantity: number, productModel: ProductModel): Observable<ProductModel> {
-  //   return this.http.put<ProductModel>(`${this.baseUrl}/${productModel.id}`, productModel);
-  // }
+  
 }

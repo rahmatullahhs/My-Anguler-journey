@@ -75,3 +75,33 @@
     </table>
   </div>
 </div>
+<!-- ........... -->
+ <!-- <table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Invoice #</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th>Due</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let inv of filteredInvoice">
+      <td>{{ inv.type }}</td>
+      <td>{{ inv.invoice || inv.invoiceNumber }}</td>
+      <td>{{ inv.name }}</td>
+      <td>{{ inv.email }}</td>
+      <td>{{ inv.date }}</td>
+      <td>{{ inv.total || 'N/A' }}</td>
+      <td>{{ inv.due || '0' }}</td>
+      <td>
+        <button (click)="deleteInvoice(inv.id, inv.type)">🗑️ Delete</button>
+        <!-- You can add view/edit buttons here --
+      </td>
+    </tr>
+  </tbody>
+</table> -->

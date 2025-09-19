@@ -1,8 +1,11 @@
-export interface UserModel {
-    id: string;
+
+export interface User {
+
+    id: number;
     name: string;
     email: string;
     password: string;
-    role: string;
+    phone: string;
     photo: string;
+
 }
