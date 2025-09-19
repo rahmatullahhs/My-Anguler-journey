@@ -9,6 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class ExpenseService {
+
   
   private baseUrl = `${environment.apiBaseUrl}/expense`;
 
@@ -67,5 +68,22 @@ export class ExpenseService {
     return this.http.delete<void>(`${this.baseUrl}/${id}`, {headers});
   }
   
+
+
+getLastMonthExpenses(): Observable<{ expenseAmount: string }> {
+  let headers = new HttpHeaders();
+
+  if (isPlatformBrowser(this.platformId)) {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+  }
+
+  return this.http.get<{ expenseAmount: string }>(`${this.baseUrl}/last-month`, { headers });
+}
+
+
+
 }
 

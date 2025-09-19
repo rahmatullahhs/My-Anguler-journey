@@ -1,111 +1,80 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ChartData, ChartOptions } from 'chart.js';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { InvoiceService } from '../../service/sale-product/invoice.service';
+import { ExpenseService } from '../../service/Expanses/expense.service';
+
 @Component({
   selector: 'app-dashboard',
   standalone: false,
   templateUrl: './dashboard.html',
  styleUrls: ['./dashboard.css']
 })
-export class Dashboard {
+export class Dashboard implements OnInit{
 
-  // ✅ Plugin reference for template binding
-  ChartDataLabels = DataLabelsPlugin;
 
-  // ✅ Sales value for display
-  salesValue: string = '$12,340';
-  salesPeriod: string = 'Today';
-
-  // ✅ Used for browser-specific rendering (like canvas)
+  // Platform check
   isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(platformId);
-  }
+  // Date related
+  currentYear = new Date().getFullYear();
+  currentMonthName = '';
+  lastMonthName = '';
 
-  // ✅ Update the period and value dynamically
-  updateSales(period: string, value: string): void {
-    this.salesPeriod = period;
-    this.salesValue = value;
-  }
+  // Sales related
+  salesPeriod = 'Today';
+  salesValue = '';
+  periods = ['Today', 'Last Week', 'Last Month'];
 
-  // ✅ Line Chart Data & Configuration
-  lineChartData: ChartData<'line'> = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [
-      {
-        label: 'Sales',
-        data: [1200, 1900, 3000, 2500, 2800, 3500],
-        borderColor: '#007bff',
-        backgroundColor: 'rgba(0,123,255,0.1)',
-        fill: true,
-        tension: 0.3
-      }
-    ]
-  };
+  // Due and Expense related
+  dueAmount = '';
+  expenseAmount = '';
 
-  lineChartOptions: ChartOptions<'line'> = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: true,
-        labels: {
-          color: '#333'
-        }
-      }
+  // Chart data & options
+  profitChartLabels: string[] = [];
+
+profitChartData: ChartData<'line'> = {
+  labels: [], // your month labels go here
+  datasets: [
+    {
+      label: 'Monthly Profit',
+      data: [], // your profit data
+      borderColor: 'darkviolet',                         // Line color
+      backgroundColor: 'rgba(208, 140, 237, 0.29)',         // Fill under the line
+      fill: true,
+      tension: 0.0,                                      // Smooth curve
+      pointBackgroundColor: '#48ffffff',            // Light orange fill
+      pointBorderColor: '#794a04ff',                    // Point border color
+      pointRadius: 3,                                   // Size of the point
+      pointHoverRadius: 10                              // Size when hovered
     }
-  };
+  ]
+};
 
-  // ✅ Pie Chart Data & Configuration
-  pieChartLabels: string[] = ['Laptops', 'Keyboards', 'Mice', 'Headsets', 'Docking Stations'];
 
-  pieChartData: ChartData<'pie', number[], string> = {
-    labels: this.pieChartLabels,
-    datasets: [
-      {
-        data: [450, 120, 180, 90, 60],
-        backgroundColor: ['#007bff', '#17a2b8', '#28a745', '#ffc107', '#dc3545']
-      }
-    ]
-  };
-
-  pieChartOptions: ChartOptions<'pie'> = {
+  profitChartOptions: ChartOptions = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          color: '#333'
-        }
-      },
-      datalabels: {
-        formatter: (value: number, context: any) => {
-          const total = context.chart.data.datasets[0].data.reduce((a: number, b: number) => a + b, 0);
-          return ((value / total) * 100).toFixed(1) + '%';
-        },
-        color: '#fff',
-        font: {
-          weight: 'bold',
-          size: 14
-        }
-      },
+      legend: { display: true },
       tooltip: {
         callbacks: {
-          label: (tooltipItem: any) => `${tooltipItem.label}: ${tooltipItem.raw} units`
+          label: context => `Profit: $${context.raw}`
         }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: { display: true, text: 'Profit ($)' }
+      },
+      x: {
+        title: { display: true, text: 'Month' }
       }
     }
   };
 
-  // ✅ Overview Cards (reusable UI block)
-  overviewCards = [
-    { title: 'Last Month Profit', value: '$78,900', bg: 'bg-success' },
-    { title: 'Top-Selling Products', value: 'Hp EliteBook', bg: 'bg-info' },
-    { title: 'Sales Channels', value: 'Online / Retail', bg: 'bg-warning' },
-  ];
-
-  // ✅ Sectional Reports for business insights
+  // Info sections for dashboard display
   infoSections = [
     {
       title: 'Inventory Management',
@@ -113,17 +82,10 @@ export class Dashboard {
         'Current Stock: 4,230 units',
         'Low Stock Alerts: 7 items',
         'Out-of-Stock Items: 2',
-        'Fast-moving: T-Shirts'
+        'Fast-moving: Acessories'
       ]
     },
-    {
-      title: 'Customer Insights',
-      items: [
-        'Total Customers: 1,240',
-        'New This Month: 98',
-        'Top Customer: Jane Doe ($1,200)'
-      ]
-    },
+
     {
       title: 'Profit & Cost Analytics',
       items: [
@@ -133,9 +95,9 @@ export class Dashboard {
       ]
     },
     {
-      title: 'Order Management',
+      title: 'Sales Management',
       items: [
-        'Orders Today: 48',
+        'Sales Today: 48',
         'Pending: 12, Completed: 36',
         'Cancelled: 2',
         'Avg Fulfillment Time: 1.2 Days'
@@ -151,8 +113,8 @@ export class Dashboard {
     {
       title: 'Category Performance',
       items: [
-        'Top Category: Streetwear',
-        'Profit Leader: Outerwear',
+        'Top Category: Laptops',
+        'Profit Leader: Acessories',
         'Low Stock: Accessories'
       ]
     },
@@ -161,9 +123,104 @@ export class Dashboard {
       bgClass: 'text-white bg-danger',
       items: [
         'Low Stock: 7 items',
-        'High Returns Detected: Hoodie XL',
-        'Sales Drop: Accessories (↓15%)'
+        'High Returns Detected:keyboards',
+        'Sales Drop: Asus (↓15%)'
       ]
     }
   ];
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private invoiceService: InvoiceService,
+    private expenseService: ExpenseService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+  ngOnInit(): void {
+    this.setCurrentMonth();
+    this.setLastMonth();
+
+    this.updateSales(this.salesPeriod);
+    this.loadCurrentMonthDue();
+    this.loadLastMonthExpenses();
+
+    if (this.isBrowser) {
+      this.generateProfitChartData();
+    }
+  }
+
+  // Generate random profit data for the chart
+  generateProfitChartData(): void {
+    const months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+    const profits = months.map(() => Math.floor(Math.random() * 10000) + 1000);
+
+    this.profitChartLabels = months;
+    this.profitChartData.labels = months;
+    this.profitChartData.datasets[0].data = profits;
+  }
+
+  updateSales(period: string): void {
+    this.salesPeriod = period;
+    this.invoiceService.getSalesByPeriod(period).subscribe({
+      next: response => {
+        this.salesValue = response.salesValue || '$0';
+        this.cdr.markForCheck();
+      },
+      error: err => {
+        console.error('Error fetching sales data:', err);
+        this.salesValue = '$0';
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
+  setCurrentMonth(): void {
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    this.currentMonthName = monthNames[new Date().getMonth()];
+  }
+
+  loadCurrentMonthDue(): void {
+    this.invoiceService.getCurrentMonthDue().subscribe({
+      next: response => {
+        this.dueAmount = response.dueAmount || '$0';
+        this.cdr.markForCheck();
+      },
+      error: err => {
+        console.error('Error fetching current month due:', err);
+        this.dueAmount = '$0';
+        this.cdr.markForCheck();
+      }
+    });
+  }
+
+  setLastMonth(): void {
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const lastMonthIndex = new Date().getMonth() === 0 ? 11 : new Date().getMonth() - 1;
+    this.lastMonthName = monthNames[lastMonthIndex];
+  }
+
+  loadLastMonthExpenses(): void {
+    this.expenseService.getLastMonthExpenses().subscribe({
+      next: response => {
+        this.expenseAmount = response.expenseAmount || '$0';
+        this.cdr.markForCheck();
+      },
+      error: err => {
+        console.error('Error fetching expenses:', err);
+        this.expenseAmount = '$0';
+        this.cdr.markForCheck();
+      }
+    });
+  }
 }

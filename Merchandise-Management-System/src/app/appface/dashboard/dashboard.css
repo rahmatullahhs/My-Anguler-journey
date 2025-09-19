@@ -2,34 +2,18 @@ body {
   background-color: #f8f9fa;
 }
 
-.card {
-  margin-bottom: 20px;
-}
-.card {
-  min-height: 100%;
-}
-
-
-.card-header {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.card-header button {
-  font-size: 0.8rem;
-}
-canvas {
-  max-height: 300px;
-}
-
-
-body {
-  background-color: #f8f9fa;
-}
-
+/* Dashboard card styles */
 .dashboard .card {
-  min-height: 150px;
   margin-bottom: 20px;
+  min-height: auto; /* Let cards size naturally */
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Remove any fixed height or 100% height */
+.card.h-100 {
+  height: auto !important;
+  min-height: auto !important;
 }
 
 .card-header {
@@ -41,11 +25,19 @@ body {
   font-size: 0.8rem;
 }
 
+/* Chart canvas size */
 canvas {
   max-height: 300px;
+  width: 100% !important;
 }
 
-.card-text.display-6 {
+/* Large text for card numbers */
+.card-text.display-5, .card-text.display-6 {
   font-size: 2.5rem;
+  font-weight: 700;
 }
 
+/* Specific card background colors & text colors */
+.text-white {
+  color: white !important;
+}

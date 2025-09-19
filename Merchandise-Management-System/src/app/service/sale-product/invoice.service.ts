@@ -79,5 +79,29 @@ export class InvoiceService {
       return this.http.delete<void>(`${this.baseUrl}/${id}`,{headers});
     }
   
+  getSalesByPeriod(period: string): Observable<any> {
+  let headers = new HttpHeaders();
   
+  if (isPlatformBrowser(this.platformId)) {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
+    }
+  }
+
+  // Example: GET /invoice/sales?period=Today
+  return this.http.get(`${this.baseUrl}/sales?period=${period}`, { headers });
+}
+
+
+
+getCurrentMonthDue(): Observable<any> {
+  return this.http.get<any>('http://localhost:8085/api/invoice/due/current-month');
+}
+
+getLastMonthExpenses(): Observable<any> {
+  return this.http.get<any>('http://localhost:8085/api/expenses/last-month');
+}
+
+
 }
