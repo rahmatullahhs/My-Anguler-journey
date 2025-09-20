@@ -31,13 +31,7 @@ public currentUser$: Observable<User | null> = this.currentUserSubject.asObserva
     private http: HttpClient,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-
-    // const storedUser = this.isBrowser() ? JSON.parse(localStorage.getItem('currentUser') || 'null') : null;
-    // this.currentUserSubject = new BehaviorSubject<User | null>(storedUser);
-    // this.currentUser$ = this.currentUserSubject.asObservable();
-
-  }
+  ) { }
 
 
   registration(user: User): Observable<AuthResponse> {
@@ -57,26 +51,45 @@ public currentUser$: Observable<User | null> = this.currentUserSubject.asObserva
 
 
 
-  login(email: string, password: string): Observable<AuthResponse> {
+  // login(email: string, password: string): Observable<AuthResponse> {
 
-    return this.http.post<AuthResponse>(this.baseUrl + '/login', { email, password }, { headers: this.headers }).pipe(
+  //   return this.http.post<AuthResponse>(this.baseUrl + '/login', { email, password }, { headers: this.headers }).pipe(
 
-      map(
-        (response: AuthResponse) => {
-          if (this.isBrowser() && response.token) {
-            localStorage.setItem('authToken', response.token);
-            const decodeToken = this.decodeToken(response.token);
-            localStorage.setItem('userRole', decodeToken.role);
-            this.userRoleSubject.next(decodeToken.role);
-          }
-          return response;
+  //     map(
+  //       (response: AuthResponse) => {
+  //         if (this.isBrowser() && response.token) {
+  //           localStorage.setItem('authToken', response.token);
+  //           const decodeToken = this.decodeToken(response.token);
+  //           localStorage.setItem('userRole', decodeToken.role);
+  //           this.userRoleSubject.next(decodeToken.role);
+  //         }
+  //         return response;
 
+  //       }
+
+  //     )
+  //   );
+  // }
+login(email: string, password: string): Observable<AuthResponse> {
+  return this.http.post<AuthResponse>(this.baseUrl + '/login', { email, password }, { headers: this.headers }).pipe(
+    map((response: AuthResponse) => {
+      if (this.isBrowser() && response.token) {
+        localStorage.setItem('authToken', response.token);
+
+        const decodeToken = this.decodeToken(response.token);
+        localStorage.setItem('userRole', decodeToken.role);
+        this.userRoleSubject.next(decodeToken.role);
+
+        // Store user info in localStorage
+        if (response.user) {
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          this.currentUserSubject.next(response.user);
         }
-
-      )
-    );
-  }
-
+      }
+      return response;
+    })
+  );
+}
 
    isAuthenticated(): boolean {
     return !!this.getToken();
@@ -132,15 +145,24 @@ public currentUser$: Observable<User | null> = this.currentUserSubject.asObserva
   }
 
 
-  logout(): void {
-    if (this.isBrowser()) {
-      localStorage.removeItem('userRole');
-      localStorage.removeItem('authToken');
-      this.userRoleSubject.next(null);
-    }
-    this.router.navigate(['/login']);
+  // logout(): void {
+  //   if (this.isBrowser()) {
+  //     localStorage.removeItem('userRole');
+  //     localStorage.removeItem('authToken');
+  //     this.userRoleSubject.next(null);
+  //   }
+  //   this.router.navigate(['/login']);
+  // }
+logout(): void {
+  if (this.isBrowser()) {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('currentUser');
+    this.userRoleSubject.next(null);
+    this.currentUserSubject.next(null);
   }
-
+  this.router.navigate(['/login']);
+}
 
   hasRole(roles: string[]): boolean {
 
@@ -149,12 +171,7 @@ public currentUser$: Observable<User | null> = this.currentUserSubject.asObserva
 
   }
 
-
-
-  isSuperAdmin(): boolean {
-    const role = this.getUserRole();
-    return role === 'superadmin';
-  }
+ 
   isAdmin(): boolean {
     return this.getUserRole() === 'ADMIN';
   }
@@ -163,31 +180,30 @@ public currentUser$: Observable<User | null> = this.currentUserSubject.asObserva
     const role = this.getUserRole();
     return role === 'user';
   }
-  isPurchaseManager(): boolean {
+  isManager(): boolean {
     const role = this.getUserRole();
-    return role === 'purchasemanager';
-  }
-  isPurchaseExecutive(): boolean {
-    const role = this.getUserRole();
-    return role === 'purchaseexecutive';
-  }
-  isMerchandiserManager(): boolean {
-    const role = this.getUserRole();
-    return role === 'merchandisermanager';
-  }
-  isMerchandiserJr(): boolean {
-    const role = this.getUserRole();
-    return role === 'merchandiserjunior';
+    return role === 'manager';
   }
 
-  isHRAdmin(): boolean {
+  isCashier(): boolean {
     const role = this.getUserRole();
-    return role === 'hradmin';
+    return role === 'cashier';
   }
-  isHRExecutive(): boolean {
-    const role = this.getUserRole();
-    return role === 'hrexecutive';
+  
+// <--new method-->
+getCurrentUser(): User | null {
+  if (this.isBrowser()) {
+    const userJson = localStorage.getItem('currentUser');
+    return userJson ? JSON.parse(userJson) : null;
   }
+  return null;
+}
+setCurrentUser(user: User): void {
+  if (this.isBrowser()) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUserSubject.next(user);
+  }
+}
 
 
 

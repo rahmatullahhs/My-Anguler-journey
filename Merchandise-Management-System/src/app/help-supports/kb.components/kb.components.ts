@@ -11,7 +11,7 @@ export class KbComponents implements OnInit{
 articles: KbComponents[] = [];
   searchTerm: string = '';
   title: any;
-summary: any;
+  summary: any;
 id: any|string;
 
   constructor(private http: HttpClient) {}

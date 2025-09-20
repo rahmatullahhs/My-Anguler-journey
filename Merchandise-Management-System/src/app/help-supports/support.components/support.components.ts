@@ -8,28 +8,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './support.components.css'
 })
 export class SupportComponents {
- contactForm: FormGroup;
+ formData = {
+    name: '',
+    email: '',
+    message: ''
+  };
+
   submitted = false;
-  successMessage = '';
 
-  constructor(private fb: FormBuilder) {
-    this.contactForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', [Validators.required, Validators.minLength(10)]]
-    });
-  }
-
-  onSubmit() {
+  submitForm() {
+    // TODO: send data to backend (email, save to DB, etc.)
+    console.log('Support form submitted:', this.formData);
     this.submitted = true;
 
-    if (this.contactForm.invalid) return;
-
-    // Simulate sending
-    console.log('Message Sent:', this.contactForm.value);
-    this.successMessage = 'Your message has been sent successfully!';
-    this.contactForm.reset();
-    this.submitted = false;
+    // Optionally clear the form
+    this.formData = {
+      name: '',
+      email: '',
+      message: ''
+    };
   }
 }

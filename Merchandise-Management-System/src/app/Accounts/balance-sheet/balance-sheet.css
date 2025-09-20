@@ -1,0 +1,27 @@
+@media print {
+  button {
+    display: none !important;
+  }
+}
+
+#print-section {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  min-width: 300px;
+  max-width: 100%;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-header {
+  font-size: 1.2rem;
+}
+
+.list-group-item {
+  font-size: 0.95rem;
+}

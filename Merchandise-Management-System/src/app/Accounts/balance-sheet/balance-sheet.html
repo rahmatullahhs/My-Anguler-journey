@@ -1,0 +1,64 @@
+<div class="container mt-2" id="print-section">
+  <h2 class="mb-4 text-center">📊 Balance Sheet</h2>
+
+  <!-- Action Buttons -->
+  <div class="text-center mb-4">
+    <button class="btn btn-success me-2" (click)="exportToExcel()">
+      📥 Export to Excel
+    </button>
+    <button class="btn btn-primary" printSectionId="print-section" ngxPrint>
+      🖨️ Print
+    </button>
+  </div>
+
+  <!-- Landscape Style Card Layout -->
+  <div class="d-flex justify-content-between flex-wrap gap-3">
+
+    <!-- Assets -->
+    <div class="card flex-fill border-success shadow-sm">
+      <div class="card-header bg-success text-white fw-bold">
+        💼 Assets
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">📦 Inventory: ৳{{ data?.assets.inventory }}</li>
+        <li class="list-group-item">💵 Cash: ৳{{ data?.assets.cash }}</li>
+        <li class="list-group-item">🏦 Bank: ৳{{ data?.assets.bank }}</li>
+        <li class="list-group-item">🧾 Receivables: ৳{{ data?.assets.receivables }}</li>
+      </ul>
+    </div>
+
+    <!-- Liabilities -->
+    <div class="card flex-fill border-danger shadow-sm">
+      <div class="card-header bg-danger text-white fw-bold">
+        💳 Liabilities
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">📤 Payables: ৳{{ data?.liabilities.payables }}</li>
+        <li class="list-group-item">🏦 Loans: ৳{{ data?.liabilities.loans }}</li>
+        <li class="list-group-item">👨‍💼 Salaries: ৳{{ data?.liabilities.salaries }}</li>
+      </ul>
+    </div>
+
+    <!-- Equity -->
+    <div class="card flex-fill border-primary shadow-sm">
+      <div class="card-header bg-primary text-white fw-bold">
+        📈 Equity
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">💰 Capital: ৳{{ data?.equity.capital }}</li>
+        <li class="list-group-item">📚 Retained Earnings: ৳{{ data?.equity.retainedEarnings }}</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Totals Section -->
+  <div class="mt-5 pt-3 border-top text-center">
+    <h5 class="text-success fw-bold">
+      ✅ Total Assets: ৳{{ totalAssets }}
+    </h5>
+    <h5 class="text-danger fw-bold">
+      ❎ Total Liabilities + Equity: ৳{{ totalLiabilities + totalEquity }}
+    </h5>
+  </div>
+</div>

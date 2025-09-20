@@ -1,46 +1,81 @@
 .registration-form {
-  max-width: 600px;
-  margin: auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fafafa;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
 .registration-form h2 {
   text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
 }
 
-fieldset {
-  margin-bottom: 1rem;
+.form-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 8px;
   border: 1px solid #ddd;
-  padding: 1rem;
 }
 
-legend {
+.form-section legend {
   font-weight: bold;
+  color: #34495e;
+  margin-bottom: 10px;
 }
 
-label {
+.form-section label {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 10px;
+  font-weight: 500;
 }
 
-input, select, textarea, button {
+.form-section label i {
+  margin-right: 6px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.3rem;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   box-sizing: border-box;
 }
 
-button {
-  margin-top: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+.full-width {
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.submit-btn {
+  display: block;
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
 }

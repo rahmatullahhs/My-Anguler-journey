@@ -1,22 +1,6 @@
 <!-- Main Container -->
 <div class="container mt-2 dashboard">
-
-  <!-- Dashboard Row -->
   <div class="row g-4">
-
-    <!-- Profit Trend Chart -->
-    <div class="col-md-12 mt-4" *ngIf="isBrowser">
-      <h2 class="text-center mb-4 d-flex justify-content-center align-items-center">
-        <img src="/assets/profit.png" alt="Profit Icon" width="50" height="50" class="rounded me-2">
-        Profit Chart ({{ currentYear }})
-      </h2>
-
-      <canvas baseChart
-              [data]="profitChartData"
-              [options]="profitChartOptions"
-              [type]="'line'">
-      </canvas>
-    </div>
 
     <!-- Sales Card -->
     <div class="col-md-4">
@@ -28,12 +12,20 @@
               Sales <span class="text-light fs-6">({{ salesPeriod }})</span>
             </h5>
             <div class="dropdown">
-              <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="salesPeriodDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Select sales period">
+              <button
+                class="btn btn-light btn-sm dropdown-toggle"
+                id="salesPeriodDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Select sales period"
+              >
                 <i class="fas fa-calendar-alt me-1"></i> Period
               </button>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="salesPeriodDropdown">
                 <li *ngFor="let period of periods">
-                  <a class="dropdown-item" href="#" (click)="updateSales(period); $event.preventDefault()">{{ period }}</a>
+                  <a class="dropdown-item" href="#" (click)="updateSales(period); $event.preventDefault()">
+                    {{ period }}
+                  </a>
                 </li>
               </ul>
             </div>
@@ -50,12 +42,10 @@
     <div class="col-md-4">
       <div class="card h-100 text-white" style="background-color: #dc3545; border-radius: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
         <div class="card-body d-flex flex-column justify-content-between">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title mb-0">
-              <i class="fas fa-credit-card me-2"></i>
-              Current Month Due
-            </h5>
-          </div>
+          <h5 class="card-title mb-0">
+            <i class="fas fa-credit-card me-2"></i>
+            Current Month Due
+          </h5>
           <div class="pt-4 text-center">
             <p class="card-text display-5 fw-bold text-warning mb-1">৳{{ dueAmount }}</p>
             <small class="text-light">Unpaid Sales - {{ currentMonthName }}</small>
@@ -64,16 +54,14 @@
       </div>
     </div>
 
-    <!-- Last Month Expense Card -->
+    <!-- Total Expenses Card -->
     <div class="col-md-4">
       <div class="card h-100 text-white" style="background-color: #007bff; border-radius: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
         <div class="card-body d-flex flex-column justify-content-between">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title mb-0">
-              <i class="fas fa-receipt me-2"></i>
-              Total Expenses
-            </h5>
-          </div>
+          <h5 class="card-title mb-0">
+            <i class="fas fa-receipt me-2"></i>
+            Total Expenses
+          </h5>
           <div class="pt-4 text-center">
             <p class="card-text display-5 fw-bold text-warning mb-1">৳{{ expenseAmount }}</p>
             <small class="text-white-50">Recorded for {{ lastMonthName }}</small>
@@ -82,21 +70,43 @@
       </div>
     </div>
 
-  </div> <!-- /.row -->
+  </div>
+</div>
 
-</div> <!-- /.container -->
+<!-- Profit Trend Chart -->
+<div class="container mt-2" *ngIf="isBrowser">
+  <h2 class="text-center mb-4 d-flex justify-content-center align-items-center">
+    <img
+      src="/assets/profit.png"
+      alt="Profit Icon"
+      width="50"
+      height="50"
+      class="rounded me-2"
+    />
+    Profit Chart ({{ currentYear }})
+  </h2>
+
+  <canvas
+    baseChart
+    [data]="profitChartData"
+    [options]="profitChartOptions"
+    [type]="'line'"
+  ></canvas>
+</div>
 
 <!-- Info Sections -->
-<ng-container *ngFor="let section of infoSections">
-  <div class="card mb-4" [ngClass]="section.bgClass ? section.bgClass : ''">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      <span>{{ section.title }}</span>
-      <button class="btn btn-primary btn-sm">{{ section.title }}</button>
+<div class="container mt-4">
+  <ng-container *ngFor="let section of infoSections">
+    <div class="card mb-4" [ngClass]="section.bgClass || ''">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span class="fw-bold">{{ section.title }}</span>
+        <button class="btn btn-primary btn-sm">{{ section.title }}</button>
+      </div>
+      <div class="card-body">
+        <ul class="mb-0">
+          <li *ngFor="let item of section.items">{{ item }}</li>
+        </ul>
+      </div>
     </div>
-    <div class="card-body">
-      <ul>
-        <li *ngFor="let item of section.items">{{ item }}</li>
-      </ul>
-    </div>
-  </div>
-</ng-container>
+  </ng-container>
+</div>

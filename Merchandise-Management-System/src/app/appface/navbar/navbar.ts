@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CartService } from '../../service/sale-product/cart.service';
 import { Observable } from 'rxjs';
 import { User } from '../../models/profile/user.model';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,17 +11,17 @@ import { User } from '../../models/profile/user.model';
   styleUrl: './navbar.css'
 })
 export class Navbar implements OnInit {
-
   @Output() toggleSidebar = new EventEmitter<void>();
 
-  cartCount$!: Observable<number>;
-  userRole: string | null = '';
-  currentUser: User | null = null;
-  
-  constructor(private cartService: CartService) { }
+  user: User | null = null;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.cartCount$ = this.cartService.cartCount$;
+    this.user = this.authService.getCurrentUser();
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
 }

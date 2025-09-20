@@ -1,58 +1,84 @@
 <div class="registration-form">
 
-  <h2>Register  Manager</h2>
+  <h2>🧾 Register Manager</h2>
 
-  <!-- User Information -->
-  <fieldset>
-    <legend>User Information</legend>
+  <div class="form-columns">
 
-    <label for="name">Name:</label>
-    <input id="name" type="text" [(ngModel)]="user.name" name="name" required />
+    <!-- User Information -->
+    <fieldset class="form-section">
+      <legend>User Info</legend>
 
-    <label for="email">Email:</label>
-    <input id="email" type="email" [(ngModel)]="user.email" name="email" required />
+      <label for="name">
+        <i class="fas fa-user" style="color: #3498db;"></i> Name:
+      </label>
+      <input id="name" type="text" [(ngModel)]="user.name" name="name" required />
 
-    <label for="password">Password:</label>
-    <input id="password" type="password" [(ngModel)]="user.password" name="password" required />
+      <label for="email">
+        <i class="fas fa-envelope" style="color: #e67e22;"></i> Email:
+      </label>
+      <input id="email" type="email" [(ngModel)]="user.email" name="email" required />
 
-    <label for="phone">Phone:</label>
-    <input id="phone" type="tel" [(ngModel)]="user.phone" name="phone" required />
-  </fieldset>
+      <label for="password">
+        <i class="fas fa-lock" style="color: #c0392b;"></i> Password:
+      </label>
+      <input id="password" type="password" [(ngModel)]="user.password" name="password" required />
 
-  <!--  Manager Details -->
-  <fieldset>
-    <legend> Manager Details</legend>
+      <label for="phone">
+        <i class="fas fa-phone" style="color: #27ae60;"></i> Phone:
+      </label>
+      <input id="phone" type="tel" [(ngModel)]="user.phone" name="phone" required />
+    </fieldset>
 
-    <label for="saName">Full Name:</label>
-    <input id="saName" type="text" [(ngModel)]="manager.name" name="superadminName" required />
+    <!-- Manager Details -->
+    <fieldset class="form-section">
+      <legend>Manager Details</legend>
 
-    <label for="saEmail">Email:</label>
-    <input id="saEmail" type="email" [(ngModel)]="manager.email" name="superadminEmail" required />
+      <label for="saName">
+        <i class="fas fa-user-tie" style="color: #8e44ad;"></i> Full Name:
+      </label>
+      <input id="saName" type="text" [(ngModel)]="manager.name" name="superadminName" required />
 
-    <label for="saPhone">Phone:</label>
-    <input id="saPhone" type="tel" [(ngModel)]="manager.phone" name="superadminPhone" required />
+      <label for="saEmail">
+        <i class="fas fa-envelope" style="color: #e67e22;"></i> Email:
+      </label>
+      <input id="saEmail" type="email" [(ngModel)]="manager.email" name="superadminEmail" required />
 
-    <label for="gender">Gender:</label>
-    <select id="gender" [(ngModel)]="manager.gender" name="gender" required>
-      <option value="">Select Gender</option>
-      <option value="MALE">Male</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-    </select>
+      <label for="saPhone">
+        <i class="fas fa-phone" style="color: #27ae60;"></i> Phone:
+      </label>
+      <input id="saPhone" type="tel" [(ngModel)]="manager.phone" name="superadminPhone" required />
 
-    <label for="dob">Date of Birth:</label>
-    <input id="dob" type="date" [(ngModel)]="manager.dateOfBirth" name="dob" required />
+      <label for="gender">
+        <i class="fas fa-venus-mars" style="color: #9b59b6;"></i> Gender:
+      </label>
+      <select id="gender" [(ngModel)]="manager.gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="OTHER">Other</option>
+      </select>
 
-    <label for="address">Address:</label>
-    <textarea id="address" [(ngModel)]="manager.address" name="address" required></textarea>
-  </fieldset>
+      <label for="dob">
+        <i class="fas fa-calendar" style="color: #8e44ad;"></i> Date of Birth:
+      </label>
+      <input id="dob" type="date" [(ngModel)]="manager.dateOfBirth" name="dob" required />
+
+      <label for="address">
+        <i class="fas fa-map-marker-alt" style="color: #d35400;"></i> Address:
+      </label>
+      <textarea id="address" [(ngModel)]="manager.address" name="address" required></textarea>
+    </fieldset>
+
+  </div>
 
   <!-- Photo Upload -->
-  <fieldset>
-    <legend>Upload Photo</legend>
+  <fieldset class="form-section full-width">
+    <legend><i class="fas fa-camera" style="color: #2ecc71;"></i> Upload Photo</legend>
     <input type="file" (change)="onFileSelected($event)" accept="image/*" />
   </fieldset>
 
-  <button (click)="registerManager()">Register</button>
+  <button class="submit-btn" (click)="registerManager()">
+    <i class="fas fa-user-plus" style="margin-right: 8px;"></i> Register Manager
+  </button>
 
 </div>

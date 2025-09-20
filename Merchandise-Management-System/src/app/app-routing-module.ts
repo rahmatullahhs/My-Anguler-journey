@@ -45,6 +45,9 @@ import { Manager } from './Registration/manager/manager';
 import { Cashier } from './Registration/cashier/cashier';
 import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
 import { ViewreinvoiceComponent } from './ReturnDamage/ReSellStock/viewreinvoice.component/viewreinvoice.component';
+import { BalanceSheet } from './Accounts/balance-sheet/balance-sheet';
+import { BankDetailsComponent } from './Accounts/bank-details/bank-details';
+
 
 
 
@@ -111,7 +114,10 @@ const routes: Routes = [
   //Profiles
 {path: 'managerProfile' , component:ManagerProfile},
 {path: 'cashierProfile' , component: CashierProfile},
-{path: 'viewreinvoice',component:ViewreinvoiceComponent}
+{path: 'viewreinvoice',component:ViewreinvoiceComponent},
+{ path: 'balancesheet', component: BalanceSheet },
+  { path: 'bankdetails', component: BankDetailsComponent }
+
 
 ];
 

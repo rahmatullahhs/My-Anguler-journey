@@ -70,13 +70,15 @@ import { ManagerProfile } from './profiles/manager-profile/manager-profile';
 import { Manager } from './Registration/manager/manager';
 import { CashierProfile } from './profiles/cashier-profile/cashier-profile';
 import { ViewreinvoiceComponent } from './ReturnDamage/ReSellStock/viewreinvoice.component/viewreinvoice.component';
+import { BalanceSheet } from './Accounts/balance-sheet/balance-sheet';
+import { NgxPrintModule } from 'ngx-print';
+import {  BankDetailsComponent } from './Accounts/bank-details/bank-details';
 
 
 
 
 
-
-Chart.register(ChartDataLabels); 
+Chart.register(ChartDataLabels);
 @NgModule({
   declarations: [
     App,
@@ -107,7 +109,7 @@ Chart.register(ChartDataLabels);
     UserprofileComponent,
     RegisterComponent,
     LoginComponent,
-    
+
     AddproductComponent,
     UpdateproductComponent,
     ViewproductComponent,
@@ -118,30 +120,32 @@ Chart.register(ChartDataLabels);
     AddCogsComponent,
     AddinvoiceComponent,
 
- 
+
     ViewinvoiceComponent,
     AddexpenseComponent,
     ViewexpenseComponent,
     UpdateexpenseComponent,
 
     Sellpage,
-DuelistComponent,
+    DuelistComponent,
 
-AddReturnProductComponent,
-ViewReturnProductComponent,
-AddResellStockComponent,
-ViewResellStockComponent,
-AddReplaceUnitComponent,
-ViewReplaceUnitComponent,
-ViewRepairComponent,
-ViewcogsComponent,
-AddreinvoiceComponent,
-Admin,
-Cashier,
-ManagerProfile,
-Manager,
-CashierProfile,
-ViewreinvoiceComponent
+    AddReturnProductComponent,
+    ViewReturnProductComponent,
+    AddResellStockComponent,
+    ViewResellStockComponent,
+    AddReplaceUnitComponent,
+    ViewReplaceUnitComponent,
+    ViewRepairComponent,
+    ViewcogsComponent,
+    AddreinvoiceComponent,
+    Admin,
+    Cashier,
+    ManagerProfile,
+    Manager,
+    CashierProfile,
+    ViewreinvoiceComponent,
+    BalanceSheet,
+    BankDetailsComponent
 
 
 
@@ -157,8 +161,9 @@ ViewreinvoiceComponent
     MatFormFieldModule,
     MatIconModule,
     FormsModule,
-       BrowserAnimationsModule, // required for Toastr
-    ToastrModule.forRoot()
+    BrowserAnimationsModule, // required for Toastr
+    ToastrModule.forRoot(),
+    NgxPrintModule
 
   ],
   providers: [

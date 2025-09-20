@@ -1,0 +1,103 @@
+<div class="container mt-4">
+
+  <!-- Bank Details Section -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">🏦 Bank Details</h5>
+      <button *ngIf="!editMode && bankDetails" class="btn btn-light btn-sm" (click)="editBankDetails()">
+        ✏️ Edit
+      </button>
+    </div>
+
+    <div class="card-body">
+      <!-- View Mode -->
+      <div *ngIf="bankDetails && !editMode; else noDetails">
+        <p><strong>Account Holder:</strong> {{ bankDetails.accountHolder }}</p>
+        <p><strong>Bank Name:</strong> {{ bankDetails.bankName }}</p>
+        <p><strong>Account Number:</strong> {{ bankDetails.accountNumber }}</p>
+        <p><strong>IFSC Code:</strong> {{ bankDetails.ifscCode }}</p>
+      </div>
+
+      <!-- No Data Fallback -->
+      <ng-template #noDetails>
+        <p class="text-muted">No bank details found.</p>
+      </ng-template>
+
+      <!-- Edit Form -->
+      <div *ngIf="editMode && bankDetails">
+        <form (ngSubmit)="saveBankDetails()">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Account Holder</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="bankDetails.accountHolder"
+                name="accountHolder"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Bank Name</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="bankDetails.bankName"
+                name="bankName"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Account Number</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="bankDetails.accountNumber"
+                name="accountNumber"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">IFSC Code</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="bankDetails.ifscCode"
+                name="ifscCode"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mt-4 d-flex">
+            <button type="submit" class="btn btn-success me-2">💾 Save</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">✖ Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tax Report Section -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+      <h5 class="mb-0">📄 Tax Report</h5>
+    </div>
+    <div class="card-body">
+      <!-- If report is generated -->
+      <div *ngIf="reportGenerated; else generateSection">
+        <h6 class="mb-3 text-muted">Summary</h6>
+        <p><strong>Total Income:</strong> {{ taxReport?.totalIncome | currency }}</p>
+        <p><strong>Tax Paid:</strong> {{ taxReport?.taxPaid | currency }}</p>
+        <p><strong>Tax Due:</strong> {{ taxReport?.taxDue | currency }}</p>
+
+        <button class="btn btn-outline-warning mt-3" (click)="resetReport()">🔄 Generate New Report</button>
+      </div>
+
+      <!-- If report not generated -->
+      <ng-template #generateSection>
+        <button class="btn btn-primary" (click)="generateReport()">📊 Generate Tax Report</button>
+      </ng-template>
+    </div>
+  </div>
+</div>

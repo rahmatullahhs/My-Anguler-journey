@@ -7,20 +7,7 @@
       </a>
     </li>
 
-<li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-dark" href="#" id="regDropdown" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        👨‍👨 Registration
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="regDropdown">
-        <a class="nav-link text-white" routerLink="/managerReg">
-          <i class="fas fa-user-tie me-1"></i> Manager Registration
-        </a>
-        <a class="nav-link text-white" routerLink="/cashierReg">
-          <i class="fas fa-box-open me-1"></i> Cashier Registration
-        </a>
-      </ul>
-    </li>
+
 
     
     
@@ -120,27 +107,53 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
         <li><a class="dropdown-item" routerLink="/balancesheet">📈 Balance Sheet</a></li>
-        <li><a class="dropdown-item" routerLink="/importreports">📑 Import Reports</a></li>
+ 
         <li><a class="dropdown-item" routerLink="/bankdetails">🏦 Bank Details</a></li>
-        <li><a class="dropdown-item" routerLink="/taxreport">🏛️ Tax Report</a></li>
+   
       </ul>
     </li>
+<!-- Inbox Dropdown -->
+<li class="nav-item dropdown mb-2">
+  <a class="nav-link dropdown-toggle text-dark" href="#" id="inboxDropdown" role="button"
+     data-bs-toggle="dropdown" aria-expanded="false">
+    📥 Inbox
+  </a>
 
+  <ul class="dropdown-menu" aria-labelledby="inboxDropdown">
 
-    <!-- Inbox -->
-    <li class="nav-item dropdown mb-2">
-      <a class="nav-link dropdown-toggle text-dark " href="#" id="inboxDropdown" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        📥 Inbox
+    <!-- Role-based Profile Link -->
+    <li [ngSwitch]="userRole">
+      <a *ngSwitchCase="'manager'" class="dropdown-item" routerLink="/managerProfile">
+        👨🏻‍💼 Profile Settings
       </a>
-
-      <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
-        <li><a class="dropdown-item" routerLink="/settings/profile">👨🏻‍💼 Profile Settings</a></li>
-        <li><a class="dropdown-item" routerLink="/settings/email">✉ Email Preferences</a></li>
-        <li><a class="dropdown-item" routerLink="/settings/security">🔐 Security Settings</a></li>
-      </ul>
-
+      <a *ngSwitchCase="'cashier'" class="dropdown-item" routerLink="/cashierProfile">
+        👨🏻‍💼 Profile Settings
+      </a>
+      <a *ngSwitchDefault class="dropdown-item disabled">
+        No Profile
+      </a>
     </li>
+<!-- Registration Section (Flat List) -->
+<li>
+  <a class="dropdown-item" routerLink="/managerReg">
+    <i class="fas fa-user-tie me-1"></i> ✉ Manager Registration
+  </a>
+</li>
+<li>
+  <a class="dropdown-item" routerLink="/cashierReg">
+    <i class="fas fa-box-open me-1"></i> ✉ Cashier Registration
+  </a>
+</li>
+
+    <!-- Security Settings -->
+    <li>
+      <a class="dropdown-item" routerLink="/settings/security">
+        🔐 Security Settings
+      </a>
+    </li>
+
+  </ul>
+
 
     <!-- Help / Support -->
     <li class="nav-item dropdown mb-2">
