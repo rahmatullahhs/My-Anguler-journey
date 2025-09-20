@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, TemplateRef } from '@angular/core';
 import { CashierService } from '../../service/auth/cashier-service';
+import { NgIfContext } from '@angular/common';
 
 @Component({
   selector: 'app-cashier-profile',
@@ -15,7 +16,7 @@ export class CashierProfile implements OnInit{
   error = '';
 
   imageUrl: string = "http://localhost:8085/images/roleCashier/";
-loadingTemplate: TemplateRef<NgIfContext<boolean>>|null;
+loadingTemplate: TemplateRef<NgIfContext<boolean>> | null | undefined;
 
   constructor(private cashierService: CashierService,
     private cdr: ChangeDetectorRef

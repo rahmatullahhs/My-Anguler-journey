@@ -1,11 +1,11 @@
-<div class="container mt-2 profile-container" *ngIf="!loading; else loadingTemplate">
+<div class="container mt-2" *ngIf="!loading;  loadingTemplate">
   <!-- Premium Heading -->
   <div class="text-center mb-3">
     <h2 class="fw-bold text-dark d-inline-flex align-items-center border-bottom pb-2 border-3 border-primary">
       <i class="bi bi-person-circle me-2 fs-1 text-primary"></i>
       Cashier Profile
     </h2>
-    <p class="text-muted">Detailed cashier information at a glance</p>
+    <p class="text-muted ">Detailed cashier information at a glance</p>
   </div>
 
   <!-- Error Message -->
@@ -16,88 +16,77 @@
   <!-- Profile Card -->
   <div
     *ngIf="profile"
-    class="card border-0 shadow-lg p-4 d-flex flex-md-row align-items-center rounded-4 profile-card"
+    class="card border-0 shadow-lg p-4 d-flex flex-md-row align-items-center rounded-4"
     style="background: linear-gradient(to right, #ffffff, #f8f9fa);"
   >
     <!-- Profile Photo -->
-    <div class="me-md-4 mb-4 mb-md-0 text-center profile-photo">
+    <div class="me-md-4 mb-4 mb-md-0 text-center">
       <img
         *ngIf="profile.photo; else noPhoto"
         [src]="imageUrl + profile.photo"
         alt="Cashier Photo"
         class="img-thumbnail shadow-sm"
+        style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;"
       />
       <!-- No Photo Fallback -->
       <ng-template #noPhoto>
-        <div class="placeholder-photo">
+        <div
+          class="bg-secondary text-white d-flex align-items-center justify-content-center shadow-sm"
+          style="width: 200px; height: 200px; font-size: 1.1rem; border-radius: 8px;"
+        >
           No Photo
         </div>
       </ng-template>
     </div>
 
-    <!-- Profile Details -->
-    <div class="flex-grow-1 profile-details">
-      <ul class="list-group list-group-flush fs-6">
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-person-fill me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Name</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.name }}</div>
-        </li>
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-envelope-fill me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Email</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.email }}</div>
-        </li>
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-telephone-fill me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Phone</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.phone }}</div>
-        </li>
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-gender-ambiguous me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Gender</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.gender }}</div>
-        </li>
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-calendar-event-fill me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Date of Birth</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.dateOfBirth | date: 'longDate' }}</div>
-        </li>
-        <li class="list-group-item bg-transparent row align-items-center">
-          <div class="col-3 d-flex align-items-center">
-            <i class="bi bi-geo-alt-fill me-2 text-primary"></i>
-            <div class="text-secondary fw-semibold">Address</div>
-            <div class="text-secondary fw-semibold px-1">:</div>
-          </div>
-          <div class="col-9">{{ profile.address }}</div>
-        </li>
-      </ul>
-
-      <!-- Button Bar -->
-      <div class="mt-4 d-flex justify-content-end gap-3">
-        <button class="btn btn-outline-primary">
-          <i class="bi bi-pencil-square me-1"></i> Edit
-        </button>
-        <button class="btn btn-primary">
-          <i class="bi bi-printer-fill me-1"></i> Print
-        </button>
-      </div>
+   <div class="flex-grow-1">
+    <ul class="list-group list-group-flush fs-6">
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-person-fill me-1 text-primary"></i> Name        :
     </div>
+    <div>{{ profile.name }}</div>
+  </li>
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-envelope-fill me-1 text-primary"></i> Email       :
+    </div>
+    <div>{{ profile.email }}</div>
+  </li>
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-telephone-fill me-1 text-primary"></i> Phone  : 
+    </div>
+    <div>{{ profile.phone }}</div>
+  </li>
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-gender-ambiguous me-1 text-primary"></i> Gender  :
+    </div>
+    <div>{{ profile.gender }}</div>
+  </li>
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-calendar-event-fill me-1 text-primary"></i> Date of Birth:
+    </div>
+    <div>{{ profile.dateOfBirth | date: 'longDate' }}</div>
+  </li>
+  <li class="list-group-item bg-transparent d-flex align-items-center">
+    <div class="text-secondary fw-semibold d-flex align-items-center me-2">
+      <i class="bi bi-geo-alt-fill me-1 text-primary"></i> Address :
+    </div>
+    <div>{{ profile.address }}</div>
+  </li>
+</ul>
+
+  <!-- Button Bar -->
+  <div class="mt-4 d-flex justify-content-end gap-3">
+    <button class="btn btn-outline-primary" >
+      <i class="bi bi-pencil-square me-1"></i> Edit
+    </button>
+    <button class="btn btn-primary" >
+      <i class="bi bi-printer-fill me-1"></i> Print
+    </button>
   </div>
 </div>
 
