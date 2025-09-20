@@ -66,6 +66,12 @@ export class DuelistService {
     return this.http.delete<void>(`${this.baseUrl}/${id}`,{headers});
   }
 
+getDueSummary(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/duesummary`);
+  }
+
+
+
 }
 
 

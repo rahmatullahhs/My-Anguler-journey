@@ -95,13 +95,20 @@ export class InvoiceService {
 
 
 
-getCurrentMonthDue(): Observable<any> {
-  return this.http.get<any>('http://localhost:8085/api/invoice/due/current-month');
-}
+
 
 getLastMonthExpenses(): Observable<any> {
   return this.http.get<any>('http://localhost:8085/api/expenses/last-month');
 }
 
+
+
+ getSalesSummary(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/sellsummary`);
+  }
+
+ getDueSummary(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/duesummary`);
+  }
 
 }

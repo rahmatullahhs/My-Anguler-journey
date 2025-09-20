@@ -9,49 +9,62 @@ import { ExpenseService } from '../../service/Expanses/expense.service';
   selector: 'app-dashboard',
   standalone: false,
   templateUrl: './dashboard.html',
- styleUrls: ['./dashboard.css']
+  styleUrls: ['./dashboard.css']
 })
-export class Dashboard implements OnInit{
+export class Dashboard implements OnInit {
+
+// sir
+  todaysSlaes!: number;
+  lastWeekSales!: number;
+  lastMonthSales!: number;
+
+  salesPeriod = 'Today';
+  salesValue: number = 0;
+  periods = ['Today', 'Last Week', 'Last Month'];
+// ....
+
+ // myDue
+
+lastMonthDue!:number;
+  dueValue: number=0;
 
 
   // Platform check
   isBrowser: boolean;
 
+  
   // Date related
   currentYear = new Date().getFullYear();
   currentMonthName = '';
   lastMonthName = '';
 
-  // Sales related
-  salesPeriod = 'Today';
-  salesValue = '';
-  periods = ['Today', 'Last Week', 'Last Month'];
+  
+
+
 
   // Due and Expense related
-  dueAmount = '';
+
   expenseAmount = '';
 
   // Chart data & options
   profitChartLabels: string[] = [];
-
-profitChartData: ChartData<'line'> = {
-  labels: [], // your month labels go here
-  datasets: [
-    {
-      label: 'Monthly Profit',
-      data: [], // your profit data
-      borderColor: 'darkviolet',                         // Line color
-      backgroundColor: 'rgba(208, 140, 237, 0.29)',         // Fill under the line
-      fill: true,
-      tension: 0.0,                                      // Smooth curve
-      pointBackgroundColor: '#48ffffff',            // Light orange fill
-      pointBorderColor: '#794a04ff',                    // Point border color
-      pointRadius: 3,                                   // Size of the point
-      pointHoverRadius: 10                              // Size when hovered
-    }
-  ]
-};
-
+  profitChartData: ChartData<'line'> = {
+    labels: [], // your month labels go here
+    datasets: [
+      {
+        label: 'Monthly Profit',
+        data: [], // your profit data
+        borderColor: 'darkviolet',                         // Line color
+        backgroundColor: 'rgba(208, 140, 237, 0.29)',         // Fill under the line
+        fill: true,
+        tension: 0.0,                                      // Smooth curve
+        pointBackgroundColor: '#48ffffff',            // Light orange fill
+        pointBorderColor: '#794a04ff',                    // Point border color
+        pointRadius: 3,                                   // Size of the point
+        pointHoverRadius: 10                              // Size when hovered
+      }
+    ]
+  };
 
   profitChartOptions: ChartOptions = {
     responsive: true,
@@ -74,10 +87,11 @@ profitChartData: ChartData<'line'> = {
     }
   };
 
+
   // Info sections for dashboard display
   infoSections = [
     {
-      title: 'Inventory Management',
+      title: 'Stock Management',
       items: [
         'Current Stock: 4,230 units',
         'Low Stock Alerts: 7 items',
@@ -137,13 +151,17 @@ profitChartData: ChartData<'line'> = {
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
-
+//sir
   ngOnInit(): void {
+
+    this.getSalesSummary();
     this.setCurrentMonth();
     this.setLastMonth();
-
     this.updateSales(this.salesPeriod);
-    this.loadCurrentMonthDue();
+
+    //mydue
+    this.getDueSummary();
+    this.setLastMonth();
     this.loadLastMonthExpenses();
 
     if (this.isBrowser) {
@@ -151,11 +169,15 @@ profitChartData: ChartData<'line'> = {
     }
   }
 
+
+
+
+
   // Generate random profit data for the chart
   generateProfitChartData(): void {
     const months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jul', 'Aug', 'Sep'
     ];
     const profits = months.map(() => Math.floor(Math.random() * 10000) + 1000);
 
@@ -164,19 +186,26 @@ profitChartData: ChartData<'line'> = {
     this.profitChartData.datasets[0].data = profits;
   }
 
+
+  // sir
   updateSales(period: string): void {
     this.salesPeriod = period;
-    this.invoiceService.getSalesByPeriod(period).subscribe({
-      next: response => {
-        this.salesValue = response.salesValue || '$0';
-        this.cdr.markForCheck();
-      },
-      error: err => {
-        console.error('Error fetching sales data:', err);
-        this.salesValue = '$0';
-        this.cdr.markForCheck();
-      }
-    });
+    console.log(period);
+
+    switch (period) {
+      case 'Today':
+        this.salesValue = this.todaysSlaes;
+        console.log(this.salesValue);
+        break;
+      case 'Last Week':
+        this.salesValue = this.lastWeekSales;
+        console.log(this.salesValue);
+        break;
+      case 'Last Month':
+        this.salesValue = this.lastMonthSales;
+        console.log(this.salesValue);
+        break;
+    }
   }
 
   setCurrentMonth(): void {
@@ -187,19 +216,7 @@ profitChartData: ChartData<'line'> = {
     this.currentMonthName = monthNames[new Date().getMonth()];
   }
 
-  loadCurrentMonthDue(): void {
-    this.invoiceService.getCurrentMonthDue().subscribe({
-      next: response => {
-        this.dueAmount = response.dueAmount || '$0';
-        this.cdr.markForCheck();
-      },
-      error: err => {
-        console.error('Error fetching current month due:', err);
-        this.dueAmount = '$0';
-        this.cdr.markForCheck();
-      }
-    });
-  }
+
 
   setLastMonth(): void {
     const monthNames = [
@@ -223,4 +240,36 @@ profitChartData: ChartData<'line'> = {
       }
     });
   }
+
+
+
+ getSalesSummary() {
+  this.invoiceService.getSalesSummary().subscribe({
+    next: (data) => {
+      this.todaysSlaes = data.today;
+      this.lastWeekSales = data.last7Days;
+      this.lastMonthSales = data.last30Days;
+
+      // default selection
+      this.salesValue = this.todaysSlaes;
+    },
+    error: (e) => console.error(e)
+  });
+}
+
+
+
+
+ getDueSummary() {
+  this.invoiceService.getDueSummary().subscribe({
+    next: (data) => {
+      this.lastMonthDue = data.last30Days;
+      // default selection
+      this.dueValue = this.lastMonthDue;
+    },
+    error: (e) => console.error(e)
+  });
+}
+
+
 }
