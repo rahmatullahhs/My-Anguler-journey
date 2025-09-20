@@ -15,6 +15,7 @@ export class CashierProfile implements OnInit{
   error = '';
 
   imageUrl: string = "http://localhost:8085/images/roleCashier/";
+loadingTemplate: TemplateRef<NgIfContext<boolean>>|null;
 
   constructor(private cashierService: CashierService,
     private cdr: ChangeDetectorRef
